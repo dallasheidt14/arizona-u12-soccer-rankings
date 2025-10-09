@@ -58,7 +58,7 @@ async function fetchJSON(url) {
 export default function YouthRankingsApp() {
   const [view, setView] = useState("select"); // "select" | "rankings" | "team"
   const [gender, setGender] = useState("MALE");
-  const [year, setYear] = useState("2025");
+  const [year, setYear] = useState("2014");
   const [state, setState] = useState("AZ");
 
   const [slices, setSlices] = useState([]);

@@ -25,6 +25,101 @@ The system uses a sophisticated ranking algorithm that considers:
 Power Score = 0.375 × Offensive Rating + 0.375 × (1 - Defensive Rating) + 0.25 × SOS
 ```
 
+## Daily Data Scraping
+
+### Automated Data Collection
+
+The system includes a production-ready daily scraper that automatically collects fresh game data and integrates it with the ranking system.
+
+#### Features
+
+- **Multi-source scraping**: GotSport API + league websites
+- **Bronze/Silver/Gold data architecture**: Raw → Normalized → Merged
+- **Team name resolution**: Fuzzy matching with confidence thresholds
+- **Automatic fallback**: Uses legacy data if scraping fails
+- **Change detection**: Only processes new/changed games
+- **Error handling**: Retry logic with exponential backoff
+- **Monitoring**: Slack alerts for errors and daily summaries
+
+#### Architecture
+
+```
+data_ingest/
+├── bronze/          # Raw JSONL files (180-day retention)
+├── silver/          # Normalized Parquet files
+└── gold/           # Merged Parquet + CSV (ranking input)
+```
+
+#### Setup
+
+1. **Bootstrap team aliases**:
+   ```bash
+   python bootstrap_aliases.py
+   ```
+
+2. **Test scraper**:
+   ```bash
+   python test_scraper.py
+   ```
+
+3. **Run daily scrape**:
+   ```bash
+   python scraper_daily.py
+   ```
+
+#### Configuration
+
+Edit `scraper_config.py` to:
+- Add/remove data sources
+- Set Slack webhook for alerts
+- Adjust team matching thresholds
+- Configure retention policies
+
+#### Scheduling
+
+The scraper runs automatically via GitHub Actions at 3:30 AM Phoenix time (10:30 UTC).
+
+Manual triggers are available via GitHub Actions UI.
+
+#### Integration
+
+The ranking system automatically uses the Gold layer data when available, with fallback to legacy `Matched_Games.csv`.
+
+No changes needed to existing ranking commands - they work seamlessly with both data sources.
+
+## Testing & CI
+
+### Run tests locally
+```bash
+make setup
+make test         # or: python -m pytest tests/
+make cov          # coverage report
+```
+
+### Continuous Integration
+
+A GitHub Actions workflow runs tests on every push/PR. See `.github/workflows/ci.yml`.
+
+### Test Philosophy
+
+- **Deterministic fixtures** under `tests/fixtures/`
+- **Property-based assertions** (recency sums, normalization range, penalty thresholds) instead of brittle exact values
+- **Edge case coverage**: ≤10 vs ==10 vs 11 games, outlier scores, NaN safety
+- **Mathematical correctness**: Tests verify core ranking algorithm properties
+
+### Test Coverage
+
+Current test coverage: **86%** of core ranking functions
+
+Key test areas:
+- ✅ Recent game weighting (70/30 split)
+- ✅ Defense transformation monotonicity
+- ✅ SOS recency weighting
+- ✅ Robust min-max normalization for outliers
+- ✅ Game count penalties
+- ✅ Power score normalization
+- ✅ Recency weights sum to 1.0 per team
+
 ## 🚀 Quick Start
 
 ### Prerequisites

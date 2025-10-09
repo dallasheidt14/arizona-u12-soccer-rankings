@@ -41,7 +41,8 @@ class _Cache:
             if path.suffix.lower() == ".parquet":
                 df = pd.read_parquet(path)
             else:
-                df = pd.read_csv(path)
+                # utf-8-sig strips BOM if present; low_memory avoids mixed dtypes
+                df = pd.read_csv(path, encoding="utf-8-sig", low_memory=False)
             self._data[key] = {"df": df}
         return self._data[key]["df"]
 
@@ -52,9 +53,17 @@ app = FastAPI(title="Youth Rankings API", version="1.0.0")
 # Allow your frontend origin(s)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # tighten in prod
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:4173",
+        "http://127.0.0.1:4173",
+        "*"  # tighten in prod
+    ],
     allow_credentials=False,
-    allow_methods=["GET"],
+    allow_methods=["GET", "OPTIONS"],
     allow_headers=["*"],
 )
 
@@ -138,38 +147,72 @@ CANON = {
     "impact_bucket": ["impact_bucket", "Impact", "ImpactBucket"],
 }
 
-def coalesce_columns(df, canon: dict[str, list[str]]) -> pd.DataFrame:
-    """Create canonical columns by copying from the first synonym that exists."""
-    out = df.copy()
-    existing = set(out.columns)
-    for target, candidates in canon.items():
-        if target in existing:
-            continue
-        for c in candidates:
-            if c in existing:
-                out[target] = out[c]
-                break
-    return out
+import re
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+def _norm_header(s: str) -> str:
+    s = str(s).replace("\ufeff", "")      # strip BOM
+    s = s.strip().lower()
+    s = re.sub(r"[^a-z0-9]+", "_", s)     # spaces/dashes → underscores
+    s = re.sub(r"_+", "_", s).strip("_")  # collapse repeats
+    return s
+
+# Build a reverse lookup map once (normalized form → canonical name)
+_CANON_REVERSE = {}
+for canon, variants in CANON.items():
+    # Include the canonical key itself as a match target too
+    for v in set([canon] + variants):
+        _CANON_REVERSE[_norm_header(v)] = canon
+
+def normalize_headers(df: pd.DataFrame) -> pd.DataFrame:
+    """Return a copy of df with columns renamed to canonical names where possible."""
+    renamed = {}
+    unmapped = []
+    for c in df.columns:
+        key = _norm_header(c)
+        if key in _CANON_REVERSE:
+            canonical_name = _CANON_REVERSE[key]
+            # Handle duplicates by keeping the first occurrence
+            if canonical_name not in renamed:
+                renamed[c] = canonical_name
+            else:
+                # Skip duplicate mappings to avoid DataFrame issues
+                renamed[c] = c
+                unmapped.append(f"{c} (duplicate of {canonical_name})")
+        else:
+            renamed[c] = c
+            unmapped.append(c)
+    if unmapped:
+        logging.info("Unmapped headers (left as-is): %s", unmapped)
+    return df.rename(columns=renamed)
 
 def to_num(df, cols: list[str]) -> pd.DataFrame:
     out = df.copy()
     for c in cols:
         if c in out.columns:
-            out[c] = pd.to_numeric(out[c], errors="coerce")
+            s = out[c].astype(str)
+            # Handle percent and commas
+            s = s.str.replace("%", "", regex=False).str.replace(",", "", regex=False)
+            # Handle negatives in parentheses: "(1234)" -> "-1234"
+            s = s.str.replace(r"^\((.*)\)$", r"-\1", regex=True)
+            out[c] = pd.to_numeric(s, errors="coerce")
     return out
 
 def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
-    """Broader normalization + light typing. Never throw."""
-    df2 = coalesce_columns(df, CANON)
+    """Canonicalize headers and coerce numeric metrics safely."""
+    df2 = normalize_headers(df)
 
-    # Light renames for a few legacy names that collide with different meaning
+    # Back-compat for a few legacy names that carry data under non-canonical labels.
+    # (If any slipped through header normalization above, catch them here.)
     if "Power Score" in df2.columns and "PowerScore" not in df2.columns:
         df2["PowerScore"] = df2["Power Score"]
 
     # Numeric casts where relevant
     df2 = to_num(df2, ["PowerScore", "Off_norm", "Def_norm", "SOS_norm", "GamesPlayed", "GoalsFor", "GoalsAgainst"])
 
-    # Make sure Team is string
+    # Ensure Team is str
     if "Team" in df2.columns:
         df2["Team"] = df2["Team"].astype(str)
 
@@ -301,6 +344,51 @@ def api_health(state: Optional[str] = None, gender: Optional[str] = None, year: 
             cols = ["<error reading>"]
         info[name] = {"path": p, "columns_head": cols}
     return info
+
+@app.get("/api/debug_paths")
+def debug_paths(state: str = "AZ", gender: str = "MALE", year: int = 2014, limit: int = 30):
+    """
+    Shows which file is being used for Rankings + the first N raw & normalized headers.
+    Helps diagnose BOM/spacing/case mismatches quickly.
+    """
+    # Reuse your existing path resolution (update if your helper names differ)
+    rankings_path = find_rankings_path(state, gender, year)  # your existing helper
+    if not rankings_path or not Path(rankings_path).exists():
+        return JSONResponse(
+            {
+                "rankings_path": rankings_path,
+                "exists": False,
+                "note": "Rankings file not found for given slice."
+            },
+            status_code=404
+        )
+
+    import pandas as pd
+
+    # Read raw (without header normalization) but with BOM-safe encoding:
+    try:
+        if str(rankings_path).lower().endswith(".parquet"):
+            raw_df = pd.read_parquet(rankings_path)
+        else:
+            raw_df = pd.read_csv(rankings_path, nrows=limit, encoding="utf-8-sig", low_memory=False)
+        raw_cols = list(raw_df.columns)
+    except Exception as e:
+        return JSONResponse(
+            {"rankings_path": rankings_path, "exists": True, "error": f"Failed to read: {e}"},
+            status_code=500
+        )
+
+    # Apply your normalization
+    normalized_df = normalize_columns(raw_df.copy())
+    norm_cols = list(normalized_df.columns)
+
+    return {
+        "rankings_path": rankings_path,
+        "exists": True,
+        "raw_columns": raw_cols[:limit],
+        "normalized_columns": norm_cols[:limit],
+        "sample_normalized_head": normalized_df.head(min(5, limit)).to_dict(orient="records"),
+    }
 
 if __name__ == "__main__":
     import uvicorn
