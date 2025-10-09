@@ -14,7 +14,7 @@ from fastapi.responses import JSONResponse
 # ---- Config ----
 DATA_DIR = Path(".")  # root of your pipeline outputs
 INDEX_JSON = DATA_DIR / "rankings_index.json"            # created in Phase 3
-RANKINGS_FALLBACK = DATA_DIR / "Rankings_PowerScore.csv"            # global default
+RANKINGS_FALLBACK = DATA_DIR / "Rankings.csv"            # global default
 HISTORY_FALLBACK = DATA_DIR / "Team_Game_Histories.csv"  # global default
 
 # Optional: look for slice-specific files when state/gender/year provided
@@ -93,8 +93,8 @@ def find_rankings_path(state: Optional[str], gender: Optional[str], year: Option
             return p
     # Fallback to global - try multiple possible names (CSV first)
     fallback_candidates = [
-        DATA_DIR / "Rankings_PowerScore.csv",
-        DATA_DIR / "Rankings.csv", 
+        DATA_DIR / "Rankings.csv",
+        DATA_DIR / "Rankings_PowerScore.csv", 
         RANKINGS_FALLBACK,
         DATA_DIR / "Rankings.parquet"
     ]
@@ -114,55 +114,80 @@ def find_history_path(state: Optional[str], gender: Optional[str], year: Optiona
             return p
     return HISTORY_FALLBACK if HISTORY_FALLBACK.exists() else candidates[-1]
 
+# Canonical column mapping - maps canonical names to all known synonyms
+CANON = {
+    # Canonical -> known synonyms in your CSVs
+    "Team": ["Team", "team_name", "Name"],
+    "PowerScore": ["PowerScore", "Power Score", "Power_Score", "Power"],
+    "Off_norm": ["Off_norm", "Offense_norm", "Offense Score", "Offense_Score", "Off Rating", "Offensive Rating"],
+    "Def_norm": ["Def_norm", "Defense_norm", "Adj Defense Score", "Defense Score", "Def Rating", "Defensive Rating"],
+    "SOS_norm": ["SOS_norm", "Schedule Strength", "Schedule Rating", "SOS"],
+    "GamesPlayed": ["GamesPlayed", "Games Played", "GP"],
+    "WL": ["WL", "W-L-T", "Record"],
+    "State": ["State"],
+    "Gender": ["Gender", "Sex"],
+    "Year": ["Year", "BirthYear", "Birth Year"],
+    # History endpoint:
+    "GoalsFor": ["GoalsFor", "Goals For", "GF"],
+    "GoalsAgainst": ["GoalsAgainst", "Goals Against", "GA"],
+    "Date": ["Date", "MatchDate"],
+    "Opponent": ["Opponent", "Opp", "Opponent Name"],
+    "Opponent_BaseStrength": ["Opponent_BaseStrength", "Opp_BaseStrength", "Opp Strength", "Opponent Strength"],
+    "expected_gd": ["expected_gd", "Expected_GD", "ExpGD"],
+    "gd_delta": ["gd_delta", "Delta_vs_Expected", "DeltaExp"],
+    "impact_bucket": ["impact_bucket", "Impact", "ImpactBucket"],
+}
+
+def coalesce_columns(df, canon: dict[str, list[str]]) -> pd.DataFrame:
+    """Create canonical columns by copying from the first synonym that exists."""
+    out = df.copy()
+    existing = set(out.columns)
+    for target, candidates in canon.items():
+        if target in existing:
+            continue
+        for c in candidates:
+            if c in existing:
+                out[target] = out[c]
+                break
+    return out
+
+def to_num(df, cols: list[str]) -> pd.DataFrame:
+    out = df.copy()
+    for c in cols:
+        if c in out.columns:
+            out[c] = pd.to_numeric(out[c], errors="coerce")
+    return out
+
 def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
-    # ensure common names used by the UI
-    colmap = {
-        "Power Score": "PowerScore",
-        "Games Played": "GamesPlayed",
-        "W-L-T": "WL",
-        "Goals For": "GoalsFor",
-        "Goals Against": "GoalsAgainst",
-        "Offense Score": "Off_norm",
-        "Adj Defense Score": "Def_norm",
-        "SOS": "SOS_norm",
-    }
-    for a,b in colmap.items():
-        if a in df.columns and b not in df.columns:
-            df[b] = df[a]
-    
-    # Create W-L-T column if it doesn't exist
-    if "WL" not in df.columns and "Wins" in df.columns and "Losses" in df.columns and "Ties" in df.columns:
-        df["WL"] = df["Wins"].astype(str) + "-" + df["Losses"].astype(str) + "-" + df["Ties"].astype(str)
-    
-    # Create missing normalized columns if they don't exist
-    if "Off_norm" not in df.columns and "Goals For/Game" in df.columns:
-        # Normalize goals for per game to 0-1 scale
-        max_gf = df["Goals For/Game"].max()
-        min_gf = df["Goals For/Game"].min()
-        if max_gf > min_gf:
-            df["Off_norm"] = (df["Goals For/Game"] - min_gf) / (max_gf - min_gf)
-        else:
-            df["Off_norm"] = 0.5
-    
-    if "Def_norm" not in df.columns and "Goals Against/Game" in df.columns:
-        # Normalize goals against per game to 0-1 scale (inverted - lower is better)
-        max_ga = df["Goals Against/Game"].max()
-        min_ga = df["Goals Against/Game"].min()
-        if max_ga > min_ga:
-            df["Def_norm"] = 1.0 - (df["Goals Against/Game"] - min_ga) / (max_ga - min_ga)
-        else:
-            df["Def_norm"] = 0.5
-    
-    if "SOS_norm" not in df.columns and "SOS" in df.columns:
-        # Normalize SOS to 0-1 scale
-        max_sos = df["SOS"].max()
-        min_sos = df["SOS"].min()
-        if max_sos > min_sos:
-            df["SOS_norm"] = (df["SOS"] - min_sos) / (max_sos - min_sos)
-        else:
-            df["SOS_norm"] = 0.5
-    
-    return df
+    """Broader normalization + light typing. Never throw."""
+    df2 = coalesce_columns(df, CANON)
+
+    # Light renames for a few legacy names that collide with different meaning
+    if "Power Score" in df2.columns and "PowerScore" not in df2.columns:
+        df2["PowerScore"] = df2["Power Score"]
+
+    # Numeric casts where relevant
+    df2 = to_num(df2, ["PowerScore", "Off_norm", "Def_norm", "SOS_norm", "GamesPlayed", "GoalsFor", "GoalsAgainst"])
+
+    # Make sure Team is string
+    if "Team" in df2.columns:
+        df2["Team"] = df2["Team"].astype(str)
+
+    return df2
+
+def safe_sort(df: pd.DataFrame, by: str, order: str) -> pd.DataFrame:
+    # Fall back to a safe column if requested one missing or non-numeric where needed
+    ascending = (order == "asc")
+    if by not in df.columns:
+        fallback = "PowerScore" if "PowerScore" in df.columns else None
+        return df if fallback is None else df.sort_values(by=fallback, ascending=False, na_position="last")
+    try:
+        return df.sort_values(by=by, ascending=ascending, na_position="last")
+    except Exception:
+        # e.g., mixed types; try numeric coercion then retry
+        tmp = df.copy()
+        tmp[by] = pd.to_numeric(tmp[by], errors="coerce")
+        return tmp.sort_values(by=by, ascending=ascending, na_position="last")
 
 # ---- Endpoints ----
 
@@ -184,37 +209,36 @@ def api_rankings(
     df = CACHE.get_df(path)
     if df is None:
         raise HTTPException(status_code=404, detail="Rankings file not found")
+
     df = normalize_columns(df)
 
-    # Optional filtering (if global file)
+    # Optional in-file filtering if global file
     if state and "State" in df.columns:
         df = df[df["State"] == state]
     if gender and "Gender" in df.columns:
-        gnorm = "MALE" if gender and gender.upper() in ("M","MALE","BOYS") else "FEMALE"
-        df = df[df["Gender"].str.upper() == gnorm]
+        # Map input gender to data gender values (data uses M/F, not MALE/FEMALE)
+        if gender.upper() in ("M","MALE","BOYS"):
+            df = df[df["Gender"].astype(str).str.upper() == "M"]
+        else:
+            df = df[df["Gender"].astype(str).str.upper() == "F"]
     if year and "Year" in df.columns:
         df = df[df["Year"].astype(str) == str(year)]
 
-    if q:
+    if q and "Team" in df.columns:
         df = df[df["Team"].str.contains(q, case=False, na=False)]
 
-    # Sorting
-    if sort not in df.columns:
-        sort = "PowerScore" if "PowerScore" in df.columns else "Power Score"
-    ascending = (order == "asc")
-    try:
-        df = df.sort_values(by=sort, ascending=ascending, na_position="last")
-    except Exception:
-        pass
-
-    # Build minimal payload
-    cols = ["Team","PowerScore","Off_norm","Def_norm","SOS_norm","GamesPlayed","WL"]
-    cols = [c for c in cols if c in df.columns]
-    # Add Rank
+    # Add Rank and build payload from whatever exists
     df = df.reset_index(drop=True)
-    df.insert(0, "Rank", df.index + 1)
+    if "Rank" not in df.columns:
+        df.insert(0, "Rank", df.index + 1)
 
-    return JSONResponse(df[["Rank"] + cols].head(limit).to_dict(orient="records"))
+    preferred_cols = ["Team","PowerScore","Off_norm","Def_norm","SOS_norm","GamesPlayed","WL"]
+    cols = ["Rank"] + [c for c in preferred_cols if c in df.columns]
+
+    # Safe sort
+    df = safe_sort(df, sort, order)
+
+    return JSONResponse(df[cols].head(limit).to_dict(orient="records"))
 
 @app.get("/api/team/{team}")
 def api_team_history(
@@ -230,42 +254,53 @@ def api_team_history(
         raise HTTPException(status_code=404, detail="History file not found")
     df = normalize_columns(df)
 
-    # Optional filtering if global
     if state and "State" in df.columns:
         df = df[df["State"] == state]
     if gender and "Gender" in df.columns:
-        gnorm = "MALE" if gender and gender.upper() in ("M","MALE","BOYS") else "FEMALE"
-        df = df[df["Gender"].str.upper() == gnorm]
+        # Map input gender to data gender values (data uses M/F, not MALE/FEMALE)
+        if gender.upper() in ("M","MALE","BOYS"):
+            df = df[df["Gender"].astype(str).str.upper() == "M"]
+        else:
+            df = df[df["Gender"].astype(str).str.upper() == "F"]
     if year and "Year" in df.columns:
         df = df[df["Year"].astype(str) == str(year)]
 
-    # Filter to the team as 'Team'
-    df = df[df["Team"] == urllib.parse.unquote(team)]
+    team_name = urllib.parse.unquote(team)
+    if "Team" in df.columns:
+        df = df[df["Team"] == team_name]
     if df.empty:
         return []
 
-    # Minimal columns for UI (with expectation fields if present)
-    wanted = [
-        "Date","Opponent","GoalsFor","GoalsAgainst",
-        "expected_gd","gd_delta","impact_bucket","Opponent_BaseStrength",
-    ]
-    # Some files may use spaces; patch them
-    if "Goals For" in df.columns and "GoalsFor" not in df.columns:
-        df["GoalsFor"] = df["Goals For"]
-    if "Goals Against" in df.columns and "GoalsAgainst" not in df.columns:
-        df["GoalsAgainst"] = df["Goals Against"]
-
+    wanted = ["Date","Opponent","GoalsFor","GoalsAgainst","expected_gd","gd_delta","impact_bucket","Opponent_BaseStrength"]
     cols = [c for c in wanted if c in df.columns]
-    # Ensure date desc
+
     if "Date" in df.columns:
+        try:
+            df["Date"] = pd.to_datetime(df["Date"])
+        except Exception:
+            pass
         df = df.sort_values("Date", ascending=False)
-        # cast to ISO string
+        # pretty ISO date string
         try:
             df["Date"] = pd.to_datetime(df["Date"]).dt.date.astype(str)
         except Exception:
             pass
 
     return JSONResponse(df[cols].head(limit).to_dict(orient="records"))
+
+@app.get("/api/health")
+def api_health(state: Optional[str] = None, gender: Optional[str] = None, year: Optional[str] = None):
+    rp = str(find_rankings_path(state, gender, year))
+    hp = str(find_history_path(state, gender, year))
+    info = {}
+    for name, p in (("rankings", rp), ("history", hp)):
+        try:
+            df = CACHE.get_df(Path(p))
+            cols = list(df.columns)[:50] if df is not None else []
+        except Exception:
+            cols = ["<error reading>"]
+        info[name] = {"path": p, "columns_head": cols}
+    return info
 
 if __name__ == "__main__":
     import uvicorn
