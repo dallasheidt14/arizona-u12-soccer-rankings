@@ -1,0 +1,454 @@
+/* Global scroll padding fix for sticky header */
+html {
+  scroll-padding-top: 120px; /* increased to match larger header + padding */
+}
+
+/* Enhanced sticky header with gradient */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 80px; /* explicitly define header height */
+  background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+  backdrop-filter: blur(8px);
+  color: white;
+  text-align: center;
+  padding: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+body.scrolled .page-header {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.back-btn {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.page-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  color: #f8fafc;
+}
+
+.page-header p {
+  font-size: 0.95rem;
+  margin: 0.25rem 0 0;
+  color: #cbd5e1;
+}
+
+.rankings-wrapper {
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.rankings-main {
+  padding: 2rem 2rem 2rem 2rem; /* increased top padding to clear sticky header */
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Summary Banner */
+.summary-banner {
+  background: #e2e8f0;
+  color: #1e293b;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  border-left: 4px solid #16a34a;
+}
+
+.summary-banner strong {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* Enhanced Filter Bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+  background: #f8fafc;
+  transition: all 0.2s;
+}
+
+.search-box:focus {
+  box-shadow: 0 0 0 3px #93c5fd;
+  outline: none;
+  background: white;
+  border-color: #3b82f6;
+}
+
+.stats-summary {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Stats Chips */
+.stat-chip {
+  background: #f1f5f9;
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  color: #475569;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.stat-chip:hover {
+  background: #e2e8f0;
+  transform: translateY(-1px);
+}
+
+.stat-chip strong {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* Section Titles */
+.rank-section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-title span {
+  font-weight: 500;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.section-title.active {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.section-title.provisional {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+/* Table Styling */
+.table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  background: white;
+  border: 1px solid #e2e8f0;
+}
+
+.rankings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.rankings-table th {
+  background: #1e293b;
+  color: white;
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  position: sticky;
+  top: 80px; /* matches header height */
+  z-index: 10;
+}
+
+.rankings-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s;
+}
+
+.rankings-table th.sortable:hover {
+  background: #334155;
+}
+
+.rankings-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Enhanced alternating rows */
+.rankings-table tbody tr:nth-child(even) {
+  background: #f1f5f9;
+}
+
+.rankings-table tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+/* Enhanced hover highlight */
+.rankings-table tbody tr:hover {
+  background: #e0f2fe !important;
+  transform: scale(1.003);
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Cell-specific styling */
+.rank-cell {
+  text-align: center;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.team-cell {
+  font-weight: 600;
+}
+
+.team-link {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.team-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.power-cell, .off-cell, .def-cell, .sos-cell {
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.gp-cell, .record-cell {
+  text-align: center;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #64748b;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease both;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 130px; /* increased for mobile */
+  }
+  
+  .page-header {
+    height: 90px; /* slightly taller on mobile */
+    padding: 1rem;
+  }
+  
+  .rankings-main {
+    padding: 1.5rem 1rem; /* increased top padding for mobile */
+  }
+  
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-box {
+    min-width: auto;
+  }
+  
+  .stats-summary {
+    justify-content: center;
+  }
+  
+  .page-header {
+    padding: 1rem;
+  }
+  
+  .back-btn {
+    position: relative;
+    left: auto;
+    top: auto;
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .rankings-table th {
+    top: 90px; /* matches mobile header height */
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .rankings-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rankings-table {
+    font-size: 0.8rem;
+  }
+  
+  .rankings-table th,
+  .rankings-table td {
+    padding: 0.4rem;
+  }
+  
+  .section-title {
+    font-size: 1.1rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* Enhanced Interactive Features */
+/* Sortable Header Styles */
+th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+th.sortable:hover {
+  background: #334155;
+  transform: translateY(-1px);
+}
+
+th.sortable.active {
+  background: #475569;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.sort-icon {
+  margin-left: 0.25rem;
+  vertical-align: middle;
+  color: #93c5fd;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+th.sortable:hover .sort-icon {
+  color: #dbeafe;
+  transform: scale(1.1);
+}
+
+/* Enhanced Power Score Styling */
+.power-score {
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  cursor: default;
+}
+
+.power-score:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.power-score-na {
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Enhanced table row animations */
+.table-row {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Staggered animation for rows */
+.table-row:nth-child(1) { animation-delay: 0ms; }
+.table-row:nth-child(2) { animation-delay: 50ms; }
+.table-row:nth-child(3) { animation-delay: 100ms; }
+.table-row:nth-child(4) { animation-delay: 150ms; }
+.table-row:nth-child(5) { animation-delay: 200ms; }
+.table-row:nth-child(n+6) { animation-delay: 250ms; }
+
+/* Sorting animation */
+tbody {
+  transition: all 0.3s ease;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.4s ease-in-out;
+}

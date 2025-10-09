@@ -12,10 +12,17 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 # ---- Config ----
-DATA_DIR = Path(".")  # root of your pipeline outputs
+DATA_DIR = Path(os.getenv("DATA_DIR", "."))  # root of your pipeline outputs
 INDEX_JSON = DATA_DIR / "rankings_index.json"            # created in Phase 3
 RANKINGS_FALLBACK = DATA_DIR / "Rankings.csv"            # global default
 HISTORY_FALLBACK = DATA_DIR / "Team_Game_Histories.csv"  # global default
+
+# Environment configuration
+INACTIVE_HIDE_DAYS = int(os.getenv("INACTIVE_HIDE_DAYS", "180"))
+RECENT_K = int(os.getenv("RECENT_K", "10"))
+RECENT_SHARE = float(os.getenv("RECENT_SHARE", "0.70"))
+DEFAULT_INCLUDE_INACTIVE = os.getenv("DEFAULT_INCLUDE_INACTIVE", "false").lower() == "true"
+RANKINGS_FILE_PREFERENCE = os.getenv("RANKINGS_FILE_PREFERENCE", "v4,v3,legacy").split(",")
 
 # Optional: look for slice-specific files when state/gender/year provided
 def slice_suffix(state: Optional[str], gender: Optional[str], year: Optional[str]):
@@ -92,8 +99,12 @@ def load_index():
 
 def find_rankings_path(state: Optional[str], gender: Optional[str], year: Optional[str]) -> Path:
     sfx = slice_suffix(state, gender, year)
-    # Prefer v3 rankings, then CSV, then Parquet for the slice
+    # Prefer v5 rankings, then v4, then v3, then CSV, then Parquet for the slice
     candidates = [
+        DATA_DIR / f"Rankings_v5{sfx}.csv",
+        DATA_DIR / f"Rankings_v5.csv",
+        DATA_DIR / f"Rankings_v4{sfx}.csv",
+        DATA_DIR / f"Rankings_v4.csv",
         DATA_DIR / f"Rankings_v3{sfx}.csv",
         DATA_DIR / f"Rankings_v3.csv",
         DATA_DIR / f"Rankings{sfx}.csv",
@@ -102,8 +113,10 @@ def find_rankings_path(state: Optional[str], gender: Optional[str], year: Option
     for p in candidates:
         if p.exists():
             return p
-    # Fallback to global - try multiple possible names (v3 first)
+    # Fallback to global - try multiple possible names (v5 first)
     fallback_candidates = [
+        DATA_DIR / "Rankings_v5.csv",
+        DATA_DIR / "Rankings_v4.csv",
         DATA_DIR / "Rankings_v3.csv",
         DATA_DIR / "Rankings.csv",
         DATA_DIR / "Rankings_PowerScore.csv", 
@@ -116,15 +129,27 @@ def find_rankings_path(state: Optional[str], gender: Optional[str], year: Option
     return fallback_candidates[0]  # Return first candidate even if it doesn't exist
 
 def find_history_path(state: Optional[str], gender: Optional[str], year: Optional[str]) -> Path:
+    # For team history details, prefer comprehensive history (shows ALL games from last 18 months)
+    # The comprehensive file has all games, but basic data only
+    
+    # Try comprehensive history first (shows ALL games from last 18 months)
+    comprehensive_path = Path("Team_Game_Histories_COMPREHENSIVE.csv")
+    if comprehensive_path.exists():
+        return comprehensive_path
+    
+    # Fallback to enriched history files (has calculations but fewer games)
     sfx = slice_suffix(state, gender, year)
-    candidates = [
+    enriched_candidates = [
         DATA_DIR / f"Team_Game_Histories{sfx}.parquet",
         DATA_DIR / f"Team_Game_Histories{sfx}.csv",
+        Path("Team_Game_Histories.csv"),  # Global enriched file
     ]
-    for p in candidates:
+    
+    for p in enriched_candidates:
         if p.exists():
             return p
-    return HISTORY_FALLBACK if HISTORY_FALLBACK.exists() else candidates[-1]
+    
+    return HISTORY_FALLBACK if HISTORY_FALLBACK.exists() else enriched_candidates[-1]
 
 # Canonical column mapping - maps canonical names to all known synonyms
 CANON = {
@@ -236,34 +261,39 @@ def safe_sort(df: pd.DataFrame, by: str, order: str) -> pd.DataFrame:
         return tmp.sort_values(by=by, ascending=ascending, na_position="last")
 
 # ---- GP Penalty & Status helpers ----
-STRONG_K = 1.0   # penalty points per missing game under 10
-MILD_K   = 0.30  # penalty points per missing game from 10..19
-CASCADE_TIERS = True  # under-10 receives both tiers if True
+INACTIVE_HIDE_DAYS = 180
 
-def _games_penalty_points(gp: int) -> float:
-    gp = int(gp) if pd.notna(gp) else 0
-    penalty = 0.0
-    if gp < 10:
-        penalty += (10 - gp) * STRONG_K
-        if CASCADE_TIERS:
-            penalty += (20 - 10) * MILD_K
-    elif gp < 20:
-        penalty += (20 - gp) * MILD_K
-    return penalty
+def gp_multiplier(gp: int) -> float:
+    """Multiplicative penalty based on games played."""
+    if gp >= 20: return 1.00
+    if gp >= 10: return 0.90
+    return 0.75
 
 def _status_from_gp(gp: int) -> str:
     gp = int(gp) if pd.notna(gp) else 0
-    if gp < 10:
-        return "Provisional (<10 GP)"
-    if gp < 20:
-        return "Limited Sample (10–19 GP)"
-    return "Full Sample"
+    if gp >= 6:
+        return "Active"
+    return "Provisional"
 
 def _ensure_numeric(df, cols):
     for c in cols:
         if c in df.columns:
             df[c] = pd.to_numeric(df[c], errors="coerce")
     return df
+
+def schema_check(df: pd.DataFrame, required=("Team", "PowerScore")):
+    """Validate that required columns exist after normalization."""
+    missing = [c for c in required if c not in df.columns]
+    if missing:
+        # Enhanced error with file path and column info for support tickets
+        error_detail = {
+            "error": "Missing required columns", 
+            "missing": missing, 
+            "have": list(df.columns)[:20],  # First 20 columns
+            "total_columns": len(df.columns),
+            "file_path": str(path) if 'path' in locals() else "unknown"
+        }
+        raise HTTPException(status_code=422, detail=error_detail)
 
 # ---- Endpoints ----
 
@@ -280,6 +310,7 @@ def api_rankings(
     sort: Optional[str] = Query("PowerScore"),  # PowerScore|Off_norm|Def_norm|SOS_norm|GamesPlayed
     order: Optional[str] = Query("desc"),  # asc|desc
     limit: int = Query(500, ge=1, le=5000),
+    include_inactive: bool = Query(DEFAULT_INCLUDE_INACTIVE),
 ):
     path = find_rankings_path(state, gender, year)
     df = CACHE.get_df(path)
@@ -287,6 +318,9 @@ def api_rankings(
         raise HTTPException(status_code=404, detail="Rankings file not found")
 
     df = normalize_columns(df)
+    
+    # Schema validation after normalization
+    schema_check(df, ("Team", "PowerScore"))
 
     # Optional in-file filtering if global file
     if state and "State" in df.columns:
@@ -306,49 +340,127 @@ def api_rankings(
     # Ensure numeric types
     df = _ensure_numeric(df, ["PowerScore","Off_norm","Def_norm","SOS_norm","GamesPlayed"])
 
-    # Compute GP penalties and adjusted score even if materializer didn't write it
+    # Apply multiplicative GP penalty if not already computed
     if "GamesPlayed" not in df.columns:
         df["GamesPlayed"] = pd.NA
 
-    df["PenaltyGP"] = df["GamesPlayed"].fillna(0).astype("Int64").apply(lambda x: _games_penalty_points(int(x) if pd.notna(x) else 0))
-
     if "PowerScore" in df.columns and "PowerScore_adj" not in df.columns:
-        df["PowerScore_adj"] = (df["PowerScore"] - df["PenaltyGP"]).clip(lower=0).round(2)
+        df["GP_Mult"] = df["GamesPlayed"].fillna(0).astype("Int64").apply(
+            lambda x: gp_multiplier(int(x) if pd.notna(x) else 0)
+        )
+        df["PowerScore_adj"] = (df["PowerScore"] * df["GP_Mult"]).round(3)
 
     # Status badge
-    df["Status"] = df["GamesPlayed"].fillna(0).astype("Int64").apply(lambda x: _status_from_gp(int(x) if pd.notna(x) else 0))
+    df["Status"] = df["GamesPlayed"].fillna(0).astype("Int64").apply(
+        lambda x: _status_from_gp(int(x) if pd.notna(x) else 0)
+    )
 
-    # Deterministic, offense-first tie breaking (no ties)
-    sort_cols  = []
-    ascending  = []
+    # Inactivity filtering
+    hidden_inactive = 0
+    if not include_inactive and "LastGame" in df.columns:
+        cutoff = pd.Timestamp.now().normalize() - pd.Timedelta(days=INACTIVE_HIDE_DAYS)
+        try:
+            df["__lg"] = pd.to_datetime(df["LastGame"], errors="coerce")
+            mask = df["__lg"] >= cutoff
+            hidden_inactive = int((~mask).sum())
+            df = df[mask]
+        finally:
+            if "__lg" in df.columns:
+                df.drop(columns="__lg", inplace=True)
 
-    if "PowerScore_adj" in df.columns:
-        sort_cols.append("PowerScore_adj"); ascending.append(False)
-    elif "PowerScore" in df.columns:
-        sort_cols.append("PowerScore"); ascending.append(False)
-
-    for key in ["Off_norm","Def_norm","SOS_norm","GamesPlayed"]:
-        if key in df.columns:
-            sort_cols.append(key)
-            ascending.append(False)
-
-    # Final deterministic fallback
-    if "Team" in df.columns:
-        sort_cols.append("Team"); ascending.append(True)
-
-    if sort_cols:
-        df = df.sort_values(by=sort_cols, ascending=ascending, kind="mergesort").reset_index(drop=True)
-        df["Rank"] = df.index + 1
-
+    # Separate Active (8+ games) and Provisional (<8 games) teams
+    active_teams = df[df["GamesPlayed"] >= 8].copy()
+    provisional_teams = df[df["GamesPlayed"] < 8].copy()
+    
+    # Update Status based on 8-game rule
+    if not active_teams.empty:
+        active_teams["Status"] = "Active"
+    if not provisional_teams.empty:
+        provisional_teams["Status"] = "Provisional"
+    
+    # Sort active teams by PowerScore_adj (for ranking)
+    if not active_teams.empty:
+        sort_cols = []
+        ascending = []
+        
+        if "PowerScore_adj" in active_teams.columns:
+            sort_cols.append("PowerScore_adj"); ascending.append(False)
+        elif "PowerScore" in active_teams.columns:
+            sort_cols.append("PowerScore"); ascending.append(False)
+        
+        for key in ["Off_norm","Def_norm","SOS_norm","GamesPlayed"]:
+            if key in active_teams.columns:
+                sort_cols.append(key)
+                ascending.append(False)
+        
+        if "Team" in active_teams.columns:
+            sort_cols.append("Team"); ascending.append(True)
+        
+        if sort_cols:
+            active_teams = active_teams.sort_values(by=sort_cols, ascending=ascending, kind="mergesort").reset_index(drop=True)
+            active_teams["Rank"] = active_teams.index + 1
+    
+    # Sort provisional teams by PowerScore_adj (no rank numbers)
+    if not provisional_teams.empty:
+        sort_cols = []
+        ascending = []
+        
+        if "PowerScore_adj" in provisional_teams.columns:
+            sort_cols.append("PowerScore_adj"); ascending.append(False)
+        elif "PowerScore" in provisional_teams.columns:
+            sort_cols.append("PowerScore"); ascending.append(False)
+        
+        for key in ["Off_norm","Def_norm","SOS_norm","GamesPlayed"]:
+            if key in provisional_teams.columns:
+                sort_cols.append(key)
+                ascending.append(False)
+        
+        if "Team" in provisional_teams.columns:
+            sort_cols.append("Team"); ascending.append(True)
+        
+        if sort_cols:
+            provisional_teams = provisional_teams.sort_values(by=sort_cols, ascending=ascending, kind="mergesort").reset_index(drop=True)
+            # No rank numbers for provisional teams
+    
+    # Combine for backward compatibility
+    all_teams = pd.concat([active_teams, provisional_teams], ignore_index=True)
+    
     # Keep the response schema stable
     preferred_cols = [
         "Rank", "Team",
-        "PowerScore_adj", "PowerScore", "PenaltyGP",
+        "PowerScore_adj", "PowerScore", "GP_Mult",
         "Off_norm", "Def_norm", "SOS_norm",
-        "GamesPlayed", "Status", "WL"
+        "GamesPlayed", "Status", "WL", "LastGame"
     ]
-    cols = [c for c in preferred_cols if c in df.columns]
-    return JSONResponse(df[cols].head(limit).to_dict(orient="records"))
+    cols = [c for c in preferred_cols if c in all_teams.columns]
+    
+    # Prepare data arrays
+    active_data = active_teams[cols].head(limit).to_dict(orient="records") if not active_teams.empty else []
+    provisional_data = provisional_teams[cols].to_dict(orient="records") if not provisional_teams.empty else []
+    all_data = all_teams[cols].to_dict(orient="records")
+    
+    # Enhanced meta block with Active/Provisional counts
+    meta = {
+        "hidden_inactive": hidden_inactive,
+        "total_teams": len(all_teams),
+        "active_teams": len(active_teams),
+        "provisional_teams": len(provisional_teams),
+        "slice": {
+            "state": state,
+            "gender": gender, 
+            "year": year
+        },
+        "records": len(active_data),
+        "total_available": len(all_teams),
+        "method": "Up to 30 most-recent matches (last 12 months). Games 26–30 count with reduced influence. Active teams: 8+ games. Provisional teams: <8 games."
+    }
+    
+    return JSONResponse({
+        "meta": meta, 
+        "data": all_data,  # Backward compatibility
+        "active": active_data,
+        "provisional": provisional_data
+    })
 
 @app.get("/api/team/{team}")
 def api_team_history(

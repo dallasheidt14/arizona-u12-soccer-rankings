@@ -8,3 +8,13 @@ pandas
 fuzzywuzzy
 python-Levenshtein
 openpyxl
+pyarrow
+pytest
+pytest-cov
+httpx
+rapidfuzz
+fastapi
+uvicorn
+streamlit
+plotly
+altair
