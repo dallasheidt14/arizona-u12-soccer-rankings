@@ -92,16 +92,19 @@ def load_index():
 
 def find_rankings_path(state: Optional[str], gender: Optional[str], year: Optional[str]) -> Path:
     sfx = slice_suffix(state, gender, year)
-    # Prefer CSV then Parquet for the slice
+    # Prefer v3 rankings, then CSV, then Parquet for the slice
     candidates = [
+        DATA_DIR / f"Rankings_v3{sfx}.csv",
+        DATA_DIR / f"Rankings_v3.csv",
         DATA_DIR / f"Rankings{sfx}.csv",
         DATA_DIR / f"Rankings{sfx}.parquet",
     ]
     for p in candidates:
         if p.exists():
             return p
-    # Fallback to global - try multiple possible names (CSV first)
+    # Fallback to global - try multiple possible names (v3 first)
     fallback_candidates = [
+        DATA_DIR / "Rankings_v3.csv",
         DATA_DIR / "Rankings.csv",
         DATA_DIR / "Rankings_PowerScore.csv", 
         RANKINGS_FALLBACK,
@@ -232,6 +235,36 @@ def safe_sort(df: pd.DataFrame, by: str, order: str) -> pd.DataFrame:
         tmp[by] = pd.to_numeric(tmp[by], errors="coerce")
         return tmp.sort_values(by=by, ascending=ascending, na_position="last")
 
+# ---- GP Penalty & Status helpers ----
+STRONG_K = 1.0   # penalty points per missing game under 10
+MILD_K   = 0.30  # penalty points per missing game from 10..19
+CASCADE_TIERS = True  # under-10 receives both tiers if True
+
+def _games_penalty_points(gp: int) -> float:
+    gp = int(gp) if pd.notna(gp) else 0
+    penalty = 0.0
+    if gp < 10:
+        penalty += (10 - gp) * STRONG_K
+        if CASCADE_TIERS:
+            penalty += (20 - 10) * MILD_K
+    elif gp < 20:
+        penalty += (20 - gp) * MILD_K
+    return penalty
+
+def _status_from_gp(gp: int) -> str:
+    gp = int(gp) if pd.notna(gp) else 0
+    if gp < 10:
+        return "Provisional (<10 GP)"
+    if gp < 20:
+        return "Limited Sample (10–19 GP)"
+    return "Full Sample"
+
+def _ensure_numeric(df, cols):
+    for c in cols:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors="coerce")
+    return df
+
 # ---- Endpoints ----
 
 @app.get("/api/slices")
@@ -270,17 +303,51 @@ def api_rankings(
     if q and "Team" in df.columns:
         df = df[df["Team"].str.contains(q, case=False, na=False)]
 
-    # Add Rank and build payload from whatever exists
-    df = df.reset_index(drop=True)
-    if "Rank" not in df.columns:
-        df.insert(0, "Rank", df.index + 1)
+    # Ensure numeric types
+    df = _ensure_numeric(df, ["PowerScore","Off_norm","Def_norm","SOS_norm","GamesPlayed"])
 
-    preferred_cols = ["Team","PowerScore","Off_norm","Def_norm","SOS_norm","GamesPlayed","WL"]
-    cols = ["Rank"] + [c for c in preferred_cols if c in df.columns]
+    # Compute GP penalties and adjusted score even if materializer didn't write it
+    if "GamesPlayed" not in df.columns:
+        df["GamesPlayed"] = pd.NA
 
-    # Safe sort
-    df = safe_sort(df, sort, order)
+    df["PenaltyGP"] = df["GamesPlayed"].fillna(0).astype("Int64").apply(lambda x: _games_penalty_points(int(x) if pd.notna(x) else 0))
 
+    if "PowerScore" in df.columns and "PowerScore_adj" not in df.columns:
+        df["PowerScore_adj"] = (df["PowerScore"] - df["PenaltyGP"]).clip(lower=0).round(2)
+
+    # Status badge
+    df["Status"] = df["GamesPlayed"].fillna(0).astype("Int64").apply(lambda x: _status_from_gp(int(x) if pd.notna(x) else 0))
+
+    # Deterministic, offense-first tie breaking (no ties)
+    sort_cols  = []
+    ascending  = []
+
+    if "PowerScore_adj" in df.columns:
+        sort_cols.append("PowerScore_adj"); ascending.append(False)
+    elif "PowerScore" in df.columns:
+        sort_cols.append("PowerScore"); ascending.append(False)
+
+    for key in ["Off_norm","Def_norm","SOS_norm","GamesPlayed"]:
+        if key in df.columns:
+            sort_cols.append(key)
+            ascending.append(False)
+
+    # Final deterministic fallback
+    if "Team" in df.columns:
+        sort_cols.append("Team"); ascending.append(True)
+
+    if sort_cols:
+        df = df.sort_values(by=sort_cols, ascending=ascending, kind="mergesort").reset_index(drop=True)
+        df["Rank"] = df.index + 1
+
+    # Keep the response schema stable
+    preferred_cols = [
+        "Rank", "Team",
+        "PowerScore_adj", "PowerScore", "PenaltyGP",
+        "Off_norm", "Def_norm", "SOS_norm",
+        "GamesPlayed", "Status", "WL"
+    ]
+    cols = [c for c in preferred_cols if c in df.columns]
     return JSONResponse(df[cols].head(limit).to_dict(orient="records"))
 
 @app.get("/api/team/{team}")
