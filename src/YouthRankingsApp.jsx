@@ -38,10 +38,18 @@ const mockHistory = (team) => [
 
 async function fetchJSON(url) {
   try {
+    console.log('fetchJSON: Fetching', url);
     const r = await fetch(url);
-    if (!r.ok) throw new Error("bad status");
-    return await r.json();
+    console.log('fetchJSON: Response status', r.status, r.ok);
+    if (!r.ok) {
+      console.log('fetchJSON: Bad status, response text:', await r.text());
+      throw new Error("bad status");
+    }
+    const data = await r.json();
+    console.log('fetchJSON: Success, data length:', data?.length);
+    return data;
   } catch (e) {
+    console.log('fetchJSON: Error:', e);
     return null;
   }
 }
@@ -50,7 +58,7 @@ async function fetchJSON(url) {
 export default function YouthRankingsApp() {
   const [view, setView] = useState("select"); // "select" | "rankings" | "team"
   const [gender, setGender] = useState("MALE");
-  const [year, setYear] = useState("2014");
+  const [year, setYear] = useState("2025");
   const [state, setState] = useState("AZ");
 
   const [slices, setSlices] = useState([]);
@@ -83,9 +91,19 @@ export default function YouthRankingsApp() {
     setLoading(true); setError("");
     // Prefer API JSON; fallback to mock
     const url = `/api/rankings?state=${encodeURIComponent(state)}&gender=${encodeURIComponent(gender)}&year=${encodeURIComponent(year)}&sort=${sortBy}&order=${sortOrder}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`;
+    console.log('Fetching URL:', url);
     const data = await fetchJSON(url);
-    if (Array.isArray(data) && data.length) setRankings(data);
-    else setRankings(mockRankings);
+    console.log('API Response:', data);
+    console.log('Data type:', typeof data);
+    console.log('Is array:', Array.isArray(data));
+    console.log('Data length:', data?.length);
+    if (Array.isArray(data) && data.length) {
+      console.log('Using API data, setting rankings');
+      setRankings(data);
+    } else {
+      console.log('Using mock data');
+      setRankings(mockRankings);
+    }
     setView("rankings");
     setLoading(false);
   }
