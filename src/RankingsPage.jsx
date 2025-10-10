@@ -1,6 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { ChevronUp, ChevronDown } from "lucide-react";
+import { ChevronUp, ChevronDown, Info } from "lucide-react";
 import "./RankingsPage.css";
+
+// Tooltip Component
+const Tooltip = ({ children, content }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  
+  return (
+    <div className="relative inline-block">
+      <div
+        onMouseEnter={() => setIsVisible(true)}
+        onMouseLeave={() => setIsVisible(false)}
+        className="cursor-help"
+      >
+        {children}
+      </div>
+      {isVisible && (
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg shadow-lg z-50 max-w-xs">
+          <div className="text-center">{content}</div>
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default function RankingsPage({ 
   activeTeams = [], 
@@ -69,7 +92,13 @@ export default function RankingsPage({
           <p>
             📊 Showing <strong>{filteredActive.length}</strong> active teams and{" "}
             <strong>{filteredProvisional.length}</strong> provisional teams.  
-            Updated automatically from match data (last 12 months).
+            <Tooltip content="Only teams with ≥1 game in the past 365 days are currently ranked. Teams inactive for 180+ days are filtered out.">
+              <Info className="inline w-4 h-4 ml-2 text-gray-500 hover:text-gray-700" />
+            </Tooltip>
+            <br />
+            <span className="text-sm text-gray-600">
+              Updated automatically from match data (last 12 months).
+            </span>
           </p>
         </div>
 
@@ -147,8 +176,8 @@ function RankSection({ title, subtitle, teams, sortField, sortOrder, onSort, onT
               <SortableHeader field="Rank" label="Rank" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <SortableHeader field="Team" label="Team" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <SortableHeader field="PowerScore_adj" label="Power" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
-              <SortableHeader field="Off_norm" label="Off" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
-              <SortableHeader field="Def_norm" label="Def" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
+              <SortableHeader field="SAO_norm" label="Off" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
+              <SortableHeader field="SAD_norm" label="Def" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <SortableHeader field="SOS_norm" label="SOS" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <SortableHeader field="GamesPlayed" label="GP" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <th>W-L-T</th>
@@ -172,10 +201,10 @@ function RankSection({ title, subtitle, teams, sortField, sortOrder, onSort, onT
                   <PowerScoreCell value={team.PowerScore_adj} />
                 </td>
                 <td className="off-cell">
-                  {team.Off_norm ? team.Off_norm.toFixed(3) : 'N/A'}
+                  {team.SAO_norm ? team.SAO_norm.toFixed(3) : 'N/A'}
                 </td>
                 <td className="def-cell">
-                  {team.Def_norm ? team.Def_norm.toFixed(3) : 'N/A'}
+                  {team.SAD_norm ? team.SAD_norm.toFixed(3) : 'N/A'}
                 </td>
                 <td className="sos-cell">
                   {team.SOS_norm ? team.SOS_norm.toFixed(3) : 'N/A'}

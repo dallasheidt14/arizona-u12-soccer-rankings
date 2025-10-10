@@ -51,6 +51,33 @@ def generate_comprehensive_history(wide_matches_csv: Path, out_csv: Path):
     
     print(f"Original games: {len(long)}")
     
+    # Load master team list and create team name mapping (same as rankings)
+    try:
+        master_teams = pd.read_csv("AZ MALE U12 MASTER TEAM LIST.csv")
+        master_team_names = set(master_teams["Team Name"].str.strip())
+        print(f"Loaded {len(master_team_names)} authorized AZ U12 teams from master list")
+        
+        # Create team name mapping: Team Name -> "Team Name Club"
+        team_name_mapping = {}
+        for _, row in master_teams.iterrows():
+            team_name = row["Team Name"].strip()
+            club_name = str(row["Club"]).strip() if pd.notna(row["Club"]) else ""
+            # Combine team name with club name (only if club name exists)
+            if club_name and club_name != "nan":
+                combined_name = f"{team_name} {club_name}"
+            else:
+                combined_name = team_name
+            team_name_mapping[team_name] = combined_name
+        print(f"Created team name mapping for {len(team_name_mapping)} teams")
+        
+        # Apply team name mapping to include club names for both Team and Opponent
+        long["Team"] = long["Team"].map(lambda x: team_name_mapping.get(x, x))
+        long["Opponent"] = long["Opponent"].map(lambda x: team_name_mapping.get(x, x))
+        print("Applied team name mapping with club names to both Team and Opponent columns")
+        
+    except FileNotFoundError:
+        print("Warning: AZ MALE U12 MASTER TEAM LIST.csv not found, skipping team name mapping")
+    
     # Apply 18-month window for comprehensive history
     print(f"Applying {HISTORY_WINDOW_DAYS}-day window for comprehensive history...")
     long_history = clamp_window_for_history(long, HISTORY_WINDOW_DAYS)
@@ -72,9 +99,45 @@ def generate_comprehensive_history(wide_matches_csv: Path, out_csv: Path):
     long_history["GoalsAgainst"] = long_history["GA"]
     long_history["GoalDiff"] = long_history["GF"] - long_history["GA"]
     
-    # Add basic calculated fields for frontend compatibility
-    # These are simplified calculations - for full accuracy, use the enriched history
-    long_history["expected_gd"] = long_history["GoalDiff"] * 0.5  # Simplified expectation
+    # Calculate proper Expected GD based on team strength differences
+    print("Calculating team strengths for Expected GD...")
+    
+    # Calculate team offensive and defensive strengths
+    team_stats = long_history.groupby("Team").agg({
+        "GF": ["sum", "count"],
+        "GA": ["sum", "count"]
+    }).round(3)
+    
+    team_stats.columns = ["GF_total", "Games", "GA_total", "Games2"]
+    team_stats = team_stats.drop("Games2", axis=1)
+    team_stats["Off_Strength"] = team_stats["GF_total"] / team_stats["Games"]
+    team_stats["Def_Strength"] = team_stats["GA_total"] / team_stats["Games"]
+    
+    # Merge team strengths into game data
+    long_history = long_history.merge(
+        team_stats[["Off_Strength", "Def_Strength"]], 
+        left_on="Team", 
+        right_index=True, 
+        how="left"
+    )
+    long_history = long_history.merge(
+        team_stats[["Off_Strength", "Def_Strength"]].rename(columns={
+            "Off_Strength": "Opp_Off_Strength", 
+            "Def_Strength": "Opp_Def_Strength"
+        }), 
+        left_on="Opponent", 
+        right_index=True, 
+        how="left"
+    )
+    
+    # Fill missing strengths with league averages
+    long_history["Off_Strength"] = long_history["Off_Strength"].fillna(team_stats["Off_Strength"].mean())
+    long_history["Def_Strength"] = long_history["Def_Strength"].fillna(team_stats["Def_Strength"].mean())
+    long_history["Opp_Off_Strength"] = long_history["Opp_Off_Strength"].fillna(team_stats["Off_Strength"].mean())
+    long_history["Opp_Def_Strength"] = long_history["Opp_Def_Strength"].fillna(team_stats["Def_Strength"].mean())
+    
+    # Expected GD = Team's offensive strength - Opponent's defensive strength
+    long_history["expected_gd"] = long_history["Off_Strength"] - long_history["Opp_Def_Strength"]
     long_history["gd_delta"] = long_history["GoalDiff"] - long_history["expected_gd"]
     
     # Simple impact bucket based on goal difference
@@ -88,19 +151,8 @@ def generate_comprehensive_history(wide_matches_csv: Path, out_csv: Path):
     
     long_history["impact_bucket"] = long_history["gd_delta"].apply(get_impact_bucket)
     
-    # Calculate actual opponent strengths based on team performance
-    print("Calculating opponent strengths...")
-    
-    # Calculate team stats for opponent strength calculation
-    team_stats = long_history.groupby("Team").agg({
-        "GF": ["sum", "count"],
-        "GA": ["sum", "count"]
-    }).round(3)
-    
-    team_stats.columns = ["GF_total", "Games", "GA_total", "Games2"]
-    team_stats = team_stats.drop("Games2", axis=1)
-    team_stats["GFPG"] = team_stats["GF_total"] / team_stats["Games"]
-    team_stats["GAPG"] = team_stats["GA_total"] / team_stats["Games"]
+    # Calculate normalized opponent strengths for display
+    print("Calculating normalized opponent strengths...")
     
     # Calculate normalized offensive and defensive scores
     def robust_minmax(series):
@@ -110,9 +162,8 @@ def generate_comprehensive_history(wide_matches_csv: Path, out_csv: Path):
             return pd.Series([0.5] * len(series), index=series.index)
         return (series - min_val) / (max_val - min_val)
     
-    off_norm = robust_minmax(team_stats["GFPG"])
-    def_raw = 1.0 / (1.0 + team_stats["GAPG"])
-    def_norm = robust_minmax(def_raw)
+    off_norm = robust_minmax(team_stats["Off_Strength"])
+    def_norm = robust_minmax(team_stats["Def_Strength"])
     
     # Calculate base strength (average of normalized offense and defense)
     team_stats["BaseStrength"] = 0.5 * (off_norm + def_norm)

@@ -1,8 +1,9 @@
 @echo off
+cd /d "%~dp0"
 echo Starting Youth Soccer Rankings System...
 
 echo Starting FastAPI backend...
-start "FastAPI Backend" cmd /k "python -m uvicorn app:app --host 127.0.0.1 --port 8000"
+start "FastAPI Backend" cmd /k "python -m uvicorn app:app --host 127.0.0.1 --port 8000 --reload"
 
 echo Waiting 3 seconds for backend to start...
 timeout /t 3 /nobreak > nul

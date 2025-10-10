@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Search, ChevronRight, Users, Table as TableIcon, ArrowLeft } from "lucide-react";
+import { Search, ChevronRight, Users, Table as TableIcon, ArrowLeft, Info } from "lucide-react";
 import RankingsTable from "./RankingsTable";
 import SelectorPage from "./SelectorPage";
 import StickyHeader from "./StickyHeader";
@@ -22,6 +22,29 @@ import SelectorHero from "./SelectorHero";
  * If these endpoints are not yet available in your environment, this component
  * will fall back to small mocked data so the UI is navigable immediately.
  */
+
+// --- Tooltip Component ---
+const Tooltip = ({ children, content }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  
+  return (
+    <div className="relative inline-block">
+      <div
+        onMouseEnter={() => setIsVisible(true)}
+        onMouseLeave={() => setIsVisible(false)}
+        className="cursor-help"
+      >
+        {children}
+      </div>
+      {isVisible && (
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg shadow-lg z-50 max-w-xs">
+          <div className="text-center">{content}</div>
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 // --- Helpers: mock data fallbacks ---
 const mockSlices = {
@@ -193,6 +216,7 @@ export default function YouthRankingsApp() {
           teamName={activeTeam}
           games={history}
           onBack={() => setView("rankings")}
+          onOpponentClick={openTeam}
         />
       )}
 

@@ -61,7 +61,7 @@ body.scrolled .page-header {
 }
 
 .rankings-main {
-  padding: 2rem 2rem 2rem 2rem; /* increased top padding to clear sticky header */
+  padding: 3rem 2rem 2rem 2rem; /* increased top padding to 3rem to clear sticky header */
   max-width: 1200px;
   margin: 0 auto;
   animation: fadeInUp 0.6s ease-out;
@@ -196,7 +196,7 @@ body.scrolled .page-header {
   text-align: left;
   font-weight: 600;
   position: sticky;
-  top: 80px; /* matches header height */
+  top: 0; /* Changed from 80px to 0 - let the page header handle the offset */
   z-index: 10;
 }
 
@@ -307,7 +307,7 @@ body.scrolled .page-header {
   }
   
   .rankings-main {
-    padding: 1.5rem 1rem; /* increased top padding for mobile */
+    padding: 2.5rem 1rem; /* increased top padding for mobile */
   }
   
   .filter-bar {
@@ -339,7 +339,7 @@ body.scrolled .page-header {
   }
   
   .rankings-table th {
-    top: 90px; /* matches mobile header height */
+    top: 0; /* Changed from 90px to 0 - let the page header handle the offset */
     padding: 0.5rem;
     font-size: 0.85rem;
   }

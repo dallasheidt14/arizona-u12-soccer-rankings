@@ -4,7 +4,8 @@ import "./TeamHistoryPage.css";
 export default function TeamHistoryPage({ 
   teamName, 
   games = [], 
-  onBack 
+  onBack,
+  onOpponentClick 
 }) {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -23,19 +24,11 @@ export default function TeamHistoryPage({
   // Calculate team statistics
   const stats = calculateTeamStats(games);
 
-  const getPerfClass = (bucket) => {
-    switch (bucket) {
-      case "good": return "performance-up";
-      case "weak": return "performance-down";
-      default: return "performance-neutral";
-    }
-  };
-
-  const getPerfIcon = (bucket) => {
-    switch (bucket) {
-      case "good": return "↑";
-      case "weak": return "↓";
-      default: return "•";
+  const getScoreClass = (performance) => {
+    switch (performance) {
+      case "overperformed": return "score-overperformed";
+      case "underperformed": return "score-underperformed";
+      default: return "score-neutral";
     }
   };
 
@@ -85,8 +78,6 @@ export default function TeamHistoryPage({
                 <th>Date</th>
                 <th>Opponent</th>
                 <th>Score</th>
-                <th>Expected GD</th>
-                <th>Performance</th>
                 <th>Opponent Strength</th>
               </tr>
             </thead>
@@ -97,19 +88,17 @@ export default function TeamHistoryPage({
                     {formatDate(game.Date)}
                   </td>
                   <td className="opponent-cell">
-                    {game.Opponent}
+                    <button 
+                      className="opponent-link"
+                      onClick={() => onOpponentClick && onOpponentClick(game.Opponent)}
+                      title={`View ${game.Opponent} game history`}
+                    >
+                      {game.Opponent}
+                    </button>
                   </td>
-                  <td className="score-cell">
+                  <td className={`score-cell ${getScoreClass(game.performance)}`}>
                     <span className="score-badge">
                       {game.GoalsFor} - {game.GoalsAgainst}
-                    </span>
-                  </td>
-                  <td className="expected-cell">
-                    {game.expected_gd ? game.expected_gd.toFixed(2) : 'N/A'}
-                  </td>
-                  <td className={`performance-cell ${getPerfClass(game.impact_bucket)}`}>
-                    <span className="performance-indicator">
-                      {getPerfIcon(game.impact_bucket)} {game.gd_delta ? game.gd_delta.toFixed(2) : 'N/A'}
                     </span>
                   </td>
                   <td className="strength-cell">
@@ -177,3 +166,7 @@ function calculateTeamStats(games) {
     expectedAccuracy: (expectedCorrect / games.length) * 100
   };
 }
+
+
+
+

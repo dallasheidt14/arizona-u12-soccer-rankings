@@ -11,6 +11,9 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+# Import prediction module
+from analytics.projected_outcomes_v52b import interactive_predict
+
 # ---- Config ----
 DATA_DIR = Path(os.getenv("DATA_DIR", "."))  # root of your pipeline outputs
 INDEX_JSON = DATA_DIR / "rankings_index.json"            # created in Phase 3
@@ -22,7 +25,7 @@ INACTIVE_HIDE_DAYS = int(os.getenv("INACTIVE_HIDE_DAYS", "180"))
 RECENT_K = int(os.getenv("RECENT_K", "10"))
 RECENT_SHARE = float(os.getenv("RECENT_SHARE", "0.70"))
 DEFAULT_INCLUDE_INACTIVE = os.getenv("DEFAULT_INCLUDE_INACTIVE", "false").lower() == "true"
-RANKINGS_FILE_PREFERENCE = os.getenv("RANKINGS_FILE_PREFERENCE", "v4,v3,legacy").split(",")
+RANKINGS_FILE_PREFERENCE = os.getenv("RANKINGS_FILE_PREFERENCE", "v53,v52b,v52a,v52,v51,v5,v4,v3,legacy").split(",")
 
 # Optional: look for slice-specific files when state/gender/year provided
 def slice_suffix(state: Optional[str], gender: Optional[str], year: Optional[str]):
@@ -74,6 +77,27 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Cache rankings for prediction endpoint
+def load_rankings():
+    """Load Rankings_v52b.csv for predictions."""
+    rankings_path = DATA_DIR / "Rankings_v52b.csv"
+    if rankings_path.exists():
+        return pd.read_csv(rankings_path)
+    else:
+        # Fallback to other ranking files
+        for fallback in ["Rankings_v52a.csv", "Rankings_v52.csv", "Rankings_v51.csv", "Rankings_v5.csv", "Rankings_v4.csv", "Rankings_v3.csv"]:
+            fallback_path = DATA_DIR / fallback
+            if fallback_path.exists():
+                return pd.read_csv(fallback_path)
+        raise HTTPException(status_code=404, detail="No ranking files found")
+
+# Cache rankings on startup
+try:
+    rankings_df = load_rankings()
+except Exception as e:
+    rankings_df = None
+    print(f"Warning: Could not load rankings for predictions: {e}")
+
 # ---- Utilities ----
 def load_index():
     if INDEX_JSON.exists():
@@ -99,8 +123,18 @@ def load_index():
 
 def find_rankings_path(state: Optional[str], gender: Optional[str], year: Optional[str]) -> Path:
     sfx = slice_suffix(state, gender, year)
-    # Prefer v5 rankings, then v4, then v3, then CSV, then Parquet for the slice
+    # Prefer v5.3 rankings (latest), then v5.2b, v5.2a, v5.2, v5.1, v5, then v4, then v3, then CSV, then Parquet for the slice
     candidates = [
+        DATA_DIR / f"Rankings_v53{sfx}.csv",
+        DATA_DIR / f"Rankings_v53.csv",
+        DATA_DIR / f"Rankings_v52b{sfx}.csv",
+        DATA_DIR / f"Rankings_v52b.csv",
+        DATA_DIR / f"Rankings_v52a{sfx}.csv",
+        DATA_DIR / f"Rankings_v52a.csv",
+        DATA_DIR / f"Rankings_v52{sfx}.csv",
+        DATA_DIR / f"Rankings_v52.csv",
+        DATA_DIR / f"Rankings_v51{sfx}.csv",
+        DATA_DIR / f"Rankings_v51.csv",
         DATA_DIR / f"Rankings_v5{sfx}.csv",
         DATA_DIR / f"Rankings_v5.csv",
         DATA_DIR / f"Rankings_v4{sfx}.csv",
@@ -113,8 +147,12 @@ def find_rankings_path(state: Optional[str], gender: Optional[str], year: Option
     for p in candidates:
         if p.exists():
             return p
-    # Fallback to global - try multiple possible names (v5 first)
+    # Fallback to global - try multiple possible names (v5.2b first)
     fallback_candidates = [
+        DATA_DIR / "Rankings_v52b.csv",
+        DATA_DIR / "Rankings_v52a.csv",
+        DATA_DIR / "Rankings_v52.csv",
+        DATA_DIR / "Rankings_v51.csv",
         DATA_DIR / "Rankings_v5.csv",
         DATA_DIR / "Rankings_v4.csv",
         DATA_DIR / "Rankings_v3.csv",
@@ -429,7 +467,7 @@ def api_rankings(
     preferred_cols = [
         "Rank", "Team",
         "PowerScore_adj", "PowerScore", "GP_Mult",
-        "Off_norm", "Def_norm", "SOS_norm",
+        "SAO_norm", "SAD_norm", "SOS_norm",  # Use V5.2b strength-adjusted metrics
         "GamesPlayed", "Status", "WL", "LastGame"
     ]
     cols = [c for c in preferred_cols if c in all_teams.columns]
@@ -495,6 +533,15 @@ def api_team_history(
 
     wanted = ["Date","Opponent","GoalsFor","GoalsAgainst","expected_gd","gd_delta","impact_bucket","Opponent_BaseStrength"]
     cols = [c for c in wanted if c in df.columns]
+    
+    # Add performance indicator for score highlighting (UI uses 1.0 threshold to match V5.3)
+    if "gd_delta" in df.columns:
+        df["performance"] = df["gd_delta"].apply(lambda x: 
+            "overperformed" if x >= 1.0 else 
+            "underperformed" if x <= -1.0 else 
+            "neutral"
+        )
+        cols.append("performance")
 
     if "Date" in df.columns:
         try:
@@ -568,6 +615,44 @@ def debug_paths(state: str = "AZ", gender: str = "MALE", year: int = 2014, limit
         "normalized_columns": norm_cols[:limit],
         "sample_normalized_head": normalized_df.head(min(5, limit)).to_dict(orient="records"),
     }
+
+@app.get("/api/predict")
+def predict_outcome(
+    team_a: str = Query(..., description="Team A name"),
+    team_b: str = Query(..., description="Team B name"),
+    mode: str = Query("simple", description="Prediction mode: 'simple' or 'advanced'")
+):
+    """
+    Predict the outcome probabilities for a match between two teams.
+    Uses PowerScore-based logistic model from V5.2b.
+    """
+    if rankings_df is None:
+        return JSONResponse({
+            "status": "error",
+            "error": "Rankings data not available"
+        }, status_code=503)
+    
+    try:
+        result = interactive_predict(team_a, team_b, rankings_df, mode=mode)
+        
+        # Check if there was an error in the prediction
+        if "error" in result:
+            return JSONResponse({
+                "status": "error",
+                "error": result["error"]
+            }, status_code=400)
+        
+        return JSONResponse({
+            "status": "success",
+            "teams": {"team_a": team_a, "team_b": team_b},
+            "prediction_mode": mode,
+            "probabilities": result
+        })
+    except Exception as e:
+        return JSONResponse({
+            "status": "error",
+            "error": str(e)
+        }, status_code=500)
 
 if __name__ == "__main__":
     import uvicorn
