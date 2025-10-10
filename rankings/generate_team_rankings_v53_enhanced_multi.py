@@ -46,6 +46,13 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 from utils.team_normalizer import canonicalize_team_name, robust_minmax
 
+def first_existing(paths):
+    """Return first path that exists, or raise FileNotFoundError."""
+    for p in paths:
+        if Path(p).exists():
+            return p
+    raise FileNotFoundError(f"None of these paths exist: {paths}")
+
 # ---- Config ----
 MAX_GAMES = int(os.getenv("MAX_GAMES_FOR_RANK", "30"))
 WINDOW_DAYS = int(os.getenv("WINDOW_DAYS", "365"))
@@ -102,16 +109,55 @@ def robust_scale(series):
     # Logistic squashing to (0,1)
     return 1.0 / (1.0 + np.exp(-z))
 
-def wide_to_long(games_df: pd.DataFrame) -> pd.DataFrame:
-    # Expect columns: Team A, Team B, Score A, Score B, Date
-    a = games_df[["Team A","Team B","Score A","Score B","Date"]].rename(
-        columns={"Team A":"Team","Team B":"Opponent","Score A":"GF","Score B":"GA"})
-    b = games_df[["Team B","Team A","Score B","Score A","Date"]].rename(
-        columns={"Team B":"Team","Team A":"Opponent","Score B":"GF","Score A":"GA"})
-    long = pd.concat([a,b], ignore_index=True)
-    long = long.dropna(subset=["Team","Opponent"])
+def wide_to_long_with_keys(games_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Convert wide format to long format, preserving canonical keys.
+    Input must have Team_A_Key and Team_B_Key columns.
+    """
+    # Create team A perspective
+    a = games_df[["Team A", "Team B", "Score A", "Score B", "Date", "Team_A_Key", "Team_B_Key"]].rename(
+        columns={
+            "Team A": "Team",
+            "Team B": "Opponent",
+            "Score A": "GF",
+            "Score B": "GA",
+            "Team_A_Key": "TeamKey",
+            "Team_B_Key": "OppKey"
+        }
+    )
+    
+    # Create team B perspective
+    b = games_df[["Team B", "Team A", "Score B", "Score A", "Date", "Team_B_Key", "Team_A_Key"]].rename(
+        columns={
+            "Team B": "Team",
+            "Team A": "Opponent",
+            "Score B": "GF",
+            "Score A": "GA",
+            "Team_B_Key": "TeamKey",
+            "Team_A_Key": "OppKey"
+        }
+    )
+    
+    long = pd.concat([a, b], ignore_index=True)
+    long = long.dropna(subset=["Team", "Opponent"])
     long["Date"] = pd.to_datetime(long["Date"], errors="coerce")
     return long
+
+# Keep old function for backward compatibility
+def wide_to_long(games_df: pd.DataFrame) -> pd.DataFrame:
+    """Legacy function - redirects to wide_to_long_with_keys if keys present."""
+    if "Team_A_Key" in games_df.columns:
+        return wide_to_long_with_keys(games_df)
+    else:
+        # Fallback to original behavior
+        a = games_df[["Team A","Team B","Score A","Score B","Date"]].rename(
+            columns={"Team A":"Team","Team B":"Opponent","Score A":"GF","Score B":"GA"})
+        b = games_df[["Team B","Team A","Score B","Score A","Date"]].rename(
+            columns={"Team B":"Team","Team A":"Opponent","Score B":"GF","Score A":"GA"})
+        long = pd.concat([a,b], ignore_index=True)
+        long = long.dropna(subset=["Team","Opponent"])
+        long["Date"] = pd.to_datetime(long["Date"], errors="coerce")
+        return long
 
 def clamp_window(df: pd.DataFrame, today=None) -> pd.DataFrame:
     today = today or pd.Timestamp.now().normalize()
@@ -166,10 +212,11 @@ def tapered_weights(n, recent_k=10, recent_share=0.7, full_weight_games=25, damp
     return weights
 
 def compute_off_def_raw(long_games: pd.DataFrame) -> pd.DataFrame:
+    """Compute raw offense/defense using TeamKey for grouping."""
     rows = []
     
-    for team in long_games["Team"].unique():
-        team_games = long_games[long_games["Team"] == team]
+    for team_key in long_games["TeamKey"].unique():
+        team_games = long_games[long_games["TeamKey"] == team_key]
         
         if len(team_games) == 0:
             continue
@@ -184,13 +231,15 @@ def compute_off_def_raw(long_games: pd.DataFrame) -> pd.DataFrame:
         def_raw = np.average(ga_vals, weights=weights)
         
         rows.append({
-            "Team": team,
+            "TeamKey": team_key,
             "Off_raw": off_raw,
             "Def_raw": def_raw,
             "GamesPlayed": len(gf_vals)
         })
     
-    return pd.DataFrame(rows).set_index("Team")
+    base_df = pd.DataFrame(rows)
+    base_df = base_df.set_index("TeamKey")  # Index by key, not Team
+    return base_df
 
 def compute_strength_adjusted_metrics(long_games: pd.DataFrame, base_metrics: pd.DataFrame) -> pd.DataFrame:
     """Compute strength-adjusted offense/defense with V5.3E enhancements."""
@@ -247,51 +296,56 @@ def generate_connectivity_report(games_df: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame(columns=["Team", "ComponentID", "ComponentSize", "Degree"])
 
 def build_rankings_from_wide(wide_matches_csv: Path, out_csv: Path, division: str = "AZ_Boys_U12"):
-    raw = pd.read_csv(wide_matches_csv, encoding="utf-8-sig")
-    long = wide_to_long(raw)
-    long = clamp_window(long)
-
     # Extract age from division for file naming
-    age = division.split('_')[-1]  # U11 or U12
+    age = division.split('_')[-1]  # U11, U12, etc.
+    age_lower = age.lower()  # u11, u12
     
-    # Load authoritative master team list for the division
-    master_teams_path = f"AZ MALE {age} MASTER TEAM LIST.csv"
-    if not Path(master_teams_path).exists():
-        print(f"ERROR: Master team list not found: {master_teams_path}")
-        print("Please run the scraper first to generate the master team list.")
-        return pd.DataFrame()
+    # File path fallback chain (prioritize gold/ location)
+    GOLD_PATH = first_existing([
+        f"gold/Matched_Games_AZ_BOYS_{age.upper()}.csv",
+        f"data_ingest/gold/Matched_Games_{age.upper()}.csv",
+        str(wide_matches_csv)  # Fallback to passed argument
+    ])
     
-    master_teams = pd.read_csv(master_teams_path)
-    master_team_names = set(master_teams["Team Name"].str.strip())
-    print(f"Loaded {len(master_team_names)} authorized AZ {age} teams from master list")
-
-    # Create team name mapping: Team Name -> "Team Name Club"
-    team_name_mapping = {}
-    for _, row in master_teams.iterrows():
-        team_name = row["Team Name"].strip()
-        club_name = str(row["Club"]).strip() if pd.notna(row["Club"]) else ""
-        # Combine team name with club name (only if club name exists)
-        if club_name and club_name != "nan":
-            combined_name = f"{team_name} {club_name}"
-        else:
-            combined_name = team_name
-        team_name_mapping[team_name] = combined_name
-    print(f"Created team name mapping for {len(team_name_mapping)} teams")
-
-    # Filter to include only master teams as ranked entities
-    # Keep all opponents for accurate SOS calculation
-    long = long[long["Team"].isin(master_team_names)].copy()
+    MASTER_PATH = first_existing([
+        f"bronze/AZ MALE {age_lower} MASTER TEAM LIST.csv",
+        f"AZ MALE {age_lower} MASTER TEAM LIST.csv"
+    ])
+    
+    print(f"Using gold file: {GOLD_PATH}")
+    print(f"Using master list: {MASTER_PATH}")
+    
+    # Read and prepare data
+    raw = pd.read_csv(GOLD_PATH, encoding="utf-8-sig")
+    
+    # Strip whitespace from team names
+    raw["Team A"] = raw["Team A"].astype(str).str.strip()
+    raw["Team B"] = raw["Team B"].astype(str).str.strip()
+    
+    # Add canonical keys to raw data BEFORE wide_to_long
+    raw["Team_A_Key"] = raw["Team A"].map(canonicalize_team_name)
+    raw["Team_B_Key"] = raw["Team B"].map(canonicalize_team_name)
+    
+    # Convert to long format with keys
+    long = wide_to_long_with_keys(raw)
+    long = clamp_window(long)
+    
+    # Load master list with keys
+    master_teams = pd.read_csv(MASTER_PATH)
+    master_teams["Team Name"] = master_teams["Team Name"].astype(str).str.strip()
+    master_teams["TeamKey"] = master_teams["Team Name"].map(canonicalize_team_name)
+    master_team_keys = set(master_teams["TeamKey"])
+    print(f"Loaded {len(master_team_keys)} authorized AZ {age} teams from master list")
+    
+    # Filter matches: keep only rows where Team is a master team
+    # (Keep all opponents for accurate SOS calculation)
+    long = long[long["TeamKey"].isin(master_team_keys)].copy()
     print(f"Filtered to master teams. Remaining matches: {len(long)}")
-    print(f"Unique teams after filter: {len(long['Team'].unique())}")
+    print(f"Unique teams after filter: {len(long['TeamKey'].unique())}")
     
-    # Apply team name mapping to include club names
-    long["Team"] = long["Team"].map(team_name_mapping)
-    print("Applied team name mapping with club names")
+    # DO NOT map Team to "Team + Club" here - keep keys separate
+    # Club names will be merged at the very end for display only
     
-    # Store the mapped team names for later use
-    mapped_team_names = long["Team"].unique()
-    print(f"Mapped team names sample: {list(mapped_team_names)[:5]}")
-
     # Use filtered dataset for Off_raw/Def_raw calculations (per V5 spec)
     print("Calculating Off_raw/Def_raw from filtered 30-game window...")
     base = compute_off_def_raw(long)
@@ -332,51 +386,38 @@ def build_rankings_from_wide(wide_matches_csv: Path, out_csv: Path, division: st
     if not comp_hist.empty:
         comp_hist["Date"] = pd.to_datetime(comp_hist["Date"])
         
-        # Apply canonicalization to comprehensive history
-        comp_hist["Team_canon"] = comp_hist["Team"].map(canonicalize_team_name)
-        comp_hist["Opponent_canon"] = comp_hist["Opponent"].map(canonicalize_team_name)
+        # Canonicalize using TeamKey (already present if comp_hist was built correctly)
+        if "TeamKey" not in comp_hist.columns:
+            comp_hist["TeamKey"] = comp_hist["Team"].astype(str).str.strip().map(canonicalize_team_name)
+        if "OppKey" not in comp_hist.columns:
+            comp_hist["OppKey"] = comp_hist["Opponent"].astype(str).str.strip().map(canonicalize_team_name)
         
-        # Build opponent strength lookup (canonical name -> BaseStrength)
-        opp_strength_map = comp_hist.groupby("Opponent_canon")["Opponent_BaseStrength"].mean().to_dict()
+        # Build opponent strength lookup (OppKey -> BaseStrength)
+        opp_strength_map = comp_hist.groupby("OppKey")["Opponent_BaseStrength"].mean().to_dict()
         
         # Calculate median fallback
         fallback = np.median(list(opp_strength_map.values())) if opp_strength_map else 0.5
         
-        # Apply canonicalization to ranking teams
-        adj["Team_canon"] = adj.index.map(canonicalize_team_name)
-        
-        # Calculate SOS for each team based on their last 30 games
+        # Calculate SOS for each team based on their last 30 games (use TeamKey)
         sos_scores = {}
-        matched_teams = 0
-        total_opponent_lookups = 0
-        successful_lookups = 0
+        sos_counts = {"matched": 0, "total": 0}
         
-        for team in adj.index:
-            team_canon = canonicalize_team_name(team)
-            team_games = comp_hist[comp_hist["Team_canon"] == team_canon].sort_values("Date", ascending=False)
-            
+        for team_key in adj.index:  # adj is indexed by TeamKey now
+            team_games = comp_hist[comp_hist["TeamKey"] == team_key].sort_values("Date", ascending=False)
             if len(team_games) > 0:
-                matched_teams += 1
                 recent_games = team_games.head(30)
                 
-                # Look up opponent strengths using canonical names
-                opp_strengths = []
-                for opp_canon in recent_games["Opponent_canon"]:
-                    total_opponent_lookups += 1
-                    strength = opp_strength_map.get(opp_canon, fallback)
-                    opp_strengths.append(strength)
-                    if strength != fallback:
-                        successful_lookups += 1
-                
-                # Calculate weighted average SOS
-                if opp_strengths:
-                    sos_scores[team] = np.mean(opp_strengths)
-                else:
-                    sos_scores[team] = fallback
+                # Look up opponent strengths using OppKey
+                opp_strengths = recent_games["OppKey"].map(opp_strength_map).fillna(fallback)
+                avg_opp_strength = opp_strengths.mean()
+                sos_scores[team_key] = avg_opp_strength
+                sos_counts["matched"] += 1
+                sos_counts["total"] += len(recent_games)
             else:
-                sos_scores[team] = fallback
+                sos_scores[team_key] = fallback  # Default neutral strength
         
-        print(f"SOS calculation: {matched_teams}/{len(adj)} teams matched, {successful_lookups}/{total_opponent_lookups} opponent lookups successful")
+        adj["SOS_raw"] = adj.index.map(sos_scores)
+        print(f"SOS calculation: {sos_counts['matched']}/{len(adj)} teams matched")
         
         # Apply SOS scores
         adj["SOS_iterative"] = adj.index.map(sos_scores)
@@ -447,23 +488,14 @@ def build_rankings_from_wide(wide_matches_csv: Path, out_csv: Path, division: st
     adj["is_active"] = adj["LastGame"] >= cutoff
 
     # Sort with offense-first tie-breakers and no ties
-    sort_cols = ["PowerScore_adj","SAO_norm","SAD_norm","SOS_norm","GamesPlayed","Team"]
-    out = adj.sort_values(sort_cols, ascending=[False,False,False,False,False,True], kind="mergesort").reset_index(drop=True)
-    out["Rank"] = out.index + 1
+    sort_cols = ["PowerScore_adj","SAO_norm","SAD_norm","SOS_norm","GamesPlayed"]
+    out = adj.sort_values(sort_cols, ascending=[False,False,False,False,False], kind="mergesort")
+    # DON'T reset_index(drop=True) - keep TeamKey as index
+    out["Rank"] = range(1, len(out) + 1)
 
     # Filter inactive teams (6 months)
     cutoff = pd.Timestamp.now().normalize() - pd.Timedelta(days=INACTIVE_HIDE_DAYS)
     out_visible = out[out["LastGame"] >= cutoff].copy()
-
-    # Sanity check: ensure only master teams in final rankings
-    # Create reverse mapping to check against original team names
-    reverse_mapping = {v: k for k, v in team_name_mapping.items()}
-    original_team_names = set(out_visible.index.map(lambda x: reverse_mapping.get(x, x)))
-    invalid_teams = original_team_names - master_team_names
-    if invalid_teams:
-        print(f"WARNING: {len(invalid_teams)} non-master teams found: {list(invalid_teams)[:5]}")
-    else:
-        print(f"PASS: All {len(out_visible)} ranked teams are from master list")
 
     # Sanity check: verify expected team count
     unique_teams = len(out_visible.index.unique())
@@ -485,9 +517,14 @@ def build_rankings_from_wide(wide_matches_csv: Path, out_csv: Path, division: st
         # If DataFrame index is numeric, try to map back to names
         if isinstance(out_visible_with_team.index[0], (int, float)):
             # Build reverse mapping from master list
-            master_df = pd.read_csv(master_teams_path)
+            master_df = pd.read_csv(MASTER_PATH)
             name_map = {i: name for i, name in enumerate(sorted(master_df["Team Name"].unique()))}
-            out_visible_with_team["Team"] = out_visible_with_team.index.map(name_map).fillna(out_visible_with_team.index)
+            team_names = out_visible_with_team.index.map(name_map)
+            # Fill missing values with string representation of index
+            for i, name in enumerate(team_names):
+                if pd.isna(name):
+                    team_names.iloc[i] = str(out_visible_with_team.index[i])
+            out_visible_with_team["Team"] = team_names
         else:
             out_visible_with_team.reset_index(inplace=True)
             out_visible_with_team.rename(columns={"index": "Team"}, inplace=True)
@@ -510,6 +547,36 @@ def build_rankings_from_wide(wide_matches_csv: Path, out_csv: Path, division: st
     else:
         print("PASS: All team names are valid strings.")
     # --- End patch ---
+    
+    # Debug: Check DataFrame structure before merge
+    print(f"Debug: out_visible index name: {out_visible.index.name}")
+    print(f"Debug: out_visible index type: {type(out_visible.index[0])}")
+    print(f"Debug: out_visible index sample: {list(out_visible.index)[:5]}")
+    
+    # Merge master list to get Team Name and Club for display
+    # out_visible is indexed by TeamKey, so we can merge directly on the index
+    out_visible_with_team = out_visible.reset_index()  # TeamKey becomes a column
+    print(f"Debug: After reset_index, columns: {out_visible_with_team.columns.tolist()}")
+    print(f"Debug: TeamKey column values: {out_visible_with_team['TeamKey'].head().tolist()}")
+    
+    out_visible_with_team = out_visible_with_team.merge(
+        master_teams[["TeamKey", "Team Name", "Club"]],
+        on="TeamKey",
+        how="left"
+    )
+    
+    # Create DisplayTeam column (Team + Club for UI)
+    out_visible_with_team["DisplayTeam"] = np.where(
+        out_visible_with_team["Club"].notna() & (out_visible_with_team["Club"] != ""),
+        out_visible_with_team["Team Name"] + " " + out_visible_with_team["Club"],
+        out_visible_with_team["Team Name"]
+    )
+    
+    # Use DisplayTeam for the "Team" column in output
+    out_visible_with_team["Team"] = out_visible_with_team["DisplayTeam"]
+    
+    # Keep Club as separate field for API
+    out_visible_with_team["Club"] = out_visible_with_team["Club"].fillna("")
     
     cols = ["Rank","Team","PowerScore_adj","PowerScore","GP_Mult","SAO_norm","SAD_norm","SOS_norm","SOS_iterative_norm","GamesPlayed","GamesTotal","Status","is_active","LastGame"]
     out_visible_with_team[cols].to_csv(out_csv, index=False, encoding="utf-8")
