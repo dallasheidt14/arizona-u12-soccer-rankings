@@ -1,8 +1,18 @@
 """
 Daily Soccer Data Scraper Configuration
-Production-ready settings for Arizona U12 Soccer Rankings System
+Production-ready settings for Arizona U12/U11 Soccer Rankings System
 """
 
+# Division-specific URLs for multi-division support
+DIVISION_URLS = {
+    "az_boys_u12": "https://rankings.gotsport.com/?team_country=USA&age=12&gender=m&state=AZ",
+    "az_boys_u11": "https://rankings.gotsport.com/?team_country=USA&age=11&gender=m&state=AZ",
+    "az_boys_u10": "https://rankings.gotsport.com/?team_country=USA&age=10&gender=m&state=AZ",
+    "az_boys_u13": "https://rankings.gotsport.com/?team_country=USA&age=13&gender=m&state=AZ",
+    "az_boys_u14": "https://rankings.gotsport.com/?team_country=USA&age=14&gender=m&state=AZ",
+}
+
+# Legacy SCRAPER_SOURCES for backwards compatibility
 SCRAPER_SOURCES = [
     # Each entry is an adapter; add/remove freely.
     # Example stubs (fill with your real URLs):

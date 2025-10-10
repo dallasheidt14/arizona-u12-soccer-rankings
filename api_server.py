@@ -40,12 +40,21 @@ def get_cached_data(cache_key: str, timestamp: int):
     """Simple cache with timestamp-based invalidation."""
     return None
 
-def get_cache_key(state: Optional[str], gender: Optional[str], year: Optional[int]) -> str:
+def get_cache_key(division: Optional[str], state: Optional[str], gender: Optional[str], year: Optional[int]) -> str:
     """Generate cache key for slice data."""
-    return f"{state or 'all'}_{gender or 'all'}_{year or 'all'}"
+    return f"{division or 'all'}_{state or 'all'}_{gender or 'all'}_{year or 'all'}"
 
-def load_rankings_data() -> pd.DataFrame:
+def load_rankings_data(division: Optional[str] = None) -> pd.DataFrame:
     """Load rankings data with fallback logic."""
+    # If division is specified, try division-specific file first
+    if division:
+        division_file = f"Rankings_AZ_M_{division.split('_')[-1].lower()}_2025_v53e.csv"
+        if Path(division_file).exists():
+            logger.info(f"Loading division-specific rankings: {division_file}")
+            return pd.read_csv(division_file)
+        else:
+            logger.warning(f"Division file not found: {division_file}")
+    
     # Try Gold layer first
     gold_path = Path("data_ingest/gold/All_Games.parquet")
     if gold_path.exists():
@@ -128,6 +137,7 @@ async def health_check():
 
 @app.get("/api/rankings")
 async def get_rankings(
+    division: Optional[str] = Query(None, description="Division (e.g., az_boys_u11, az_boys_u12)"),
     state: Optional[str] = Query(None, description="Filter by state (e.g., AZ)"),
     gender: Optional[str] = Query(None, description="Filter by gender (e.g., MALE)"),
     year: Optional[int] = Query(None, description="Filter by year (e.g., 2025)"),
@@ -136,7 +146,7 @@ async def get_rankings(
     """Get rankings with optional filters."""
     try:
         # Check cache first
-        cache_key = get_cache_key(state, gender, year)
+        cache_key = get_cache_key(division, state, gender, year)
         cache_timestamp = int(time.time() // 900)  # 15-minute cache
         
         cached_data = get_cached_data(cache_key, cache_timestamp)
@@ -144,7 +154,7 @@ async def get_rankings(
             return cached_data
         
         # Load and filter data
-        df = load_rankings_data()
+        df = load_rankings_data(division)
         
         # Apply filters
         if state:

@@ -49,7 +49,7 @@ export default function StickyHeader({
             <option value="PowerScore_adj">Power Score</option>
             <option value="Off_norm">Offense</option>
             <option value="Def_norm">Defense</option>
-            <option value="SOS_norm">SOS</option>
+            <option value="SOS_display">SOS</option>
             <option value="GamesPlayed">Games Played</option>
           </select>
         </div>

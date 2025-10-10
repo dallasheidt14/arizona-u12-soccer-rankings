@@ -178,7 +178,7 @@ function RankSection({ title, subtitle, teams, sortField, sortOrder, onSort, onT
               <SortableHeader field="PowerScore_adj" label="Power" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <SortableHeader field="SAO_norm" label="Off" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <SortableHeader field="SAD_norm" label="Def" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
-              <SortableHeader field="SOS_norm" label="SOS" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
+              <SortableHeader field="SOS_display" label="SOS" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <SortableHeader field="GamesPlayed" label="GP" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <th>W-L-T</th>
             </tr>
@@ -207,7 +207,7 @@ function RankSection({ title, subtitle, teams, sortField, sortOrder, onSort, onT
                   {team.SAD_norm ? team.SAD_norm.toFixed(3) : 'N/A'}
                 </td>
                 <td className="sos-cell">
-                  {team.SOS_norm ? team.SOS_norm.toFixed(3) : 'N/A'}
+                  {(team.SOS_display === null || team.SOS_display === undefined || Number.isNaN(team.SOS_display)) ? 'N/A' : team.SOS_display.toFixed(3)}
                 </td>
                 <td className="gp-cell">
                   {team.GamesPlayed || 'N/A'}

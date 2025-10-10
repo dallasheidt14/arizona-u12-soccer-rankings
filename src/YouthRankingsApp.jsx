@@ -89,6 +89,7 @@ export default function YouthRankingsApp() {
   const [gender, setGender] = useState("MALE");
   const [year, setYear] = useState("2014");
   const [state, setState] = useState("AZ");
+  const [division, setDivision] = useState("az_boys_u12"); // New division state
 
   const [slices, setSlices] = useState([]);
   const [rankings, setRankings] = useState([]);
@@ -122,7 +123,7 @@ export default function YouthRankingsApp() {
   async function goRankings() {
     setLoading(true); setError("");
     // Prefer API JSON; fallback to mock
-    const url = `/api/rankings?state=${encodeURIComponent(state)}&gender=${encodeURIComponent(gender)}&year=${encodeURIComponent(year)}&sort=${sortBy}&order=${sortOrder}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`;
+    const url = `/api/rankings?state=${encodeURIComponent(state)}&gender=${encodeURIComponent(gender)}&year=${encodeURIComponent(year)}&division=${encodeURIComponent(division)}&sort=${sortBy}&order=${sortOrder}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`;
     console.log('Fetching URL:', url);
     const response = await fetchJSON(url);
     console.log('API Response:', response);
@@ -189,10 +190,11 @@ export default function YouthRankingsApp() {
       {/* Selector View */}
       {view === "select" && (
         <SelectorHero 
-          onSelect={({ gender: g, age: a, state: s }) => {
+          onSelect={({ gender: g, age: a, state: s, division: d }) => {
             setGender(g);
             setYear(a);
             setState(s);
+            setDivision(d);
             goRankings();
           }}
         />

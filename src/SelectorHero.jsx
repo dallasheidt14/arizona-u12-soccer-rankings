@@ -12,6 +12,7 @@ export default function SelectorHero({ onSelect }) {
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
   const [state, setState] = useState("");
+  const [division, setDivision] = useState("az_boys_u12"); // New division state
 
   const canSubmit = gender && age && state;
 
@@ -34,7 +35,8 @@ export default function SelectorHero({ onSelect }) {
     onSelect && onSelect({ 
       gender: apiGender, 
       age: age, 
-      state: state 
+      state: state,
+      division: division
     });
   };
 
@@ -141,6 +143,26 @@ export default function SelectorHero({ onSelect }) {
                   {STATES.map((s) => (
                     <option key={s} value={s} style={{ color: '#1e293b' }}>{s}</option>
                   ))}
+                </select>
+              </div>
+
+              {/* Division */}
+              <div>
+                <label htmlFor="division" className="block text-sm font-semibold mb-2">
+                  Division
+                </label>
+                <select
+                  id="division"
+                  value={division}
+                  onChange={(e) => setDivision(e.target.value)}
+                  className="w-full rounded-lg bg-white/10 border border-white/20 px-4 py-3
+                             outline-none focus:ring-2 focus:ring-emerald-400 text-white"
+                >
+                  <option value="az_boys_u12" style={{ color: '#1e293b' }}>Arizona Boys U12 (2014)</option>
+                  <option value="az_boys_u11" style={{ color: '#1e293b' }}>Arizona Boys U11 (2015)</option>
+                  <option value="az_boys_u10" style={{ color: '#1e293b' }}>Arizona Boys U10 (2016)</option>
+                  <option value="az_boys_u13" style={{ color: '#1e293b' }}>Arizona Boys U13 (2013)</option>
+                  <option value="az_boys_u14" style={{ color: '#1e293b' }}>Arizona Boys U14 (2012)</option>
                 </select>
               </div>
 

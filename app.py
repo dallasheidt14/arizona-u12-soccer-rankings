@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Optional, List, Dict
 
 import pandas as pd
+import numpy as np
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -121,10 +122,33 @@ def load_index():
         "teams": None, "games": None
     }]}
 
-def find_rankings_path(state: Optional[str], gender: Optional[str], year: Optional[str]) -> Path:
+def find_rankings_path(state: Optional[str], gender: Optional[str], year: Optional[str], division: Optional[str] = None) -> Path:
+    # Handle division-specific paths first
+    if division:
+        age_map = {"az_boys_u11": "U11", "az_boys_u12": "U12"}
+        age = age_map.get(division, "U12")
+        
+        # Division-specific candidates (prefer v53e enhanced)
+        division_candidates = [
+            DATA_DIR / f"Rankings_AZ_M_{age}_2025_v53e.csv",
+            DATA_DIR / f"Rankings_AZ_M_{age}_2025_v53.csv",
+            DATA_DIR / f"Rankings_AZ_M_{age}_2025.csv",
+            DATA_DIR / f"Rankings_{age}_v53e.csv",
+            DATA_DIR / f"Rankings_{age}_v53.csv",
+            DATA_DIR / f"Rankings_{age}.csv",
+        ]
+        
+        for p in division_candidates:
+            if p.exists():
+                return p
+        
+        # If no division-specific file found, fall through to general logic
+    
     sfx = slice_suffix(state, gender, year)
-    # Prefer v5.3 rankings (latest), then v5.2b, v5.2a, v5.2, v5.1, v5, then v4, then v3, then CSV, then Parquet for the slice
+    # Prefer v5.3E enhanced rankings (latest), then v5.3, then v5.2b, v5.2a, v5.2, v5.1, v5, then v4, then v3, then CSV, then Parquet for the slice
     candidates = [
+        DATA_DIR / f"Rankings_v53_enhanced{sfx}.csv",
+        DATA_DIR / f"Rankings_v53_enhanced.csv",
         DATA_DIR / f"Rankings_v53{sfx}.csv",
         DATA_DIR / f"Rankings_v53.csv",
         DATA_DIR / f"Rankings_v52b{sfx}.csv",
@@ -147,8 +171,10 @@ def find_rankings_path(state: Optional[str], gender: Optional[str], year: Option
     for p in candidates:
         if p.exists():
             return p
-    # Fallback to global - try multiple possible names (v5.2b first)
+    # Fallback to global - try multiple possible names (v5.3E enhanced first)
     fallback_candidates = [
+        DATA_DIR / "Rankings_v53_enhanced.csv",
+        DATA_DIR / "Rankings_v53.csv",
         DATA_DIR / "Rankings_v52b.csv",
         DATA_DIR / "Rankings_v52a.csv",
         DATA_DIR / "Rankings_v52.csv",
@@ -344,13 +370,14 @@ def api_rankings(
     state: Optional[str] = Query(None),
     gender: Optional[str] = Query(None),   # MALE/FEMALE
     year: Optional[str] = Query(None),
+    division: Optional[str] = Query(None), # az_boys_u11, az_boys_u12
     q: Optional[str] = Query(None),        # search team name
     sort: Optional[str] = Query("PowerScore"),  # PowerScore|Off_norm|Def_norm|SOS_norm|GamesPlayed
     order: Optional[str] = Query("desc"),  # asc|desc
     limit: int = Query(500, ge=1, le=5000),
     include_inactive: bool = Query(DEFAULT_INCLUDE_INACTIVE),
 ):
-    path = find_rankings_path(state, gender, year)
+    path = find_rankings_path(state, gender, year, division)
     df = CACHE.get_df(path)
     if df is None:
         raise HTTPException(status_code=404, detail="Rankings file not found")
@@ -463,11 +490,29 @@ def api_rankings(
     # Combine for backward compatibility
     all_teams = pd.concat([active_teams, provisional_teams], ignore_index=True)
     
+    # Add SOS_display field (iterative primary, baseline fallback)
+    if "SOS_iterative_norm" in all_teams.columns and "SOS_norm" in all_teams.columns:
+        all_teams["SOS_display"] = all_teams["SOS_iterative_norm"].combine_first(all_teams["SOS_norm"])
+        active_teams["SOS_display"] = active_teams["SOS_iterative_norm"].combine_first(active_teams["SOS_norm"])
+        provisional_teams["SOS_display"] = provisional_teams["SOS_iterative_norm"].combine_first(provisional_teams["SOS_norm"])
+    elif "SOS_iterative_norm" in all_teams.columns:
+        all_teams["SOS_display"] = all_teams["SOS_iterative_norm"]
+        active_teams["SOS_display"] = active_teams["SOS_iterative_norm"]
+        provisional_teams["SOS_display"] = provisional_teams["SOS_iterative_norm"]
+    elif "SOS_norm" in all_teams.columns:
+        all_teams["SOS_display"] = all_teams["SOS_norm"]
+        active_teams["SOS_display"] = active_teams["SOS_norm"]
+        provisional_teams["SOS_display"] = provisional_teams["SOS_norm"]
+    else:
+        all_teams["SOS_display"] = np.nan
+        active_teams["SOS_display"] = np.nan
+        provisional_teams["SOS_display"] = np.nan
+
     # Keep the response schema stable
     preferred_cols = [
         "Rank", "Team",
         "PowerScore_adj", "PowerScore", "GP_Mult",
-        "SAO_norm", "SAD_norm", "SOS_norm", "SOS_iterative_norm",  # Add iterative SOS
+        "SAO_norm", "SAD_norm", "SOS_norm", "SOS_iterative_norm", "SOS_display",  # Add SOS_display
         "GamesPlayed", "Status", "WL", "LastGame"
     ]
     cols = [c for c in preferred_cols if c in all_teams.columns]
@@ -476,6 +521,27 @@ def api_rankings(
     active_data = active_teams[cols].head(limit).to_dict(orient="records") if not active_teams.empty else []
     provisional_data = provisional_teams[cols].to_dict(orient="records") if not provisional_teams.empty else []
     all_data = all_teams[cols].to_dict(orient="records")
+    
+    # Convert numpy types to JSON-serializable types
+    def convert_numpy_types(obj):
+        if isinstance(obj, dict):
+            return {k: convert_numpy_types(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [convert_numpy_types(item) for item in obj]
+        elif hasattr(obj, 'item'):  # numpy scalar
+            return obj.item()
+        elif hasattr(obj, 'tolist'):  # numpy array
+            return obj.tolist()
+        elif pd.isna(obj):  # Handle NaN values
+            return None
+        elif isinstance(obj, (pd.Timestamp, np.datetime64)):  # Handle timestamps
+            return str(obj)
+        else:
+            return obj
+    
+    active_data = convert_numpy_types(active_data)
+    provisional_data = convert_numpy_types(provisional_data)
+    all_data = convert_numpy_types(all_data)
     
     # Enhanced meta block with Active/Provisional counts
     meta = {
@@ -492,6 +558,17 @@ def api_rankings(
         "total_available": len(all_teams),
         "method": "Up to 30 most-recent matches (last 12 months). Games 26–30 count with reduced influence. Active teams: 8+ games. Provisional teams: <8 games."
     }
+    
+    # Add metadata about SOS sources
+    if "SOS_iterative_norm" in all_teams.columns and "SOS_norm" in all_teams.columns:
+        meta["sos_sources"] = {
+            "iterative_count": int(all_teams["SOS_iterative_norm"].notna().sum()),
+            "baseline_count": int((all_teams["SOS_iterative_norm"].isna() & all_teams["SOS_norm"].notna()).sum()),
+            "missing_count": int((all_teams["SOS_iterative_norm"].isna() & all_teams["SOS_norm"].isna()).sum())
+        }
+    
+    # Convert meta to JSON-serializable types
+    meta = convert_numpy_types(meta)
     
     return JSONResponse({
         "meta": meta, 

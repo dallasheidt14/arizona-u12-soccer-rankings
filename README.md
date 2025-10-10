@@ -1,14 +1,54 @@
-# Arizona U12 Soccer Rankings System
+# Arizona Soccer Rankings System - Multi-Division Support
 
-A comprehensive soccer ranking system for Arizona U12 Male teams, featuring web scraping, data processing, statistical analysis, and an interactive dashboard.
+A comprehensive soccer ranking system for Arizona Boys U12/U11 teams, featuring web scraping, data processing, statistical analysis, and an interactive dashboard with multi-division support.
 
 ## 🏆 Features
 
-- **Web Scraping**: Automated data collection from GotSport API
-- **Data Processing**: Team matching, deduplication, and data cleaning
+- **Multi-Division Support**: U12 (2014) and U11 (2015) divisions with identical architecture
+- **Web Scraping**: Automated data collection from GotSport API for multiple age groups
+- **Data Processing**: Team matching, deduplication, and data cleaning across divisions
 - **Statistical Analysis**: Offensive/Defensive ratings, Strength of Schedule (SOS), Power Scores
-- **Interactive Dashboard**: Streamlit-based web interface for exploring rankings
-- **Real-time Updates**: Fresh data collection and ranking calculations
+- **Interactive Dashboard**: Streamlit-based web interface with division switching
+- **API Integration**: RESTful API with division query parameters
+- **Real-time Updates**: Fresh data collection and ranking calculations for all divisions
+
+## 🏆 Multi-Division Support
+
+The system now supports multiple age divisions with identical architecture:
+
+### Supported Divisions
+
+- **Arizona Boys U12 (2014)**: `az_boys_u12`
+- **Arizona Boys U11 (2015)**: `az_boys_u11`
+
+### API Usage
+
+```bash
+# U12 rankings
+GET /api/rankings?division=az_boys_u12
+
+# U11 rankings
+GET /api/rankings?division=az_boys_u11
+
+# With additional filters
+GET /api/rankings?division=az_boys_u11&state=AZ&gender=MALE&year=2015
+```
+
+### Frontend Integration
+
+The React frontend includes a division selector dropdown that allows switching between U11 and U12 divisions seamlessly.
+
+### Dashboard Usage
+
+Run the multi-division dashboard:
+
+```bash
+streamlit run dashboard/app_v53_multi_division.py
+```
+
+### Adding New Divisions
+
+See [Multi-Division Guide](docs/MULTI_DIVISION_GUIDE.md) for detailed instructions on adding U10, U13, or other age groups.
 
 ## 📊 Ranking Methodology
 

@@ -39,7 +39,7 @@ export default function RankingsTable({ teams, type, onTeamClick }) {
   };
 
   const formatValue = (value, decimals = 3) => {
-    if (value === null || value === undefined) return 'N/A';
+    if (value === null || value === undefined || Number.isNaN(value)) return 'N/A';
     if (typeof value === 'number') return value.toFixed(decimals);
     return value;
   };
@@ -71,8 +71,8 @@ export default function RankingsTable({ teams, type, onTeamClick }) {
             <th onClick={() => handleSort("SAD_norm")}>
               Def {sortIndicator("SAD_norm")}
             </th>
-            <th onClick={() => handleSort("SOS_norm")}>
-              SOS {sortIndicator("SOS_norm")}
+            <th onClick={() => handleSort("SOS_display")}>
+              SOS {sortIndicator("SOS_display")}
             </th>
             <th onClick={() => handleSort("GamesPlayed")}>
               GP {sortIndicator("GamesPlayed")}
@@ -95,7 +95,7 @@ export default function RankingsTable({ teams, type, onTeamClick }) {
               <td>{formatValue(team.PowerScore_adj)}</td>
               <td>{formatValue(team.SAO_norm)}</td>
               <td>{formatValue(team.SAD_norm)}</td>
-              <td>{formatValue(team.SOS_norm)}</td>
+              <td>{formatValue(team.SOS_display)}</td>
               <td>{team.GamesPlayed || 'N/A'}</td>
               <td>{team.WL || 'N/A'}</td>
             </tr>
@@ -122,7 +122,7 @@ export default function RankingsTable({ teams, type, onTeamClick }) {
               <span>Power Score:</span> {formatValue(team.PowerScore_adj)}
             </p>
             <p>
-              <span>Off / Def / SOS:</span> {formatValue(team.SAO_norm)} / {formatValue(team.SAD_norm)} / {formatValue(team.SOS_norm)}
+              <span>Off / Def / SOS:</span> {formatValue(team.SAO_norm)} / {formatValue(team.SAD_norm)} / {formatValue(team.SOS_display)}
             </p>
             <p>
               <span>Games:</span> {team.GamesPlayed || 'N/A'}  

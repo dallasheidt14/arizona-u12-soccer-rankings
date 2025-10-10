@@ -1,0 +1,431 @@
+#!/usr/bin/env python3
+"""
+Iterative Opponent-Strength / Better SOS Engine (V5.3E Enhanced)
+================================================================
+
+This module implements an Elo-based iterative engine to compute opponent strength
+through multiple passes over game results, providing a more sophisticated SOS
+calculation than the traditional approach.
+
+Enhanced Features:
+- Adaptive K-factor: Shrink single-game impact when opponent is much weaker or GP is small
+- Outlier Guard: Cap values to prevent single outliers from dominating
+
+Key Features:
+- Elo-style rating updates with goal-differential awareness
+- Master team filtering for consistency
+- Convergence detection and iteration limits
+- Normalized output for integration with existing rankings
+- Adaptive K-factor for volatility control
+
+Usage:
+    from analytics.iterative_opponent_strength_v53_enhanced import compute_iterative_sos_adaptive
+    sos_dict = compute_iterative_sos_adaptive("Matched_Games.csv", use_adaptive_k=True)
+"""
+
+import pandas as pd
+import numpy as np
+from collections import defaultdict
+from statistics import mean
+from pathlib import Path
+import warnings
+
+# ---- Iterative SOS Configuration ----
+INITIAL_RATING = 1500
+K_FACTOR = 24                    # Update sensitivity
+GOAL_DIFF_MULT = 0.20           # Goal-margin weight
+GOAL_DIFF_CAP = 6               # Cap blowouts at 6 goals
+MAX_ITERS = 30                  # Maximum iterations
+CONV_TOL = 1.0                  # Convergence tolerance (mean Δrating)
+RATING_SCALE = 400              # Logistic curve spread
+USE_GOAL_DIFF_AWARE = True      # Enable goal-diff multiplier
+
+# ---- Adaptive K-Factor Parameters ----
+ADAPTIVE_K_ENABLED = True
+ADAPTIVE_K_MIN_GAMES = 8       # minimum games for full weight
+ADAPTIVE_K_ALPHA = 0.5         # opponent gap exponent
+ADAPTIVE_K_BETA = 0.6          # sample size exponent
+
+
+def adaptive_multiplier(team_strength, opp_strength, games_used, 
+                        k_base=1.0, min_games=8, alpha=0.5, beta=0.6):
+    """
+    Shrink single-game impact when opponent is much weaker or GP is small.
+    
+    Args:
+        team_strength: Team's current normalized strength (0-1)
+        opp_strength: Opponent's normalized strength (0-1)
+        games_used: Number of games in team's sample
+        k_base: Base K-factor
+        min_games: Minimum games for full weight
+        alpha: Opponent gap exponent
+        beta: Sample size exponent
+    
+    Returns:
+        Adjusted K-factor multiplier (0-1)
+    """
+    # Opponent gap: if much stronger, shrink impact
+    gap = max(0.0, team_strength - opp_strength)
+    opp_factor = 1.0 / (1.0 + gap**alpha)
+    
+    # Sample penalty: if < min_games, shrink impact
+    sample_factor = min(1.0, (games_used / min_games)**beta)
+    
+    return k_base * opp_factor * sample_factor
+
+
+def load_and_filter_games(matched_games_path: str) -> pd.DataFrame:
+    """
+    Load Matched_Games.csv and filter to master team vs master team games.
+    Also applies team name mapping to include club names.
+    
+    Args:
+        matched_games_path: Path to Matched_Games.csv
+        
+    Returns:
+        Filtered DataFrame with only master team games and mapped team names
+    """
+    print(f"Loading games from {matched_games_path}...")
+    df = pd.read_csv(matched_games_path)
+    
+    # Load master team list
+    master_teams = pd.read_csv("AZ MALE U12 MASTER TEAM LIST.csv")
+    master_team_names = set(master_teams["Team Name"].str.strip())
+    
+    print(f"Loaded {len(master_team_names)} master teams")
+    
+    # Create team name mapping: Team Name -> "Team Name Club"
+    team_name_mapping = {}
+    for _, row in master_teams.iterrows():
+        team_name = row["Team Name"].strip()
+        club_name = str(row["Club"]).strip() if pd.notna(row["Club"]) else ""
+        # Combine team name with club name
+        if club_name and club_name != "nan":
+            combined_name = f"{team_name} {club_name}"
+        else:
+            combined_name = team_name
+        team_name_mapping[team_name] = combined_name
+    
+    # Apply team name mapping to include club names
+    df["Team A"] = df["Team A"].map(lambda x: team_name_mapping.get(x, x))
+    df["Team B"] = df["Team B"].map(lambda x: team_name_mapping.get(x, x))
+    
+    # Filter to master team vs master team games (using mapped names)
+    master_games = df[
+        (df["Team A"].isin(team_name_mapping.values())) & 
+        (df["Team B"].isin(team_name_mapping.values()))
+    ].copy()
+    
+    print(f"Filtered to {len(master_games)} master team vs master team games")
+    
+    return master_games
+
+
+def initialize_ratings(teams: list) -> dict:
+    """
+    Initialize all teams with the same starting rating.
+    
+    Args:
+        teams: List of unique team names
+        
+    Returns:
+        Dictionary mapping team names to initial ratings
+    """
+    return {team: INITIAL_RATING for team in teams}
+
+
+def run_elo_iterations_adaptive(games_df: pd.DataFrame, ratings: dict, 
+                               use_adaptive_k: bool = True) -> tuple:
+    """
+    Run iterative Elo updates until convergence or max iterations.
+    Enhanced with adaptive K-factor for volatility control.
+    
+    Args:
+        games_df: DataFrame with Team A, Team B, Score A, Score B columns
+        ratings: Dictionary of current team ratings
+        use_adaptive_k: Whether to apply adaptive K-factor
+        
+    Returns:
+        Tuple of (final_ratings, convergence_info)
+    """
+    print("Running Elo iterations with adaptive K-factor..." if use_adaptive_k else "Running Elo iterations...")
+    
+    convergence_info = {
+        'iterations': [],
+        'mean_deltas': [],
+        'converged': False,
+        'final_iteration': 0
+    }
+    
+    # Count games per team for adaptive K
+    games_played = defaultdict(int)
+    for _, game in games_df.iterrows():
+        games_played[game["Team A"]] += 1
+        games_played[game["Team B"]] += 1
+    
+    for iteration in range(MAX_ITERS):
+        deltas = []
+        
+        for _, game in games_df.iterrows():
+            team_a = game["Team A"]
+            team_b = game["Team B"]
+            score_a = game["Score A"]
+            score_b = game["Score B"]
+            
+            # Calculate goal differential
+            gd = score_a - score_b
+            
+            # Determine actual outcome (1 = A wins, 0 = B wins, 0.5 = tie)
+            if gd > 0:
+                actual = 1
+            elif gd < 0:
+                actual = 0
+            else:
+                actual = 0.5
+            
+            # Calculate expected outcome using logistic function
+            rating_diff = ratings[team_b] - ratings[team_a]
+            exp_a = 1 / (1 + 10 ** (rating_diff / RATING_SCALE))
+            
+            # Apply goal-differential multiplier (capped)
+            if USE_GOAL_DIFF_AWARE:
+                mult = 1 + GOAL_DIFF_MULT * min(abs(gd), GOAL_DIFF_CAP)
+            else:
+                mult = 1
+            
+            # Calculate base rating change
+            base_change = K_FACTOR * mult * (actual - exp_a)
+            
+            # Apply adaptive K-factor if enabled
+            if use_adaptive_k and ADAPTIVE_K_ENABLED:
+                # Normalize ratings to 0-1 range for adaptive multiplier
+                all_ratings = list(ratings.values())
+                min_rating = min(all_ratings)
+                max_rating = max(all_ratings)
+                
+                if max_rating > min_rating:
+                    team_a_strength = (ratings[team_a] - min_rating) / (max_rating - min_rating)
+                    team_b_strength = (ratings[team_b] - min_rating) / (max_rating - min_rating)
+                else:
+                    team_a_strength = team_b_strength = 0.5
+                
+                # Apply adaptive multiplier to both teams
+                k_mult_a = adaptive_multiplier(
+                    team_a_strength, team_b_strength, games_played[team_a],
+                    k_base=1.0, min_games=ADAPTIVE_K_MIN_GAMES,
+                    alpha=ADAPTIVE_K_ALPHA, beta=ADAPTIVE_K_BETA
+                )
+                k_mult_b = adaptive_multiplier(
+                    team_b_strength, team_a_strength, games_played[team_b],
+                    k_base=1.0, min_games=ADAPTIVE_K_MIN_GAMES,
+                    alpha=ADAPTIVE_K_ALPHA, beta=ADAPTIVE_K_BETA
+                )
+                
+                # Apply different K-factors to each team
+                change_a = base_change * k_mult_a
+                change_b = -base_change * k_mult_b
+            else:
+                # Standard symmetric updates
+                change_a = base_change
+                change_b = -base_change
+            
+            # Update ratings
+            ratings[team_a] += change_a
+            ratings[team_b] += change_b
+            
+            deltas.append(abs(change_a))
+        
+        # Track convergence
+        mean_delta = sum(deltas) / len(deltas)
+        convergence_info['iterations'].append(iteration + 1)
+        convergence_info['mean_deltas'].append(mean_delta)
+        
+        print(f"  Iteration {iteration + 1}: Mean Delta rating = {mean_delta:.2f}")
+        
+        # Check convergence
+        if mean_delta < CONV_TOL:
+            convergence_info['converged'] = True
+            convergence_info['final_iteration'] = iteration + 1
+            print(f"Converged after {iteration + 1} iterations")
+            break
+    
+    if not convergence_info['converged']:
+        convergence_info['final_iteration'] = MAX_ITERS
+        print(f"Reached maximum iterations ({MAX_ITERS}) without convergence")
+    
+    return ratings, convergence_info
+
+
+def compute_opponent_strengths(games_df: pd.DataFrame, ratings: dict) -> dict:
+    """
+    Calculate mean opponent strength for each team.
+    
+    Args:
+        games_df: DataFrame with game results
+        ratings: Dictionary of team ratings
+        
+    Returns:
+        Dictionary mapping team names to mean opponent strength
+    """
+    print("Computing opponent strengths...")
+    
+    # Group games by team to find opponents
+    team_opponents = defaultdict(list)
+    
+    for _, game in games_df.iterrows():
+        team_a = game["Team A"]
+        team_b = game["Team B"]
+        
+        # Add each team's opponents
+        team_opponents[team_a].append(ratings[team_b])
+        team_opponents[team_b].append(ratings[team_a])
+    
+    # Calculate mean opponent strength for each team
+    opp_strength = {}
+    for team, opponent_ratings in team_opponents.items():
+        if opponent_ratings:
+            opp_strength[team] = mean(opponent_ratings)
+        else:
+            # Fallback for teams with no games (shouldn't happen with filtering)
+            opp_strength[team] = INITIAL_RATING
+            warnings.warn(f"No opponents found for team: {team}")
+    
+    return opp_strength
+
+
+def normalize_sos(opp_strength: dict) -> dict:
+    """
+    Normalize opponent strengths to 0-1 range.
+    
+    Args:
+        opp_strength: Dictionary of raw opponent strengths
+        
+    Returns:
+        Dictionary of normalized SOS values
+    """
+    print("Normalizing SOS to 0-1 range...")
+    
+    values = list(opp_strength.values())
+    min_val = min(values)
+    max_val = max(values)
+    
+    # Handle edge case where all teams have same strength
+    if max_val == min_val:
+        print("Warning: All teams have identical strength, setting SOS to 0.5")
+        return {team: 0.5 for team in opp_strength.keys()}
+    
+    # Normalize to 0-1 range
+    normalized = {}
+    for team, strength in opp_strength.items():
+        normalized[team] = (strength - min_val) / (max_val - min_val)
+    
+    print(f"SOS range: {min_val:.1f} - {max_val:.1f} -> 0.0 - 1.0")
+    
+    return normalized
+
+
+def compute_iterative_sos_adaptive(matched_games_path: str, 
+                                  k_factor: float = 24.0,
+                                  use_adaptive_k: bool = True,
+                                  convergence_tol: float = 1.0,
+                                  max_iterations: int = 30) -> dict:
+    """
+    Main entry point: Compute iterative SOS for all teams with adaptive K-factor.
+    
+    Args:
+        matched_games_path: Path to Matched_Games.csv
+        k_factor: Base K-factor for Elo updates
+        use_adaptive_k: Whether to apply adaptive K-factor
+        convergence_tol: Convergence tolerance
+        max_iterations: Maximum iterations
+        
+    Returns:
+        Dictionary mapping team names to normalized SOS values
+    """
+    print("=" * 60)
+    print("ITERATIVE SOS ENGINE (V5.3E Enhanced)")
+    print("=" * 60)
+    
+    # Update global parameters
+    global K_FACTOR, CONV_TOL, MAX_ITERS
+    K_FACTOR = k_factor
+    CONV_TOL = convergence_tol
+    MAX_ITERS = max_iterations
+    
+    # Step 1: Load and filter games
+    games_df = load_and_filter_games(matched_games_path)
+    
+    if len(games_df) == 0:
+        raise ValueError("No master team games found in dataset")
+    
+    # Step 2: Get unique teams and initialize ratings
+    teams = pd.unique(games_df[["Team A", "Team B"]].values.ravel("K"))
+    teams = [t for t in teams if pd.notna(t)]  # Remove any NaN values
+    
+    print(f"Found {len(teams)} unique teams")
+    
+    ratings = initialize_ratings(teams)
+    
+    # Step 3: Run iterative Elo updates with adaptive K
+    final_ratings, convergence_info = run_elo_iterations_adaptive(
+        games_df, ratings, use_adaptive_k=use_adaptive_k
+    )
+    
+    # Step 4: Compute opponent strengths
+    opp_strength = compute_opponent_strengths(games_df, final_ratings)
+    
+    # Step 5: Normalize to 0-1 range
+    sos_normalized = normalize_sos(opp_strength)
+    
+    # Print summary
+    print("\n" + "=" * 60)
+    print("ITERATIVE SOS SUMMARY")
+    print("=" * 60)
+    print(f"Teams processed: {len(teams)}")
+    print(f"Games processed: {len(games_df)}")
+    print(f"Adaptive K-factor: {use_adaptive_k}")
+    print(f"Converged: {convergence_info['converged']}")
+    print(f"Iterations: {convergence_info['final_iteration']}")
+    print(f"Final mean Delta rating: {convergence_info['mean_deltas'][-1]:.2f}")
+    print(f"SOS range: {min(sos_normalized.values()):.3f} - {max(sos_normalized.values()):.3f}")
+    
+    return sos_normalized
+
+
+# Backward compatibility
+def compute_iterative_sos(matched_games_path: str) -> dict:
+    """
+    Backward compatibility wrapper for original function.
+    
+    Args:
+        matched_games_path: Path to Matched_Games.csv
+        
+    Returns:
+        Dictionary mapping team names to normalized SOS values
+    """
+    return compute_iterative_sos_adaptive(matched_games_path, use_adaptive_k=False)
+
+
+if __name__ == "__main__":
+    # Test the implementation
+    try:
+        print("Testing with adaptive K-factor...")
+        sos_dict_adaptive = compute_iterative_sos_adaptive("Matched_Games.csv", use_adaptive_k=True)
+        
+        print("\nTop 10 teams by iterative SOS (with adaptive K):")
+        sorted_sos = sorted(sos_dict_adaptive.items(), key=lambda x: x[1], reverse=True)
+        for i, (team, sos) in enumerate(sorted_sos[:10], 1):
+            print(f"{i:2d}. {team}: {sos:.3f}")
+        
+        print("\nTesting without adaptive K-factor...")
+        sos_dict_standard = compute_iterative_sos_adaptive("Matched_Games.csv", use_adaptive_k=False)
+        
+        print("\nTop 10 teams by iterative SOS (standard):")
+        sorted_sos_std = sorted(sos_dict_standard.items(), key=lambda x: x[1], reverse=True)
+        for i, (team, sos) in enumerate(sorted_sos_std[:10], 1):
+            print(f"{i:2d}. {team}: {sos:.3f}")
+            
+    except Exception as e:
+        print(f"Error: {e}")
+        raise
+
