@@ -57,6 +57,9 @@ PERFORMANCE_MAX_GAMES = 30     # full window for form analysis
 PERFORMANCE_THRESHOLD = 1.0    # only trigger if |Performance| >= 1.0 GD
 
 # V5.2b parameters (keep existing logic)
+
+# ---- Iterative SOS Configuration ----
+USE_ITERATIVE_SOS = True
 PERFORMANCE_K_V52B = 0.10          # reduced from 0.20
 RIDGE_GA = 0.25               # stabilize defensive inverse
 SHRINK_TAU = 8                # Bayesian shrinkage strength
@@ -502,6 +505,23 @@ def build_rankings_from_wide(wide_matches_csv: Path, out_csv: Path):
 
     out = out.reset_index()  # Team as a column
     
+    # Step 6.5: Compute Iterative SOS (if enabled)
+    if USE_ITERATIVE_SOS:
+        try:
+            import sys
+            from pathlib import Path
+            sys.path.append(str(Path(__file__).parent.parent))
+            from analytics.iterative_opponent_strength_v53 import compute_iterative_sos
+            print("Computing iterative SOS...")
+            sos_iterative_dict = compute_iterative_sos("Matched_Games.csv")
+            out["SOS_iterative_norm"] = out["Team"].map(sos_iterative_dict)
+            print(f"Added iterative SOS for {out['SOS_iterative_norm'].notna().sum()} teams")
+        except Exception as e:
+            print(f"Warning: Failed to compute iterative SOS: {e}")
+            out["SOS_iterative_norm"] = np.nan
+    else:
+        out["SOS_iterative_norm"] = np.nan
+    
     # GamesPlayed = filtered count (≤30) used in rankings (per V5 spec)
     print("Setting GamesPlayed to filtered count for ranking calculations...")
     out["GamesPlayed"] = out["Team"].map(base["GamesPlayed"].to_dict())
@@ -554,7 +574,7 @@ def build_rankings_from_wide(wide_matches_csv: Path, out_csv: Path):
     if not (150 <= unique_teams <= 180):
         print(f"WARNING: Expected 150-180 AZ U12 teams, got {unique_teams}")
     
-    cols = ["Rank","Team","PowerScore_adj","PowerScore","GP_Mult","SAO_norm","SAD_norm","SOS_norm","GamesPlayed","GamesTotal","Status","is_active","LastGame"]
+    cols = ["Rank","Team","PowerScore_adj","PowerScore","GP_Mult","SAO_norm","SAD_norm","SOS_norm","SOS_iterative_norm","GamesPlayed","GamesTotal","Status","is_active","LastGame"]
     out_visible[cols].to_csv(out_csv, index=False, encoding="utf-8")
     return out_visible
 

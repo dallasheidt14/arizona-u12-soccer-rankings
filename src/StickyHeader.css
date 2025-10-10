@@ -1,0 +1,146 @@
+/* Page Header Layout */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #f8fafc;
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid #e2e8f0;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  backdrop-filter: blur(6px);
+  transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.page-header.scrolled {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  background: rgba(248, 250, 252, 0.95);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.subtitle {
+  color: #475569;
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Back Button */
+.back-btn {
+  background: #1e293b;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: #334155;
+}
+
+/* Filter / Search Bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 0.5rem;
+}
+
+.ranking-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: #0f172a;
+  min-width: 150px;
+}
+
+.search-box select,
+.search-box button {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #f1f5f9;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+}
+
+.search-box button {
+  background: #1e293b;
+  color: white;
+  font-weight: 600;
+}
+
+.search-box button:hover {
+  background: #334155;
+}
+
+.search-icon {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 1rem;
+  }
+  
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .search-box {
+    width: 100%;
+  }
+  
+  .search-box input {
+    flex: 1;
+    min-width: auto;
+  }
+}
+
+
+
+

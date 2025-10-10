@@ -1,0 +1,258 @@
+name: Weekly Predictive Calibration
+
+on:
+  schedule:
+    # Run every Sunday at midnight UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch:  # Allow manual trigger
+    inputs:
+      calibration_method:
+        description: 'Calibration method to use'
+        required: false
+        default: 'isotonic'
+        type: choice
+        options:
+          - isotonic
+          - platt
+          - none
+      feature_set:
+        description: 'Feature set to use'
+        required: false
+        default: 'power_plus_elo'
+        type: choice
+        options:
+          - default
+          - power_plus_elo
+          - comprehensive
+          - minimal
+      split_mode:
+        description: 'Split mode for validation'
+        required: false
+        default: 'chronological:0.8'
+        type: string
+
+jobs:
+  run-predictive-job:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements_api.txt
+          
+      - name: Verify data files exist
+        run: |
+          if [ ! -f "Matched_Games.csv" ]; then
+            echo "Error: Matched_Games.csv not found"
+            exit 1
+          fi
+          if [ ! -f "Rankings_v53.csv" ]; then
+            echo "Error: Rankings_v53.csv not found"
+            exit 1
+          fi
+          echo "Data files verified successfully"
+          
+      - name: Run predictive backbone tests
+        run: |
+          python -m pytest tests/test_predictive_backbone_v53.py -v --tb=short
+          
+      - name: Run weekly calibration job
+        run: |
+          python weekly_calibration_job.py \
+            --games-file Matched_Games.csv \
+            --rankings-file Rankings_v53.csv \
+            --storage-file calibration_metrics.json \
+            --output-dir weekly_reports \
+            --configs default power_elo elo_enhanced convergence phase_c1
+            
+      - name: Upload weekly reports
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: weekly-reports-${{ github.run_number }}
+          path: weekly_reports/*
+          retention-days: 30
+          
+      - name: Upload calibration metrics
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: calibration-metrics-${{ github.run_number }}
+          path: calibration_metrics.json
+          retention-days: 90
+          
+      - name: Generate performance report
+        run: |
+          python -c "
+          import json
+          from datetime import datetime
+          from analytics.calibration_storage_v53 import CalibrationMetricsStorage
+          
+          # Load latest metrics from storage
+          try:
+              storage = CalibrationMetricsStorage('calibration_metrics.json')
+              latest = storage.get_latest_metrics()
+              
+              if latest:
+                  report = {
+                      'timestamp': datetime.now().isoformat(),
+                      'run_number': '${{ github.run_number }}',
+                      'metrics': {
+                          'brier_score': latest['brier_score'],
+                          'log_loss': latest['log_loss'],
+                          'auc': latest['auc'],
+                          'n_test': latest['n_test'],
+                          'n_train': latest['n_train']
+                      },
+                      'configuration': {
+                          'calibration_method': latest['calibration_method'],
+                          'feature_set': latest['feature_set'],
+                          'split_mode': latest['split_mode']
+                      },
+                      'status': 'success' if latest['brier_score'] < 0.20 and latest['auc'] > 0.70 else 'warning'
+                  }
+                  
+                  with open('performance_report.json', 'w') as f:
+                      json.dump(report, f, indent=2)
+                      
+                  print('Performance report generated successfully')
+                  print(f'Brier Score: {latest[\"brier_score\"]:.4f}')
+                  print(f'AUC: {latest[\"auc\"]:.4f}')
+                  print(f'Status: {report[\"status\"]}')
+              else:
+                  print('No metrics found in storage')
+                  exit(1)
+                  
+          except Exception as e:
+              print(f'Error generating report: {e}')
+              exit(1)
+          "
+          
+      - name: Upload performance report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: performance-report-${{ github.run_number }}
+          path: performance_report.json
+          retention-days: 90
+          
+      - name: Comment on PR (if applicable)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            try {
+              const report = JSON.parse(fs.readFileSync('performance_report.json', 'utf8'));
+              
+              const comment = `## 🎯 Predictive Model Performance Report
+              
+              **Run #${report.run_number}** - ${new Date(report.timestamp).toLocaleString()}
+              
+              ### 📊 Metrics
+              - **Brier Score**: ${report.metrics.brier_score.toFixed(4)} ${report.metrics.brier_score < 0.20 ? '✅' : '⚠️'}
+              - **Log Loss**: ${report.metrics.log_loss.toFixed(4)} ${report.metrics.log_loss < 0.45 ? '✅' : '⚠️'}
+              - **AUC**: ${report.metrics.auc.toFixed(4)} ${report.metrics.auc > 0.70 ? '✅' : '⚠️'}
+              - **Test Samples**: ${report.metrics.n_test}
+              - **Train Samples**: ${report.metrics.n_train}
+              
+              ### ⚙️ Configuration
+              - **Calibration**: ${report.configuration.calibration_method}
+              - **Features**: ${report.configuration.feature_set}
+              - **Split**: ${report.configuration.split_mode}
+              - **Test Samples**: ${report.metrics.n_test}
+              - **Train Samples**: ${report.metrics.n_train}
+              
+              ### 📈 Status
+              ${report.status === 'success' ? '✅ **All metrics within target ranges**' : '⚠️ **Some metrics outside target ranges**'}
+              
+              ---
+              *Generated by Weekly Predictive Calibration workflow*`;
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            } catch (error) {
+              console.log('Could not create PR comment:', error);
+            }
+            
+      - name: Create GitHub issue on failure
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚨 Predictive Calibration Job Failed - Run #${{ github.run_number }}`,
+              body: `## Weekly Predictive Calibration Job Failed
+              
+              **Run Number**: ${{ github.run_number }}
+              **Timestamp**: ${new Date().toISOString()}
+              **Workflow**: ${{ github.workflow }}
+              
+              ### Error Details
+              The weekly predictive calibration job has failed. Please check the workflow logs for detailed error information.
+              
+              ### Next Steps
+              1. Review the workflow logs in the Actions tab
+              2. Check data file availability (Matched_Games.csv, Rankings_v53.csv)
+              3. Verify all dependencies are properly installed
+              4. Re-run the workflow manually if needed
+              
+              ### Related Files
+              - Workflow: \`.github/workflows/weekly_predictive_job.yml\`
+              - Job Script: \`analytics/weekly_predictive_job.py\`
+              - Test Suite: \`tests/test_predictive_backbone_v53.py\`
+              
+              ---
+              *This issue was automatically created by the Weekly Predictive Calibration workflow*`,
+              labels: ['bug', 'automated', 'predictive-model']
+            });
+            
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Weekly Predictive Calibration Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Run Number**: ${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Trigger**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp**: $(date -u)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "performance_report.json" ]; then
+            echo "### 📊 Performance Metrics" >> $GITHUB_STEP_SUMMARY
+            echo '```json' >> $GITHUB_STEP_SUMMARY
+            cat performance_report.json >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ❌ Job Failed" >> $GITHUB_STEP_SUMMARY
+            echo "No performance report generated. Check logs for details." >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📁 Artifacts Generated" >> $GITHUB_STEP_SUMMARY
+          echo "- Weekly reports (calibration reports, summaries)" >> $GITHUB_STEP_SUMMARY
+          echo "- Calibration metrics (JSON storage)" >> $GITHUB_STEP_SUMMARY
+          echo "- Performance report (JSON file)" >> $GITHUB_STEP_SUMMARY

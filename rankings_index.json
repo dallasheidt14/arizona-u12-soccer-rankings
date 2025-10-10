@@ -1,0 +1,22 @@
+{
+  "slices": [
+    {
+      "state": null,
+      "gender": null,
+      "year": null,
+      "rankings": "Rankings.csv",
+      "histories": "Team_Game_Histories.csv",
+      "teams": 153,
+      "games": 4718
+    },
+    {
+      "state": "AZ",
+      "gender": "M",
+      "year": 2025,
+      "rankings": "Rankings_AZ_M_2025.csv",
+      "histories": "Team_Game_Histories_AZ_M_2025.csv",
+      "teams": 153,
+      "games": 4718
+    }
+  ]
+}

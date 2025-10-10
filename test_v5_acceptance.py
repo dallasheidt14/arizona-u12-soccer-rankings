@@ -125,6 +125,98 @@ def test_tapered_weights_applied():
         print(f"  FAIL: {e}")
         return False
 
+def test_filtered_data_usage():
+    """Test that Off_raw/Def_raw and GamesPlayed use filtered data only."""
+    print("\nTesting filtered data usage...")
+    
+    # Load the corrected Rankings_v5.csv
+    df = pd.read_csv("Rankings_v5.csv")
+    
+    # Test 1: GamesPlayed should be ≤ 30 (filtered count)
+    max_games_played = df["GamesPlayed"].max()
+    assert max_games_played <= 30, f"GamesPlayed max is {max_games_played}, should be ≤ 30"
+    print(f"  PASS: GamesPlayed max: {max_games_played} (<= 30)")
+    
+    # Test 2: GamesTotal should be ≥ GamesPlayed (all-time ≥ filtered)
+    invalid_pairs = df[df["GamesTotal"] < df["GamesPlayed"]]
+    assert len(invalid_pairs) == 0, f"Found {len(invalid_pairs)} teams where GamesTotal < GamesPlayed"
+    print(f"  PASS: All teams have GamesTotal >= GamesPlayed")
+    
+    # Test 3: GP_Mult should be based on GamesPlayed (filtered count)
+    teams_with_1_game = df[df["GamesPlayed"] == 1]
+    assert all(teams_with_1_game["GP_Mult"] == 0.75), "Teams with 1 game should have GP_Mult = 0.75"
+    print(f"  PASS: GP_Mult correctly applied to filtered GamesPlayed count")
+    
+    # Test 4: Teams with 27+ games should have GP_Mult = 1.0
+    teams_with_27_plus = df[df["GamesPlayed"] >= 27]
+    assert all(teams_with_27_plus["GP_Mult"] == 1.0), "Teams with 27+ games should have GP_Mult = 1.0"
+    print(f"  PASS: Teams with 27+ games have GP_Mult = 1.0")
+    
+    print("  PASS: All filtered data usage tests passed!")
+    return True
+
+def test_sanity_metrics():
+    """Test expected metrics after V5 spec alignment."""
+    print("\nTesting sanity metrics...")
+    
+    # Load the corrected Rankings_v5.csv
+    df = pd.read_csv("Rankings_v5.csv")
+    
+    # Test 1: Team count should be 140-180 (AZ U12 only)
+    team_count = len(df)
+    assert 140 <= team_count <= 180, f"Expected 140-180 AZ U12 teams, got {team_count}"
+    print(f"  PASS: {team_count} AZ U12 teams ranked (expected 140-180)")
+    
+    # Test 2: GamesPlayed should be capped at 30
+    max_games = df["GamesPlayed"].max()
+    assert max_games <= 30, f"Max GamesPlayed is {max_games}, should be <= 30"
+    print(f"  PASS: Max GamesPlayed: {max_games} (<= 30)")
+    
+    # Test 3: Average games per team should increase to 20-30 (more games per team after filtering)
+    avg_games = df["GamesPlayed"].mean()
+    assert 20 <= avg_games <= 30, f"Avg games per team is {avg_games:.1f}, expected 20-30"
+    print(f"  PASS: Avg games per team: {avg_games:.1f} (expected 20-30)")
+    
+    # Test 4: Total games counted should be reasonable (filtered to 30 per team)
+    total_games = df["GamesPlayed"].sum()
+    assert total_games >= 3000, f"Total games is {total_games}, expected at least 3,000"
+    print(f"  PASS: Total games counted: {total_games} (filtered to 30 per team)")
+    
+    # Test 5: Inactive teams should be filtered out
+    active_teams = df[df["is_active"] == True]
+    inactive_teams = df[df["is_active"] == False]
+    assert len(inactive_teams) == 0, f"Found {len(inactive_teams)} inactive teams in rankings"
+    print(f"  PASS: {len(active_teams)} active teams, {len(inactive_teams)} inactive teams")
+    
+    # Test 6: GamesTotal should be >= GamesPlayed for all teams
+    invalid_pairs = df[df["GamesTotal"] < df["GamesPlayed"]]
+    assert len(invalid_pairs) == 0, f"Found {len(invalid_pairs)} teams where GamesTotal < GamesPlayed"
+    print(f"  PASS: All teams have GamesTotal >= GamesPlayed")
+    
+    print("  PASS: All sanity metrics tests passed!")
+    return True
+
+def test_master_team_filtering():
+    """Test that only authorized AZ U12 teams appear in rankings."""
+    print("\nTesting master team filtering...")
+    
+    master_teams = pd.read_csv("AZ MALE U12 MASTER TEAM LIST.csv")
+    master_set = set(master_teams["Team Name"].str.strip())
+    
+    rankings = pd.read_csv("Rankings_v5.csv")
+    ranked_set = set(rankings["Team"].str.strip())
+    
+    # Check all ranked teams are in master list
+    invalid = ranked_set - master_set
+    assert len(invalid) == 0, f"Non-master teams in rankings: {invalid}"
+    
+    # Check team count in expected range
+    assert 140 <= len(rankings) <= 180, f"Expected 140-180 teams, got {len(rankings)}"
+    
+    print(f"  PASS: All {len(rankings)} teams are authorized AZ U12 teams")
+    print(f"  PASS: Team count {len(rankings)} is within expected range (140-180)")
+    return True
+
 def main():
     """Run all v5 acceptance tests"""
     print("Running v5 Acceptance Tests")
@@ -136,6 +228,10 @@ def main():
         test_meta_has_method,
         test_high_volume_teams,
         test_tapered_weights_applied,
+        test_filtered_data_usage,
+        test_sanity_metrics,
+        test_master_team_filtering,
+        test_v51_tuning_parameters,
     ]
     
     passed = 0
@@ -152,6 +248,33 @@ def main():
     else:
         print("WARNING: Some tests failed - review before deployment")
         return 1
+
+def test_v51_tuning_parameters():
+    """Verify V5.1 tuning parameters are correctly applied."""
+    print("\nTesting V5.1 tuning parameters...")
+    
+    # Import the V5.1 constants
+    import sys
+    sys.path.insert(0, 'rankings')
+    from generate_team_rankings_v51 import OFF_WEIGHT, DEF_WEIGHT, SOS_WEIGHT, SOS_FLOOR, GOAL_DIFF_CAP
+    
+    # Verify weights
+    assert OFF_WEIGHT == 0.35, f"OFF_WEIGHT should be 0.35, got {OFF_WEIGHT}"
+    assert DEF_WEIGHT == 0.35, f"DEF_WEIGHT should be 0.35, got {DEF_WEIGHT}"
+    assert SOS_WEIGHT == 0.30, f"SOS_WEIGHT should be 0.30, got {SOS_WEIGHT}"
+    assert OFF_WEIGHT + DEF_WEIGHT + SOS_WEIGHT == 1.0, "Weights must sum to 1.0"
+    
+    # Verify floor
+    assert SOS_FLOOR == 0.40, f"SOS_FLOOR should be 0.40, got {SOS_FLOOR}"
+    
+    # Verify cap
+    assert GOAL_DIFF_CAP == 6, f"GOAL_DIFF_CAP should be 6, got {GOAL_DIFF_CAP}"
+    
+    print("  PASS: V5.1 tuning parameters correctly configured")
+    print(f"    - Weights: Off={OFF_WEIGHT}, Def={DEF_WEIGHT}, SOS={SOS_WEIGHT}")
+    print(f"    - SOS Floor: {SOS_FLOOR}")
+    print(f"    - Goal Diff Cap: ±{GOAL_DIFF_CAP}")
+    return True
 
 if __name__ == "__main__":
     sys.exit(main())

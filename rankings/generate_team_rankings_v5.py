@@ -1,4 +1,28 @@
 # rankings/generate_team_rankings_v5.py
+"""
+ARIZONA U12 RANKING LOGIC — AUTHORITATIVE SCOPE (V5 Spec)
+
+Data Windows:
+- Rankings: last 30 games, within 365 days (weighted)
+- Display: last 18 months (unweighted)
+
+Comprehensive History Usage:
+- ONLY for SOS (Opponent_BaseStrength) and frontend display
+- NEVER used for Off_raw, Def_raw, or GamesPlayed in rankings
+
+GamesPlayed Fields:
+- GamesUsed: filtered count (≤30) → used in ranking + GP multiplier
+- GamesTotal: all-time count → display only (for transparency)
+
+Ranking Flow:
+1. Filter + weight last 30 games
+2. Compute Off_raw, Def_raw
+3. Apply opponent adjustments using filtered data
+4. Compute SOS from comprehensive history (fallback to percentile)
+5. Normalize metrics (min-max 0–1)
+6. Combine into PowerScore = 0.375*Off + 0.375*Def + 0.25*SOS
+7. Output Rankings_v5.csv sorted by PowerScore
+"""
 import pandas as pd
 import numpy as np
 import os
@@ -165,35 +189,20 @@ def build_rankings_from_wide(wide_matches_csv: Path, out_csv: Path):
     long = wide_to_long(raw)
     long = clamp_window(long)
 
-    # Use comprehensive history for accurate offensive/defensive calculations
-    print("Using comprehensive history for offensive/defensive calculations...")
-    try:
-        comp_hist = pd.read_csv("Team_Game_Histories_COMPREHENSIVE.csv")
-        comp_hist["Date"] = pd.to_datetime(comp_hist["Date"])
-        
-        # Calculate accurate offensive and defensive stats from ALL games
-        team_stats = comp_hist.groupby("Team").agg({
-            "GoalsFor": ["sum", "count"],
-            "GoalsAgainst": ["sum", "count"]
-        }).round(3)
-        
-        team_stats.columns = ["GF_total", "Games", "GA_total", "Games2"]
-        team_stats = team_stats.drop("Games2", axis=1)
-        team_stats["GFPG"] = team_stats["GF_total"] / team_stats["Games"]
-        team_stats["GAPG"] = team_stats["GA_total"] / team_stats["Games"]
-        
-        # Calculate raw offensive and defensive scores
-        team_stats["Off_raw"] = team_stats["GFPG"]
-        team_stats["Def_raw"] = 1.0 / (1.0 + team_stats["GAPG"])
-        
-        # Create base dataframe with accurate stats
-        base = team_stats[["Off_raw", "Def_raw"]].copy()
-        base["GamesPlayed"] = team_stats["Games"]
-        print(f"Calculated accurate stats for {len(base)} teams using comprehensive history")
-        
-    except FileNotFoundError:
-        print("Warning: Using filtered games for offensive/defensive calculations")
-        base = compute_off_def_raw(long)
+    # Load authoritative AZ U12 master team list
+    master_teams = pd.read_csv("AZ MALE U12 MASTER TEAM LIST.csv")
+    master_team_names = set(master_teams["Team Name"].str.strip())
+    print(f"Loaded {len(master_team_names)} authorized AZ U12 teams from master list")
+
+    # Filter to include only master teams as ranked entities
+    # Keep all opponents for accurate SOS calculation
+    long = long[long["Team"].isin(master_team_names)].copy()
+    print(f"Filtered to master teams. Remaining matches: {len(long)}")
+    print(f"Unique teams after filter: {len(long['Team'].unique())}")
+
+    # Use filtered dataset for Off_raw/Def_raw calculations (per V5 spec)
+    print("Calculating Off_raw/Def_raw from filtered 30-game window...")
+    base = compute_off_def_raw(long)
     
     adj  = opponent_adjust(long, base)
 
@@ -243,20 +252,28 @@ def build_rankings_from_wide(wide_matches_csv: Path, out_csv: Path):
 
     out = out.reset_index()  # Team as a column
     
-    # Calculate total games played from comprehensive history (after reset_index)
-    print("Calculating total games played...")
+    # GamesPlayed = filtered count (≤30) used in rankings (per V5 spec)
+    print("Setting GamesPlayed to filtered count for ranking calculations...")
+    out["GamesPlayed"] = out["Team"].map(base["GamesPlayed"].to_dict())
+    
+    # Add GamesTotal for display transparency (all-time count)
+    print("Adding GamesTotal for display transparency...")
     try:
         comp_hist = pd.read_csv("Team_Game_Histories_COMPREHENSIVE.csv")
         total_games = comp_hist.groupby("Team").size()
-        out["GamesPlayed"] = out["Team"].map(lambda team: total_games.get(team, 0))
-        print(f"Updated GamesPlayed for {len(out)} teams using comprehensive history")
+        out["GamesTotal"] = out["Team"].map(lambda team: total_games.get(team, 0))
+        print(f"Added GamesTotal for {len(out)} teams from comprehensive history")
     except FileNotFoundError:
-        print("Warning: Using filtered games count (may be capped at 30)")
-        out["GamesPlayed"] = base["GamesPlayed"]
+        print("Warning: Comprehensive history not found, GamesTotal = GamesPlayed")
+        out["GamesTotal"] = out["GamesPlayed"]
     
     out["GP_Mult"] = out["GamesPlayed"].apply(gp_multiplier)
     out["PowerScore_adj"] = (out["PowerScore"] * out["GP_Mult"]).round(3)
     out["Status"] = np.where(out["GamesPlayed"] >= 6, "Active", "Provisional")
+    
+    # Add is_active flag for frontend (LastGame >= today - 180 days)
+    cutoff = pd.Timestamp.now().normalize() - pd.Timedelta(days=INACTIVE_HIDE_DAYS)
+    out["is_active"] = out["LastGame"] >= cutoff
 
     # Sort with offense-first tie-breakers and no ties
     sort_cols = ["PowerScore_adj","Off_norm","Def_norm","SOS_norm","GamesPlayed","Team"]
@@ -267,7 +284,20 @@ def build_rankings_from_wide(wide_matches_csv: Path, out_csv: Path):
     cutoff = pd.Timestamp.now().normalize() - pd.Timedelta(days=INACTIVE_HIDE_DAYS)
     out_visible = out[out["LastGame"] >= cutoff].copy()
 
-    cols = ["Rank","Team","PowerScore_adj","PowerScore","GP_Mult","Off_norm","Def_norm","SOS_norm","GamesPlayed","Status","LastGame"]
+    # Sanity check: ensure only master teams in final rankings
+    invalid_teams = set(out_visible["Team"]) - master_team_names
+    if invalid_teams:
+        print(f"WARNING: {len(invalid_teams)} non-master teams found: {list(invalid_teams)[:5]}")
+    else:
+        print(f"PASS: All {len(out_visible)} ranked teams are from master list")
+
+    # Sanity check: verify expected team count (150-180 AZ U12 teams)
+    unique_teams = len(out_visible["Team"].unique())
+    print(f"Sanity check: {unique_teams} master teams ranked")
+    if not (150 <= unique_teams <= 180):
+        print(f"WARNING: Expected 150-180 AZ U12 teams, got {unique_teams}")
+    
+    cols = ["Rank","Team","PowerScore_adj","PowerScore","GP_Mult","Off_norm","Def_norm","SOS_norm","GamesPlayed","GamesTotal","Status","is_active","LastGame"]
     out_visible[cols].to_csv(out_csv, index=False, encoding="utf-8")
     return out_visible
 

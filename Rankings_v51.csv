@@ -1,0 +1,149 @@
+Rank,Team,PowerScore_adj,PowerScore,GP_Mult,Off_norm,Def_norm,SOS_norm,GamesPlayed,GamesTotal,Status,is_active,LastGame
+1,PRFC Scottsdale 14B Pre-Academy,0.618,0.618,1.0,0.548,0.874,0.4,30,61,Active,True,2025-10-05
+2,Scottsdale 14 Sandsharks Select,0.582,0.582,1.0,0.369,0.951,0.4,25,31,Active,True,2025-10-04
+3,2014 Elite,0.58,0.644,0.9,0.52,0.978,0.4,16,16,Active,True,2025-09-28
+4,FC Elite Arizona 2014 Boys - Martinez,0.563,0.626,0.9,0.826,0.621,0.4,10,10,Active,True,2025-09-28
+5,Southeast 2014 Boys Black,0.563,0.563,1.0,0.596,0.562,0.527,27,30,Active,True,2025-09-14
+6,Phoenix Premier FC 14B X-Factor,0.552,0.552,1.0,0.501,0.733,0.4,30,31,Active,True,2025-09-21
+7,Phoenix United 2014 Premier,0.522,0.522,1.0,0.611,0.539,0.4,30,57,Active,True,2025-10-04
+8,14B NL #2,0.504,0.56,0.9,0.256,1.0,0.4,10,12,Active,True,2025-09-21
+9,Madison FC 14 Gold Boys,0.497,0.497,1.0,0.562,0.515,0.4,30,49,Active,True,2025-10-04
+10,PSG 14B Blue,0.49,0.49,1.0,0.589,0.469,0.4,30,44,Active,True,2025-10-04
+11,Real Arizona 2014,0.487,0.487,1.0,0.596,0.452,0.4,30,47,Active,True,2025-04-27
+12,2014B West,0.483,0.483,1.0,0.5,0.535,0.404,30,66,Active,True,2025-09-28
+13,14B GSA,0.481,0.481,1.0,0.523,0.442,0.479,30,51,Active,True,2025-09-28
+14,Dynamos SC 14B SC,0.479,0.479,1.0,0.369,0.634,0.427,30,42,Active,True,2025-09-28
+15,FC Elite Arizona 2014 Boys (ARCHIVED),0.474,0.474,1.0,0.403,0.609,0.4,30,47,Active,True,2025-06-01
+16,2014 Tuzos Academy FV,0.469,0.521,0.9,0.595,0.55,0.4,17,21,Active,True,2025-10-04
+17,Monsters 2014,0.462,0.616,0.75,0.547,0.87,0.4,8,12,Active,True,2025-09-20
+18,FC Deportivo AZ 2014B (Gallegos),0.458,0.458,1.0,0.619,0.346,0.4,24,24,Active,True,2025-10-04
+19,AZEV B2014 (WHITE),0.451,0.451,1.0,0.745,0.2,0.4,30,45,Active,True,2025-09-27
+20,CCV Stars 14 Boys West Pre-ECNL,0.448,0.448,1.0,0.283,0.653,0.4,21,25,Active,True,2025-09-13
+21,Excel Soccer Academy 14B Red,0.447,0.447,1.0,0.374,0.512,0.457,30,40,Active,True,2025-10-05
+22,Kingman SC B14 McGill,0.445,0.445,1.0,0.436,0.493,0.4,23,23,Active,True,2025-09-07
+23,Southeast 2014 Boys Red,0.443,0.443,1.0,0.332,0.515,0.49,30,47,Active,True,2025-10-05
+24,SFC XOLOS ARIZONA 2014,0.44,0.489,0.9,0.669,0.384,0.4,12,12,Active,True,2025-10-04
+25,AZSC 14B Perez,0.439,0.439,1.0,0.462,0.447,0.403,30,56,Active,True,2025-04-27
+26,14 Pre-MLSN #2,0.439,0.439,1.0,0.391,0.521,0.4,30,43,Active,True,2025-10-04
+27,AZSC 2014B Pre-NL Premier 2,0.436,0.436,1.0,0.389,0.515,0.4,30,38,Active,True,2025-09-20
+28,14 Pre-MLSN #1,0.433,0.433,1.0,0.402,0.491,0.401,30,39,Active,True,2025-10-04
+29,Legends FC AZ 14B Black,0.429,0.429,1.0,0.464,0.418,0.4,30,39,Active,True,2025-04-13
+30,2014 Rush Boys,0.429,0.429,1.0,0.426,0.458,0.4,30,42,Active,True,2025-10-04
+31,Playmaker Futbol Academy 14B Black,0.426,0.426,1.0,0.42,0.453,0.4,30,71,Active,True,2025-09-28
+32,Phoenix Premier FC 14B SW Black,0.417,0.417,1.0,0.432,0.417,0.4,24,28,Active,True,2025-09-28
+33,RSL-AZ Yuma 14 Boys Quinonez,0.416,0.416,1.0,0.523,0.322,0.4,22,26,Active,True,2025-10-04
+34,14B Negrete Pre MLS Next,0.416,0.416,1.0,0.37,0.477,0.4,21,25,Active,True,2025-10-04
+35,Tuzos Royals 14 Pre-Academy,0.416,0.416,1.0,0.344,0.501,0.4,30,57,Active,True,2025-09-14
+36,NOS Santos 14 Boys Blue,0.415,0.415,1.0,0.506,0.338,0.4,27,37,Active,True,2025-10-04
+37,PRFC Desert Foothills 14B Pre-Academy,0.414,0.414,1.0,0.471,0.354,0.419,30,55,Active,True,2025-10-05
+38,Brazas 2014 Boys Black Marcos,0.414,0.414,1.0,0.376,0.465,0.4,27,35,Active,True,2025-04-27
+39,14B Engilman,0.408,0.408,1.0,0.408,0.414,0.4,30,52,Active,True,2025-09-20
+40,AZEV B2014 (NAVY),0.408,0.408,1.0,0.358,0.464,0.4,30,54,Active,True,2025-09-27
+41,AZ Arsenal 14 Boys Select,0.405,0.405,1.0,0.388,0.425,0.4,29,31,Active,True,2025-10-04
+42,14B Velasco,0.404,0.404,1.0,0.276,0.456,0.494,30,38,Active,True,2025-09-27
+43,Gila Valley Ninjas,0.4,0.533,0.75,0.534,0.647,0.4,4,4,Provisional,True,2025-09-21
+44,2014 Boys Yellow,0.398,0.398,1.0,0.371,0.422,0.4,30,50,Active,True,2025-09-20
+45,PRFC West Valley 14B Predator,0.397,0.397,1.0,0.492,0.3,0.4,30,37,Active,True,2025-10-04
+46,Phoenix Premier FC 14B Black,0.395,0.395,1.0,0.486,0.284,0.419,30,44,Active,True,2025-10-04
+47,FC ARIZONA PRE ECNL RL B14,0.394,0.525,0.75,0.459,0.699,0.4,4,4,Provisional,True,2025-09-28
+48,Excel Soccer Academy 14B Black,0.392,0.435,0.9,0.521,0.38,0.4,16,21,Active,True,2025-10-04
+49,Tuzos Royals 2014,0.391,0.391,1.0,0.232,0.356,0.618,30,89,Active,True,2025-10-04
+50,Pima Surf 2014 B White,0.386,0.514,0.75,0.558,0.053,1.0,4,4,Provisional,True,2025-09-13
+51,West Valley 2014 Boys Martinez Pre-Elite64,0.386,0.386,1.0,0.352,0.391,0.421,30,50,Active,True,2025-04-27
+52,14B Moyer,0.386,0.386,1.0,0.344,0.415,0.4,26,31,Active,True,2025-09-20
+53,CCV Stars 14 Boys South Pre-ECNL,0.385,0.385,1.0,0.35,0.367,0.448,27,33,Active,True,2025-10-05
+54,Amore 2014 Boys,0.383,0.383,1.0,0.431,0.32,0.4,30,58,Active,True,2025-09-07
+55,AZ Arsenal Pre-ECNL B14,0.383,0.383,1.0,0.284,0.357,0.528,30,51,Active,True,2025-09-28
+56,PRFC North Valley 14B PreAcademy,0.382,0.382,1.0,0.232,0.44,0.488,30,52,Active,True,2025-10-04
+57,CCV Stars 14 Boys East Pre-ECNL,0.379,0.379,1.0,0.28,0.459,0.4,22,26,Active,True,2025-09-14
+58,CCV Stars 14 Boys North Pre-ECNL,0.379,0.421,0.9,0.21,0.583,0.479,18,22,Active,True,2025-10-04
+59,Southeast 2014 Boys Green,0.378,0.378,1.0,0.319,0.419,0.4,30,36,Active,True,2025-10-05
+60,PRFC Southeast Valley 14B Predator,0.377,0.377,1.0,0.517,0.217,0.4,30,59,Active,True,2025-10-04
+61,Southeast 2014 Boys Blue,0.377,0.377,1.0,0.362,0.352,0.425,30,40,Active,True,2025-10-04
+62,14 Boys Navy,0.375,0.375,1.0,0.321,0.407,0.4,30,35,Active,True,2025-09-20
+63,Tuzos Academy Mesa 2014,0.373,0.373,1.0,0.411,0.313,0.4,30,59,Active,True,2025-10-05
+64,CDO 14B Premier,0.373,0.373,1.0,0.373,0.35,0.4,30,33,Active,True,2025-10-05
+65,Scottsdale 14 Sandsharks Black,0.372,0.372,1.0,0.188,0.533,0.4,23,26,Active,True,2025-09-13
+66,VSC 2014 Boys Green,0.368,0.368,1.0,0.311,0.399,0.4,24,25,Active,True,2025-09-21
+67,Playmaker Futbol Academy 14B Gold,0.367,0.367,1.0,0.469,0.238,0.4,30,76,Active,True,2025-09-28
+68,14B Hinds,0.367,0.367,1.0,0.282,0.425,0.4,30,33,Active,True,2025-09-21
+69,14B JDeutsch Pre-MLS Next,0.365,0.365,1.0,0.27,0.406,0.428,21,28,Active,True,2025-09-19
+70,U-12 (2014) Boys Yuma Pre Academy,0.365,0.406,0.9,0.187,0.535,0.511,16,20,Active,True,2025-09-07
+71,FC Arizona 14B Black GFC Suenaga U12,0.364,0.485,0.75,0.662,0.38,0.4,9,9,Active,True,2025-10-04
+72,Madison FC 14 Blue Boys,0.361,0.361,1.0,0.319,0.37,0.4,30,51,Active,True,2025-09-20
+73,FSC United 14 Boys,0.36,0.36,1.0,0.531,0.156,0.4,30,45,Active,True,2025-09-28
+74,CDO 14B Elite,0.357,0.397,0.9,0.291,0.501,0.4,18,24,Active,True,2025-09-21
+75,U-12 (2014) Boys Pre Academy Blue,0.354,0.354,1.0,0.352,0.317,0.4,30,40,Active,True,2025-10-05
+76,Select 14B Red,0.353,0.353,1.0,0.236,0.431,0.4,29,31,Active,True,2025-10-04
+77,SCUM East Valley 14B Ninjas,0.352,0.47,0.75,1.0,0.0,0.4,6,6,Active,True,2025-09-06
+78,State 48 FC Avondale 14 Black,0.351,0.351,1.0,0.228,0.433,0.4,30,36,Active,True,2025-10-04
+79,Playmaker Futbol Academy PRE-ECNL B14,0.35,0.389,0.9,0.343,0.367,0.467,19,31,Active,True,2025-09-28
+80,14B Antunez Pre-MLS Next,0.349,0.349,1.0,0.273,0.266,0.535,26,35,Active,True,2025-10-05
+81,14B Felix Nogales,0.347,0.385,0.9,0.395,0.361,0.4,14,17,Active,True,2025-09-28
+82,La Academia 14B,0.346,0.384,0.9,0.572,0.182,0.4,18,19,Active,True,2025-10-04
+83,Dynamos SC 14B Gold,0.346,0.346,1.0,0.352,0.294,0.4,30,45,Active,True,2025-10-05
+84,CCV Stars 14 Boys West Orange,0.344,0.344,1.0,0.244,0.395,0.4,22,25,Active,True,2025-09-20
+85,Tuzos Halcones 2014,0.343,0.343,1.0,0.47,0.167,0.4,30,42,Active,True,2025-10-05
+86,AZ Inferno 14 Boys Black,0.342,0.342,1.0,0.379,0.255,0.4,30,56,Active,True,2025-10-04
+87,PRFC Scottsdale 14B Predator,0.339,0.339,1.0,0.322,0.304,0.4,30,43,Active,True,2025-09-20
+88,CCV Stars 14 Boys North Navy,0.335,0.335,1.0,0.354,0.259,0.4,23,27,Active,True,2025-10-04
+89,14B Blue #1,0.334,0.371,0.9,0.138,0.58,0.4,16,20,Active,True,2025-09-21
+90,PRFC North Valley 14B Predator,0.333,0.333,1.0,0.308,0.302,0.4,30,56,Active,True,2025-09-27
+91,Milan B,0.331,0.441,0.75,0.914,0.003,0.4,3,3,Provisional,True,2025-09-28
+92,14B Hermanson AL,0.33,0.33,1.0,0.223,0.377,0.4,30,41,Active,True,2025-10-04
+93,East Valley NSFC 14 Boys Tiggs,0.329,0.329,1.0,0.503,0.093,0.4,27,29,Active,True,2025-09-13
+94,AZ Arsenal 14 Boys Teal SC,0.328,0.328,1.0,0.291,0.303,0.4,30,43,Active,True,2025-10-04
+95,RSL-AZ Yuma 14 Boys Rodriguez,0.328,0.365,0.9,0.282,0.382,0.442,10,13,Active,True,2025-08-17
+96,Tuzos 2014 Nava,0.326,0.362,0.9,0.528,0.164,0.4,17,19,Active,True,2025-10-04
+97,Madison FC 14 White Boys,0.326,0.434,0.75,0.383,0.514,0.4,7,7,Active,True,2025-09-13
+98,PRFC Southeast Valley 14B Predator-Central,0.326,0.326,1.0,0.251,0.338,0.4,30,46,Active,True,2025-09-13
+99,CCV Stars 14 Boys North Orange,0.326,0.326,1.0,0.235,0.297,0.467,30,40,Active,True,2025-10-04
+100,2014 Boys Blue,0.325,0.325,1.0,0.224,0.362,0.4,30,40,Active,True,2025-09-20
+101,Select 14B,0.324,0.324,1.0,0.331,0.252,0.4,30,34,Active,True,2025-10-04
+102,East Valley NSFC 14 Boys Aguirre,0.324,0.324,1.0,0.295,0.257,0.435,30,59,Active,True,2025-09-20
+103,Pumas Tucson 14B,0.322,0.429,0.75,0.488,0.396,0.4,4,4,Provisional,True,2025-09-21
+104,Verde Valley United FC,0.322,0.358,0.9,0.304,0.375,0.4,16,20,Active,True,2025-05-25
+105,14B NL #1,0.322,0.358,0.9,0.3,0.381,0.4,17,19,Active,True,2025-09-21
+106,PRFC Scottsdale 14B Copa,0.319,0.319,1.0,0.312,0.256,0.4,30,39,Active,True,2025-09-20
+107,Eagles F.C.,0.318,0.318,1.0,0.149,0.418,0.4,28,29,Active,True,2025-09-21
+108,CAC 14/15B (Conroy),0.317,0.317,1.0,0.312,0.252,0.4,30,42,Active,True,2025-09-28
+109,NOS Santos 14 Boys White,0.316,0.316,1.0,0.373,0.187,0.4,29,32,Active,True,2025-10-04
+110,AZ Arsenal 14 Boys Teal MC,0.316,0.316,1.0,0.222,0.337,0.4,23,24,Active,True,2025-09-21
+111,PRFC North Valley 14B Copa,0.311,0.311,1.0,0.379,0.168,0.4,30,43,Active,True,2025-04-27
+112,FC Elite Arizona 2014 Boys - Urbina,0.311,0.346,0.9,0.236,0.41,0.4,11,11,Active,True,2025-09-28
+113,Phoenix Valley Soccer Club boys 2014,0.307,0.307,1.0,0.332,0.202,0.4,30,35,Active,True,2025-09-20
+114,Milan,0.302,0.302,1.0,0.187,0.332,0.4,28,34,Active,True,2025-09-28
+115,14B Geoff,0.301,0.301,1.0,0.167,0.349,0.4,24,26,Active,True,2025-09-21
+116,Synergy FC 14 B,0.299,0.299,1.0,0.205,0.306,0.4,30,41,Active,True,2025-09-27
+117,14B Midhaan,0.298,0.298,1.0,0.313,0.195,0.4,26,27,Active,True,2025-09-14
+118,AZ Arsenal 14 Boys Teal CB,0.297,0.297,1.0,0.343,0.164,0.4,30,38,Active,True,2025-09-06
+119,Phoenix Premier FC 14B White,0.293,0.293,1.0,0.246,0.247,0.4,28,32,Active,True,2025-04-19
+120,CCV Stars 14 Boys South Orange,0.293,0.293,1.0,0.23,0.264,0.4,30,38,Active,True,2025-10-04
+121,ESC - Boys Chandler 15/16,0.29,0.387,0.75,0.714,0.049,0.4,4,4,Provisional,True,2025-04-27
+122,Pima Surf 2014 B Blue,0.29,0.322,0.9,0.291,0.287,0.4,12,14,Active,True,2025-10-05
+123,14 Cityzens,0.286,0.286,1.0,0.173,0.297,0.404,30,71,Active,True,2025-10-04
+124,Northwest 2014 Boys,0.286,0.286,1.0,0.155,0.306,0.415,30,46,Active,True,2025-04-26
+125,14B Rayados Blue AL,0.284,0.378,0.75,0.376,0.295,0.478,9,14,Active,True,2025-10-05
+126,PRFC Southeast Valley 14B Pre-Academy,0.284,0.284,1.0,0.234,0.233,0.402,30,43,Active,True,2025-10-04
+127,14B Rueda,0.282,0.282,1.0,0.232,0.231,0.4,24,29,Active,True,2025-10-04
+128,Tuzos Titanes 2014,0.281,0.281,1.0,0.255,0.206,0.4,23,25,Active,True,2025-09-20
+129,14B Laroussi,0.274,0.305,0.9,0.407,0.122,0.4,14,17,Active,True,2025-09-27
+130,VSC 2014 Boys White,0.274,0.305,0.9,0.216,0.312,0.4,14,18,Active,True,2025-09-21
+131,PRFC West Valley 14B Pre-Academy,0.274,0.274,1.0,0.173,0.268,0.4,30,54,Active,True,2025-09-21
+132,PSC 2014/15B,0.272,0.363,0.75,0.176,0.164,0.815,5,7,Provisional,True,2025-09-20
+133,PRFC Desert Foothills 14B Predator,0.269,0.269,1.0,0.239,0.188,0.4,29,36,Active,True,2025-10-04
+134,Jedi 14B,0.263,0.351,0.75,0.057,0.602,0.4,3,3,Provisional,True,2025-09-21
+135,Spartak Academy 2014 Boys,0.262,0.35,0.75,0.529,0.127,0.4,4,4,Provisional,True,2025-10-04
+136,Deportivo Mexico 14B,0.262,0.291,0.9,0.161,0.327,0.4,16,17,Active,True,2025-09-28
+137,Bala FC - 2014B,0.255,0.34,0.75,0.304,0.325,0.4,3,3,Provisional,True,2025-09-14
+138,Tuzos Nogales 2014,0.255,0.34,0.75,0.0,0.63,0.4,3,3,Provisional,True,2025-09-21
+139,Hustle Hard 2014- Boys,0.25,0.25,1.0,0.111,0.26,0.4,24,29,Active,True,2025-04-13
+140,AZSC 2014/2015B Navy,0.249,0.332,0.75,0.318,0.289,0.4,6,6,Active,True,2025-10-04
+141,America 14b,0.248,0.33,0.75,0.455,0.145,0.4,8,11,Active,True,2025-09-28
+142,PSC 2014B,0.24,0.32,0.75,0.096,0.474,0.4,6,6,Active,True,2025-09-27
+143,AZ Inferno 14 Boys Blue,0.233,0.311,0.75,0.265,0.282,0.4,8,8,Active,True,2025-10-04
+144,State 48 FC Avondale 14 White,0.232,0.309,0.75,0.094,0.447,0.4,6,6,Active,True,2025-09-27
+145,FC Sonora 14' B Dynamo,0.228,0.253,0.9,0.17,0.211,0.4,11,13,Active,True,2025-09-28
+146,Tuzos Chandler 2014 boys,0.221,0.295,0.75,0.265,0.169,0.478,6,6,Active,True,2025-10-04
+147,Phoenix Premier FC 14B Pre MLS Next AD,0.2,0.266,0.75,0.273,0.145,0.4,5,5,Provisional,True,2025-09-20
+148,ASA 014B Magic,0.184,0.204,0.9,0.093,0.147,0.4,15,18,Active,True,2025-09-20

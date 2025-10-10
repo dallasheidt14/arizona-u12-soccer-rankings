@@ -467,7 +467,7 @@ def api_rankings(
     preferred_cols = [
         "Rank", "Team",
         "PowerScore_adj", "PowerScore", "GP_Mult",
-        "SAO_norm", "SAD_norm", "SOS_norm",  # Use V5.2b strength-adjusted metrics
+        "SAO_norm", "SAD_norm", "SOS_norm", "SOS_iterative_norm",  # Add iterative SOS
         "GamesPlayed", "Status", "WL", "LastGame"
     ]
     cols = [c for c in preferred_cols if c in all_teams.columns]
