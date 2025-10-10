@@ -232,5 +232,20 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Scrape GotSport team lists and game histories.")
     parser.add_argument("--division", choices=list(DIVISION_URLS.keys()), required=True,
                         help="Division key (e.g., az_boys_u11, az_boys_u12)")
+    parser.add_argument("--mode", choices=["teams", "games"], default="teams",
+                        help="Scraping mode: 'teams' for master list (Step 1), 'games' for match histories (Step 2)")
     args = parser.parse_args()
-    run_division_scrape(args.division)
+    
+    if args.mode == "teams":
+        # Step 1: Scrape team list only
+        teams_df = scrape_team_list(args.division)
+        if not teams_df.empty:
+            print(f"✅ Step 1 complete: {len(teams_df)} teams scraped")
+    elif args.mode == "games":
+        # Step 2: Delegate to dedicated game history scraper
+        import subprocess
+        import sys
+        sys.exit(subprocess.call([
+            sys.executable, "scrapers/scrape_team_history.py",
+            "--division", args.division
+        ]))
