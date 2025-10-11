@@ -9,24 +9,46 @@ import numpy as np
 import pandas as pd
 
 
-def canonicalize_team_name(s: str) -> str:
+# Teams where color is part of identity (from U12 analysis)
+KNOWN_COLOR_TEAMS = {
+    "southeast 2014 boys black",
+    "sffa 2014 boys white", 
+    "sffa 2014 boys blue",
+    "doral sc white 2014",
+    "miami skies fc 2014 black",
+    "2014 cyclones boys black"
+}
+
+def canonicalize_team_name(s: str, preserve_known_colors: bool = True) -> str:
     """
     Normalize team names to canonical form for consistent joins.
     Strips venue markers, normalizes variants, standardizes spacing.
+    Preserves colors for known teams where color is part of identity.
     
     Args:
         s: Team name string to canonicalize
+        preserve_known_colors: Whether to preserve colors for known teams
         
     Returns:
         Canonicalized team name string
     """
     if not isinstance(s, str):
         return s
-    s = s.lower()
-    s = re.sub(r"\s+\((h|a)\)$", "", s)            # strip (H)/(A)
+    
+    original = s.lower().strip()
+    s = re.sub(r"\s+\((h|a)\)$", "", original)            # strip (H)/(A)
     s = re.sub(r"\bsc\b|\bfc\b|\bacademy\b", "", s)
-    s = s.replace("boys", "").replace("b14", "2014")
+    s = s.replace("boys", "").replace("girls", "")
+    s = s.replace("b14", "2014").replace("b15", "2015")
     s = re.sub(r"\s+", " ", s).strip()
+    
+    # Check if this is a known color team
+    if preserve_known_colors and original in KNOWN_COLOR_TEAMS:
+        return original
+    
+    # Strip trailing color suffixes
+    s = re.sub(r"\s+(blue|red|white|black|gold|maroon|green|navy|silver|grey|gray)$", "", s).strip()
+    
     return s
 
 

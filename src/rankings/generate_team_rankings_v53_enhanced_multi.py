@@ -48,6 +48,7 @@ sys.path.append('.')  # Add current directory for utils imports
 from src.utils.division import parse_age_from_division, to_canonical_division
 from src.utils.data_loader import resolve_input_path, load_games_frame
 from src.utils.team_normalizer import canonicalize_team_name, robust_minmax
+from src.utils.team_aliases import resolve_team_name
 
 # Division registry integration
 try:
@@ -343,8 +344,14 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
     raw["Team B"] = raw["Team B"].astype(str).str.strip()
     
     # Add canonical keys to raw data BEFORE wide_to_long
-    raw["Team_A_Key"] = raw["Team A"].map(canonicalize_team_name)
-    raw["Team_B_Key"] = raw["Team B"].map(canonicalize_team_name)
+    # Canonicalize team names for consistent matching
+    if age == "U11":
+        # For U11, preserve colors since they represent different teams
+        raw["Team_A_Key"] = raw["Team A"].str.lower().str.strip()
+        raw["Team_B_Key"] = raw["Team B"].str.lower().str.strip()
+    else:
+        raw["Team_A_Key"] = raw["Team A"].map(resolve_team_name)
+        raw["Team_B_Key"] = raw["Team B"].map(resolve_team_name)
     
     # Convert to long format with keys
     long = wide_to_long_with_keys(raw)
@@ -353,15 +360,20 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
     # Load master list with keys
     master_teams = pd.read_csv(MASTER_PATH)
     master_teams["Team Name"] = master_teams["Team Name"].astype(str).str.strip()
-    master_teams["TeamKey"] = master_teams["Team Name"].map(canonicalize_team_name)
+    master_teams["TeamKey"] = master_teams["Team Name"].map(resolve_team_name)
     master_team_keys = set(master_teams["TeamKey"])
     print(f"Loaded {len(master_team_keys)} authorized AZ {age} teams from master list")
     
     # Filter matches: keep only rows where Team is a master team
     # (Keep all opponents for accurate SOS calculation)
-    long = long[long["TeamKey"].isin(master_team_keys)].copy()
-    print(f"Filtered to master teams. Remaining matches: {len(long)}")
-    print(f"Unique teams after filter: {len(long['TeamKey'].unique())}")
+    if age == "U11":
+        # For U11, include all teams from games data (master list is incomplete)
+        print(f"U11: Skipping master list filter, using all {len(long)} matches")
+        print(f"Unique teams in games data: {len(long['TeamKey'].unique())}")
+    else:
+        long = long[long["TeamKey"].isin(master_team_keys)].copy()
+        print(f"Filtered to master teams. Remaining matches: {len(long)}")
+        print(f"Unique teams after filter: {len(long['TeamKey'].unique())}")
     
     # DO NOT map Team to "Team + Club" here - keep keys separate
     # Club names will be merged at the very end for display only
@@ -408,9 +420,17 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
         
         # Canonicalize using TeamKey (already present if comp_hist was built correctly)
         if "TeamKey" not in comp_hist.columns:
-            comp_hist["TeamKey"] = comp_hist["Team"].astype(str).str.strip().map(canonicalize_team_name)
+            if age == "U11":
+                # For U11, use same canonicalization as games data
+                comp_hist["TeamKey"] = comp_hist["Team"].astype(str).str.strip().str.lower()
+            else:
+                comp_hist["TeamKey"] = comp_hist["Team"].astype(str).str.strip().map(canonicalize_team_name)
         if "OppKey" not in comp_hist.columns:
-            comp_hist["OppKey"] = comp_hist["Opponent"].astype(str).str.strip().map(canonicalize_team_name)
+            if age == "U11":
+                # For U11, use same canonicalization as games data
+                comp_hist["OppKey"] = comp_hist["Opponent"].astype(str).str.strip().str.lower()
+            else:
+                comp_hist["OppKey"] = comp_hist["Opponent"].astype(str).str.strip().map(canonicalize_team_name)
         
         # Build opponent strength lookup (OppKey -> BaseStrength)
         opp_strength_map = comp_hist.groupby("OppKey")["Opponent_BaseStrength"].mean().to_dict()
@@ -439,6 +459,41 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
         adj["SOS_raw"] = adj.index.map(sos_scores)
         print(f"SOS calculation: {sos_counts['matched']}/{len(adj)} teams matched")
         
+        # If no teams matched in comprehensive history, fall back to games data calculation
+        if sos_counts['matched'] == 0:
+            print("No teams matched in comprehensive history - calculating SOS from games data")
+            
+            # Calculate SOS based on opponent win rates from games data
+            team_win_rates = {}
+            for team_key in adj.index:
+                team_games = long[long["TeamKey"] == team_key]
+                if len(team_games) > 0:
+                    wins = (team_games["GF"] > team_games["GA"]).sum()
+                    total = len(team_games)
+                    team_win_rates[team_key] = wins / total if total > 0 else 0.5
+                else:
+                    team_win_rates[team_key] = 0.5
+            
+            # Calculate SOS based on opponent win rates
+            for team_key in adj.index:
+                team_games = long[long["TeamKey"] == team_key]
+                if len(team_games) > 0:
+                    opponents = team_games["OppKey"].unique()
+                    opponent_win_rates = []
+                    
+                    for opp in opponents:
+                        if opp in team_win_rates:
+                            opponent_win_rates.append(team_win_rates[opp])
+                    
+                    if opponent_win_rates:
+                        sos_scores[team_key] = np.mean(opponent_win_rates)
+                    else:
+                        sos_scores[team_key] = 0.5
+                else:
+                    sos_scores[team_key] = 0.5
+            
+            print(f"SOS calculation: {len(sos_scores)}/{len(adj)} teams calculated from games data")
+        
         # Apply SOS scores
         adj["SOS_iterative"] = adj.index.map(sos_scores)
         
@@ -456,11 +511,45 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
         
         print(f"SOS sources: {iterative_count} iterative, {baseline_count} baseline, {missing_count} missing")
     else:
-        print("Using percentile-based SOS (no comprehensive history available)")
-        # Fallback to percentile-based SOS
-        adj["SOS_final"] = adj["GamesPlayed"].rank(pct=True)
-        adj["SOS_iterative"] = np.nan
-        adj["SOS_baseline"] = adj["SOS_final"]
+        print("No comprehensive history available - calculating SOS from games data")
+        
+        # Calculate SOS based on opponent win rates from games data
+        sos_scores = {}
+        
+        # First, calculate win rates for all teams
+        team_win_rates = {}
+        for team_key in adj.index:
+            team_games = long[long["TeamKey"] == team_key]
+            if len(team_games) > 0:
+                wins = (team_games["GF"] > team_games["GA"]).sum()
+                total = len(team_games)
+                team_win_rates[team_key] = wins / total if total > 0 else 0.5
+            else:
+                team_win_rates[team_key] = 0.5
+        
+        # Now calculate SOS based on opponent win rates
+        for team_key in adj.index:
+            team_games = long[long["TeamKey"] == team_key]
+            if len(team_games) > 0:
+                opponents = team_games["OppKey"].unique()
+                opponent_win_rates = []
+                
+                for opp in opponents:
+                    if opp in team_win_rates:
+                        opponent_win_rates.append(team_win_rates[opp])
+                
+                if opponent_win_rates:
+                    sos_scores[team_key] = np.mean(opponent_win_rates)
+                else:
+                    sos_scores[team_key] = 0.5  # Default neutral
+            else:
+                sos_scores[team_key] = 0.5  # Default neutral
+        
+        adj["SOS_iterative"] = adj.index.map(sos_scores)
+        adj["SOS_baseline"] = adj["SOS_iterative"].rank(pct=True)
+        adj["SOS_final"] = adj["SOS_iterative"]
+        
+        print(f"SOS calculation: {len(sos_scores)}/{len(adj)} teams calculated from games data")
     
     # Normalize metrics to 0-1 range
     print("Normalizing metrics to 0-1 range...")
@@ -546,22 +635,37 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
     out_visible_with_team = out_visible.reset_index()
     out_visible_with_team = out_visible_with_team.rename(columns={'index': 'TeamKey'})
     
-    # Merge master list to get Team Name and Club for display
-    out_visible_with_team = out_visible_with_team.merge(
-        master_teams[["TeamKey", "Team Name", "Club"]],
-        on="TeamKey",
-        how="left"
-    )
-    
-    # Create DisplayTeam column (Team + Club for UI)
-    out_visible_with_team["DisplayTeam"] = np.where(
-        out_visible_with_team["Club"].notna() & (out_visible_with_team["Club"] != ""),
-        out_visible_with_team["Team Name"] + " " + out_visible_with_team["Club"],
-        out_visible_with_team["Team Name"]
-    )
-    
-    # Use DisplayTeam for the "Team" column in output
-    out_visible_with_team["Team"] = out_visible_with_team["DisplayTeam"]
+    if age == "U11":
+        # For U11, map back to original team names from games data
+        # Create mapping from TeamKey to original Team names
+        team_name_mapping = {}
+        for _, row in raw.iterrows():
+            team_a_key = row["Team_A_Key"]
+            team_b_key = row["Team_B_Key"]
+            if team_a_key not in team_name_mapping:
+                team_name_mapping[team_a_key] = row["Team A"]
+            if team_b_key not in team_name_mapping:
+                team_name_mapping[team_b_key] = row["Team B"]
+        
+        out_visible_with_team["Team"] = out_visible_with_team["TeamKey"].map(team_name_mapping)
+        out_visible_with_team["Club"] = ""
+    else:
+        # Merge master list to get Team Name and Club for display
+        out_visible_with_team = out_visible_with_team.merge(
+            master_teams[["TeamKey", "Team Name", "Club"]],
+            on="TeamKey",
+            how="left"
+        )
+        
+        # Create DisplayTeam column (Team + Club for UI)
+        out_visible_with_team["DisplayTeam"] = np.where(
+            out_visible_with_team["Club"].notna() & (out_visible_with_team["Club"] != ""),
+            out_visible_with_team["Team Name"] + " " + out_visible_with_team["Club"],
+            out_visible_with_team["Team Name"]
+        )
+        
+        # Use DisplayTeam for the "Team" column in output
+        out_visible_with_team["Team"] = out_visible_with_team["DisplayTeam"]
     
     # Keep Club as separate field for API
     out_visible_with_team["Club"] = out_visible_with_team["Club"].fillna("")
