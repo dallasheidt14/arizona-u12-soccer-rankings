@@ -487,11 +487,21 @@ def build_rankings_from_wide(wide_matches_csv: Path, out_csv: Path, division: st
     cutoff = pd.Timestamp.now().normalize() - pd.Timedelta(days=INACTIVE_HIDE_DAYS)
     adj["is_active"] = adj["LastGame"] >= cutoff
 
-    # Sort with offense-first tie-breakers and no ties
-    sort_cols = ["PowerScore_adj","SAO_norm","SAD_norm","SOS_norm","GamesPlayed"]
-    out = adj.sort_values(sort_cols, ascending=[False,False,False,False,False], kind="mergesort")
-    # DON'T reset_index(drop=True) - keep TeamKey as index
+    # ✅ Correct sort: numerical only, no implicit alphabetical fallback
+    # Remove GamesPlayed from sort keys to avoid alphabetical fallback
+    sort_cols = ["PowerScore_adj", "SOS_norm", "SAO_norm", "SAD_norm"]
+    out = adj.sort_values(
+        sort_cols,
+        ascending=[False, False, False, True],  # SAD is defensive (lower is better)
+        kind="mergesort"
+    )
+    
+    # Re-rank after sorting
     out["Rank"] = range(1, len(out) + 1)
+    
+    # 🔒 Guardrail: ensure PowerScore really descending
+    if not (out["PowerScore_adj"].diff().fillna(0) <= 0).all():
+        raise AssertionError("Ranking not strictly sorted by PowerScore descending!")
 
     # Filter inactive teams (6 months)
     cutoff = pd.Timestamp.now().normalize() - pd.Timedelta(days=INACTIVE_HIDE_DAYS)
@@ -518,7 +528,9 @@ def build_rankings_from_wide(wide_matches_csv: Path, out_csv: Path, division: st
         if isinstance(out_visible_with_team.index[0], (int, float)):
             # Build reverse mapping from master list
             master_df = pd.read_csv(MASTER_PATH)
-            name_map = {i: name for i, name in enumerate(sorted(master_df["Team Name"].unique()))}
+            # Preserve the DataFrame's existing sort order (already sorted by PowerScore)
+            # Don't use sorted() as it will alphabetize and destroy the ranking order
+            name_map = dict(enumerate(out_visible.index))
             team_names = out_visible_with_team.index.map(name_map)
             # Fill missing values with string representation of index
             for i, name in enumerate(team_names):
