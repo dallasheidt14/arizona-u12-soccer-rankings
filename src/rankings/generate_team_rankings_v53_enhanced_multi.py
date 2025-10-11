@@ -49,6 +49,13 @@ from src.utils.division import parse_age_from_division, to_canonical_division
 from src.utils.data_loader import resolve_input_path, load_games_frame
 from src.utils.team_normalizer import canonicalize_team_name, robust_minmax
 
+# Division registry integration
+try:
+    from src.utils.division_registry import get_master_list_path, validate_division_key
+    REGISTRY_AVAILABLE = True
+except ImportError:
+    REGISTRY_AVAILABLE = False
+
 def first_existing(paths):
     """Return first path that exists, or raise FileNotFoundError."""
     for p in paths:
@@ -303,10 +310,28 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
     age = division.split('_')[-1]  # U11, U12, etc.
     age_lower = age.lower()  # u11, u12
     
-    MASTER_PATH = first_existing([
-        f"data/bronze/AZ MALE {age_lower} MASTER TEAM LIST.csv",
-        f"AZ MALE {age_lower} MASTER TEAM LIST.csv"
-    ])
+    # Use registry for master list path if available
+    if REGISTRY_AVAILABLE:
+        try:
+            MASTER_PATH = get_master_list_path(division)
+            if not MASTER_PATH.exists():
+                # Fall back to old logic if registry path doesn't exist
+                MASTER_PATH = first_existing([
+                    f"data/bronze/AZ MALE {age_lower} MASTER TEAM LIST.csv",
+                    f"AZ MALE {age_lower} MASTER TEAM LIST.csv"
+                ])
+        except (KeyError, FileNotFoundError):
+            # Fall back to old logic if registry fails
+            MASTER_PATH = first_existing([
+                f"data/bronze/AZ MALE {age_lower} MASTER TEAM LIST.csv",
+                f"AZ MALE {age_lower} MASTER TEAM LIST.csv"
+            ])
+    else:
+        # Use old logic if registry not available
+        MASTER_PATH = first_existing([
+            f"data/bronze/AZ MALE {age_lower} MASTER TEAM LIST.csv",
+            f"AZ MALE {age_lower} MASTER TEAM LIST.csv"
+        ])
     
     print(f"[v53e] Using master list: {MASTER_PATH}")
     

@@ -1,0 +1,107 @@
+{
+  "az_boys_u10": {
+    "age": 10,
+    "gender": "m",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=10&gender=m&state=AZ",
+    "active": true
+  },
+  "az_boys_u11": {
+    "age": 11,
+    "gender": "m",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=11&gender=m&state=AZ",
+    "active": true
+  },
+  "az_boys_u12": {
+    "age": 12,
+    "gender": "m",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=12&gender=m&state=AZ",
+    "active": true
+  },
+  "az_boys_u13": {
+    "age": 13,
+    "gender": "m",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=13&gender=m&state=AZ",
+    "active": true
+  },
+  "az_boys_u14": {
+    "age": 14,
+    "gender": "m",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=14&gender=m&state=AZ",
+    "active": true
+  },
+  "az_boys_u15": {
+    "age": 15,
+    "gender": "m",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=15&gender=m&state=AZ",
+    "active": false
+  },
+  "az_boys_u16": {
+    "age": 16,
+    "gender": "m",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=16&gender=m&state=AZ",
+    "active": false
+  },
+  "az_boys_u17": {
+    "age": 17,
+    "gender": "m",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=17&gender=m&state=AZ",
+    "active": false
+  },
+  "az_boys_u18": {
+    "age": 18,
+    "gender": "m",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=18&gender=m&state=AZ",
+    "active": false
+  },
+  "az_boys_u19": {
+    "age": 19,
+    "gender": "m",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=19&gender=m&state=AZ",
+    "active": false
+  },
+  "az_girls_u15": {
+    "age": 15,
+    "gender": "f",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=15&gender=f&state=AZ",
+    "active": false
+  },
+  "az_girls_u16": {
+    "age": 16,
+    "gender": "f",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=16&gender=f&state=AZ",
+    "active": false
+  },
+  "az_girls_u17": {
+    "age": 17,
+    "gender": "f",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=17&gender=f&state=AZ",
+    "active": false
+  },
+  "az_girls_u18": {
+    "age": 18,
+    "gender": "f",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=18&gender=f&state=AZ",
+    "active": false
+  },
+  "az_girls_u19": {
+    "age": 19,
+    "gender": "f",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=19&gender=f&state=AZ",
+    "active": false
+  }
+}

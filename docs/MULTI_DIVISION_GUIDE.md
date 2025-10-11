@@ -1,234 +1,237 @@
-# Multi-Division Support Guide
+# Multi-Division Soccer Rankings Guide
 
 ## Overview
 
-The Soccer Rankings system now supports multiple age divisions (U11, U12, etc.) with identical architecture and ranking logic. This guide explains how to add new divisions and use the multi-division features.
+This guide covers the Division Registry System and how to manage multiple soccer divisions (U10-U19 Boys/Girls) in the Arizona Soccer Rankings platform.
 
-## Architecture
+## Division Registry System
 
-The system follows a consistent pipeline for all divisions:
+The Division Registry System (`data/divisions.json`) provides centralized configuration management for all divisions. This enables zero-code-change addition of new divisions and automatic discovery by all components.
 
-```
-Scraper → Bronze Layer → Silver Layer → Gold Layer → Rankings → API → Frontend
-```
-
-Each division maintains separate data files while sharing the same processing logic.
-
-## Division Configuration
-
-### 1. Scraper Configuration (`scraper_config.py`)
-
-Add new divisions to the `DIVISION_URLS` dictionary:
-
-```python
-DIVISION_URLS = {
-    "az_boys_u12": "https://rankings.gotsport.com/?team_country=USA&age=12&gender=m&state=AZ",
-    "az_boys_u11": "https://rankings.gotsport.com/?team_country=USA&age=11&gender=m&state=AZ",
-    # Add new divisions here
-    "az_boys_u10": "https://rankings.gotsport.com/?team_country=USA&age=10&gender=m&state=AZ",
-}
-```
-
-### 2. File Naming Conventions
-
-The system uses consistent naming patterns:
-
-- **Master Team Lists**: `AZ MALE {AGE} MASTER TEAM LIST.csv`
-- **Rankings**: `Rankings_AZ_M_{AGE}_2025_v53e.csv`
-- **Game Data**: `Matched_Games_{AGE}.csv`
-- **Connectivity Reports**: `connectivity_report_{age}_v53e.csv`
-
-Where `{AGE}` is U11, U12, U13, etc.
-
-## Adding a New Division
-
-### Step 1: Configure Scraper
-
-1. Add the division URL to `scraper_config.py`
-2. Update the scraper to handle the new division
-
-### Step 2: Run Data Pipeline
-
-```bash
-# Scrape the new division
-python scraper_multi_division.py --division az_boys_u10
-
-# Generate rankings
-python rankings/generate_team_rankings_v53_enhanced_multi.py --division AZ_Boys_U10
-```
-
-### Step 3: Update Frontend
-
-Add the new division to `src/SelectorHero.jsx`:
-
-```jsx
-<option value="az_boys_u10" style={{ color: '#1e293b' }}>Arizona Boys U10 (2016)</option>
-```
-
-### Step 4: Update Dashboard
-
-Add the new division to `dashboard/app_v53_multi_division.py`:
-
-```python
-DIVISIONS = {
-    # ... existing divisions
-    "az_boys_u10": {
-        "label": "Arizona Boys U10 (2016)",
-        "rankings_file": "Rankings_AZ_M_U10_2025_v53e.csv",
-        "fallback_files": ["Rankings_AZ_M_U10_2025.csv"],
-        "predictions_file": "Predicted_Outcomes_U10_v52b.csv"
-    }
-}
-```
-
-## API Usage
-
-### Division-Specific Endpoints
-
-```bash
-# U12 rankings
-GET /api/rankings?division=az_boys_u12
-
-# U11 rankings  
-GET /api/rankings?division=az_boys_u11
-
-# U10 rankings (when added)
-GET /api/rankings?division=az_boys_u10
-```
-
-### Response Format
-
-All division endpoints return the same JSON structure:
+### Registry Structure
 
 ```json
 {
-  "meta": {
-    "division": "az_boys_u11",
-    "total_teams": 150,
-    "active_teams": 145,
-    "provisional_teams": 5
-  },
-  "data": [
-    {
-      "Rank": 1,
-      "Team": "Team Name",
-      "PowerScore": 0.832,
-      "SAO_norm": 0.721,
-      "SAD_norm": 0.689,
-      "SOS_norm": 0.756,
-      "GamesPlayed": 25,
-      "Status": "Active"
-    }
-  ],
-  "active": [...],
-  "provisional": [...]
+  "az_boys_u11": {
+    "age": 11,
+    "gender": "m",
+    "state": "AZ",
+    "url": "https://rankings.gotsport.com/?team_country=USA&age=11&gender=m&state=AZ",
+    "active": true
+  }
 }
 ```
 
-## Frontend Integration
+### Registry Fields
 
-### Division Selector
+- **age**: Division age (10-19)
+- **gender**: "m" for boys, "f" for girls
+- **state**: State code (e.g., "AZ")
+- **url**: GotSport rankings URL
+- **active**: Boolean flag for enabling/disabling divisions
 
-The React frontend includes a division dropdown in the selector page:
+## Adding a New Division
 
-```jsx
-<select value={division} onChange={(e) => setDivision(e.target.value)}>
-  <option value="az_boys_u12">Arizona Boys U12 (2014)</option>
-  <option value="az_boys_u11">Arizona Boys U11 (2015)</option>
-</select>
+### Step 1: Edit Registry
+
+Add a new entry to `data/divisions.json`:
+
+```json
+"az_boys_u15": {
+  "age": 15,
+  "gender": "m",
+  "state": "AZ",
+  "url": "https://rankings.gotsport.com/?team_country=USA&age=15&gender=m&state=AZ",
+  "active": true
+}
 ```
 
-### Dynamic Data Fetching
+### Step 2: Create Master Team List
 
-The frontend automatically fetches data based on the selected division:
-
-```jsx
-const url = `/api/rankings?division=${division}&state=${state}&gender=${gender}&year=${year}`;
+Create the master team list file:
+```bash
+# File should be named: data/bronze/AZ MALE u15 MASTER TEAM LIST.csv
+# Format: Team Name (one per line)
 ```
 
-## Dashboard Usage
-
-### Multi-Division Dashboard
-
-Run the multi-division dashboard:
+### Step 3: Run Pipeline
 
 ```bash
-streamlit run dashboard/app_v53_multi_division.py
+# Scrape teams
+python src/scrapers/scraper_multi_division.py --division az_boys_u15 --mode teams
+
+# Scrape games
+python src/scrapers/scraper_multi_division.py --division az_boys_u15 --mode games
+
+# Generate rankings
+python src/rankings/generate_team_rankings_v53_enhanced_multi.py --division az_boys_u15
 ```
 
-The dashboard includes:
-- Division selector in the sidebar
-- Division-specific rankings tables
-- Match prediction tools
-- Model performance metrics
+### Step 4: Verify Dashboard
 
-## Automation
+The dashboard will automatically discover the new division and display it in the dropdown.
 
-### Nightly Pipeline
+## Registry Helper Functions
 
-Add new divisions to your automation scripts:
+### Core Functions
+
+```python
+from src.utils.division_registry import (
+    load_divisions,           # Load all divisions
+    get_division,             # Get single division config
+    list_active_divisions,    # List active divisions only
+    get_gotsport_url,         # Get GotSport URL
+    get_master_list_path,     # Get master list file path
+    get_rankings_output_path, # Get rankings output path
+    validate_division_key     # Validate division exists
+)
+```
+
+### Usage Examples
+
+```python
+# Load all divisions
+divisions = load_divisions()
+
+# Get active divisions
+active = list_active_divisions()
+# Returns: ['az_boys_u10', 'az_boys_u11', 'az_boys_u12', 'az_boys_u13', 'az_boys_u14']
+
+# Get division URL
+url = get_gotsport_url("az_boys_u11")
+# Returns: "https://rankings.gotsport.com/?team_country=USA&age=11&gender=m&state=AZ"
+
+# Get master list path
+path = get_master_list_path("az_boys_u11")
+# Returns: Path("data/bronze/AZ MALE u11 MASTER TEAM LIST.csv")
+
+# Validate division
+is_valid = validate_division_key("az_boys_u11")
+# Returns: True
+```
+
+## Component Integration
+
+### Scraper Integration
+
+The scraper automatically uses the registry for URL lookup:
+
+```python
+# Automatically resolves to registry URL
+python src/scrapers/scraper_multi_division.py --division az_boys_u11 --mode teams
+```
+
+### Rankings Integration
+
+The rankings script uses the registry for master list paths:
+
+```python
+# Automatically finds master list via registry
+python src/rankings/generate_team_rankings_v53_enhanced_multi.py --division az_boys_u11
+```
+
+### Dashboard Integration
+
+The dashboard auto-discovers active divisions:
+
+```python
+# Dashboard automatically loads all active divisions from registry
+streamlit run src/dashboard/app_v53_multi_division.py
+```
+
+## File Structure
+
+```
+data/
+├── divisions.json                    # Division registry
+├── bronze/                          # Master team lists
+│   ├── AZ MALE u10 MASTER TEAM LIST.csv
+│   ├── AZ MALE u11 MASTER TEAM LIST.csv
+│   └── ...
+├── gold/                            # Clean match data
+│   ├── Matched_Games_U10.csv
+│   ├── Matched_Games_U11.csv
+│   └── ...
+└── outputs/                         # Final rankings
+    ├── Rankings_AZ_M_U10_2025_v53e.csv
+    ├── Rankings_AZ_M_U11_2025_v53e.csv
+    └── ...
+```
+
+## Testing New Divisions
+
+### Unit Tests
 
 ```bash
-# Scrape all divisions
-python scraper_multi_division.py --all
-
-# Generate rankings for all divisions
-python rankings/generate_team_rankings_v53_enhanced_multi.py --division AZ_Boys_U12
-python rankings/generate_team_rankings_v53_enhanced_multi.py --division AZ_Boys_U11
+# Test registry functions
+python -m pytest tests/test_division_registry.py -v
 ```
 
-### Batch Scripts
+### Integration Tests
 
-Use the provided batch scripts:
+```bash
+# Test scraper integration
+python src/scrapers/scraper_multi_division.py --division az_boys_u11 --mode teams
 
-- `run_u11_pipeline.bat` - Complete U11 pipeline
-- `start_system_multi.bat` - Start system with multi-division support
+# Test rankings generation
+python src/rankings/generate_team_rankings_v53_enhanced_multi.py --division az_boys_u11
 
-## Validation Checklist
-
-When adding a new division, verify:
-
-- [ ] Division URL added to `scraper_config.py`
-- [ ] Scraper successfully extracts team data
-- [ ] Master team list generated
-- [ ] Rankings file created with expected team count
-- [ ] API endpoint returns data: `/api/rankings?division=az_boys_{age}`
-- [ ] Frontend dropdown includes new division
-- [ ] Dashboard supports new division
-- [ ] SOS coverage >90%, match rate >95%
+# Test dashboard loading
+python -c "from src.dashboard.app_v53_multi_division import DIVISIONS; print(list(DIVISIONS.keys()))"
+```
 
 ## Troubleshooting
 
 ### Common Issues
 
-1. **No rankings file found**
-   - Ensure the scraper ran successfully
-   - Check file naming conventions
-   - Verify master team list exists
+1. **Division not found in registry**
+   - Check `data/divisions.json` exists
+   - Verify division key spelling
+   - Ensure JSON is valid
 
-2. **API returns 404**
-   - Check division parameter spelling
-   - Verify rankings file exists
-   - Check API file discovery logic
+2. **Master list not found**
+   - Check file exists in `data/bronze/`
+   - Verify naming convention: `AZ MALE u{age} MASTER TEAM LIST.csv`
+   - Ensure file is readable
 
-3. **Frontend shows no data**
-   - Verify API endpoint works
-   - Check browser console for errors
-   - Ensure division parameter is passed correctly
+3. **Dashboard not showing division**
+   - Check `active: true` in registry
+   - Verify rankings file exists in `data/outputs/`
+   - Check dashboard logs for errors
 
-### File Locations
+4. **Scraper URL not found**
+   - Verify URL in registry is correct
+   - Check GotSport site accessibility
+   - Ensure URL format matches GotSport requirements
 
-- **Scraper Config**: `scraper_config.py`
-- **Multi-Division Scraper**: `scraper_multi_division.py`
-- **Multi-Division Rankings**: `rankings/generate_team_rankings_v53_enhanced_multi.py`
-- **API**: `app.py`
-- **Frontend**: `src/YouthRankingsApp.jsx`, `src/SelectorHero.jsx`
-- **Dashboard**: `dashboard/app_v53_multi_division.py`
+### Error Messages
+
+- `Division 'xyz' not found in registry`: Division key doesn't exist
+- `Division registry not found`: `data/divisions.json` missing
+- `Missing required fields`: Registry entry incomplete
+- `Master list not found`: Master team list file missing
+
+## Best Practices
+
+1. **Always test new divisions** before marking as active
+2. **Use consistent naming** for division keys (`az_boys_u11`)
+3. **Keep registry JSON valid** - use JSON validator if needed
+4. **Backup registry** before making changes
+5. **Document division additions** in commit messages
 
 ## Future Enhancements
 
-- Support for girls divisions
-- Cross-division game analysis
-- Division comparison tools
-- Automated division discovery
-- Multi-state support per division
+- **Multi-state support**: Expand beyond Arizona
+- **Auto-generate Makefile targets** from registry
+- **Division-aware alias management**
+- **API integration** with registry
+- **Web-based registry editor**
+
+## Support
+
+For issues or questions:
+1. Check this guide first
+2. Review error messages carefully
+3. Test with existing divisions (U11, U12)
+4. Check registry JSON validity
+5. Verify file paths and permissions

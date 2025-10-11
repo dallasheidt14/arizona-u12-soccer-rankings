@@ -8,26 +8,70 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from analytics.projected_outcomes_v52b import interactive_predict, evaluate_predictions
+from src.analytics.projected_outcomes_v52b import interactive_predict, evaluate_predictions
+
+# Division registry integration
+try:
+    from src.utils.division_registry import load_divisions, list_active_divisions
+    REGISTRY_AVAILABLE = True
+except ImportError:
+    REGISTRY_AVAILABLE = False
 
 # Page setup
 st.set_page_config(page_title="AZ Boys Soccer Rankings Dashboard", layout="wide")
 
-# Division configuration
-DIVISIONS = {
-    "az_boys_u12": {
-        "label": "Arizona Boys U12 (2014)",
-        "rankings_file": "data/outputs/Rankings_AZ_M_U12_2025_v53e.csv",
-        "fallback_files": ["data/outputs/Rankings_v53_enhanced.csv", "data/outputs/Rankings_v53.csv", "data/outputs/Rankings_v52b.csv"],
-        "predictions_file": "data/outputs/Predicted_Outcomes_v52b.csv"
-    },
-    "az_boys_u11": {
-        "label": "Arizona Boys U11 (2015)", 
-        "rankings_file": "data/outputs/Rankings_AZ_M_U11_2025_v53e.csv",
-        "fallback_files": ["data/outputs/Rankings_AZ_M_U11_2025.csv", "data/outputs/Rankings_U11_v53e.csv"],
-        "predictions_file": "data/outputs/Predicted_Outcomes_U11_v52b.csv"
+def load_dashboard_divisions():
+    """
+    Load divisions with hybrid approach: registry auto-discovery + manual fallback.
+    
+    Returns:
+        Dictionary of division configurations for dashboard
+    """
+    if REGISTRY_AVAILABLE:
+        try:
+            registry = load_divisions()
+            active_divs = list_active_divisions()
+            
+            dashboard_config = {}
+            for div_key in active_divs:
+                div_info = registry[div_key]
+                age = div_info["age"]
+                gender_label = "Boys" if div_info["gender"] == "m" else "Girls"
+                state = div_info["state"]
+                
+                dashboard_config[div_key] = {
+                    "label": f"{state} {gender_label} U{age} ({2015 + (14 - age)})",
+                    "rankings_file": f"data/outputs/Rankings_{state}_{'M' if div_info['gender']=='m' else 'F'}_U{age}_2025_v53e.csv",
+                    "fallback_files": [
+                        f"data/outputs/Rankings_v53_enhanced.csv",
+                        f"data/outputs/Rankings_v53.csv",
+                        f"data/outputs/Rankings_v52b.csv"
+                    ],
+                    "predictions_file": f"data/outputs/Predicted_Outcomes_{'U11' if age == 11 else 'v52b'}_v52b.csv"
+                }
+            return dashboard_config
+        except Exception as e:
+            print(f"Warning: Could not load from registry: {e}")
+            # Fall back to manual config
+    
+    # Manual fallback configuration
+    return {
+        "az_boys_u12": {
+            "label": "Arizona Boys U12 (2014)",
+            "rankings_file": "data/outputs/Rankings_AZ_M_U12_2025_v53e.csv",
+            "fallback_files": ["data/outputs/Rankings_v53_enhanced.csv", "data/outputs/Rankings_v53.csv", "data/outputs/Rankings_v52b.csv"],
+            "predictions_file": "data/outputs/Predicted_Outcomes_v52b.csv"
+        },
+        "az_boys_u11": {
+            "label": "Arizona Boys U11 (2015)", 
+            "rankings_file": "data/outputs/Rankings_AZ_M_U11_2025_v53e.csv",
+            "fallback_files": ["data/outputs/Rankings_AZ_M_U11_2025.csv", "data/outputs/Rankings_U11_v53e.csv"],
+            "predictions_file": "data/outputs/Predicted_Outcomes_U11_v52b.csv"
+        }
     }
-}
+
+# Load division configuration
+DIVISIONS = load_dashboard_divisions()
 
 # Division selector in sidebar
 st.sidebar.header("🏆 Division Selection")

@@ -15,14 +15,23 @@ from datetime import datetime
 
 # Optional canonicalizer (shared with U12)
 try:
-    from utils.team_normalizer import canonicalize_team_name
+    from src.utils.team_normalizer import canonicalize_team_name
 except ImportError:
     def canonicalize_team_name(x): return x.strip().lower()
+
+# Division registry integration
+try:
+    from src.utils.division_registry import get_gotsport_url, validate_division_key
+    REGISTRY_AVAILABLE = True
+except ImportError:
+    REGISTRY_AVAILABLE = False
 
 # ------------------------------------------------------------------
 # CONFIG
 # ------------------------------------------------------------------
 BASE_URL = "https://rankings.gotsport.com/"
+
+# Fallback URLs for backward compatibility
 DIVISION_URLS = {
     "az_boys_u12": "https://rankings.gotsport.com/?team_country=USA&age=12&gender=m&state=AZ",
     "az_boys_u11": "https://rankings.gotsport.com/?team_country=USA&age=11&gender=m&state=AZ",
@@ -30,6 +39,32 @@ DIVISION_URLS = {
     "az_boys_u13": "https://rankings.gotsport.com/?team_country=USA&age=13&gender=m&state=AZ",
     "az_boys_u14": "https://rankings.gotsport.com/?team_country=USA&age=14&gender=m&state=AZ",
 }
+
+def get_division_url(division_key: str) -> str:
+    """
+    Get GotSport URL for a division with registry integration.
+    
+    Args:
+        division_key: Division key (e.g., 'az_boys_u11')
+        
+    Returns:
+        GotSport URL string
+        
+    Raises:
+        KeyError: If division not found in registry or fallback URLs
+    """
+    if REGISTRY_AVAILABLE:
+        try:
+            return get_gotsport_url(division_key)
+        except (KeyError, FileNotFoundError):
+            # Fall back to hardcoded URLs
+            pass
+    
+    # Fallback to hardcoded URLs
+    if division_key in DIVISION_URLS:
+        return DIVISION_URLS[division_key]
+    
+    raise KeyError(f"Division '{division_key}' not found in registry or fallback URLs")
 BRONZE_DIR, GOLD_DIR = "bronze", "gold"
 REQUEST_DELAY = 1.0
 HEADERS = {
@@ -46,7 +81,7 @@ HEADERS = {
 # ------------------------------------------------------------------
 def scrape_team_list(division_key: str) -> pd.DataFrame:
     """Scrape team names and profile URLs from GotSport rankings page."""
-    url = DIVISION_URLS[division_key]
+    url = get_division_url(division_key)
     print(f"Scraping {division_key} rankings from {url}")
     
     try:
