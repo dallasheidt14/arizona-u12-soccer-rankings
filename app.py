@@ -122,8 +122,34 @@ def load_index():
         "teams": None, "games": None
     }]}
 
-def find_rankings_path(state: Optional[str], gender: Optional[str], year: Optional[str], division: Optional[str] = None) -> Path:
-    # Handle division-specific paths first
+def find_rankings_path(state: Optional[str], gender: Optional[str], year: Optional[str], division: Optional[str] = None, age_group: Optional[str] = None) -> Path:
+    # Handle age_group parameter (new simplified approach)
+    if age_group:
+        # Validate age_group
+        valid_age_groups = ["U10", "U11", "U12", "U13", "U14"]
+        if age_group not in valid_age_groups:
+            raise HTTPException(status_code=400, detail=f"Invalid age_group '{age_group}'. Must be one of: {valid_age_groups}")
+        
+        # Age group specific candidates (prefer v53e enhanced)
+        age_candidates = [
+            DATA_DIR / f"Rankings_AZ_M_{age_group.lower()}_2025_v53e.csv",
+            DATA_DIR / f"Rankings_AZ_M_{age_group}_2025_v53e.csv",
+            DATA_DIR / f"Rankings_AZ_M_{age_group.lower()}_2025_v53.csv",
+            DATA_DIR / f"Rankings_AZ_M_{age_group}_2025_v53.csv",
+            DATA_DIR / f"Rankings_AZ_M_{age_group.lower()}_2025.csv",
+            DATA_DIR / f"Rankings_AZ_M_{age_group}_2025.csv",
+            DATA_DIR / f"Rankings_{age_group}_v53e.csv",
+            DATA_DIR / f"Rankings_{age_group}_v53.csv",
+            DATA_DIR / f"Rankings_{age_group}.csv",
+        ]
+        
+        for p in age_candidates:
+            if p.exists():
+                return p
+        
+        # If no age-specific file found, fall through to general logic
+    
+    # Handle division-specific paths (legacy support)
     if division:
         age_map = {"az_boys_u11": "U11", "az_boys_u12": "U12"}
         age = age_map.get(division, "U12")
@@ -365,19 +391,34 @@ def schema_check(df: pd.DataFrame, required=("Team", "PowerScore")):
 def api_slices():
     return load_index()
 
+@app.get("/api/age_groups")
+def api_age_groups():
+    """Get available age groups for simplified frontend."""
+    return {
+        "age_groups": [
+            {"code": "U10", "label": "Arizona Boys U10 (2016)", "birth_year": "2016"},
+            {"code": "U11", "label": "Arizona Boys U11 (2015)", "birth_year": "2015"},
+            {"code": "U12", "label": "Arizona Boys U12 (2014)", "birth_year": "2014"},
+            {"code": "U13", "label": "Arizona Boys U13 (2013)", "birth_year": "2013"},
+            {"code": "U14", "label": "Arizona Boys U14 (2012)", "birth_year": "2012"}
+        ],
+        "usage": "Use /api/rankings?age_group=U12 instead of complex division mapping"
+    }
+
 @app.get("/api/rankings")
 def api_rankings(
     state: Optional[str] = Query(None),
-    gender: Optional[str] = Query(None),   # MALE/FEMALE
+    gender: Optional[str] = Query(None),   # MALE/FEMALE/boys/girls
     year: Optional[str] = Query(None),
-    division: Optional[str] = Query(None), # az_boys_u11, az_boys_u12
+    division: Optional[str] = Query(None), # az_boys_u11, az_boys_u12 (legacy)
+    age_group: Optional[str] = Query(None), # U10, U11, U12, U13, U14 (new simplified)
     q: Optional[str] = Query(None),        # search team name
     sort: Optional[str] = Query("PowerScore"),  # PowerScore|Off_norm|Def_norm|SOS_norm|GamesPlayed
     order: Optional[str] = Query("desc"),  # asc|desc
     limit: int = Query(500, ge=1, le=5000),
     include_inactive: bool = Query(DEFAULT_INCLUDE_INACTIVE),
 ):
-    path = find_rankings_path(state, gender, year, division)
+    path = find_rankings_path(state, gender, year, division, age_group)
     df = CACHE.get_df(path)
     if df is None:
         raise HTTPException(status_code=404, detail="Rankings file not found")

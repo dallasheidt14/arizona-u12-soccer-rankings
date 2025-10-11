@@ -1,0 +1,20 @@
+name: U11 Nightly Build
+# on:
+#   schedule:
+#     - cron: "30 10 * * *"
+on:
+  workflow_dispatch: {}  # Manual trigger only during migration
+jobs:
+  build-u11:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - run: make u11_all
+      - uses: actions/upload-artifact@v4
+        with:
+          name: u11_outputs
+          path: Rankings_AZ_M_U11_2025_v53e.csv

@@ -33,6 +33,13 @@ export default function RankingsPage({
   title = "Youth Soccer Rankings",
   subtitle = "Interactive rankings with sortable columns & live filters."
 }) {
+  console.log('RankingsPage received:', {
+    activeTeamsLength: activeTeams.length,
+    provisionalTeamsLength: provisionalTeams.length,
+    title: title,
+    firstActiveTeam: activeTeams[0]?.Team || 'None'
+  });
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [sortField, setSortField] = useState("PowerScore_adj");
   const [sortOrder, setSortOrder] = useState("desc");
@@ -50,7 +57,23 @@ export default function RankingsPage({
     [...teams].sort((a, b) => {
       const valA = parseFloat(a[sortField]) || 0;
       const valB = parseFloat(b[sortField]) || 0;
-      return sortOrder === "asc" ? valA - valB : valB - valA;
+      
+      // Primary sort by the selected field
+      if (valA !== valB) {
+        return sortOrder === "asc" ? valA - valB : valB - valA;
+      }
+      
+      // Secondary sort by PowerScore_adj for tiebreaking
+      if (sortField !== "PowerScore_adj") {
+        const powerA = parseFloat(a["PowerScore_adj"]) || 0;
+        const powerB = parseFloat(b["PowerScore_adj"]) || 0;
+        if (powerA !== powerB) {
+          return powerB - powerA; // Always desc for PowerScore
+        }
+      }
+      
+      // Tertiary sort by Team name alphabetically
+      return a.Team.localeCompare(b.Team);
     });
 
   const handleSort = (field) => {

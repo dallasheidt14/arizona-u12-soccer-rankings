@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>U11 Rankings Test</title>
+</head>
+<body>
+    <h1>U11 Rankings Test</h1>
+    <button onclick="testU11()">Test U11 API</button>
+    <button onclick="testU12()">Test U12 API</button>
+    <div id="results"></div>
+
+    <script>
+        async function testU11() {
+            try {
+                const response = await fetch('/api/rankings?age_group=U11');
+                const data = await response.json();
+                document.getElementById('results').innerHTML = `
+                    <h2>U11 Results:</h2>
+                    <p>Status: ${response.status}</p>
+                    <p>Data length: ${data.data?.length || 0}</p>
+                    <p>Active length: ${data.active?.length || 0}</p>
+                    <p>First team: ${data.data?.[0]?.Team || 'None'}</p>
+                    <p>First 3 teams:</p>
+                    <ul>
+                        ${data.data?.slice(0, 3).map(team => `<li>${team.Team}</li>`).join('') || 'No teams'}
+                    </ul>
+                `;
+            } catch (error) {
+                document.getElementById('results').innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+
+        async function testU12() {
+            try {
+                const response = await fetch('/api/rankings?age_group=U12');
+                const data = await response.json();
+                document.getElementById('results').innerHTML = `
+                    <h2>U12 Results:</h2>
+                    <p>Status: ${response.status}</p>
+                    <p>Data length: ${data.data?.length || 0}</p>
+                    <p>Active length: ${data.active?.length || 0}</p>
+                    <p>First team: ${data.data?.[0]?.Team || 'None'}</p>
+                    <p>First 3 teams:</p>
+                    <ul>
+                        ${data.data?.slice(0, 3).map(team => `<li>${team.Team}</li>`).join('') || 'No teams'}
+                    </ul>
+                `;
+            } catch (error) {
+                document.getElementById('results').innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

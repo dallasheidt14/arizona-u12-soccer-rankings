@@ -6,15 +6,21 @@ const STATES = [
   "NC","NJ","NV","NY","OH","OR","PA","TN","TX","UT","VA","WA","WI"
 ];
 
-const AGE_YEARS = Array.from({ length: 10 }, (_, i) => 2018 - i); // 2018..2009
+// Simplified age groups - just the ones we support
+const AGE_GROUPS = [
+  { code: "U10", label: "U10 (2016)", birthYear: "2016" },
+  { code: "U11", label: "U11 (2015)", birthYear: "2015" },
+  { code: "U12", label: "U12 (2014)", birthYear: "2014" },
+  { code: "U13", label: "U13 (2013)", birthYear: "2013" },
+  { code: "U14", label: "U14 (2012)", birthYear: "2012" }
+];
 
 export default function SelectorHero({ onSelect }) {
-  const [gender, setGender] = useState("");
-  const [age, setAge] = useState("");
-  const [state, setState] = useState("");
-  const [division, setDivision] = useState("az_boys_u12"); // New division state
+  const [gender, setGender] = useState("boys");
+  const [ageGroup, setAgeGroup] = useState("U12");
+  const [state, setState] = useState("AZ");
 
-  const canSubmit = gender && age && state;
+  const canSubmit = gender && ageGroup && state;
 
   // Add "scrolled" class for sticky header shadow
   useEffect(() => {
@@ -32,11 +38,20 @@ export default function SelectorHero({ onSelect }) {
     
     // Convert to API format and call onSelect
     const apiGender = gender === "boys" ? "MALE" : "FEMALE";
+    const selectedAgeGroup = AGE_GROUPS.find(ag => ag.code === ageGroup);
+    
+    console.log('SelectorHero submitting:', {
+      gender: apiGender,
+      ageGroup: ageGroup,
+      birthYear: selectedAgeGroup.birthYear,
+      state: state
+    });
+    
     onSelect && onSelect({ 
       gender: apiGender, 
-      age: age, 
-      state: state,
-      division: division
+      ageGroup: ageGroup,
+      birthYear: selectedAgeGroup.birthYear,
+      state: state
     });
   };
 
@@ -71,9 +86,9 @@ export default function SelectorHero({ onSelect }) {
                        border border-white/15 shadow-2xl p-6 md:p-8"
             aria-labelledby="selector-title"
           >
-            <h2 id="selector-title" className="text-2xl font-semibold mb-1">Choose Division</h2>
+            <h2 id="selector-title" className="text-2xl font-semibold mb-1">Choose Rankings</h2>
             <p className="text-slate-300 mb-6">
-              Gender, age group (BY year), and state. You'll see rankings with drill-downs.
+              Select gender, age group, and state to view team rankings with drill-downs.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -110,21 +125,22 @@ export default function SelectorHero({ onSelect }) {
                 </div>
               </div>
 
-              {/* Age */}
+              {/* Age Group */}
               <div>
-                <label htmlFor="age" className="block text-sm font-semibold mb-2">
-                  Age Group (Birth Year)
+                <label htmlFor="ageGroup" className="block text-sm font-semibold mb-2">
+                  Age Group
                 </label>
                 <select
-                  id="age"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
+                  id="ageGroup"
+                  value={ageGroup}
+                  onChange={(e) => setAgeGroup(e.target.value)}
                   className="w-full rounded-lg bg-white/10 border border-white/20 px-4 py-3
                              outline-none focus:ring-2 focus:ring-emerald-400 text-white"
                 >
-                  <option value="">Select Birth Year</option>
-                  {AGE_YEARS.map((yr) => (
-                    <option key={yr} value={yr} style={{ color: '#1e293b' }}>{yr}</option>
+                  {AGE_GROUPS.map((ag) => (
+                    <option key={ag.code} value={ag.code} style={{ color: '#1e293b' }}>
+                      {ag.label}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -139,30 +155,9 @@ export default function SelectorHero({ onSelect }) {
                   className="w-full rounded-lg bg-white/10 border border-white/20 px-4 py-3
                              outline-none focus:ring-2 focus:ring-emerald-400 text-white"
                 >
-                  <option value="">Select State</option>
                   {STATES.map((s) => (
                     <option key={s} value={s} style={{ color: '#1e293b' }}>{s}</option>
                   ))}
-                </select>
-              </div>
-
-              {/* Division */}
-              <div>
-                <label htmlFor="division" className="block text-sm font-semibold mb-2">
-                  Division
-                </label>
-                <select
-                  id="division"
-                  value={division}
-                  onChange={(e) => setDivision(e.target.value)}
-                  className="w-full rounded-lg bg-white/10 border border-white/20 px-4 py-3
-                             outline-none focus:ring-2 focus:ring-emerald-400 text-white"
-                >
-                  <option value="az_boys_u12" style={{ color: '#1e293b' }}>Arizona Boys U12 (2014)</option>
-                  <option value="az_boys_u11" style={{ color: '#1e293b' }}>Arizona Boys U11 (2015)</option>
-                  <option value="az_boys_u10" style={{ color: '#1e293b' }}>Arizona Boys U10 (2016)</option>
-                  <option value="az_boys_u13" style={{ color: '#1e293b' }}>Arizona Boys U13 (2013)</option>
-                  <option value="az_boys_u14" style={{ color: '#1e293b' }}>Arizona Boys U14 (2012)</option>
                 </select>
               </div>
 

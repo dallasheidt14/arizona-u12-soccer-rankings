@@ -87,9 +87,8 @@ async function fetchJSON(url) {
 export default function YouthRankingsApp() {
   const [view, setView] = useState("select"); // "select" | "rankings" | "team"
   const [gender, setGender] = useState("MALE");
-  const [year, setYear] = useState("2014");
+  const [ageGroup, setAgeGroup] = useState("U12");
   const [state, setState] = useState("AZ");
-  const [division, setDivision] = useState("az_boys_u12"); // New division state
 
   const [slices, setSlices] = useState([]);
   const [rankings, setRankings] = useState([]);
@@ -120,10 +119,16 @@ export default function YouthRankingsApp() {
 
   const years = useMemo(() => Array.from({ length: 2018 - 2009 + 1 }, (_, i) => String(2018 - i)), []);
 
-  async function goRankings() {
+  async function goRankings(customGender = null, customAgeGroup = null, customState = null) {
     setLoading(true); setError("");
-    // Prefer API JSON; fallback to mock
-    const url = `/api/rankings?state=${encodeURIComponent(state)}&gender=${encodeURIComponent(gender)}&year=${encodeURIComponent(year)}&division=${encodeURIComponent(division)}&sort=${sortBy}&order=${sortOrder}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`;
+    
+    // Use passed values or current state
+    const useGender = customGender || gender;
+    const useAgeGroup = customAgeGroup || ageGroup;
+    const useState = customState || state;
+    
+    // Use simplified age_group parameter instead of complex division
+    const url = `/api/rankings?state=${encodeURIComponent(useState)}&gender=${encodeURIComponent(useGender)}&age_group=${encodeURIComponent(useAgeGroup)}&sort=${sortBy}&order=${sortOrder}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`;
     console.log('Fetching URL:', url);
     const response = await fetchJSON(url);
     console.log('API Response:', response);
@@ -136,22 +141,43 @@ export default function YouthRankingsApp() {
     
     if (response && response.data && Array.isArray(response.data)) {
       console.log('Using API data (new format), setting rankings');
+      console.log('Response data length:', response.data.length);
+      console.log('Response active length:', response.active?.length || 0);
+      console.log('Response provisional length:', response.provisional?.length || 0);
       data = response.data;
       active = response.active || [];
       provisional = response.provisional || [];
       meta = response.meta;
+      
+      // If active/provisional arrays are empty but we have data, put all data in active
+      if (active.length === 0 && provisional.length === 0 && data.length > 0) {
+        active = data;
+        console.log('No active/provisional split found, using all data as active');
+      }
+      
+      console.log('Final active length:', active.length);
+      console.log('Final provisional length:', provisional.length);
     } else if (Array.isArray(response) && response.length) {
       console.log('Using API data (legacy format), setting rankings');
       data = response;
+      active = response; // Use all data as active for legacy format
     } else {
       console.log('Using mock data');
       data = mockRankings;
+      active = mockRankings;
     }
     
     setRankings(data);
     setActiveTeams(active);
     setProvisionalTeams(provisional);
     setRankingsMeta(meta);
+    
+    console.log('State updated:', {
+      rankingsLength: data.length,
+      activeTeamsLength: active.length,
+      provisionalTeamsLength: provisional.length
+    });
+    
     setView("rankings");
     setLoading(false);
   }
@@ -190,12 +216,11 @@ export default function YouthRankingsApp() {
       {/* Selector View */}
       {view === "select" && (
         <SelectorHero 
-          onSelect={({ gender: g, age: a, state: s, division: d }) => {
+          onSelect={({ gender: g, ageGroup: ag, state: s }) => {
             setGender(g);
-            setYear(a);
+            setAgeGroup(ag);
             setState(s);
-            setDivision(d);
-            goRankings();
+            goRankings(g, ag, s);
           }}
         />
       )}
@@ -207,7 +232,7 @@ export default function YouthRankingsApp() {
           provisionalTeams={provisionalTeams}
           onBack={() => setView("select")}
           onTeamClick={openTeam}
-          title={`${gender === "MALE" ? "Boys" : "Girls"} ${year} ${state} Rankings`}
+          title={`${gender === "MALE" ? "Boys" : "Girls"} ${ageGroup} ${state} Rankings`}
           subtitle="View team rankings, power scores, and performance summaries."
         />
       )}
