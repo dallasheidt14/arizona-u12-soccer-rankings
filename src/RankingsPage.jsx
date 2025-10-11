@@ -215,7 +215,7 @@ function RankSection({ title, subtitle, teams, sortField, sortOrder, onSort, onT
                 <td className="team-cell">
                   <button 
                     className="team-link"
-                    onClick={() => onTeamClick(team.Team)}
+                    onClick={() => onTeamClick(team.Team, team.team_id)}
                   >
                     {team.Team}
                   </button>

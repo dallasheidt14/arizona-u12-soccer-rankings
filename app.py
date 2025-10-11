@@ -772,6 +772,72 @@ def predict_outcome(
             "error": str(e)
         }, status_code=500)
 
+# U11-specific router for ID-based endpoints
+from fastapi import APIRouter
+
+u11_router = APIRouter(prefix="/api/v1/az/m/u11")
+
+@u11_router.get("/test")
+def u11_test():
+    """Test endpoint for U11 router."""
+    return {"message": "U11 router is working", "status": "ok"}
+
+@u11_router.get("/rankings")
+def u11_rankings():
+    """Get U11 rankings with team IDs."""
+    rankings_path = Path("data/outputs/az_boys_u11_2025/rankings.csv")
+    if not rankings_path.exists():
+        raise HTTPException(status_code=404, detail="U11 rankings not found")
+    
+    df = pd.read_csv(rankings_path)
+    
+    # Ensure required columns exist
+    if "team_id" not in df.columns:
+        raise HTTPException(status_code=500, detail="U11 rankings missing team_id column")
+    
+    # Handle NaN values for JSON serialization
+    df = df.fillna("")
+    
+    # Convert to records format
+    return df.to_dict("records")
+
+@u11_router.get("/teams/{team_id}/history")
+def u11_history(team_id: str):
+    """Get U11 team history by team ID."""
+    histories_path = Path("data/outputs/az_boys_u11_2025/histories.csv")
+    if not histories_path.exists():
+        raise HTTPException(status_code=404, detail="U11 histories not found")
+    
+    df = pd.read_csv(histories_path)
+    
+    # Filter by team_id
+    team_games = df[df["team_id"] == team_id]
+    
+    if team_games.empty:
+        return {
+            "team_id": team_id,
+            "display_name": "Unknown",
+            "games": []
+        }
+    
+    # Get display name
+    display_name = team_games["display_name"].iloc[0]
+    
+    # Format games for response
+    games = team_games[[
+        "date", "opponent_team_id", "opponent_display_name", 
+        "goals_for", "goals_against", "result"
+    ]].to_dict("records")
+    
+    return {
+        "team_id": team_id,
+        "display_name": display_name,
+        "games": games
+    }
+
+# Include the U11 router
+app.include_router(u11_router)
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

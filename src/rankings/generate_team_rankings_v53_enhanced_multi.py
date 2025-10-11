@@ -346,9 +346,35 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
     # Add canonical keys to raw data BEFORE wide_to_long
     # Canonicalize team names for consistent matching
     if age == "U11":
-        # For U11, preserve colors since they represent different teams
-        raw["Team_A_Key"] = raw["Team A"].str.lower().str.strip()
-        raw["Team_B_Key"] = raw["Team B"].str.lower().str.strip()
+        # For U11, use ID-based joins
+        print("U11: Using ID-based joins with team mapping")
+        
+        # Load name mapping
+        name_map_path = "data/mappings/az_boys_u11_2025/name_map.csv"
+        if not Path(name_map_path).exists():
+            raise FileNotFoundError(f"Name mapping not found: {name_map_path}")
+        
+        name_map = pd.read_csv(name_map_path)
+        print(f"Loaded name mapping with {len(name_map)} entries")
+        
+        # Create mapping dictionaries
+        raw_to_id = name_map.set_index("raw_name")["team_id"].to_dict()
+        
+        # Map raw team names to team IDs
+        raw["team_a_id"] = raw["Team A"].map(raw_to_id)
+        raw["team_b_id"] = raw["Team B"].map(raw_to_id)
+        
+        # Check for unmapped teams
+        unmapped_a = raw[raw["team_a_id"].isna()]["Team A"].unique()
+        unmapped_b = raw[raw["team_b_id"].isna()]["Team B"].unique()
+        if len(unmapped_a) > 0 or len(unmapped_b) > 0:
+            print(f"WARNING: {len(unmapped_a)} Team A and {len(unmapped_b)} Team B names not mapped")
+            print(f"Sample unmapped Team A: {unmapped_a[:3]}")
+            print(f"Sample unmapped Team B: {unmapped_b[:3]}")
+        
+        # Use team IDs for canonical keys
+        raw["Team_A_Key"] = raw["team_a_id"]
+        raw["Team_B_Key"] = raw["team_b_id"]
     else:
         raw["Team_A_Key"] = raw["Team A"].map(resolve_team_name)
         raw["Team_B_Key"] = raw["Team B"].map(resolve_team_name)
@@ -358,11 +384,22 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
     long = clamp_window(long)
     
     # Load master list with keys
-    master_teams = pd.read_csv(MASTER_PATH)
-    master_teams["Team Name"] = master_teams["Team Name"].astype(str).str.strip()
-    master_teams["TeamKey"] = master_teams["Team Name"].map(resolve_team_name)
-    master_team_keys = set(master_teams["TeamKey"])
-    print(f"Loaded {len(master_team_keys)} authorized AZ {age} teams from master list")
+    if age == "U11":
+        # For U11, load master list with team IDs
+        master_path = "data/master/az_boys_u11_2025/master_teams.csv"
+        if not Path(master_path).exists():
+            raise FileNotFoundError(f"Master list not found: {master_path}")
+        
+        master_teams = pd.read_csv(master_path)
+        master_teams["TeamKey"] = master_teams["team_id"]
+        master_team_keys = set(master_teams["TeamKey"])
+        print(f"Loaded {len(master_team_keys)} U11 teams from master list with IDs")
+    else:
+        master_teams = pd.read_csv(MASTER_PATH)
+        master_teams["Team Name"] = master_teams["Team Name"].astype(str).str.strip()
+        master_teams["TeamKey"] = master_teams["Team Name"].map(resolve_team_name)
+        master_team_keys = set(master_teams["TeamKey"])
+        print(f"Loaded {len(master_team_keys)} authorized AZ {age} teams from master list")
     
     # Filter matches: keep only rows where Team is a master team
     # (Keep all opponents for accurate SOS calculation)
@@ -636,19 +673,21 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
     out_visible_with_team = out_visible_with_team.rename(columns={'index': 'TeamKey'})
     
     if age == "U11":
-        # For U11, map back to original team names from games data
-        # Create mapping from TeamKey to original Team names
-        team_name_mapping = {}
-        for _, row in raw.iterrows():
-            team_a_key = row["Team_A_Key"]
-            team_b_key = row["Team_B_Key"]
-            if team_a_key not in team_name_mapping:
-                team_name_mapping[team_a_key] = row["Team A"]
-            if team_b_key not in team_name_mapping:
-                team_name_mapping[team_b_key] = row["Team B"]
+        # For U11, use ID-based output with team_id and display_name
+        # Merge with master list to get display_name
+        out_visible_with_team = out_visible_with_team.merge(
+            master_teams[["team_id", "display_name", "club"]],
+            left_on="TeamKey",
+            right_on="team_id",
+            how="left"
+        )
         
-        out_visible_with_team["Team"] = out_visible_with_team["TeamKey"].map(team_name_mapping)
-        out_visible_with_team["Club"] = ""
+        # Use display_name for Team column
+        out_visible_with_team["Team"] = out_visible_with_team["display_name"]
+        out_visible_with_team["Club"] = out_visible_with_team["club"].fillna("")
+        
+        # Ensure team_id is included in output
+        out_visible_with_team["team_id"] = out_visible_with_team["TeamKey"]
     else:
         # Merge master list to get Team Name and Club for display
         out_visible_with_team = out_visible_with_team.merge(
@@ -670,7 +709,11 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
     # Keep Club as separate field for API
     out_visible_with_team["Club"] = out_visible_with_team["Club"].fillna("")
     
-    cols = ["Rank","Team","PowerScore_adj","PowerScore","GP_Mult","SAO_norm","SAD_norm","SOS_norm","SOS_iterative_norm","GamesPlayed","GamesTotal","Status","is_active","LastGame"]
+    # Select output columns based on division
+    if age == "U11":
+        cols = ["Rank","Team","team_id","PowerScore_adj","PowerScore","GP_Mult","SAO_norm","SAD_norm","SOS_norm","SOS_iterative_norm","GamesPlayed","GamesTotal","Status","is_active","LastGame"]
+    else:
+        cols = ["Rank","Team","PowerScore_adj","PowerScore","GP_Mult","SAO_norm","SAD_norm","SOS_norm","SOS_iterative_norm","GamesPlayed","GamesTotal","Status","is_active","LastGame"]
     out_visible_with_team[cols].to_csv(out_csv, index=False, encoding="utf-8")
     
     # Generate connectivity report
@@ -708,7 +751,11 @@ def main():
     
     # Auto-generate output path if not provided
     if not args.out_path:
-        args.out_path = f"Rankings_AZ_M_{age}_2025_v53e.csv"
+        if age == "U11":
+            # Use new directory structure for U11
+            args.out_path = f"data/outputs/az_boys_u11_2025/rankings.csv"
+        else:
+            args.out_path = f"Rankings_AZ_M_{age}_2025_v53e.csv"
     
     print(f"[v53e] Processing division: {canonical_div}")
     print(f"[v53e] Output file: {args.out_path}")

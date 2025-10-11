@@ -127,8 +127,15 @@ export default function YouthRankingsApp() {
     const useAgeGroup = customAgeGroup || ageGroup;
     const useState = customState || state;
     
-    // Use simplified age_group parameter instead of complex division
-    const url = `/api/rankings?state=${encodeURIComponent(useState)}&gender=${encodeURIComponent(useGender)}&age_group=${encodeURIComponent(useAgeGroup)}&sort=${sortBy}&order=${sortOrder}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`;
+    // Route to appropriate API based on age group
+    let url;
+    if (useAgeGroup === "U11") {
+      // Use new ID-based API for U11
+      url = `/api/v1/az/m/u11/rankings`;
+    } else {
+      // Use legacy API for U12 and others
+      url = `/api/rankings?state=${encodeURIComponent(useState)}&gender=${encodeURIComponent(useGender)}&age_group=${encodeURIComponent(useAgeGroup)}&sort=${sortBy}&order=${sortOrder}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`;
+    }
     console.log('Fetching URL:', url);
     const response = await fetchJSON(url);
     console.log('API Response:', response);
@@ -168,8 +175,17 @@ export default function YouthRankingsApp() {
     }
     
     setRankings(data);
-    setActiveTeams(active);
-    setProvisionalTeams(provisional);
+    // Normalize data for U11/U12 compatibility
+    const normalizeTeamData = (teams) => {
+      return teams.map(team => ({
+        ...team,
+        Team: team.Team || team.display_name, // U11 uses display_name, U12 uses Team
+        team_id: team.team_id || null // Ensure team_id exists for U11
+      }));
+    };
+    
+    setActiveTeams(normalizeTeamData(active));
+    setProvisionalTeams(normalizeTeamData(provisional));
     setRankingsMeta(meta);
     
     console.log('State updated:', {
@@ -182,13 +198,43 @@ export default function YouthRankingsApp() {
     setLoading(false);
   }
 
-  async function openTeam(teamName) {
+  async function openTeam(teamIdentifier, teamId = null) {
     setLoading(true); setError("");
-    setActiveTeam(teamName);
-    const url = `/api/team/${encodeURIComponent(teamName)}?state=${encodeURIComponent(state)}&gender=${encodeURIComponent(gender)}&year=${encodeURIComponent(year)}`;
+    setActiveTeam(teamIdentifier);
+    
+    let url;
+    if (ageGroup === "U11" && teamId) {
+      // Use new ID-based API for U11
+      url = `/api/v1/az/m/u11/teams/${teamId}/history`;
+    } else {
+      // Use legacy name-based API for U12
+      url = `/api/team/${encodeURIComponent(teamIdentifier)}?state=${encodeURIComponent(state)}&gender=${encodeURIComponent(gender)}&year=${encodeURIComponent(year)}`;
+    }
+    
     const data = await fetchJSON(url);
-    if (Array.isArray(data) && data.length) setHistory(data);
-    else setHistory(mockHistory(teamName));
+    if (ageGroup === "U11") {
+      // U11 API returns {team_id, display_name, games: [...]}
+      if (data && data.games) {
+        // Transform U11 format to match TeamHistoryPage expectations
+        const transformedGames = data.games.map(game => ({
+          Date: game.date,
+          Opponent: game.opponent_display_name,
+          GoalsFor: game.goals_for,
+          GoalsAgainst: game.goals_against,
+          Result: game.result,
+          // Add any other fields that TeamHistoryPage might need
+          performance: game.result === 'W' ? 'overperformed' : game.result === 'L' ? 'underperformed' : 'neutral'
+        }));
+        setHistory(transformedGames);
+      } else {
+        setHistory(mockHistory(teamIdentifier));
+      }
+    } else {
+      // U12 API returns array directly
+      if (Array.isArray(data) && data.length) setHistory(data);
+      else setHistory(mockHistory(teamIdentifier));
+    }
+    
     setView("team");
     setLoading(false);
   }

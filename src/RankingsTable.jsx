@@ -86,7 +86,7 @@ export default function RankingsTable({ teams, type, onTeamClick }) {
               <td>{type === "active" ? (i + 1) : ""}</td>
               <td className="team-name">
                 <button
-                  onClick={() => onTeamClick(team.Team)}
+                  onClick={() => onTeamClick(team.Team, team.team_id)}
                   className="team-link"
                 >
                   {team.Team}
@@ -112,7 +112,7 @@ export default function RankingsTable({ teams, type, onTeamClick }) {
             )}
             <h3>
               <button
-                onClick={() => onTeamClick(team.Team)}
+                onClick={() => onTeamClick(team.Team, team.team_id)}
                 className="team-link-mobile"
               >
                 {team.Team}
