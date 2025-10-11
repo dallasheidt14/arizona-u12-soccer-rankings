@@ -83,7 +83,7 @@ export default function RankingsTable({ teams, type, onTeamClick }) {
         <tbody>
           {sortedTeams.map((team, i) => (
             <tr key={team.Team}>
-              <td>{type === "active" ? team.Rank || (i + 1) : ""}</td>
+              <td>{type === "active" ? (i + 1) : ""}</td>
               <td className="team-name">
                 <button
                   onClick={() => onTeamClick(team.Team)}
@@ -105,10 +105,10 @@ export default function RankingsTable({ teams, type, onTeamClick }) {
 
       {/* Mobile Card View */}
       <div className="card-container">
-        {teams.map((team, i) => (
+        {sortedTeams.map((team, i) => (
           <div key={team.Team} className="team-card">
             {type === "active" && (
-              <div className="rank">#{team.Rank || (i + 1)}</div>
+              <div className="rank">#{i + 1}</div>
             )}
             <h3>
               <button
