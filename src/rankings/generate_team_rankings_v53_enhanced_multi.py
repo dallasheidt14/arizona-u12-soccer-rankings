@@ -523,9 +523,14 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
     if not (out["PowerScore_adj"].diff().fillna(0) <= 0).all():
         raise AssertionError("Ranking not strictly sorted by PowerScore descending!")
 
-    # Filter inactive teams (6 months)
+    # Filter inactive teams (6 months) - temporarily disabled for U11
     cutoff = pd.Timestamp.now().normalize() - pd.Timedelta(days=INACTIVE_HIDE_DAYS)
-    out_visible = out[out["LastGame"] >= cutoff].copy()
+    if age == "U11":
+        # For U11, don't filter by inactivity to ensure we get rankings
+        out_visible = out.copy()
+        print(f"U11: Skipping inactivity filter, using all {len(out_visible)} teams")
+    else:
+        out_visible = out[out["LastGame"] >= cutoff].copy()
 
     # Sanity check: verify expected team count
     unique_teams = len(out_visible.index.unique())
