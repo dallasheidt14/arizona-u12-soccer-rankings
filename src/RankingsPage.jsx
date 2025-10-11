@@ -41,7 +41,7 @@ export default function RankingsPage({
   });
   
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortField, setSortField] = useState("PowerScore_adj");
+  const [sortField, setSortField] = useState("PowerScore");
   const [sortOrder, setSortOrder] = useState("desc");
 
   // Filter teams based on search
@@ -63,10 +63,10 @@ export default function RankingsPage({
         return sortOrder === "asc" ? valA - valB : valB - valA;
       }
       
-      // Secondary sort by PowerScore_adj for tiebreaking
-      if (sortField !== "PowerScore_adj") {
-        const powerA = parseFloat(a["PowerScore_adj"]) || 0;
-        const powerB = parseFloat(b["PowerScore_adj"]) || 0;
+      // Secondary sort by PowerScore for tiebreaking
+      if (sortField !== "PowerScore") {
+        const powerA = parseFloat(a["PowerScore"]) || 0;
+        const powerB = parseFloat(b["PowerScore"]) || 0;
         if (powerA !== powerB) {
           return powerB - powerA; // Always desc for PowerScore
         }
@@ -198,10 +198,10 @@ function RankSection({ title, subtitle, teams, sortField, sortOrder, onSort, onT
             <tr>
               <SortableHeader field="Rank" label="Rank" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <SortableHeader field="Team" label="Team" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
-              <SortableHeader field="PowerScore_adj" label="Power" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
+              <SortableHeader field="PowerScore" label="Power" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <SortableHeader field="SAO_norm" label="Off" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <SortableHeader field="SAD_norm" label="Def" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
-              <SortableHeader field="SOS_display" label="SOS" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
+              <SortableHeader field="SOS_norm" label="SOS" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <SortableHeader field="GamesPlayed" label="GP" onSort={onSort} sortField={sortField} sortOrder={sortOrder} />
               <th>W-L-T</th>
             </tr>
@@ -221,7 +221,7 @@ function RankSection({ title, subtitle, teams, sortField, sortOrder, onSort, onT
                   </button>
                 </td>
                 <td className="power-cell">
-                  <PowerScoreCell value={team.PowerScore_adj} />
+                  <PowerScoreCell value={team.PowerScore} />
                 </td>
                 <td className="off-cell">
                   {team.SAO_norm ? team.SAO_norm.toFixed(3) : 'N/A'}
@@ -230,7 +230,7 @@ function RankSection({ title, subtitle, teams, sortField, sortOrder, onSort, onT
                   {team.SAD_norm ? team.SAD_norm.toFixed(3) : 'N/A'}
                 </td>
                 <td className="sos-cell">
-                  {(team.SOS_display === null || team.SOS_display === undefined || Number.isNaN(team.SOS_display)) ? 'N/A' : team.SOS_display.toFixed(3)}
+                  {(team.SOS_norm === null || team.SOS_norm === undefined || Number.isNaN(team.SOS_norm)) ? 'N/A' : team.SOS_norm.toFixed(3)}
                 </td>
                 <td className="gp-cell">
                   {team.GamesPlayed || 'N/A'}

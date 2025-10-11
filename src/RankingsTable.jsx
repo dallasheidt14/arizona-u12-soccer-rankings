@@ -4,7 +4,7 @@ import "./RankingsTable.css";
 export default function RankingsTable({ teams, type, onTeamClick }) {
   // --- Sorting state
   const [sortConfig, setSortConfig] = useState({
-    key: "PowerScore_adj",
+    key: "PowerScore",
     direction: "desc",
   });
 
@@ -62,8 +62,8 @@ export default function RankingsTable({ teams, type, onTeamClick }) {
             <th onClick={() => handleSort("Team")}>
               Team {sortIndicator("Team")}
             </th>
-            <th onClick={() => handleSort("PowerScore_adj")}>
-              Power {sortIndicator("PowerScore_adj")}
+            <th onClick={() => handleSort("PowerScore")}>
+              Power {sortIndicator("PowerScore")}
             </th>
             <th onClick={() => handleSort("SAO_norm")}>
               Off {sortIndicator("SAO_norm")}
@@ -71,8 +71,8 @@ export default function RankingsTable({ teams, type, onTeamClick }) {
             <th onClick={() => handleSort("SAD_norm")}>
               Def {sortIndicator("SAD_norm")}
             </th>
-            <th onClick={() => handleSort("SOS_display")}>
-              SOS {sortIndicator("SOS_display")}
+            <th onClick={() => handleSort("SOS_norm")}>
+              SOS {sortIndicator("SOS_norm")}
             </th>
             <th onClick={() => handleSort("GamesPlayed")}>
               GP {sortIndicator("GamesPlayed")}
@@ -92,10 +92,10 @@ export default function RankingsTable({ teams, type, onTeamClick }) {
                   {team.Team}
                 </button>
               </td>
-              <td>{formatValue(team.PowerScore_adj)}</td>
+              <td>{formatValue(team.PowerScore)}</td>
               <td>{formatValue(team.SAO_norm)}</td>
               <td>{formatValue(team.SAD_norm)}</td>
-              <td>{formatValue(team.SOS_display)}</td>
+              <td>{formatValue(team.SOS_norm)}</td>
               <td>{team.GamesPlayed || 'N/A'}</td>
               <td>{team.WL || 'N/A'}</td>
             </tr>
@@ -119,10 +119,10 @@ export default function RankingsTable({ teams, type, onTeamClick }) {
               </button>
             </h3>
             <p>
-              <span>Power Score:</span> {formatValue(team.PowerScore_adj)}
+              <span>Power Score:</span> {formatValue(team.PowerScore)}
             </p>
             <p>
-              <span>Off / Def / SOS:</span> {formatValue(team.SAO_norm)} / {formatValue(team.SAD_norm)} / {formatValue(team.SOS_display)}
+              <span>Off / Def / SOS:</span> {formatValue(team.SAO_norm)} / {formatValue(team.SAD_norm)} / {formatValue(team.SOS_norm)}
             </p>
             <p>
               <span>Games:</span> {team.GamesPlayed || 'N/A'}  

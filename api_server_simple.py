@@ -21,7 +21,7 @@ app.add_middleware(
 )
 
 # Data directory
-DATA_DIR = Path(".")
+DATA_DIR = Path("data/outputs")
 
 # Age group to file mapping
 AGE_GROUP_FILES = {
@@ -102,6 +102,31 @@ def api_age_groups():
         ]
     }
 
+@app.get("/api/slices")
+def api_slices():
+    """Get available data slices for the frontend."""
+    slices = []
+    for age_group in AGE_GROUP_FILES.keys():
+        try:
+            df = load_rankings(age_group)
+            # Only include slices with actual data
+            if len(df) > 0:
+                slices.append({
+                    "state": "AZ",
+                    "gender": "MALE", 
+                    "year": str(2014 + (12 - int(age_group[1:]))),  # Convert U12 -> 2014, U11 -> 2015, etc.
+                    "age_group": age_group,
+                    "rankings": AGE_GROUP_FILES[age_group],
+                    "teams": len(df),
+                    "games": df["GamesPlayed"].sum() if "GamesPlayed" in df.columns else 0
+                })
+        except Exception as e:
+            # Skip age groups that don't have data
+            print(f"Skipping {age_group}: {e}")
+            continue
+    
+    return {"slices": slices}
+
 @app.get("/api/rankings")
 def api_rankings(
     age_group: str = Query(..., description="Age group: U10, U11, U12, U13, U14"),
@@ -161,10 +186,19 @@ def api_rankings(
     
     result_df = df[available_cols]
     
+    # Convert to the format expected by React app
+    rankings_data = result_df.to_dict("records")
+    
     return {
-        "age_group": age_group,
-        "total_teams": len(df),
-        "rankings": result_df.to_dict("records")
+        "meta": {
+            "age_group": age_group,
+            "total_teams": len(df),
+            "active_teams": len(df[df.get("is_active", True) == True]) if "is_active" in df.columns else len(df),
+            "provisional_teams": len(df[df.get("is_active", False) == False]) if "is_active" in df.columns else 0
+        },
+        "data": rankings_data,
+        "active": rankings_data,  # All teams are active for now
+        "provisional": []  # No provisional teams for now
     }
 
 @app.get("/api/health")
