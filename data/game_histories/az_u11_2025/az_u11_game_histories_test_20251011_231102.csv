@@ -1,0 +1,4222 @@
+date,opponent,score,result,team_id,team_name,club
+Unknown,".video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    
+    
+    
+    
+      function OptanonWrapper() { }
+    
+    
+
+    
+    
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ ""gtm.start"": new Date().getTime(), event: ""gtm.js"" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != ""dataLayer"" ? ""&l="" + l : """";
+        j.async = true;
+        j.src = ""https://www.googletagmanager.com/gtm.js?id="" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, ""script"", ""dataLayer"", ""GTM-5RN6R4T"");
+    
+    
+    
+    :root, :host {
+  --fa-font-solid: normal 900 1em/1 ""Font Awesome 6 Free"";
+  --fa-font-regular: normal 400 1em/1 ""Font Awesome 6 Free"";
+  --fa-font-light: normal 300 1em/1 ""Font Awesome 6 Pro"";
+  --fa-font-thin: normal 100 1em/1 ""Font Awesome 6 Pro"";
+  --fa-font-duotone: normal 900 1em/1 ""Font Awesome 6 Duotone"";
+  --fa-font-brands: normal 400 1em/1 ""Font Awesome 6 Brands"";
+  --fa-font-sharp-solid: normal 900 1em/1 ""Font Awesome 6 Sharp"";
+  --fa-font-sharp-regular: normal 400 1em/1 ""Font Awesome 6 Sharp"";
+  --fa-font-sharp-light: normal 300 1em/1 ""Font Awesome 6 Sharp"";
+  --fa-font-sharp-thin: normal 100 1em/1 ""Font Awesome 6 Sharp"";
+  --fa-font-sharp-duotone-solid: normal 900 1em/1 ""Font Awesome 6 Sharp Duotone"";
+}
+
+svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+.svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-2xs {
+  vertical-align: 0.1em;
+}
+.svg-inline--fa.fa-xs {
+  vertical-align: 0em;
+}
+.svg-inline--fa.fa-sm {
+  vertical-align: -0.0714285705em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.2em;
+}
+.svg-inline--fa.fa-xl {
+  vertical-align: -0.25em;
+}
+.svg-inline--fa.fa-2xl {
+  vertical-align: -0.3125em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-li {
+  width: var(--fa-li-width, 2em);
+  top: 0.25em;
+}
+.svg-inline--fa.fa-fw {
+  width: var(--fa-fw-width, 1.25em);
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  transform-origin: center center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: var(--fa-counter-background-color, #ff253a);
+  border-radius: var(--fa-counter-border-radius, 1em);
+  box-sizing: border-box;
+  color: var(--fa-inverse, #fff);
+  line-height: var(--fa-counter-line-height, 1);
+  max-width: var(--fa-counter-max-width, 5em);
+  min-width: var(--fa-counter-min-width, 1.5em);
+  overflow: hidden;
+  padding: var(--fa-counter-padding, 0.25em 0.5em);
+  right: var(--fa-right, 0);
+  text-overflow: ellipsis;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-counter-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: var(--fa-bottom, 0);
+  right: var(--fa-right, 0);
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: var(--fa-bottom, 0);
+  left: var(--fa-left, 0);
+  right: auto;
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  top: var(--fa-top, 0);
+  right: var(--fa-right, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: var(--fa-left, 0);
+  right: auto;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top left;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-2xs {
+  font-size: 0.625em;
+  line-height: 0.1em;
+  vertical-align: 0.225em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+  line-height: 0.0833333337em;
+  vertical-align: 0.125em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+  line-height: 0.0714285718em;
+  vertical-align: 0.0535714295em;
+}
+
+.fa-lg {
+  font-size: 1.25em;
+  line-height: 0.05em;
+  vertical-align: -0.075em;
+}
+
+.fa-xl {
+  font-size: 1.5em;
+  line-height: 0.0416666682em;
+  vertical-align: -0.125em;
+}
+
+.fa-2xl {
+  font-size: 2em;
+  line-height: 0.03125em;
+  vertical-align: -0.1875em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: var(--fa-li-margin, 2.5em);
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: calc(-1 * var(--fa-li-width, 2em));
+  position: absolute;
+  text-align: center;
+  width: var(--fa-li-width, 2em);
+  line-height: inherit;
+}
+
+.fa-border {
+  border-color: var(--fa-border-color, #eee);
+  border-radius: var(--fa-border-radius, 0.1em);
+  border-style: var(--fa-border-style, solid);
+  border-width: var(--fa-border-width, 0.08em);
+  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
+}
+
+.fa-pull-left {
+  float: left;
+  margin-right: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-pull-right {
+  float: right;
+  margin-left: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-beat {
+  animation-name: fa-beat;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-bounce {
+  animation-name: fa-bounce;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+}
+
+.fa-fade {
+  animation-name: fa-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-beat-fade {
+  animation-name: fa-beat-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-flip {
+  animation-name: fa-flip;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-shake {
+  animation-name: fa-shake;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin {
+  animation-name: fa-spin;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 2s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin-reverse {
+  --fa-animation-direction: reverse;
+}
+
+.fa-pulse,
+.fa-spin-pulse {
+  animation-name: fa-spin;
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, steps(8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-beat,
+.fa-bounce,
+.fa-fade,
+.fa-beat-fade,
+.fa-flip,
+.fa-pulse,
+.fa-shake,
+.fa-spin,
+.fa-spin-pulse {
+    animation-delay: -1ms;
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+    transition-delay: 0s;
+    transition-duration: 0s;
+  }
+}
+@keyframes fa-beat {
+  0%, 90% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(var(--fa-beat-scale, 1.25));
+  }
+}
+@keyframes fa-bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+  }
+  30% {
+    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+  }
+  50% {
+    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+@keyframes fa-fade {
+  50% {
+    opacity: var(--fa-fade-opacity, 0.4);
+  }
+}
+@keyframes fa-beat-fade {
+  0%, 100% {
+    opacity: var(--fa-beat-fade-opacity, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(var(--fa-beat-fade-scale, 1.125));
+  }
+}
+@keyframes fa-flip {
+  50% {
+    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+  }
+}
+@keyframes fa-shake {
+  0% {
+    transform: rotate(-15deg);
+  }
+  4% {
+    transform: rotate(15deg);
+  }
+  8%, 24% {
+    transform: rotate(-18deg);
+  }
+  12%, 28% {
+    transform: rotate(18deg);
+  }
+  16% {
+    transform: rotate(-22deg);
+  }
+  20% {
+    transform: rotate(22deg);
+  }
+  32% {
+    transform: rotate(-12deg);
+  }
+  36% {
+    transform: rotate(12deg);
+  }
+  40%, 100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  transform: scale(1, -1);
+}
+
+.fa-flip-both,
+.fa-flip-horizontal.fa-flip-vertical {
+  transform: scale(-1, -1);
+}
+
+.fa-rotate-by {
+  transform: rotate(var(--fa-rotate-angle, 0));
+}
+
+.fa-stack {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: var(--fa-stack-z-index, auto);
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+
+.sr-only,
+.fa-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:not(:focus),
+.fa-sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}
+
+.fad.fa-inverse,
+.fa-duotone.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+    
+    
+    
+    
+    
+    
+    GotSport Rankings
+    
+    
+  
+.rhi{max-width:100% !important;height:auto !important;}
+.rhcxjhlepx2w a,.rhi,.rhcxjhlepx2w img{-webkit-box-shadow:none !important;-moz-box-shadow:none !important;box-shadow:none !important;border-style:none !important;margin:0 0 0 0 !important;padding:0 0 0 0 !important;}
+.rhcxjhlepx2w a>img{display:block;}
+.rhcxjhlepx2w .instagram-media-rendered,.rhcxjhlepx2w .twitter-tweet-rendered{margin:0 0 !important;}
+.rhcxjhlepx2w{box-sizing:border-box !important;text-align:center;}
+.rhcxjhlepx2w>div{text-align:center;}
+.rhcxjhlepx2w div div{max-width:100%;}
+.rhcxjhlepx2w iframe{position:relative;display:block;}
+.hn-container-left .rna-container{margin:10px 0 !important;}
+.rna-container iframe{position:relative;}
+.rna-container .fb-post{max-width:100% !important;padding-bottom:0;}
+.rna-container .fb-post>span{max-width:100% !important;margin:0 0;max-height: initial !important;}
+@media only screen and (max-width:600px){
+  .rhcxjhlepx2w{box-sizing:border-box;}
+  .rhcxjhlepx2w .instagram-media-rendered{width:500px !important;min-width:220px !important;max-width:100% !important;box-sizing:border-box !important;}
+}
+.rhcxjhlepx2w .rhus { width: 500px; max-width: 100%; }
+.rhcxjhlepx2w .rhls{margin-top:10px !important;}
+.rhcxjhlepx2w .rhus .fluid-width-video-wrapper, .rhcxjhlepx2w .rhls .fluid-width-video-wrapper{display:none !important;}
+.rhcxjhlepx2w.rhvid .rhus, .rhcxjhlepx2w.rhvid .rhls{width:100%;max-width:100%;}
+.rhcxjhlepx2w .rhus div, .rhcxjhlepx2w .rhls div{margin-left:auto !important;margin-right:auto !important;}
+.rhcxjhlepx2w .rhus ins, .rhcxjhlepx2w .rhls ins{max-width:500px !important;}
+.rna-container .vid-container{position:relative;overflow:hidden;height:0 !important;padding-bottom:56.25% !important;}
+.rna-container .vid-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;min-width:auto;min-height:auto;}
+.rna-container .fluid-width-video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;}
+div[data-rhp=""1""] > div{margin-left:auto;margin-right:auto;}
+
+            .ayManagerEnv_slug:before {
+                content: 'Ad';
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-size: 10px;
+                color: #6a737c;
+            }
+        
+  setTimeout(() => {
+      document.querySelectorAll('div[id^=div-ad-]').forEach((c) => {
+      var a = c.id.split('-')
+      c.dataset.ayPlacement = a.slice(3).join(""-"");
+    })
+    window.ayManagerEnv.changePage();
+
+}, 500);
+
+
+(function waitForGPP() {
+  if (typeof __gpp === 'function') {
+    __gpp('ping', function(data) {
+      const gppString = data?.gppString || '';
+      const gppSid = data?.applicableSections || [7]; 
+
+      pbjs.setConfig({
+        ortb2: {
+          user: {
+            gpp: gppString,
+            gpp_sid: gppSid
+          }
+        }
+      });
+    });
+  } else {
+    setTimeout(waitForGPP, 50); 
+  }
+})();
+
+(function() {
+    var config = {
+        accountId: 'org_jx8BpfMoE8wPQXHA3',
+        useBidderAlias: false,
+        includeBidders: [], // defaults to all supported bidders
+        excludeBidders: [],
+        serverOnlyBidders: [],
+        reportRandomToCustomDimension: 'custom_9',
+    };
+
+    var pbjs = window[ayManagerEnv.settings.prebidSettings.prebidScript.windowName];
+    var supportedBidders = ['33across','aax','aceex','acuityads','adf','adgeneration','adhese','adkernel','adkernelAdn','adman','admixer','adnuntius','adocean','adoppler','adot','adpone','adprime','adquery','adrino','adsinteractive','adsyield','adtarget','adtelligent','adtrgtme','advangelists','AdView','adxcg','adyoulike','aidem','aja','algorix','alkimi','amx','beyondmedia','apacdex','applogy','appnexus','appstock','appush','audienceNetwork','automatad','avct','axonix','beachfront','beintoo','bematterfull','between','bidmachine','bidmyadz','bidscube','bidstack','bizzclick','bliink','blue','bmtm','boldwin','brave','cadent_aperture_mx','ccx','CodeFuel','coinzilla','colossus','compass','connectad','consumable','copper6','copper6ssp','cpmstar','criteo','cwire','datablocks','deepintent','definemedia','dianomi','dmx','duration','e_volution','edge226','emtv','engagebdr','eplanning','epom','conversant','ergadx','evtech','flipp','freewheelssp','frvradn','futureads','gamma','gamoshi','globalsun','gothamads','greedygame','grid','gumgum','huaweiads','iionads','imds','impactify','improvedigital','infytv','inmobi','interactiveOffers','intertech','invibes','iqzone','ix','janet','jixie','kargo','kidoz','kiviads','krushmedia','kubient','lifestreet','liftoff','limelightDigital','lm_kiviads','lockerdome','logan','logicad','lunamedia','mabidder','madvertise','marsmedia','mediafuse','medianet','mgid','mgidX','mobfoxpb','mobilefuse','motorik','nextMillennium','ninthdecimal','nobid','onetag','openweb','openx','operaads','optout','orbidder','outbrain','outbrain','ownadx','pangle','pgamssp','preciso','pubmatic','pubnative','pulsepoint','pwbid','quantumdex','resetdigital','revcontent','rhythmone','richaudience','rise','roundel','rtbhouse','rubicon','sa_lunamedia','screencore','seedingAlliance','sharethrough','silvermob','silverpush','smaato','smartadserver','smarthub','smartx','smartyads','smilewanted','sonobi','sovrn','sspBC','streamkey','stroeerCore','suntContent','synacormedia','taboola','tappx','tpmn','trafficgate','triplelift','triplelift_native','trustedstack','trustx','ucfunnel','undertone','unicorn','unruly','valueimpression','videobyte','videoheroes','vidoomy','viewdeos','visiblemeasures','visx','vrtcal','xe','xtrmqb','yahooAds','yandex','yeahmobi','yieldlab','yieldmo','yieldone','zeroclickfraud','zeta_global_ssp','minutemedia','missena','vidazoo','loopme','ogury','kueezrtb'];
+    var forcedBidderAliases = {};
+    if (pbjs.version < 'v8.45.0') {
+        forcedBidderAliases.minutemedia = 918;
+        forcedBidderAliases.rise = 1043;
+    }
+    var availableBidders = [];
+    var endpoint = 'pbs-eu-central';
+    if (['NA', 'SA',].includes('NA')) {
+        endpoint = 'pbs-us-east';
+    }
+
+    pbjs.que.push(function() {
+        var missingModules = ['prebidServerBidAdapter', 's2sTesting'].filter(function(module) {
+            return !pbjs.installedModules.includes(module)
+        });
+        if (missingModules.length) {
+            console.error('Missing required modules: ' + missingModules.join(', '));
+            return;
+        }
+
+        ayManagerEnv.settings.bidderSettings.bidders.forEach(function(bid) {
+            var bidder = bid.alias || bid.bidder;
+            var normalizedBidder = bidder.replace('_s2s', '');
+            if (
+                !availableBidders.includes(normalizedBidder) &&
+                supportedBidders.includes(bid.bidder.replace('_s2s', '')) &&
+                !config.excludeBidders.includes(normalizedBidder) &&
+                (!config.includeBidders.length || config.includeBidders.includes(bid.bidder))
+            ) {
+                var forcedAlias = forcedBidderAliases[bid.bidder];
+                if (config.useBidderAlias || forcedAlias) {
+                    if (bid.alias && bid.alias.includes('_s2s')) {
+                        availableBidders.push(bidder);
+                        return;
+                    }
+                    var opts = {};
+                    if (forcedAlias) {
+                        opts.gvlid = forcedAlias;
+                    }
+                    pbjs.aliasBidder(bid.bidder, bidder + '_s2s', opts);
+                    availableBidders.push(bidder + '_s2s');
+                } else {
+                    availableBidders.push(bidder.replace('_s2s', ''));
+                }
+            }
+        });
+
+        var random = Math.floor(Math.random()*10);;
+        if (config.reportRandomToCustomDimension) {
+            window.assertiveQueue.push(function () {
+                assertive.setConfig('analytics.custom.' + config.reportRandomToCustomDimension, 's2s-' + random);
+            });
+        }
+        pbjs.setConfig({
+            s2sConfig: {
+                enabled: true,
+                testing: true,
+                accountId: config.accountId,
+                bidders: availableBidders,
+                timeout: Math.round(pbjs.getConfig('bidderTimeout') * 0.75),
+                endpoint: {
+                    p1Consent: 'https://' + endpoint + '.ay.delivery/openrtb2/auction',
+                    noP1Consent: 'https://' + endpoint + '.ay.delivery/openrtb2/auction'
+                },
+                syncEndpoint: {
+                    p1Consent: 'https://' + endpoint + '.ay.delivery/cookie_sync',
+                    noP1Consent: 'https://' + endpoint + '.ay.delivery/cookie_sync'
+                },
+                extPrebid: {
+                    rnd: random,
+                    targeting: {
+                        includewinners: false
+                    }
+                }
+            }
+        });
+    });
+
+    ayManagerEnv.onEvent('prebidBeforeFetchBids', function(bidConfig) {
+        if (!availableBidders.length) {
+            return;
+        }
+        bidConfig.adUnits.forEach(function(adUnit) {
+            var s2sBidders = adUnit.bids.reduce(function(acc, bid) {
+                if (bid.bidder.includes('_s2s')) {
+                    acc.push(bid.bidder.replace('_s2s', ''));
+                }
+                return acc;
+            }, []);
+            adUnit.bids = adUnit.bids.reduce(function(acc, bid) {
+                var bidder = bid.bidder;
+                var normalizedBidder = bidder.replace('_s2s', '');
+
+                // remove declared s2s bid requests if excluded
+                if (bidder.includes('_s2s') && config.excludeBidders.includes(normalizedBidder)) {
+                    return acc;
+                }
+                // remove client bid requests if declared s2s bid request exists
+                if (config.serverOnlyBidders.includes(normalizedBidder) && s2sBidders.includes(bidder)) {
+                    return acc;
+                }
+
+                if (bidder.includes('_s2s') || config.serverOnlyBidders.includes(bidder)) {
+                    bid.bidSource = { server: 100 };
+                    bid.includeSourceKvp = true;
+
+                    if (!config.useBidderAlias && !forcedBidderAliases[normalizedBidder]) {
+                        bid.bidder = normalizedBidder;
+                    }
+                    acc.push(bid);
+                    return acc;
+                }
+                if (config.useBidderAlias || forcedBidderAliases[bidder]) {
+                    bidder = bidder + '_s2s';
+                }
+                if (availableBidders.includes(bidder)) {
+                    bid.bidSource = { client: 100 };
+                    bid.includeSourceKvp = true;
+
+                    if (!s2sBidders.includes(bid.bidder)) {
+                        var s2sBid = JSON.parse(JSON.stringify(bid));
+                        s2sBid.bidSource = { server: 100 };
+                        s2sBid.includeSourceKvp = true;
+                        s2sBid.bidder = bidder;
+                        acc.push(s2sBid);
+                    }
+                }
+                acc.push(bid);
+                return acc;
+            }, []);
+        });
+    });
+})();
+
+(function() {
+    // div id for Adagio/Contextful
+    ayManagerEnv.onEvent('prebidBeforeFetchBids', function(bidConfig) {
+        bidConfig.adUnits.forEach(function(adUnit) {
+            adUnit.ortb2Imp = adUnit.ortb2Imp || {};
+            adUnit.ortb2Imp.ext = adUnit.ortb2Imp.ext || {};
+            adUnit.ortb2Imp.ext.data = adUnit.ortb2Imp.ext.data || {};
+            adUnit.ortb2Imp.ext.data.divId = adUnit.code;
+            adUnit.ortb2Imp.ext.data.placement = adUnit.code.replace(/__ayManagerEnv__.+/, '');
+        });
+    });
+})();
+.ksc-in-con .celtra-ad-inline-host { height: 100% !important; min-height: initial !important; }.ksc-in-con { min-height: initial !important; }.ksc-in-con .rhi-ab { min-height: initial !important; }.ksc-container { min-height: initial !important; }.ksc-container .ksc-ia-ab { min-height: initial !important; }.ksc-container .celtra-ad-inline-host { min-height: initial !important; }.ksl_overlay_displayed { height: 100%; overflow: hidden; }.ksc-in-con.fullscreen .rhi-ab {height:100%;width:100%;max-height:100%;max-width:100%;}.ksc-in-con.fullscreen #ksc-in-x {right:5px !important;top:5px !important;}.ksc-ia-ab .celtra-ad-inline-host .notranslate,.ksc-masthead-ab .celtra-ad-inline-host .notranslate,.rhi-ab .celtra-ad-inline-host .notranslate {max-width: initial !important;max-height: initial !important;position: initial !important;}.ksc-container.fullscreen > div {height:100%;width:100%;}.ksc-in-con div[data-embed-url], .ksc-in-con .twitter-tweet-rendered {padding:0 35px;}.krg-at-container {width:100% !important}.st-adunit,#inScreen.st-placement .st-reset {z-index:2147483647 !important;}.rhi-ab div[data-format=""FabrikOutstream""] .kargo-banner-optout.show { position:absolute !important;top:-34px !important;left:50% !important;transform:translateX(-50%);}.lngtd-dynamic-ad-container>div>div>iframe,.lngtd-dynamic-ad-container>div>iframe,.lngtd-dynamic-ad-container>iframe {margin: 0 auto;}.lngtd-ad-wrapper-banner>div>div>iframe,.lngtd-ad-wrapper-banner>div>iframe,.lngtd-ad-wrapper-banner>iframe {margin:0 auto;}
+        #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca {
+            position: relative;
+            margin: 0 auto;
+            z-index: 1;
+            background-color: unset;
+            width: 320px;
+            height: 180px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca .fabrik-logo {
+            background: url(//s.lngtdv.com/fvp/logo_white.svg) no-repeat 0 0;
+            background-size: cover;
+            display: inline-block;
+            width: 40px;
+            height: 12px;
+        }
+        
+        .fabrik-outer-video-container {
+            position:absolute;
+            top:0;
+            left:0;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 320px;
+            height:100%;
+        }
+        .fabrik-outer-video-container .video-js *,
+        .fabrik-outer-video-container .video-js :after,
+        .fabrik-outer-video-container .video-js :before {
+            font-family: VideoJS;
+        }
+        .fabrik-outer-video-container .video-js .vjs-tech {
+            display: block;
+        }
+        #gotsoccer_D_FVP {
+            position:absolute;
+            top:0;
+            left:0;
+            width: 320px; 
+            height: 180px;
+            overflow:hidden;
+        }
+        #gotsoccer_D_FVP>video {
+            width: 320px; 
+            height: 180px;
+        }
+        #gotsoccer_D_FVP>.ima-ad-container {z-index: 9 !important;}
+        #gotsoccer_D_FVP_ima-controls-div:not(.ima-controls-div-showing) {
+            height:3em;
+            transition:opacity 0.25s ease-in-out;
+            opacity:1;
+            background: linear-gradient(to top,                
+                rgba(7, 20, 30, .3) 30%,                
+                rgba(7, 20, 30, 0) 100%);
+        }
+        #gotsoccer_D_FVP_ima-controls-div.ima-controls-div-showing {
+            height:3em;
+            transition:opacity 0.25s ease-in-out;
+            opacity:1;
+        }
+        #gotsoccer_D_FVP_ima-countdown-div {position:absolute;line-height:3em;top:0;left:4em;font-family:sans-serif !important;}
+        #gotsoccer_D_FVP_ima-progress-div {
+            display:block;
+            background-color: #f93;
+        }
+        #gotsoccer_D_FVP_ima-seek-bar-div {
+            display:block;
+            bottom: 0;
+            top: unset;
+        }
+        #gotsoccer_D_FVP_ima-mute-div {right:1.8em;color:#fff;top:0;}
+        #gotsoccer_D_FVP_ima-play-pause-div {color:#fff;top:0;}
+        #gotsoccer_D_FVP_ima-slider-div {display:none;}
+        #gotsoccer_D_FVP_ima-fullscreen-div {right:0;color:#fff;top:0;}
+        #gotsoccer_D_FVP .vjs-control-bar {}
+        #gotsoccer_D_FVP .vjs-control-bar>button,
+        #gotsoccer_D_FVP .vjs-control-bar>div {display: none;}
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-play-control {display: inline-block;}
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-volume-panel {display: inline-block;}
+        #gotsoccer_D_FVP .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-hover {width: 4em;}
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-fullscreen-control {display: inline-block;margin-left: auto;}
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-progress-control {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: transparent;
+            width:100%;
+            height: 4px;
+        }
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-progress-control .vjs-play-progress {
+            background-color: #f93;
+            height: 4px;
+        }
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-progress-control .vjs-play-progress:before {
+            content: none;
+        }
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-progress-control .vjs-progress-holder {
+            margin: 0;
+        }
+        
+        #gotsoccer_D_FVP_ima-ad-container video {background:none !important;}
+        #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.player-hidden {visibility:hidden;opacity:0;}
+        #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.player-showing {visibility:visible;opacity:1;transition:opacity 0.4s ease-in-out;}
+
+        .fabrik-outer-video-container .fabrik-video-header {
+            height: 30px;
+            width: 99.8%;
+            background-color: rgba(23, 23, 23, 0.8);
+            color: #fff;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index: 12;
+            visibility:hidden;
+            opacity: 0;
+            padding: 5px;
+            transition:opacity 0.4s ease-in-out;
+        }
+        
+        .fabrik-outer-video-container:hover .fabrik-video-header {
+            visibility:visible;
+            opacity:1;
+            transition:opacity 0.4s ease-in-out;
+        }
+        
+        .ad-playing .fabrik-outer-video-container:hover  .fabrik-video-header {
+            visibility: hidden;
+            opacity: 0;
+        }
+        
+        #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.ad-playing .fabrik-outer-video-container .ad-overlay {
+            display: inline-block;
+        }
+        
+        .fabrik-outer-video-container .ad-overlay {
+            display: none;
+            height: 21px;
+            background-color: #eef3f6;
+            color: #222;
+            border-radius: 10px 0 10px 0;
+            position: absolute;
+            top:0;
+            left: 0;
+            z-index: 11;
+            font-size: 10px;
+        }
+        
+        .fabrik-outer-video-container .ad-overlay .ad {
+            background-color: #f93;
+            border-radius: 10px 0 10px 0;
+            height: 21px;
+            width: 21px;
+            line-height: 21px;
+            max-height: 21px;
+            text-align: center;
+            display: inline-block;
+        }
+        
+        .fabrik-outer-video-container .ad-overlay .learn-more {
+            padding:5px;
+            color: #222;
+            text-decoration: none;
+        }
+        
+        .fabrik-outer-video-container .ad-overlay .learn-more:hover {
+            color:#000;
+        }
+        
+        .fabrik-outer-video-container .fabrik-video-header .video-title {
+            display: inline-block;
+            width: 60%;
+            text-wrap: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            float: left;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top:3px;
+            margin-left: 8px;
+        }
+        
+        .fabrik-outer-video-container .fabrik-video-header .fabrik-logo {
+            float: right;
+            margin-top: 4px;
+            margin-right: 35px;
+        }
+        
+        #gotsoccer_D_FVP .keep-watching {
+            cursor:pointer;
+            color:#eee;
+            font-size:15px;
+            font-weight:bold;
+            padding:7px 9px;
+            float:right;
+            border:2px solid #eee;
+            border-radius: 5px;
+            text-decoration:none;
+            text-align:right;
+            position:absolute;
+            bottom:35px;
+            right:15px;
+            z-index:99;
+            font-family:sans-serif !important;
+            background-color:rgba(0,0,0,0.5);
+        }
+        
+        #gotsoccer_D_FVP .keep-watching span {
+            color:#eee !important;
+            font-size: 15px !important;
+            font-family: sans-serif !important;
+        }
+        
+        #gotsoccer_D_FVP .keep-watching:hover {
+            border:2px solid #fff;
+            color: #fff;
+            background-color:rgba(0,0,0,0.8);
+            text-decoration:none;
+        }
+        
+        #gotsoccer_D_FVP .keep-watching:hover span {
+            color: #fff;
+            text-decoration:none;
+        }
+
+        #video-close-4752ca0a-7e6c-4da8-9af4-15e6383f6bf7 {
+            cursor: pointer;
+            display: none;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            text-align: center;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-weight: 600;
+            z-index: 12;
+            color: #bbb;
+            text-decoration:none;
+        }
+        #video-close-4752ca0a-7e6c-4da8-9af4-15e6383f6bf7:before {
+          font-size: 1.5em;
+          content: ""\2715"";
+        }
+        #video-close-4752ca0a-7e6c-4da8-9af4-15e6383f6bf7:hover:before {
+          color: #eee;
+        }
+        
+        #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.player-showing #video-close-4752ca0a-7e6c-4da8-9af4-15e6383f6bf7,
+        #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fvp-sticky #video-close-4752ca0a-7e6c-4da8-9af4-15e6383f6bf7 {
+            display: block;
+        }
+        
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fvp-sticky {
+                    width: 320px;
+                    height: 180px;
+                    bottom:100px !important;
+                    right:5px !important;
+                    margin: 0;
+                    z-index: 9999;
+                }
+            
+            #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fvp-sticky {
+                position: fixed;
+            }
+            #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fvp-sticky .fabrik-outer-video-container,
+            #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fvp-sticky #gotsoccer_D_FVP,
+            #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fvp-sticky #gotsoccer_D_FVP>video {
+                width: 320px;
+                height: 180px;
+            }
+            #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fvp-sticky #gotsoccer_D_FVP>video {
+                width: 320px;
+                height: 180px;
+            }
+        
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent:not(.fvp-sticky) {
+                    width: 520px;
+                    height: 180px;
+                }
+            
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent:not(.fvp-sticky) .fabrik-outer-video-container {
+                    border-radius: 10px 0 0 10px;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent:not(.fvp-sticky) .fabrik-outer-video-container .fabrik-video-header .fabrik-logo {
+                    display: none;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .fvp-content-desktop {
+                    background-color: #1f1f1f;
+                    margin-left: auto;
+                    height: 100%;
+                    width: 201px;
+                    border-radius: 0 10px 10px 0;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .fvp-content-mobile {
+                    display: none;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent.fvp-sticky .fvp-content-desktop {
+                    display: none;
+                }
+                
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .fvp-content-desktop .header {
+                    height: 30px;
+                    color: #fff;
+                    position:absolute;
+                    top:0;
+                    width: 200px;
+                    padding: 5px;
+                    z-index: 2;
+                    background-color: #1f1f1f;
+                    border-radius: 0 10px 0 0;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .fvp-content-desktop .header .up-next {
+                    display: inline-block;
+                    width: 100px;
+                    height: 14px;
+                    float: left;
+                    text-align:left;
+                    margin-left:5px;
+                    margin-top: 3px;
+                    font-size:14px;
+                    font-weight:600;
+                }
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .fvp-content-desktop .header .fabrik-logo {
+                    float: right;
+                    margin-top: 5px;
+                    margin-right: 5px;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .advertisement-notice {
+                    display: none;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .fvp-content-desktop .next-videos {
+                    width: 200px;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    padding-top: 30px;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                }
+                
+                .next-videos::-webkit-scrollbar-track {
+                  background-color: transparent;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video {
+                    width: 100%;
+                    padding: 5px 12px;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video:hover {
+                    background-color: #424242;
+                    cursor: pointer;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video.playing {
+                    background-color: #9b4e00;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video.playing:hover {
+                    background-color: #9b4e00;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video .video-image {
+                    width: 160px;
+                    height: 93px;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video .video-title {
+                    width: 158px;
+                    margin-left:8px;
+                    margin-top; 2px;
+                    font-size:11px;
+                    color: #fff;
+                    font-weight: 500;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    text-wrap: nowrap;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent.ad-playing .fvp-content-desktop .header .up-next,
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent.ad-playing .fvp-content-desktop .next-videos {
+                    display: none;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent.ad-playing .advertisement-notice {
+                    display: block;
+                    color: #fff;
+                    font-size: 18px;
+                    font-weight: 600;
+                    position: absolute;
+                    padding-bottom: 15%;
+                    bottom: 6%;
+                    width:170px;
+                    right: 10px;
+                    text-align: left;
+                    line-height:24px;
+                }
+                
+                #video-container-48cd0cfe-6629-4e0b-8008-d5e508ca91ca.fabrik-player-withcontent.ad-playing .advertisement-notice .ad-choices {
+                    background: url(//s.lngtdv.com/fvp/adchoices.svg) no-repeat 0 0;
+                    background-size: cover;
+                    position: absolute;
+                    bottom: 0;
+                    right: 10px;
+                    height: 15px;
+                    width: 15px;
+                }
+            
+        #undefined {
+            width: 100%;
+            height: 180px;
+        }
+        #undefined.os-player {
+        }
+    
+        #undefined.fvp-sticky {
+            position: fixed;
+            bottom:100px !important;
+            right:5px !important;
+            width: 320px;
+            height: 180px;
+            z-index: 9999;
+        }
+    
+        #undefined.player-showing {
+            display: block;
+        }
+        #undefined.player-hidden {
+            display: none;
+        }",,,42162343,AZ Arsenal Pre-ECNL B15,Arizona Arsenal Soccer Club
+Unknown,"(function() {
+    var config = {
+        accountId: 'org_jx8BpfMoE8wPQXHA3',
+        useBidderAlias: false,
+        includeBidders: [], // defaults to all supported bidders
+        excludeBidders: [],
+        serverOnlyBidders: [],
+        reportRandomToCustomDimension: 'custom_9',
+    };
+
+    var pbjs = window[ayManagerEnv.settings.prebidSettings.prebidScript.windowName];
+    var supportedBidders = ['33across','aax','aceex','acuityads','adf','adgeneration','adhese','adkernel','adkernelAdn','adman','admixer','adnuntius','adocean','adoppler','adot','adpone','adprime','adquery','adrino','adsinteractive','adsyield','adtarget','adtelligent','adtrgtme','advangelists','AdView','adxcg','adyoulike','aidem','aja','algorix','alkimi','amx','beyondmedia','apacdex','applogy','appnexus','appstock','appush','audienceNetwork','automatad','avct','axonix','beachfront','beintoo','bematterfull','between','bidmachine','bidmyadz','bidscube','bidstack','bizzclick','bliink','blue','bmtm','boldwin','brave','cadent_aperture_mx','ccx','CodeFuel','coinzilla','colossus','compass','connectad','consumable','copper6','copper6ssp','cpmstar','criteo','cwire','datablocks','deepintent','definemedia','dianomi','dmx','duration','e_volution','edge226','emtv','engagebdr','eplanning','epom','conversant','ergadx','evtech','flipp','freewheelssp','frvradn','futureads','gamma','gamoshi','globalsun','gothamads','greedygame','grid','gumgum','huaweiads','iionads','imds','impactify','improvedigital','infytv','inmobi','interactiveOffers','intertech','invibes','iqzone','ix','janet','jixie','kargo','kidoz','kiviads','krushmedia','kubient','lifestreet','liftoff','limelightDigital','lm_kiviads','lockerdome','logan','logicad','lunamedia','mabidder','madvertise','marsmedia','mediafuse','medianet','mgid','mgidX','mobfoxpb','mobilefuse','motorik','nextMillennium','ninthdecimal','nobid','onetag','openweb','openx','operaads','optout','orbidder','outbrain','outbrain','ownadx','pangle','pgamssp','preciso','pubmatic','pubnative','pulsepoint','pwbid','quantumdex','resetdigital','revcontent','rhythmone','richaudience','rise','roundel','rtbhouse','rubicon','sa_lunamedia','screencore','seedingAlliance','sharethrough','silvermob','silverpush','smaato','smartadserver','smarthub','smartx','smartyads','smilewanted','sonobi','sovrn','sspBC','streamkey','stroeerCore','suntContent','synacormedia','taboola','tappx','tpmn','trafficgate','triplelift','triplelift_native','trustedstack','trustx','ucfunnel','undertone','unicorn','unruly','valueimpression','videobyte','videoheroes','vidoomy','viewdeos','visiblemeasures','visx','vrtcal','xe','xtrmqb','yahooAds','yandex','yeahmobi','yieldlab','yieldmo','yieldone','zeroclickfraud','zeta_global_ssp','minutemedia','missena','vidazoo','loopme','ogury','kueezrtb'];
+    var forcedBidderAliases = {};
+    if (pbjs.version < 'v8.45.0') {
+        forcedBidderAliases.minutemedia = 918;
+        forcedBidderAliases.rise = 1043;
+    }
+    var availableBidders = [];
+    var endpoint = 'pbs-eu-central';
+    if (['NA', 'SA',].includes('NA')) {
+        endpoint = 'pbs-us-east';
+    }
+
+    pbjs.que.push(function() {
+        var missingModules = ['prebidServerBidAdapter', 's2sTesting'].filter(function(module) {
+            return !pbjs.installedModules.includes(module)
+        });
+        if (missingModules.length) {
+            console.error('Missing required modules: ' + missingModules.join(', '));
+            return;
+        }
+
+        ayManagerEnv.settings.bidderSettings.bidders.forEach(function(bid) {
+            var bidder = bid.alias || bid.bidder;
+            var normalizedBidder = bidder.replace('_s2s', '');
+            if (
+                !availableBidders.includes(normalizedBidder) &&
+                supportedBidders.includes(bid.bidder.replace('_s2s', '')) &&
+                !config.excludeBidders.includes(normalizedBidder) &&
+                (!config.includeBidders.length || config.includeBidders.includes(bid.bidder))
+            ) {
+                var forcedAlias = forcedBidderAliases[bid.bidder];
+                if (config.useBidderAlias || forcedAlias) {
+                    if (bid.alias && bid.alias.includes('_s2s')) {
+                        availableBidders.push(bidder);
+                        return;
+                    }
+                    var opts = {};
+                    if (forcedAlias) {
+                        opts.gvlid = forcedAlias;
+                    }
+                    pbjs.aliasBidder(bid.bidder, bidder + '_s2s', opts);
+                    availableBidders.push(bidder + '_s2s');
+                } else {
+                    availableBidders.push(bidder.replace('_s2s', ''));
+                }
+            }
+        });
+
+        var random = Math.floor(Math.random()*10);;
+        if (config.reportRandomToCustomDimension) {
+            window.assertiveQueue.push(function () {
+                assertive.setConfig('analytics.custom.' + config.reportRandomToCustomDimension, 's2s-' + random);
+            });
+        }
+        pbjs.setConfig({
+            s2sConfig: {
+                enabled: true,
+                testing: true,
+                accountId: config.accountId,
+                bidders: availableBidders,
+                timeout: Math.round(pbjs.getConfig('bidderTimeout') * 0.75),
+                endpoint: {
+                    p1Consent: 'https://' + endpoint + '.ay.delivery/openrtb2/auction',
+                    noP1Consent: 'https://' + endpoint + '.ay.delivery/openrtb2/auction'
+                },
+                syncEndpoint: {
+                    p1Consent: 'https://' + endpoint + '.ay.delivery/cookie_sync',
+                    noP1Consent: 'https://' + endpoint + '.ay.delivery/cookie_sync'
+                },
+                extPrebid: {
+                    rnd: random,
+                    targeting: {
+                        includewinners: false
+                    }
+                }
+            }
+        });
+    });
+
+    ayManagerEnv.onEvent('prebidBeforeFetchBids', function(bidConfig) {
+        if (!availableBidders.length) {
+            return;
+        }
+        bidConfig.adUnits.forEach(function(adUnit) {
+            var s2sBidders = adUnit.bids.reduce(function(acc, bid) {
+                if (bid.bidder.includes('_s2s')) {
+                    acc.push(bid.bidder.replace('_s2s', ''));
+                }
+                return acc;
+            }, []);
+            adUnit.bids = adUnit.bids.reduce(function(acc, bid) {
+                var bidder = bid.bidder;
+                var normalizedBidder = bidder.replace('_s2s', '');
+
+                // remove declared s2s bid requests if excluded
+                if (bidder.includes('_s2s') && config.excludeBidders.includes(normalizedBidder)) {
+                    return acc;
+                }
+                // remove client bid requests if declared s2s bid request exists
+                if (config.serverOnlyBidders.includes(normalizedBidder) && s2sBidders.includes(bidder)) {
+                    return acc;
+                }
+
+                if (bidder.includes('_s2s') || config.serverOnlyBidders.includes(bidder)) {
+                    bid.bidSource = { server: 100 };
+                    bid.includeSourceKvp = true;
+
+                    if (!config.useBidderAlias && !forcedBidderAliases[normalizedBidder]) {
+                        bid.bidder = normalizedBidder;
+                    }
+                    acc.push(bid);
+                    return acc;
+                }
+                if (config.useBidderAlias || forcedBidderAliases[bidder]) {
+                    bidder = bidder + '_s2s';
+                }
+                if (availableBidders.includes(bidder)) {
+                    bid.bidSource = { client: 100 };
+                    bid.includeSourceKvp = true;
+
+                    if (!s2sBidders.includes(bid.bidder)) {
+                        var s2sBid = JSON.parse(JSON.stringify(bid));
+                        s2sBid.bidSource = { server: 100 };
+                        s2sBid.includeSourceKvp = true;
+                        s2sBid.bidder = bidder;
+                        acc.push(s2sBid);
+                    }
+                }
+                acc.push(bid);
+                return acc;
+            }, []);
+        });
+    });
+})();",,,42162343,AZ Arsenal Pre-ECNL B15,Arizona Arsenal Soccer Club
+Unknown,"Up NextContent will resume after this advertisement.Liga MX Recap: America and Toluca Dominate, Drama UnfoldsWomen's Liga MX: Mexico's Thriving Women's Football League‘The objective must be to win it’ – Ancelotti sets target ahead of next World CupBoca Manager Miguel Angel Russo Passes Away Aged 69Alessandro Nesta - 'Van Dijk is world's best defender and EPL rules football'Columbus Crew Head Coach Nancy on Thierry Henry - and the growth of the MLSPSG Struggles Despite Recent Victory over BarcelonaLiga MX Roundup: Key Wins for America, Chivas & MoreTigres and Juarez Continue Strong Form in League PlayPlayoff Contenders and Potential Comebacks in Liga MXACFC Struggles in the NWSL: Key Players and Future OutlookOrlando Pride's Struggles and NWSL's Exciting WeekendLAFC Emerges as Title Contender with Thriving PlayersMessi Strikes Twice As Inter Miami Advance To MLS PlayoffsPafos FC: A Decade from Obscurity to Champions LeagueThrilling Champions League Start: Juventus vs. Dartmouth 4-4MLS Week Highlights: Inter Miami Triumphs, LAFC ShinesGotham FC Secures Win, Kansas City's Current Draws in NWSLMessi Finalizing Multi-Year Contract With Inter MiamiHigh stakes but high rewards as soccer icon Zinedine Zidane takes in some Parisian padel action",,,42162343,AZ Arsenal Pre-ECNL B15,Arizona Arsenal Soccer Club
+Unknown,"Liga MX Recap: America and Toluca Dominate, Drama UnfoldsWomen's Liga MX: Mexico's Thriving Women's Football League‘The objective must be to win it’ – Ancelotti sets target ahead of next World CupBoca Manager Miguel Angel Russo Passes Away Aged 69Alessandro Nesta - 'Van Dijk is world's best defender and EPL rules football'Columbus Crew Head Coach Nancy on Thierry Henry - and the growth of the MLSPSG Struggles Despite Recent Victory over BarcelonaLiga MX Roundup: Key Wins for America, Chivas & MoreTigres and Juarez Continue Strong Form in League PlayPlayoff Contenders and Potential Comebacks in Liga MXACFC Struggles in the NWSL: Key Players and Future OutlookOrlando Pride's Struggles and NWSL's Exciting WeekendLAFC Emerges as Title Contender with Thriving PlayersMessi Strikes Twice As Inter Miami Advance To MLS PlayoffsPafos FC: A Decade from Obscurity to Champions LeagueThrilling Champions League Start: Juventus vs. Dartmouth 4-4MLS Week Highlights: Inter Miami Triumphs, LAFC ShinesGotham FC Secures Win, Kansas City's Current Draws in NWSLMessi Finalizing Multi-Year Contract With Inter MiamiHigh stakes but high rewards as soccer icon Zinedine Zidane takes in some Parisian padel action",,,42162343,AZ Arsenal Pre-ECNL B15,Arizona Arsenal Soccer Club
+Unknown,".video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    
+    
+    
+    
+      function OptanonWrapper() { }
+    
+    
+
+    
+    
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ ""gtm.start"": new Date().getTime(), event: ""gtm.js"" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != ""dataLayer"" ? ""&l="" + l : """";
+        j.async = true;
+        j.src = ""https://www.googletagmanager.com/gtm.js?id="" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, ""script"", ""dataLayer"", ""GTM-5RN6R4T"");
+    
+    
+    
+    :root, :host {
+  --fa-font-solid: normal 900 1em/1 ""Font Awesome 6 Free"";
+  --fa-font-regular: normal 400 1em/1 ""Font Awesome 6 Free"";
+  --fa-font-light: normal 300 1em/1 ""Font Awesome 6 Pro"";
+  --fa-font-thin: normal 100 1em/1 ""Font Awesome 6 Pro"";
+  --fa-font-duotone: normal 900 1em/1 ""Font Awesome 6 Duotone"";
+  --fa-font-brands: normal 400 1em/1 ""Font Awesome 6 Brands"";
+  --fa-font-sharp-solid: normal 900 1em/1 ""Font Awesome 6 Sharp"";
+  --fa-font-sharp-regular: normal 400 1em/1 ""Font Awesome 6 Sharp"";
+  --fa-font-sharp-light: normal 300 1em/1 ""Font Awesome 6 Sharp"";
+  --fa-font-sharp-thin: normal 100 1em/1 ""Font Awesome 6 Sharp"";
+  --fa-font-sharp-duotone-solid: normal 900 1em/1 ""Font Awesome 6 Sharp Duotone"";
+}
+
+svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+.svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-2xs {
+  vertical-align: 0.1em;
+}
+.svg-inline--fa.fa-xs {
+  vertical-align: 0em;
+}
+.svg-inline--fa.fa-sm {
+  vertical-align: -0.0714285705em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.2em;
+}
+.svg-inline--fa.fa-xl {
+  vertical-align: -0.25em;
+}
+.svg-inline--fa.fa-2xl {
+  vertical-align: -0.3125em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-li {
+  width: var(--fa-li-width, 2em);
+  top: 0.25em;
+}
+.svg-inline--fa.fa-fw {
+  width: var(--fa-fw-width, 1.25em);
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  transform-origin: center center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: var(--fa-counter-background-color, #ff253a);
+  border-radius: var(--fa-counter-border-radius, 1em);
+  box-sizing: border-box;
+  color: var(--fa-inverse, #fff);
+  line-height: var(--fa-counter-line-height, 1);
+  max-width: var(--fa-counter-max-width, 5em);
+  min-width: var(--fa-counter-min-width, 1.5em);
+  overflow: hidden;
+  padding: var(--fa-counter-padding, 0.25em 0.5em);
+  right: var(--fa-right, 0);
+  text-overflow: ellipsis;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-counter-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: var(--fa-bottom, 0);
+  right: var(--fa-right, 0);
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: var(--fa-bottom, 0);
+  left: var(--fa-left, 0);
+  right: auto;
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  top: var(--fa-top, 0);
+  right: var(--fa-right, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: var(--fa-left, 0);
+  right: auto;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top left;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-2xs {
+  font-size: 0.625em;
+  line-height: 0.1em;
+  vertical-align: 0.225em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+  line-height: 0.0833333337em;
+  vertical-align: 0.125em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+  line-height: 0.0714285718em;
+  vertical-align: 0.0535714295em;
+}
+
+.fa-lg {
+  font-size: 1.25em;
+  line-height: 0.05em;
+  vertical-align: -0.075em;
+}
+
+.fa-xl {
+  font-size: 1.5em;
+  line-height: 0.0416666682em;
+  vertical-align: -0.125em;
+}
+
+.fa-2xl {
+  font-size: 2em;
+  line-height: 0.03125em;
+  vertical-align: -0.1875em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: var(--fa-li-margin, 2.5em);
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: calc(-1 * var(--fa-li-width, 2em));
+  position: absolute;
+  text-align: center;
+  width: var(--fa-li-width, 2em);
+  line-height: inherit;
+}
+
+.fa-border {
+  border-color: var(--fa-border-color, #eee);
+  border-radius: var(--fa-border-radius, 0.1em);
+  border-style: var(--fa-border-style, solid);
+  border-width: var(--fa-border-width, 0.08em);
+  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
+}
+
+.fa-pull-left {
+  float: left;
+  margin-right: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-pull-right {
+  float: right;
+  margin-left: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-beat {
+  animation-name: fa-beat;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-bounce {
+  animation-name: fa-bounce;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+}
+
+.fa-fade {
+  animation-name: fa-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-beat-fade {
+  animation-name: fa-beat-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-flip {
+  animation-name: fa-flip;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-shake {
+  animation-name: fa-shake;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin {
+  animation-name: fa-spin;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 2s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin-reverse {
+  --fa-animation-direction: reverse;
+}
+
+.fa-pulse,
+.fa-spin-pulse {
+  animation-name: fa-spin;
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, steps(8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-beat,
+.fa-bounce,
+.fa-fade,
+.fa-beat-fade,
+.fa-flip,
+.fa-pulse,
+.fa-shake,
+.fa-spin,
+.fa-spin-pulse {
+    animation-delay: -1ms;
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+    transition-delay: 0s;
+    transition-duration: 0s;
+  }
+}
+@keyframes fa-beat {
+  0%, 90% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(var(--fa-beat-scale, 1.25));
+  }
+}
+@keyframes fa-bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+  }
+  30% {
+    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+  }
+  50% {
+    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+@keyframes fa-fade {
+  50% {
+    opacity: var(--fa-fade-opacity, 0.4);
+  }
+}
+@keyframes fa-beat-fade {
+  0%, 100% {
+    opacity: var(--fa-beat-fade-opacity, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(var(--fa-beat-fade-scale, 1.125));
+  }
+}
+@keyframes fa-flip {
+  50% {
+    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+  }
+}
+@keyframes fa-shake {
+  0% {
+    transform: rotate(-15deg);
+  }
+  4% {
+    transform: rotate(15deg);
+  }
+  8%, 24% {
+    transform: rotate(-18deg);
+  }
+  12%, 28% {
+    transform: rotate(18deg);
+  }
+  16% {
+    transform: rotate(-22deg);
+  }
+  20% {
+    transform: rotate(22deg);
+  }
+  32% {
+    transform: rotate(-12deg);
+  }
+  36% {
+    transform: rotate(12deg);
+  }
+  40%, 100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  transform: scale(1, -1);
+}
+
+.fa-flip-both,
+.fa-flip-horizontal.fa-flip-vertical {
+  transform: scale(-1, -1);
+}
+
+.fa-rotate-by {
+  transform: rotate(var(--fa-rotate-angle, 0));
+}
+
+.fa-stack {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: var(--fa-stack-z-index, auto);
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+
+.sr-only,
+.fa-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:not(:focus),
+.fa-sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}
+
+.fad.fa-inverse,
+.fa-duotone.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+    
+    
+    
+    
+    
+    
+    GotSport Rankings
+    
+    
+  
+.rhi{max-width:100% !important;height:auto !important;}
+.rhcfgz343cvk a,.rhi,.rhcfgz343cvk img{-webkit-box-shadow:none !important;-moz-box-shadow:none !important;box-shadow:none !important;border-style:none !important;margin:0 0 0 0 !important;padding:0 0 0 0 !important;}
+.rhcfgz343cvk a>img{display:block;}
+.rhcfgz343cvk .instagram-media-rendered,.rhcfgz343cvk .twitter-tweet-rendered{margin:0 0 !important;}
+.rhcfgz343cvk{box-sizing:border-box !important;text-align:center;}
+.rhcfgz343cvk>div{text-align:center;}
+.rhcfgz343cvk div div{max-width:100%;}
+.rhcfgz343cvk iframe{position:relative;display:block;}
+.hn-container-left .rna-container{margin:10px 0 !important;}
+.rna-container iframe{position:relative;}
+.rna-container .fb-post{max-width:100% !important;padding-bottom:0;}
+.rna-container .fb-post>span{max-width:100% !important;margin:0 0;max-height: initial !important;}
+@media only screen and (max-width:600px){
+  .rhcfgz343cvk{box-sizing:border-box;}
+  .rhcfgz343cvk .instagram-media-rendered{width:500px !important;min-width:220px !important;max-width:100% !important;box-sizing:border-box !important;}
+}
+.rhcfgz343cvk .rhus { width: 500px; max-width: 100%; }
+.rhcfgz343cvk .rhls{margin-top:10px !important;}
+.rhcfgz343cvk .rhus .fluid-width-video-wrapper, .rhcfgz343cvk .rhls .fluid-width-video-wrapper{display:none !important;}
+.rhcfgz343cvk.rhvid .rhus, .rhcfgz343cvk.rhvid .rhls{width:100%;max-width:100%;}
+.rhcfgz343cvk .rhus div, .rhcfgz343cvk .rhls div{margin-left:auto !important;margin-right:auto !important;}
+.rhcfgz343cvk .rhus ins, .rhcfgz343cvk .rhls ins{max-width:500px !important;}
+.rna-container .vid-container{position:relative;overflow:hidden;height:0 !important;padding-bottom:56.25% !important;}
+.rna-container .vid-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;min-width:auto;min-height:auto;}
+.rna-container .fluid-width-video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;}
+div[data-rhp=""1""] > div{margin-left:auto;margin-right:auto;}
+.ksc-in-con .celtra-ad-inline-host { height: 100% !important; min-height: initial !important; }.ksc-in-con { min-height: initial !important; }.ksc-in-con .rhi-ab { min-height: initial !important; }.ksc-container { min-height: initial !important; }.ksc-container .ksc-ia-ab { min-height: initial !important; }.ksc-container .celtra-ad-inline-host { min-height: initial !important; }.ksl_overlay_displayed { height: 100%; overflow: hidden; }.ksc-in-con.fullscreen .rhi-ab {height:100%;width:100%;max-height:100%;max-width:100%;}.ksc-in-con.fullscreen #ksc-in-x {right:5px !important;top:5px !important;}.ksc-ia-ab .celtra-ad-inline-host .notranslate,.ksc-masthead-ab .celtra-ad-inline-host .notranslate,.rhi-ab .celtra-ad-inline-host .notranslate {max-width: initial !important;max-height: initial !important;position: initial !important;}.ksc-container.fullscreen > div {height:100%;width:100%;}.ksc-in-con div[data-embed-url], .ksc-in-con .twitter-tweet-rendered {padding:0 35px;}.krg-at-container {width:100% !important}.st-adunit,#inScreen.st-placement .st-reset {z-index:2147483647 !important;}.rhi-ab div[data-format=""FabrikOutstream""] .kargo-banner-optout.show { position:absolute !important;top:-34px !important;left:50% !important;transform:translateX(-50%);}
+            .ayManagerEnv_slug:before {
+                content: 'Ad';
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-size: 10px;
+                color: #6a737c;
+            }
+        
+  setTimeout(() => {
+      document.querySelectorAll('div[id^=div-ad-]').forEach((c) => {
+      var a = c.id.split('-')
+      c.dataset.ayPlacement = a.slice(3).join(""-"");
+    })
+    window.ayManagerEnv.changePage();
+
+}, 500);
+
+
+(function waitForGPP() {
+  if (typeof __gpp === 'function') {
+    __gpp('ping', function(data) {
+      const gppString = data?.gppString || '';
+      const gppSid = data?.applicableSections || [7]; 
+
+      pbjs.setConfig({
+        ortb2: {
+          user: {
+            gpp: gppString,
+            gpp_sid: gppSid
+          }
+        }
+      });
+    });
+  } else {
+    setTimeout(waitForGPP, 50); 
+  }
+})();
+
+(function() {
+    var config = {
+        accountId: 'org_jx8BpfMoE8wPQXHA3',
+        useBidderAlias: false,
+        includeBidders: [], // defaults to all supported bidders
+        excludeBidders: [],
+        serverOnlyBidders: [],
+        reportRandomToCustomDimension: 'custom_9',
+    };
+
+    var pbjs = window[ayManagerEnv.settings.prebidSettings.prebidScript.windowName];
+    var supportedBidders = ['33across','aax','aceex','acuityads','adf','adgeneration','adhese','adkernel','adkernelAdn','adman','admixer','adnuntius','adocean','adoppler','adot','adpone','adprime','adquery','adrino','adsinteractive','adsyield','adtarget','adtelligent','adtrgtme','advangelists','AdView','adxcg','adyoulike','aidem','aja','algorix','alkimi','amx','beyondmedia','apacdex','applogy','appnexus','appstock','appush','audienceNetwork','automatad','avct','axonix','beachfront','beintoo','bematterfull','between','bidmachine','bidmyadz','bidscube','bidstack','bizzclick','bliink','blue','bmtm','boldwin','brave','cadent_aperture_mx','ccx','CodeFuel','coinzilla','colossus','compass','connectad','consumable','copper6','copper6ssp','cpmstar','criteo','cwire','datablocks','deepintent','definemedia','dianomi','dmx','duration','e_volution','edge226','emtv','engagebdr','eplanning','epom','conversant','ergadx','evtech','flipp','freewheelssp','frvradn','futureads','gamma','gamoshi','globalsun','gothamads','greedygame','grid','gumgum','huaweiads','iionads','imds','impactify','improvedigital','infytv','inmobi','interactiveOffers','intertech','invibes','iqzone','ix','janet','jixie','kargo','kidoz','kiviads','krushmedia','kubient','lifestreet','liftoff','limelightDigital','lm_kiviads','lockerdome','logan','logicad','lunamedia','mabidder','madvertise','marsmedia','mediafuse','medianet','mgid','mgidX','mobfoxpb','mobilefuse','motorik','nextMillennium','ninthdecimal','nobid','onetag','openweb','openx','operaads','optout','orbidder','outbrain','outbrain','ownadx','pangle','pgamssp','preciso','pubmatic','pubnative','pulsepoint','pwbid','quantumdex','resetdigital','revcontent','rhythmone','richaudience','rise','roundel','rtbhouse','rubicon','sa_lunamedia','screencore','seedingAlliance','sharethrough','silvermob','silverpush','smaato','smartadserver','smarthub','smartx','smartyads','smilewanted','sonobi','sovrn','sspBC','streamkey','stroeerCore','suntContent','synacormedia','taboola','tappx','tpmn','trafficgate','triplelift','triplelift_native','trustedstack','trustx','ucfunnel','undertone','unicorn','unruly','valueimpression','videobyte','videoheroes','vidoomy','viewdeos','visiblemeasures','visx','vrtcal','xe','xtrmqb','yahooAds','yandex','yeahmobi','yieldlab','yieldmo','yieldone','zeroclickfraud','zeta_global_ssp','minutemedia','missena','vidazoo','loopme','ogury','kueezrtb'];
+    var forcedBidderAliases = {};
+    if (pbjs.version < 'v8.45.0') {
+        forcedBidderAliases.minutemedia = 918;
+        forcedBidderAliases.rise = 1043;
+    }
+    var availableBidders = [];
+    var endpoint = 'pbs-eu-central';
+    if (['NA', 'SA',].includes('NA')) {
+        endpoint = 'pbs-us-east';
+    }
+
+    pbjs.que.push(function() {
+        var missingModules = ['prebidServerBidAdapter', 's2sTesting'].filter(function(module) {
+            return !pbjs.installedModules.includes(module)
+        });
+        if (missingModules.length) {
+            console.error('Missing required modules: ' + missingModules.join(', '));
+            return;
+        }
+
+        ayManagerEnv.settings.bidderSettings.bidders.forEach(function(bid) {
+            var bidder = bid.alias || bid.bidder;
+            var normalizedBidder = bidder.replace('_s2s', '');
+            if (
+                !availableBidders.includes(normalizedBidder) &&
+                supportedBidders.includes(bid.bidder.replace('_s2s', '')) &&
+                !config.excludeBidders.includes(normalizedBidder) &&
+                (!config.includeBidders.length || config.includeBidders.includes(bid.bidder))
+            ) {
+                var forcedAlias = forcedBidderAliases[bid.bidder];
+                if (config.useBidderAlias || forcedAlias) {
+                    if (bid.alias && bid.alias.includes('_s2s')) {
+                        availableBidders.push(bidder);
+                        return;
+                    }
+                    var opts = {};
+                    if (forcedAlias) {
+                        opts.gvlid = forcedAlias;
+                    }
+                    pbjs.aliasBidder(bid.bidder, bidder + '_s2s', opts);
+                    availableBidders.push(bidder + '_s2s');
+                } else {
+                    availableBidders.push(bidder.replace('_s2s', ''));
+                }
+            }
+        });
+
+        var random = Math.floor(Math.random()*10);;
+        if (config.reportRandomToCustomDimension) {
+            window.assertiveQueue.push(function () {
+                assertive.setConfig('analytics.custom.' + config.reportRandomToCustomDimension, 's2s-' + random);
+            });
+        }
+        pbjs.setConfig({
+            s2sConfig: {
+                enabled: true,
+                testing: true,
+                accountId: config.accountId,
+                bidders: availableBidders,
+                timeout: Math.round(pbjs.getConfig('bidderTimeout') * 0.75),
+                endpoint: {
+                    p1Consent: 'https://' + endpoint + '.ay.delivery/openrtb2/auction',
+                    noP1Consent: 'https://' + endpoint + '.ay.delivery/openrtb2/auction'
+                },
+                syncEndpoint: {
+                    p1Consent: 'https://' + endpoint + '.ay.delivery/cookie_sync',
+                    noP1Consent: 'https://' + endpoint + '.ay.delivery/cookie_sync'
+                },
+                extPrebid: {
+                    rnd: random,
+                    targeting: {
+                        includewinners: false
+                    }
+                }
+            }
+        });
+    });
+
+    ayManagerEnv.onEvent('prebidBeforeFetchBids', function(bidConfig) {
+        if (!availableBidders.length) {
+            return;
+        }
+        bidConfig.adUnits.forEach(function(adUnit) {
+            var s2sBidders = adUnit.bids.reduce(function(acc, bid) {
+                if (bid.bidder.includes('_s2s')) {
+                    acc.push(bid.bidder.replace('_s2s', ''));
+                }
+                return acc;
+            }, []);
+            adUnit.bids = adUnit.bids.reduce(function(acc, bid) {
+                var bidder = bid.bidder;
+                var normalizedBidder = bidder.replace('_s2s', '');
+
+                // remove declared s2s bid requests if excluded
+                if (bidder.includes('_s2s') && config.excludeBidders.includes(normalizedBidder)) {
+                    return acc;
+                }
+                // remove client bid requests if declared s2s bid request exists
+                if (config.serverOnlyBidders.includes(normalizedBidder) && s2sBidders.includes(bidder)) {
+                    return acc;
+                }
+
+                if (bidder.includes('_s2s') || config.serverOnlyBidders.includes(bidder)) {
+                    bid.bidSource = { server: 100 };
+                    bid.includeSourceKvp = true;
+
+                    if (!config.useBidderAlias && !forcedBidderAliases[normalizedBidder]) {
+                        bid.bidder = normalizedBidder;
+                    }
+                    acc.push(bid);
+                    return acc;
+                }
+                if (config.useBidderAlias || forcedBidderAliases[bidder]) {
+                    bidder = bidder + '_s2s';
+                }
+                if (availableBidders.includes(bidder)) {
+                    bid.bidSource = { client: 100 };
+                    bid.includeSourceKvp = true;
+
+                    if (!s2sBidders.includes(bid.bidder)) {
+                        var s2sBid = JSON.parse(JSON.stringify(bid));
+                        s2sBid.bidSource = { server: 100 };
+                        s2sBid.includeSourceKvp = true;
+                        s2sBid.bidder = bidder;
+                        acc.push(s2sBid);
+                    }
+                }
+                acc.push(bid);
+                return acc;
+            }, []);
+        });
+    });
+})();
+
+(function() {
+    // div id for Adagio/Contextful
+    ayManagerEnv.onEvent('prebidBeforeFetchBids', function(bidConfig) {
+        bidConfig.adUnits.forEach(function(adUnit) {
+            adUnit.ortb2Imp = adUnit.ortb2Imp || {};
+            adUnit.ortb2Imp.ext = adUnit.ortb2Imp.ext || {};
+            adUnit.ortb2Imp.ext.data = adUnit.ortb2Imp.ext.data || {};
+            adUnit.ortb2Imp.ext.data.divId = adUnit.code;
+            adUnit.ortb2Imp.ext.data.placement = adUnit.code.replace(/__ayManagerEnv__.+/, '');
+        });
+    });
+})();
+.lngtd-dynamic-ad-container>div>div>iframe,.lngtd-dynamic-ad-container>div>iframe,.lngtd-dynamic-ad-container>iframe {margin: 0 auto;}.lngtd-ad-wrapper-banner>div>div>iframe,.lngtd-ad-wrapper-banner>div>iframe,.lngtd-ad-wrapper-banner>iframe {margin:0 auto;}
+        #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842 {
+            position: relative;
+            margin: 0 auto;
+            z-index: 1;
+            background-color: unset;
+            width: 320px;
+            height: 180px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842 .fabrik-logo {
+            background: url(//s.lngtdv.com/fvp/logo_white.svg) no-repeat 0 0;
+            background-size: cover;
+            display: inline-block;
+            width: 40px;
+            height: 12px;
+        }
+        
+        .fabrik-outer-video-container {
+            position:absolute;
+            top:0;
+            left:0;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 320px;
+            height:100%;
+        }
+        .fabrik-outer-video-container .video-js *,
+        .fabrik-outer-video-container .video-js :after,
+        .fabrik-outer-video-container .video-js :before {
+            font-family: VideoJS;
+        }
+        .fabrik-outer-video-container .video-js .vjs-tech {
+            display: block;
+        }
+        #gotsoccer_D_FVP {
+            position:absolute;
+            top:0;
+            left:0;
+            width: 320px; 
+            height: 180px;
+            overflow:hidden;
+        }
+        #gotsoccer_D_FVP>video {
+            width: 320px; 
+            height: 180px;
+        }
+        #gotsoccer_D_FVP>.ima-ad-container {z-index: 9 !important;}
+        #gotsoccer_D_FVP_ima-controls-div:not(.ima-controls-div-showing) {
+            height:3em;
+            transition:opacity 0.25s ease-in-out;
+            opacity:1;
+            background: linear-gradient(to top,                
+                rgba(7, 20, 30, .3) 30%,                
+                rgba(7, 20, 30, 0) 100%);
+        }
+        #gotsoccer_D_FVP_ima-controls-div.ima-controls-div-showing {
+            height:3em;
+            transition:opacity 0.25s ease-in-out;
+            opacity:1;
+        }
+        #gotsoccer_D_FVP_ima-countdown-div {position:absolute;line-height:3em;top:0;left:4em;font-family:sans-serif !important;}
+        #gotsoccer_D_FVP_ima-progress-div {
+            display:block;
+            background-color: #f93;
+        }
+        #gotsoccer_D_FVP_ima-seek-bar-div {
+            display:block;
+            bottom: 0;
+            top: unset;
+        }
+        #gotsoccer_D_FVP_ima-mute-div {right:1.8em;color:#fff;top:0;}
+        #gotsoccer_D_FVP_ima-play-pause-div {color:#fff;top:0;}
+        #gotsoccer_D_FVP_ima-slider-div {display:none;}
+        #gotsoccer_D_FVP_ima-fullscreen-div {right:0;color:#fff;top:0;}
+        #gotsoccer_D_FVP .vjs-control-bar {}
+        #gotsoccer_D_FVP .vjs-control-bar>button,
+        #gotsoccer_D_FVP .vjs-control-bar>div {display: none;}
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-play-control {display: inline-block;}
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-volume-panel {display: inline-block;}
+        #gotsoccer_D_FVP .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-hover {width: 4em;}
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-fullscreen-control {display: inline-block;margin-left: auto;}
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-progress-control {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: transparent;
+            width:100%;
+            height: 4px;
+        }
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-progress-control .vjs-play-progress {
+            background-color: #f93;
+            height: 4px;
+        }
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-progress-control .vjs-play-progress:before {
+            content: none;
+        }
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-progress-control .vjs-progress-holder {
+            margin: 0;
+        }
+        
+        #gotsoccer_D_FVP_ima-ad-container video {background:none !important;}
+        #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.player-hidden {visibility:hidden;opacity:0;}
+        #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.player-showing {visibility:visible;opacity:1;transition:opacity 0.4s ease-in-out;}
+
+        .fabrik-outer-video-container .fabrik-video-header {
+            height: 30px;
+            width: 99.8%;
+            background-color: rgba(23, 23, 23, 0.8);
+            color: #fff;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index: 12;
+            visibility:hidden;
+            opacity: 0;
+            padding: 5px;
+            transition:opacity 0.4s ease-in-out;
+        }
+        
+        .fabrik-outer-video-container:hover .fabrik-video-header {
+            visibility:visible;
+            opacity:1;
+            transition:opacity 0.4s ease-in-out;
+        }
+        
+        .ad-playing .fabrik-outer-video-container:hover  .fabrik-video-header {
+            visibility: hidden;
+            opacity: 0;
+        }
+        
+        #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.ad-playing .fabrik-outer-video-container .ad-overlay {
+            display: inline-block;
+        }
+        
+        .fabrik-outer-video-container .ad-overlay {
+            display: none;
+            height: 21px;
+            background-color: #eef3f6;
+            color: #222;
+            border-radius: 10px 0 10px 0;
+            position: absolute;
+            top:0;
+            left: 0;
+            z-index: 11;
+            font-size: 10px;
+        }
+        
+        .fabrik-outer-video-container .ad-overlay .ad {
+            background-color: #f93;
+            border-radius: 10px 0 10px 0;
+            height: 21px;
+            width: 21px;
+            line-height: 21px;
+            max-height: 21px;
+            text-align: center;
+            display: inline-block;
+        }
+        
+        .fabrik-outer-video-container .ad-overlay .learn-more {
+            padding:5px;
+            color: #222;
+            text-decoration: none;
+        }
+        
+        .fabrik-outer-video-container .ad-overlay .learn-more:hover {
+            color:#000;
+        }
+        
+        .fabrik-outer-video-container .fabrik-video-header .video-title {
+            display: inline-block;
+            width: 60%;
+            text-wrap: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            float: left;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top:3px;
+            margin-left: 8px;
+        }
+        
+        .fabrik-outer-video-container .fabrik-video-header .fabrik-logo {
+            float: right;
+            margin-top: 4px;
+            margin-right: 35px;
+        }
+        
+        #gotsoccer_D_FVP .keep-watching {
+            cursor:pointer;
+            color:#eee;
+            font-size:15px;
+            font-weight:bold;
+            padding:7px 9px;
+            float:right;
+            border:2px solid #eee;
+            border-radius: 5px;
+            text-decoration:none;
+            text-align:right;
+            position:absolute;
+            bottom:35px;
+            right:15px;
+            z-index:99;
+            font-family:sans-serif !important;
+            background-color:rgba(0,0,0,0.5);
+        }
+        
+        #gotsoccer_D_FVP .keep-watching span {
+            color:#eee !important;
+            font-size: 15px !important;
+            font-family: sans-serif !important;
+        }
+        
+        #gotsoccer_D_FVP .keep-watching:hover {
+            border:2px solid #fff;
+            color: #fff;
+            background-color:rgba(0,0,0,0.8);
+            text-decoration:none;
+        }
+        
+        #gotsoccer_D_FVP .keep-watching:hover span {
+            color: #fff;
+            text-decoration:none;
+        }
+
+        #video-close-a1bafe61-3296-4206-a7c0-6148cade2e34 {
+            cursor: pointer;
+            display: none;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            text-align: center;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-weight: 600;
+            z-index: 12;
+            color: #bbb;
+            text-decoration:none;
+        }
+        #video-close-a1bafe61-3296-4206-a7c0-6148cade2e34:before {
+          font-size: 1.5em;
+          content: ""\2715"";
+        }
+        #video-close-a1bafe61-3296-4206-a7c0-6148cade2e34:hover:before {
+          color: #eee;
+        }
+        
+        #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.player-showing #video-close-a1bafe61-3296-4206-a7c0-6148cade2e34,
+        #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fvp-sticky #video-close-a1bafe61-3296-4206-a7c0-6148cade2e34 {
+            display: block;
+        }
+        
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fvp-sticky {
+                    width: 320px;
+                    height: 180px;
+                    bottom:100px !important;
+                    right:5px !important;
+                    margin: 0;
+                    z-index: 9999;
+                }
+            
+            #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fvp-sticky {
+                position: fixed;
+            }
+            #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fvp-sticky .fabrik-outer-video-container,
+            #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fvp-sticky #gotsoccer_D_FVP,
+            #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fvp-sticky #gotsoccer_D_FVP>video {
+                width: 320px;
+                height: 180px;
+            }
+            #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fvp-sticky #gotsoccer_D_FVP>video {
+                width: 320px;
+                height: 180px;
+            }
+        
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent:not(.fvp-sticky) {
+                    width: 520px;
+                    height: 180px;
+                }
+            
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent:not(.fvp-sticky) .fabrik-outer-video-container {
+                    border-radius: 10px 0 0 10px;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent:not(.fvp-sticky) .fabrik-outer-video-container .fabrik-video-header .fabrik-logo {
+                    display: none;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .fvp-content-desktop {
+                    background-color: #1f1f1f;
+                    margin-left: auto;
+                    height: 100%;
+                    width: 201px;
+                    border-radius: 0 10px 10px 0;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .fvp-content-mobile {
+                    display: none;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent.fvp-sticky .fvp-content-desktop {
+                    display: none;
+                }
+                
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .fvp-content-desktop .header {
+                    height: 30px;
+                    color: #fff;
+                    position:absolute;
+                    top:0;
+                    width: 200px;
+                    padding: 5px;
+                    z-index: 2;
+                    background-color: #1f1f1f;
+                    border-radius: 0 10px 0 0;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .fvp-content-desktop .header .up-next {
+                    display: inline-block;
+                    width: 100px;
+                    height: 14px;
+                    float: left;
+                    text-align:left;
+                    margin-left:5px;
+                    margin-top: 3px;
+                    font-size:14px;
+                    font-weight:600;
+                }
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .fvp-content-desktop .header .fabrik-logo {
+                    float: right;
+                    margin-top: 5px;
+                    margin-right: 5px;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .advertisement-notice {
+                    display: none;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .fvp-content-desktop .next-videos {
+                    width: 200px;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    padding-top: 30px;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                }
+                
+                .next-videos::-webkit-scrollbar-track {
+                  background-color: transparent;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video {
+                    width: 100%;
+                    padding: 5px 12px;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video:hover {
+                    background-color: #424242;
+                    cursor: pointer;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video.playing {
+                    background-color: #9b4e00;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video.playing:hover {
+                    background-color: #9b4e00;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video .video-image {
+                    width: 160px;
+                    height: 93px;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video .video-title {
+                    width: 158px;
+                    margin-left:8px;
+                    margin-top; 2px;
+                    font-size:11px;
+                    color: #fff;
+                    font-weight: 500;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    text-wrap: nowrap;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent.ad-playing .fvp-content-desktop .header .up-next,
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent.ad-playing .fvp-content-desktop .next-videos {
+                    display: none;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent.ad-playing .advertisement-notice {
+                    display: block;
+                    color: #fff;
+                    font-size: 18px;
+                    font-weight: 600;
+                    position: absolute;
+                    padding-bottom: 15%;
+                    bottom: 6%;
+                    width:170px;
+                    right: 10px;
+                    text-align: left;
+                    line-height:24px;
+                }
+                
+                #video-container-f9a4b5c3-f68d-491f-92ff-f04d320b7842.fabrik-player-withcontent.ad-playing .advertisement-notice .ad-choices {
+                    background: url(//s.lngtdv.com/fvp/adchoices.svg) no-repeat 0 0;
+                    background-size: cover;
+                    position: absolute;
+                    bottom: 0;
+                    right: 10px;
+                    height: 15px;
+                    width: 15px;
+                }
+            
+        #undefined {
+            width: 100%;
+            height: 180px;
+        }
+        #undefined.os-player {
+        }
+    
+        #undefined.fvp-sticky {
+            position: fixed;
+            bottom:100px !important;
+            right:5px !important;
+            width: 320px;
+            height: 180px;
+            z-index: 9999;
+        }
+    
+        #undefined.player-showing {
+            display: block;
+        }
+        #undefined.player-hidden {
+            display: none;
+        }",,,42161284,Chelsea 15B,Renegades Soccer Club
+Unknown,"(function() {
+    var config = {
+        accountId: 'org_jx8BpfMoE8wPQXHA3',
+        useBidderAlias: false,
+        includeBidders: [], // defaults to all supported bidders
+        excludeBidders: [],
+        serverOnlyBidders: [],
+        reportRandomToCustomDimension: 'custom_9',
+    };
+
+    var pbjs = window[ayManagerEnv.settings.prebidSettings.prebidScript.windowName];
+    var supportedBidders = ['33across','aax','aceex','acuityads','adf','adgeneration','adhese','adkernel','adkernelAdn','adman','admixer','adnuntius','adocean','adoppler','adot','adpone','adprime','adquery','adrino','adsinteractive','adsyield','adtarget','adtelligent','adtrgtme','advangelists','AdView','adxcg','adyoulike','aidem','aja','algorix','alkimi','amx','beyondmedia','apacdex','applogy','appnexus','appstock','appush','audienceNetwork','automatad','avct','axonix','beachfront','beintoo','bematterfull','between','bidmachine','bidmyadz','bidscube','bidstack','bizzclick','bliink','blue','bmtm','boldwin','brave','cadent_aperture_mx','ccx','CodeFuel','coinzilla','colossus','compass','connectad','consumable','copper6','copper6ssp','cpmstar','criteo','cwire','datablocks','deepintent','definemedia','dianomi','dmx','duration','e_volution','edge226','emtv','engagebdr','eplanning','epom','conversant','ergadx','evtech','flipp','freewheelssp','frvradn','futureads','gamma','gamoshi','globalsun','gothamads','greedygame','grid','gumgum','huaweiads','iionads','imds','impactify','improvedigital','infytv','inmobi','interactiveOffers','intertech','invibes','iqzone','ix','janet','jixie','kargo','kidoz','kiviads','krushmedia','kubient','lifestreet','liftoff','limelightDigital','lm_kiviads','lockerdome','logan','logicad','lunamedia','mabidder','madvertise','marsmedia','mediafuse','medianet','mgid','mgidX','mobfoxpb','mobilefuse','motorik','nextMillennium','ninthdecimal','nobid','onetag','openweb','openx','operaads','optout','orbidder','outbrain','outbrain','ownadx','pangle','pgamssp','preciso','pubmatic','pubnative','pulsepoint','pwbid','quantumdex','resetdigital','revcontent','rhythmone','richaudience','rise','roundel','rtbhouse','rubicon','sa_lunamedia','screencore','seedingAlliance','sharethrough','silvermob','silverpush','smaato','smartadserver','smarthub','smartx','smartyads','smilewanted','sonobi','sovrn','sspBC','streamkey','stroeerCore','suntContent','synacormedia','taboola','tappx','tpmn','trafficgate','triplelift','triplelift_native','trustedstack','trustx','ucfunnel','undertone','unicorn','unruly','valueimpression','videobyte','videoheroes','vidoomy','viewdeos','visiblemeasures','visx','vrtcal','xe','xtrmqb','yahooAds','yandex','yeahmobi','yieldlab','yieldmo','yieldone','zeroclickfraud','zeta_global_ssp','minutemedia','missena','vidazoo','loopme','ogury','kueezrtb'];
+    var forcedBidderAliases = {};
+    if (pbjs.version < 'v8.45.0') {
+        forcedBidderAliases.minutemedia = 918;
+        forcedBidderAliases.rise = 1043;
+    }
+    var availableBidders = [];
+    var endpoint = 'pbs-eu-central';
+    if (['NA', 'SA',].includes('NA')) {
+        endpoint = 'pbs-us-east';
+    }
+
+    pbjs.que.push(function() {
+        var missingModules = ['prebidServerBidAdapter', 's2sTesting'].filter(function(module) {
+            return !pbjs.installedModules.includes(module)
+        });
+        if (missingModules.length) {
+            console.error('Missing required modules: ' + missingModules.join(', '));
+            return;
+        }
+
+        ayManagerEnv.settings.bidderSettings.bidders.forEach(function(bid) {
+            var bidder = bid.alias || bid.bidder;
+            var normalizedBidder = bidder.replace('_s2s', '');
+            if (
+                !availableBidders.includes(normalizedBidder) &&
+                supportedBidders.includes(bid.bidder.replace('_s2s', '')) &&
+                !config.excludeBidders.includes(normalizedBidder) &&
+                (!config.includeBidders.length || config.includeBidders.includes(bid.bidder))
+            ) {
+                var forcedAlias = forcedBidderAliases[bid.bidder];
+                if (config.useBidderAlias || forcedAlias) {
+                    if (bid.alias && bid.alias.includes('_s2s')) {
+                        availableBidders.push(bidder);
+                        return;
+                    }
+                    var opts = {};
+                    if (forcedAlias) {
+                        opts.gvlid = forcedAlias;
+                    }
+                    pbjs.aliasBidder(bid.bidder, bidder + '_s2s', opts);
+                    availableBidders.push(bidder + '_s2s');
+                } else {
+                    availableBidders.push(bidder.replace('_s2s', ''));
+                }
+            }
+        });
+
+        var random = Math.floor(Math.random()*10);;
+        if (config.reportRandomToCustomDimension) {
+            window.assertiveQueue.push(function () {
+                assertive.setConfig('analytics.custom.' + config.reportRandomToCustomDimension, 's2s-' + random);
+            });
+        }
+        pbjs.setConfig({
+            s2sConfig: {
+                enabled: true,
+                testing: true,
+                accountId: config.accountId,
+                bidders: availableBidders,
+                timeout: Math.round(pbjs.getConfig('bidderTimeout') * 0.75),
+                endpoint: {
+                    p1Consent: 'https://' + endpoint + '.ay.delivery/openrtb2/auction',
+                    noP1Consent: 'https://' + endpoint + '.ay.delivery/openrtb2/auction'
+                },
+                syncEndpoint: {
+                    p1Consent: 'https://' + endpoint + '.ay.delivery/cookie_sync',
+                    noP1Consent: 'https://' + endpoint + '.ay.delivery/cookie_sync'
+                },
+                extPrebid: {
+                    rnd: random,
+                    targeting: {
+                        includewinners: false
+                    }
+                }
+            }
+        });
+    });
+
+    ayManagerEnv.onEvent('prebidBeforeFetchBids', function(bidConfig) {
+        if (!availableBidders.length) {
+            return;
+        }
+        bidConfig.adUnits.forEach(function(adUnit) {
+            var s2sBidders = adUnit.bids.reduce(function(acc, bid) {
+                if (bid.bidder.includes('_s2s')) {
+                    acc.push(bid.bidder.replace('_s2s', ''));
+                }
+                return acc;
+            }, []);
+            adUnit.bids = adUnit.bids.reduce(function(acc, bid) {
+                var bidder = bid.bidder;
+                var normalizedBidder = bidder.replace('_s2s', '');
+
+                // remove declared s2s bid requests if excluded
+                if (bidder.includes('_s2s') && config.excludeBidders.includes(normalizedBidder)) {
+                    return acc;
+                }
+                // remove client bid requests if declared s2s bid request exists
+                if (config.serverOnlyBidders.includes(normalizedBidder) && s2sBidders.includes(bidder)) {
+                    return acc;
+                }
+
+                if (bidder.includes('_s2s') || config.serverOnlyBidders.includes(bidder)) {
+                    bid.bidSource = { server: 100 };
+                    bid.includeSourceKvp = true;
+
+                    if (!config.useBidderAlias && !forcedBidderAliases[normalizedBidder]) {
+                        bid.bidder = normalizedBidder;
+                    }
+                    acc.push(bid);
+                    return acc;
+                }
+                if (config.useBidderAlias || forcedBidderAliases[bidder]) {
+                    bidder = bidder + '_s2s';
+                }
+                if (availableBidders.includes(bidder)) {
+                    bid.bidSource = { client: 100 };
+                    bid.includeSourceKvp = true;
+
+                    if (!s2sBidders.includes(bid.bidder)) {
+                        var s2sBid = JSON.parse(JSON.stringify(bid));
+                        s2sBid.bidSource = { server: 100 };
+                        s2sBid.includeSourceKvp = true;
+                        s2sBid.bidder = bidder;
+                        acc.push(s2sBid);
+                    }
+                }
+                acc.push(bid);
+                return acc;
+            }, []);
+        });
+    });
+})();",,,42161284,Chelsea 15B,Renegades Soccer Club
+Unknown,"Up NextContent will resume after this advertisement.Liga MX Recap: America and Toluca Dominate, Drama UnfoldsWomen's Liga MX: Mexico's Thriving Women's Football League‘The objective must be to win it’ – Ancelotti sets target ahead of next World CupBoca Manager Miguel Angel Russo Passes Away Aged 69Alessandro Nesta - 'Van Dijk is world's best defender and EPL rules football'Columbus Crew Head Coach Nancy on Thierry Henry - and the growth of the MLSPSG Struggles Despite Recent Victory over BarcelonaLiga MX Roundup: Key Wins for America, Chivas & MoreTigres and Juarez Continue Strong Form in League PlayPlayoff Contenders and Potential Comebacks in Liga MXACFC Struggles in the NWSL: Key Players and Future OutlookOrlando Pride's Struggles and NWSL's Exciting WeekendLAFC Emerges as Title Contender with Thriving PlayersMessi Strikes Twice As Inter Miami Advance To MLS PlayoffsPafos FC: A Decade from Obscurity to Champions LeagueThrilling Champions League Start: Juventus vs. Dartmouth 4-4MLS Week Highlights: Inter Miami Triumphs, LAFC ShinesGotham FC Secures Win, Kansas City's Current Draws in NWSLMessi Finalizing Multi-Year Contract With Inter MiamiHigh stakes but high rewards as soccer icon Zinedine Zidane takes in some Parisian padel action",,,42161284,Chelsea 15B,Renegades Soccer Club
+Unknown,"Liga MX Recap: America and Toluca Dominate, Drama UnfoldsWomen's Liga MX: Mexico's Thriving Women's Football League‘The objective must be to win it’ – Ancelotti sets target ahead of next World CupBoca Manager Miguel Angel Russo Passes Away Aged 69Alessandro Nesta - 'Van Dijk is world's best defender and EPL rules football'Columbus Crew Head Coach Nancy on Thierry Henry - and the growth of the MLSPSG Struggles Despite Recent Victory over BarcelonaLiga MX Roundup: Key Wins for America, Chivas & MoreTigres and Juarez Continue Strong Form in League PlayPlayoff Contenders and Potential Comebacks in Liga MXACFC Struggles in the NWSL: Key Players and Future OutlookOrlando Pride's Struggles and NWSL's Exciting WeekendLAFC Emerges as Title Contender with Thriving PlayersMessi Strikes Twice As Inter Miami Advance To MLS PlayoffsPafos FC: A Decade from Obscurity to Champions LeagueThrilling Champions League Start: Juventus vs. Dartmouth 4-4MLS Week Highlights: Inter Miami Triumphs, LAFC ShinesGotham FC Secures Win, Kansas City's Current Draws in NWSLMessi Finalizing Multi-Year Contract With Inter MiamiHigh stakes but high rewards as soccer icon Zinedine Zidane takes in some Parisian padel action",,,42161284,Chelsea 15B,Renegades Soccer Club
+Unknown,".video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    
+    
+    
+    
+      function OptanonWrapper() { }
+    
+    
+
+    
+    
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ ""gtm.start"": new Date().getTime(), event: ""gtm.js"" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != ""dataLayer"" ? ""&l="" + l : """";
+        j.async = true;
+        j.src = ""https://www.googletagmanager.com/gtm.js?id="" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, ""script"", ""dataLayer"", ""GTM-5RN6R4T"");
+    
+    
+    
+    :root, :host {
+  --fa-font-solid: normal 900 1em/1 ""Font Awesome 6 Free"";
+  --fa-font-regular: normal 400 1em/1 ""Font Awesome 6 Free"";
+  --fa-font-light: normal 300 1em/1 ""Font Awesome 6 Pro"";
+  --fa-font-thin: normal 100 1em/1 ""Font Awesome 6 Pro"";
+  --fa-font-duotone: normal 900 1em/1 ""Font Awesome 6 Duotone"";
+  --fa-font-brands: normal 400 1em/1 ""Font Awesome 6 Brands"";
+  --fa-font-sharp-solid: normal 900 1em/1 ""Font Awesome 6 Sharp"";
+  --fa-font-sharp-regular: normal 400 1em/1 ""Font Awesome 6 Sharp"";
+  --fa-font-sharp-light: normal 300 1em/1 ""Font Awesome 6 Sharp"";
+  --fa-font-sharp-thin: normal 100 1em/1 ""Font Awesome 6 Sharp"";
+  --fa-font-sharp-duotone-solid: normal 900 1em/1 ""Font Awesome 6 Sharp Duotone"";
+}
+
+svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+.svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-2xs {
+  vertical-align: 0.1em;
+}
+.svg-inline--fa.fa-xs {
+  vertical-align: 0em;
+}
+.svg-inline--fa.fa-sm {
+  vertical-align: -0.0714285705em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.2em;
+}
+.svg-inline--fa.fa-xl {
+  vertical-align: -0.25em;
+}
+.svg-inline--fa.fa-2xl {
+  vertical-align: -0.3125em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-li {
+  width: var(--fa-li-width, 2em);
+  top: 0.25em;
+}
+.svg-inline--fa.fa-fw {
+  width: var(--fa-fw-width, 1.25em);
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  transform-origin: center center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: var(--fa-counter-background-color, #ff253a);
+  border-radius: var(--fa-counter-border-radius, 1em);
+  box-sizing: border-box;
+  color: var(--fa-inverse, #fff);
+  line-height: var(--fa-counter-line-height, 1);
+  max-width: var(--fa-counter-max-width, 5em);
+  min-width: var(--fa-counter-min-width, 1.5em);
+  overflow: hidden;
+  padding: var(--fa-counter-padding, 0.25em 0.5em);
+  right: var(--fa-right, 0);
+  text-overflow: ellipsis;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-counter-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: var(--fa-bottom, 0);
+  right: var(--fa-right, 0);
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: var(--fa-bottom, 0);
+  left: var(--fa-left, 0);
+  right: auto;
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  top: var(--fa-top, 0);
+  right: var(--fa-right, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: var(--fa-left, 0);
+  right: auto;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top left;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-2xs {
+  font-size: 0.625em;
+  line-height: 0.1em;
+  vertical-align: 0.225em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+  line-height: 0.0833333337em;
+  vertical-align: 0.125em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+  line-height: 0.0714285718em;
+  vertical-align: 0.0535714295em;
+}
+
+.fa-lg {
+  font-size: 1.25em;
+  line-height: 0.05em;
+  vertical-align: -0.075em;
+}
+
+.fa-xl {
+  font-size: 1.5em;
+  line-height: 0.0416666682em;
+  vertical-align: -0.125em;
+}
+
+.fa-2xl {
+  font-size: 2em;
+  line-height: 0.03125em;
+  vertical-align: -0.1875em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: var(--fa-li-margin, 2.5em);
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: calc(-1 * var(--fa-li-width, 2em));
+  position: absolute;
+  text-align: center;
+  width: var(--fa-li-width, 2em);
+  line-height: inherit;
+}
+
+.fa-border {
+  border-color: var(--fa-border-color, #eee);
+  border-radius: var(--fa-border-radius, 0.1em);
+  border-style: var(--fa-border-style, solid);
+  border-width: var(--fa-border-width, 0.08em);
+  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
+}
+
+.fa-pull-left {
+  float: left;
+  margin-right: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-pull-right {
+  float: right;
+  margin-left: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-beat {
+  animation-name: fa-beat;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-bounce {
+  animation-name: fa-bounce;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+}
+
+.fa-fade {
+  animation-name: fa-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-beat-fade {
+  animation-name: fa-beat-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-flip {
+  animation-name: fa-flip;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-shake {
+  animation-name: fa-shake;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin {
+  animation-name: fa-spin;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 2s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin-reverse {
+  --fa-animation-direction: reverse;
+}
+
+.fa-pulse,
+.fa-spin-pulse {
+  animation-name: fa-spin;
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, steps(8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-beat,
+.fa-bounce,
+.fa-fade,
+.fa-beat-fade,
+.fa-flip,
+.fa-pulse,
+.fa-shake,
+.fa-spin,
+.fa-spin-pulse {
+    animation-delay: -1ms;
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+    transition-delay: 0s;
+    transition-duration: 0s;
+  }
+}
+@keyframes fa-beat {
+  0%, 90% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(var(--fa-beat-scale, 1.25));
+  }
+}
+@keyframes fa-bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+  }
+  30% {
+    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+  }
+  50% {
+    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+@keyframes fa-fade {
+  50% {
+    opacity: var(--fa-fade-opacity, 0.4);
+  }
+}
+@keyframes fa-beat-fade {
+  0%, 100% {
+    opacity: var(--fa-beat-fade-opacity, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(var(--fa-beat-fade-scale, 1.125));
+  }
+}
+@keyframes fa-flip {
+  50% {
+    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+  }
+}
+@keyframes fa-shake {
+  0% {
+    transform: rotate(-15deg);
+  }
+  4% {
+    transform: rotate(15deg);
+  }
+  8%, 24% {
+    transform: rotate(-18deg);
+  }
+  12%, 28% {
+    transform: rotate(18deg);
+  }
+  16% {
+    transform: rotate(-22deg);
+  }
+  20% {
+    transform: rotate(22deg);
+  }
+  32% {
+    transform: rotate(-12deg);
+  }
+  36% {
+    transform: rotate(12deg);
+  }
+  40%, 100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  transform: scale(1, -1);
+}
+
+.fa-flip-both,
+.fa-flip-horizontal.fa-flip-vertical {
+  transform: scale(-1, -1);
+}
+
+.fa-rotate-by {
+  transform: rotate(var(--fa-rotate-angle, 0));
+}
+
+.fa-stack {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: var(--fa-stack-z-index, auto);
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+
+.sr-only,
+.fa-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:not(:focus),
+.fa-sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}
+
+.fad.fa-inverse,
+.fa-duotone.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+    
+    
+    
+    
+    
+    
+    GotSport Rankings
+    
+    
+  
+.rhi{max-width:100% !important;height:auto !important;}
+.rhce3wt5732e a,.rhi,.rhce3wt5732e img{-webkit-box-shadow:none !important;-moz-box-shadow:none !important;box-shadow:none !important;border-style:none !important;margin:0 0 0 0 !important;padding:0 0 0 0 !important;}
+.rhce3wt5732e a>img{display:block;}
+.rhce3wt5732e .instagram-media-rendered,.rhce3wt5732e .twitter-tweet-rendered{margin:0 0 !important;}
+.rhce3wt5732e{box-sizing:border-box !important;text-align:center;}
+.rhce3wt5732e>div{text-align:center;}
+.rhce3wt5732e div div{max-width:100%;}
+.rhce3wt5732e iframe{position:relative;display:block;}
+.hn-container-left .rna-container{margin:10px 0 !important;}
+.rna-container iframe{position:relative;}
+.rna-container .fb-post{max-width:100% !important;padding-bottom:0;}
+.rna-container .fb-post>span{max-width:100% !important;margin:0 0;max-height: initial !important;}
+@media only screen and (max-width:600px){
+  .rhce3wt5732e{box-sizing:border-box;}
+  .rhce3wt5732e .instagram-media-rendered{width:500px !important;min-width:220px !important;max-width:100% !important;box-sizing:border-box !important;}
+}
+.rhce3wt5732e .rhus { width: 500px; max-width: 100%; }
+.rhce3wt5732e .rhls{margin-top:10px !important;}
+.rhce3wt5732e .rhus .fluid-width-video-wrapper, .rhce3wt5732e .rhls .fluid-width-video-wrapper{display:none !important;}
+.rhce3wt5732e.rhvid .rhus, .rhce3wt5732e.rhvid .rhls{width:100%;max-width:100%;}
+.rhce3wt5732e .rhus div, .rhce3wt5732e .rhls div{margin-left:auto !important;margin-right:auto !important;}
+.rhce3wt5732e .rhus ins, .rhce3wt5732e .rhls ins{max-width:500px !important;}
+.rna-container .vid-container{position:relative;overflow:hidden;height:0 !important;padding-bottom:56.25% !important;}
+.rna-container .vid-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;min-width:auto;min-height:auto;}
+.rna-container .fluid-width-video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;}
+div[data-rhp=""1""] > div{margin-left:auto;margin-right:auto;}
+.ksc-in-con .celtra-ad-inline-host { height: 100% !important; min-height: initial !important; }.ksc-in-con { min-height: initial !important; }.ksc-in-con .rhi-ab { min-height: initial !important; }.ksc-container { min-height: initial !important; }.ksc-container .ksc-ia-ab { min-height: initial !important; }.ksc-container .celtra-ad-inline-host { min-height: initial !important; }.ksl_overlay_displayed { height: 100%; overflow: hidden; }.ksc-in-con.fullscreen .rhi-ab {height:100%;width:100%;max-height:100%;max-width:100%;}.ksc-in-con.fullscreen #ksc-in-x {right:5px !important;top:5px !important;}.ksc-ia-ab .celtra-ad-inline-host .notranslate,.ksc-masthead-ab .celtra-ad-inline-host .notranslate,.rhi-ab .celtra-ad-inline-host .notranslate {max-width: initial !important;max-height: initial !important;position: initial !important;}.ksc-container.fullscreen > div {height:100%;width:100%;}.ksc-in-con div[data-embed-url], .ksc-in-con .twitter-tweet-rendered {padding:0 35px;}.krg-at-container {width:100% !important}.st-adunit,#inScreen.st-placement .st-reset {z-index:2147483647 !important;}.rhi-ab div[data-format=""FabrikOutstream""] .kargo-banner-optout.show { position:absolute !important;top:-34px !important;left:50% !important;transform:translateX(-50%);}
+            .ayManagerEnv_slug:before {
+                content: 'Ad';
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-size: 10px;
+                color: #6a737c;
+            }
+        
+  setTimeout(() => {
+      document.querySelectorAll('div[id^=div-ad-]').forEach((c) => {
+      var a = c.id.split('-')
+      c.dataset.ayPlacement = a.slice(3).join(""-"");
+    })
+    window.ayManagerEnv.changePage();
+
+}, 500);
+
+
+(function waitForGPP() {
+  if (typeof __gpp === 'function') {
+    __gpp('ping', function(data) {
+      const gppString = data?.gppString || '';
+      const gppSid = data?.applicableSections || [7]; 
+
+      pbjs.setConfig({
+        ortb2: {
+          user: {
+            gpp: gppString,
+            gpp_sid: gppSid
+          }
+        }
+      });
+    });
+  } else {
+    setTimeout(waitForGPP, 50); 
+  }
+})();
+
+(function() {
+    var config = {
+        accountId: 'org_jx8BpfMoE8wPQXHA3',
+        useBidderAlias: false,
+        includeBidders: [], // defaults to all supported bidders
+        excludeBidders: [],
+        serverOnlyBidders: [],
+        reportRandomToCustomDimension: 'custom_9',
+    };
+
+    var pbjs = window[ayManagerEnv.settings.prebidSettings.prebidScript.windowName];
+    var supportedBidders = ['33across','aax','aceex','acuityads','adf','adgeneration','adhese','adkernel','adkernelAdn','adman','admixer','adnuntius','adocean','adoppler','adot','adpone','adprime','adquery','adrino','adsinteractive','adsyield','adtarget','adtelligent','adtrgtme','advangelists','AdView','adxcg','adyoulike','aidem','aja','algorix','alkimi','amx','beyondmedia','apacdex','applogy','appnexus','appstock','appush','audienceNetwork','automatad','avct','axonix','beachfront','beintoo','bematterfull','between','bidmachine','bidmyadz','bidscube','bidstack','bizzclick','bliink','blue','bmtm','boldwin','brave','cadent_aperture_mx','ccx','CodeFuel','coinzilla','colossus','compass','connectad','consumable','copper6','copper6ssp','cpmstar','criteo','cwire','datablocks','deepintent','definemedia','dianomi','dmx','duration','e_volution','edge226','emtv','engagebdr','eplanning','epom','conversant','ergadx','evtech','flipp','freewheelssp','frvradn','futureads','gamma','gamoshi','globalsun','gothamads','greedygame','grid','gumgum','huaweiads','iionads','imds','impactify','improvedigital','infytv','inmobi','interactiveOffers','intertech','invibes','iqzone','ix','janet','jixie','kargo','kidoz','kiviads','krushmedia','kubient','lifestreet','liftoff','limelightDigital','lm_kiviads','lockerdome','logan','logicad','lunamedia','mabidder','madvertise','marsmedia','mediafuse','medianet','mgid','mgidX','mobfoxpb','mobilefuse','motorik','nextMillennium','ninthdecimal','nobid','onetag','openweb','openx','operaads','optout','orbidder','outbrain','outbrain','ownadx','pangle','pgamssp','preciso','pubmatic','pubnative','pulsepoint','pwbid','quantumdex','resetdigital','revcontent','rhythmone','richaudience','rise','roundel','rtbhouse','rubicon','sa_lunamedia','screencore','seedingAlliance','sharethrough','silvermob','silverpush','smaato','smartadserver','smarthub','smartx','smartyads','smilewanted','sonobi','sovrn','sspBC','streamkey','stroeerCore','suntContent','synacormedia','taboola','tappx','tpmn','trafficgate','triplelift','triplelift_native','trustedstack','trustx','ucfunnel','undertone','unicorn','unruly','valueimpression','videobyte','videoheroes','vidoomy','viewdeos','visiblemeasures','visx','vrtcal','xe','xtrmqb','yahooAds','yandex','yeahmobi','yieldlab','yieldmo','yieldone','zeroclickfraud','zeta_global_ssp','minutemedia','missena','vidazoo','loopme','ogury','kueezrtb'];
+    var forcedBidderAliases = {};
+    if (pbjs.version < 'v8.45.0') {
+        forcedBidderAliases.minutemedia = 918;
+        forcedBidderAliases.rise = 1043;
+    }
+    var availableBidders = [];
+    var endpoint = 'pbs-eu-central';
+    if (['NA', 'SA',].includes('NA')) {
+        endpoint = 'pbs-us-east';
+    }
+
+    pbjs.que.push(function() {
+        var missingModules = ['prebidServerBidAdapter', 's2sTesting'].filter(function(module) {
+            return !pbjs.installedModules.includes(module)
+        });
+        if (missingModules.length) {
+            console.error('Missing required modules: ' + missingModules.join(', '));
+            return;
+        }
+
+        ayManagerEnv.settings.bidderSettings.bidders.forEach(function(bid) {
+            var bidder = bid.alias || bid.bidder;
+            var normalizedBidder = bidder.replace('_s2s', '');
+            if (
+                !availableBidders.includes(normalizedBidder) &&
+                supportedBidders.includes(bid.bidder.replace('_s2s', '')) &&
+                !config.excludeBidders.includes(normalizedBidder) &&
+                (!config.includeBidders.length || config.includeBidders.includes(bid.bidder))
+            ) {
+                var forcedAlias = forcedBidderAliases[bid.bidder];
+                if (config.useBidderAlias || forcedAlias) {
+                    if (bid.alias && bid.alias.includes('_s2s')) {
+                        availableBidders.push(bidder);
+                        return;
+                    }
+                    var opts = {};
+                    if (forcedAlias) {
+                        opts.gvlid = forcedAlias;
+                    }
+                    pbjs.aliasBidder(bid.bidder, bidder + '_s2s', opts);
+                    availableBidders.push(bidder + '_s2s');
+                } else {
+                    availableBidders.push(bidder.replace('_s2s', ''));
+                }
+            }
+        });
+
+        var random = Math.floor(Math.random()*10);;
+        if (config.reportRandomToCustomDimension) {
+            window.assertiveQueue.push(function () {
+                assertive.setConfig('analytics.custom.' + config.reportRandomToCustomDimension, 's2s-' + random);
+            });
+        }
+        pbjs.setConfig({
+            s2sConfig: {
+                enabled: true,
+                testing: true,
+                accountId: config.accountId,
+                bidders: availableBidders,
+                timeout: Math.round(pbjs.getConfig('bidderTimeout') * 0.75),
+                endpoint: {
+                    p1Consent: 'https://' + endpoint + '.ay.delivery/openrtb2/auction',
+                    noP1Consent: 'https://' + endpoint + '.ay.delivery/openrtb2/auction'
+                },
+                syncEndpoint: {
+                    p1Consent: 'https://' + endpoint + '.ay.delivery/cookie_sync',
+                    noP1Consent: 'https://' + endpoint + '.ay.delivery/cookie_sync'
+                },
+                extPrebid: {
+                    rnd: random,
+                    targeting: {
+                        includewinners: false
+                    }
+                }
+            }
+        });
+    });
+
+    ayManagerEnv.onEvent('prebidBeforeFetchBids', function(bidConfig) {
+        if (!availableBidders.length) {
+            return;
+        }
+        bidConfig.adUnits.forEach(function(adUnit) {
+            var s2sBidders = adUnit.bids.reduce(function(acc, bid) {
+                if (bid.bidder.includes('_s2s')) {
+                    acc.push(bid.bidder.replace('_s2s', ''));
+                }
+                return acc;
+            }, []);
+            adUnit.bids = adUnit.bids.reduce(function(acc, bid) {
+                var bidder = bid.bidder;
+                var normalizedBidder = bidder.replace('_s2s', '');
+
+                // remove declared s2s bid requests if excluded
+                if (bidder.includes('_s2s') && config.excludeBidders.includes(normalizedBidder)) {
+                    return acc;
+                }
+                // remove client bid requests if declared s2s bid request exists
+                if (config.serverOnlyBidders.includes(normalizedBidder) && s2sBidders.includes(bidder)) {
+                    return acc;
+                }
+
+                if (bidder.includes('_s2s') || config.serverOnlyBidders.includes(bidder)) {
+                    bid.bidSource = { server: 100 };
+                    bid.includeSourceKvp = true;
+
+                    if (!config.useBidderAlias && !forcedBidderAliases[normalizedBidder]) {
+                        bid.bidder = normalizedBidder;
+                    }
+                    acc.push(bid);
+                    return acc;
+                }
+                if (config.useBidderAlias || forcedBidderAliases[bidder]) {
+                    bidder = bidder + '_s2s';
+                }
+                if (availableBidders.includes(bidder)) {
+                    bid.bidSource = { client: 100 };
+                    bid.includeSourceKvp = true;
+
+                    if (!s2sBidders.includes(bid.bidder)) {
+                        var s2sBid = JSON.parse(JSON.stringify(bid));
+                        s2sBid.bidSource = { server: 100 };
+                        s2sBid.includeSourceKvp = true;
+                        s2sBid.bidder = bidder;
+                        acc.push(s2sBid);
+                    }
+                }
+                acc.push(bid);
+                return acc;
+            }, []);
+        });
+    });
+})();
+
+(function() {
+    // div id for Adagio/Contextful
+    ayManagerEnv.onEvent('prebidBeforeFetchBids', function(bidConfig) {
+        bidConfig.adUnits.forEach(function(adUnit) {
+            adUnit.ortb2Imp = adUnit.ortb2Imp || {};
+            adUnit.ortb2Imp.ext = adUnit.ortb2Imp.ext || {};
+            adUnit.ortb2Imp.ext.data = adUnit.ortb2Imp.ext.data || {};
+            adUnit.ortb2Imp.ext.data.divId = adUnit.code;
+            adUnit.ortb2Imp.ext.data.placement = adUnit.code.replace(/__ayManagerEnv__.+/, '');
+        });
+    });
+})();
+.lngtd-dynamic-ad-container>div>div>iframe,.lngtd-dynamic-ad-container>div>iframe,.lngtd-dynamic-ad-container>iframe {margin: 0 auto;}.lngtd-ad-wrapper-banner>div>div>iframe,.lngtd-ad-wrapper-banner>div>iframe,.lngtd-ad-wrapper-banner>iframe {margin:0 auto;}
+        #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8 {
+            position: relative;
+            margin: 0 auto;
+            z-index: 1;
+            background-color: unset;
+            width: 320px;
+            height: 180px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8 .fabrik-logo {
+            background: url(//s.lngtdv.com/fvp/logo_white.svg) no-repeat 0 0;
+            background-size: cover;
+            display: inline-block;
+            width: 40px;
+            height: 12px;
+        }
+        
+        .fabrik-outer-video-container {
+            position:absolute;
+            top:0;
+            left:0;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 320px;
+            height:100%;
+        }
+        .fabrik-outer-video-container .video-js *,
+        .fabrik-outer-video-container .video-js :after,
+        .fabrik-outer-video-container .video-js :before {
+            font-family: VideoJS;
+        }
+        .fabrik-outer-video-container .video-js .vjs-tech {
+            display: block;
+        }
+        #gotsoccer_D_FVP {
+            position:absolute;
+            top:0;
+            left:0;
+            width: 320px; 
+            height: 180px;
+            overflow:hidden;
+        }
+        #gotsoccer_D_FVP>video {
+            width: 320px; 
+            height: 180px;
+        }
+        #gotsoccer_D_FVP>.ima-ad-container {z-index: 9 !important;}
+        #gotsoccer_D_FVP_ima-controls-div:not(.ima-controls-div-showing) {
+            height:3em;
+            transition:opacity 0.25s ease-in-out;
+            opacity:1;
+            background: linear-gradient(to top,                
+                rgba(7, 20, 30, .3) 30%,                
+                rgba(7, 20, 30, 0) 100%);
+        }
+        #gotsoccer_D_FVP_ima-controls-div.ima-controls-div-showing {
+            height:3em;
+            transition:opacity 0.25s ease-in-out;
+            opacity:1;
+        }
+        #gotsoccer_D_FVP_ima-countdown-div {position:absolute;line-height:3em;top:0;left:4em;font-family:sans-serif !important;}
+        #gotsoccer_D_FVP_ima-progress-div {
+            display:block;
+            background-color: #f93;
+        }
+        #gotsoccer_D_FVP_ima-seek-bar-div {
+            display:block;
+            bottom: 0;
+            top: unset;
+        }
+        #gotsoccer_D_FVP_ima-mute-div {right:1.8em;color:#fff;top:0;}
+        #gotsoccer_D_FVP_ima-play-pause-div {color:#fff;top:0;}
+        #gotsoccer_D_FVP_ima-slider-div {display:none;}
+        #gotsoccer_D_FVP_ima-fullscreen-div {right:0;color:#fff;top:0;}
+        #gotsoccer_D_FVP .vjs-control-bar {}
+        #gotsoccer_D_FVP .vjs-control-bar>button,
+        #gotsoccer_D_FVP .vjs-control-bar>div {display: none;}
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-play-control {display: inline-block;}
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-volume-panel {display: inline-block;}
+        #gotsoccer_D_FVP .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-hover {width: 4em;}
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-fullscreen-control {display: inline-block;margin-left: auto;}
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-progress-control {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: transparent;
+            width:100%;
+            height: 4px;
+        }
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-progress-control .vjs-play-progress {
+            background-color: #f93;
+            height: 4px;
+        }
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-progress-control .vjs-play-progress:before {
+            content: none;
+        }
+        #gotsoccer_D_FVP .vjs-control-bar .vjs-progress-control .vjs-progress-holder {
+            margin: 0;
+        }
+        
+        #gotsoccer_D_FVP_ima-ad-container video {background:none !important;}
+        #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.player-hidden {visibility:hidden;opacity:0;}
+        #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.player-showing {visibility:visible;opacity:1;transition:opacity 0.4s ease-in-out;}
+
+        .fabrik-outer-video-container .fabrik-video-header {
+            height: 30px;
+            width: 99.8%;
+            background-color: rgba(23, 23, 23, 0.8);
+            color: #fff;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index: 12;
+            visibility:hidden;
+            opacity: 0;
+            padding: 5px;
+            transition:opacity 0.4s ease-in-out;
+        }
+        
+        .fabrik-outer-video-container:hover .fabrik-video-header {
+            visibility:visible;
+            opacity:1;
+            transition:opacity 0.4s ease-in-out;
+        }
+        
+        .ad-playing .fabrik-outer-video-container:hover  .fabrik-video-header {
+            visibility: hidden;
+            opacity: 0;
+        }
+        
+        #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.ad-playing .fabrik-outer-video-container .ad-overlay {
+            display: inline-block;
+        }
+        
+        .fabrik-outer-video-container .ad-overlay {
+            display: none;
+            height: 21px;
+            background-color: #eef3f6;
+            color: #222;
+            border-radius: 10px 0 10px 0;
+            position: absolute;
+            top:0;
+            left: 0;
+            z-index: 11;
+            font-size: 10px;
+        }
+        
+        .fabrik-outer-video-container .ad-overlay .ad {
+            background-color: #f93;
+            border-radius: 10px 0 10px 0;
+            height: 21px;
+            width: 21px;
+            line-height: 21px;
+            max-height: 21px;
+            text-align: center;
+            display: inline-block;
+        }
+        
+        .fabrik-outer-video-container .ad-overlay .learn-more {
+            padding:5px;
+            color: #222;
+            text-decoration: none;
+        }
+        
+        .fabrik-outer-video-container .ad-overlay .learn-more:hover {
+            color:#000;
+        }
+        
+        .fabrik-outer-video-container .fabrik-video-header .video-title {
+            display: inline-block;
+            width: 60%;
+            text-wrap: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            float: left;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top:3px;
+            margin-left: 8px;
+        }
+        
+        .fabrik-outer-video-container .fabrik-video-header .fabrik-logo {
+            float: right;
+            margin-top: 4px;
+            margin-right: 35px;
+        }
+        
+        #gotsoccer_D_FVP .keep-watching {
+            cursor:pointer;
+            color:#eee;
+            font-size:15px;
+            font-weight:bold;
+            padding:7px 9px;
+            float:right;
+            border:2px solid #eee;
+            border-radius: 5px;
+            text-decoration:none;
+            text-align:right;
+            position:absolute;
+            bottom:35px;
+            right:15px;
+            z-index:99;
+            font-family:sans-serif !important;
+            background-color:rgba(0,0,0,0.5);
+        }
+        
+        #gotsoccer_D_FVP .keep-watching span {
+            color:#eee !important;
+            font-size: 15px !important;
+            font-family: sans-serif !important;
+        }
+        
+        #gotsoccer_D_FVP .keep-watching:hover {
+            border:2px solid #fff;
+            color: #fff;
+            background-color:rgba(0,0,0,0.8);
+            text-decoration:none;
+        }
+        
+        #gotsoccer_D_FVP .keep-watching:hover span {
+            color: #fff;
+            text-decoration:none;
+        }
+
+        #video-close-f73c47ba-e5c3-4227-8367-8a4465b6af3f {
+            cursor: pointer;
+            display: none;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            text-align: center;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-weight: 600;
+            z-index: 12;
+            color: #bbb;
+            text-decoration:none;
+        }
+        #video-close-f73c47ba-e5c3-4227-8367-8a4465b6af3f:before {
+          font-size: 1.5em;
+          content: ""\2715"";
+        }
+        #video-close-f73c47ba-e5c3-4227-8367-8a4465b6af3f:hover:before {
+          color: #eee;
+        }
+        
+        #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.player-showing #video-close-f73c47ba-e5c3-4227-8367-8a4465b6af3f,
+        #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fvp-sticky #video-close-f73c47ba-e5c3-4227-8367-8a4465b6af3f {
+            display: block;
+        }
+        
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fvp-sticky {
+                    width: 320px;
+                    height: 180px;
+                    bottom:100px !important;
+                    right:5px !important;
+                    margin: 0;
+                    z-index: 9999;
+                }
+            
+            #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fvp-sticky {
+                position: fixed;
+            }
+            #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fvp-sticky .fabrik-outer-video-container,
+            #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fvp-sticky #gotsoccer_D_FVP,
+            #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fvp-sticky #gotsoccer_D_FVP>video {
+                width: 320px;
+                height: 180px;
+            }
+            #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fvp-sticky #gotsoccer_D_FVP>video {
+                width: 320px;
+                height: 180px;
+            }
+        
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent:not(.fvp-sticky) {
+                    width: 520px;
+                    height: 180px;
+                }
+            
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent:not(.fvp-sticky) .fabrik-outer-video-container {
+                    border-radius: 10px 0 0 10px;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent:not(.fvp-sticky) .fabrik-outer-video-container .fabrik-video-header .fabrik-logo {
+                    display: none;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .fvp-content-desktop {
+                    background-color: #1f1f1f;
+                    margin-left: auto;
+                    height: 100%;
+                    width: 201px;
+                    border-radius: 0 10px 10px 0;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .fvp-content-mobile {
+                    display: none;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent.fvp-sticky .fvp-content-desktop {
+                    display: none;
+                }
+                
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .fvp-content-desktop .header {
+                    height: 30px;
+                    color: #fff;
+                    position:absolute;
+                    top:0;
+                    width: 200px;
+                    padding: 5px;
+                    z-index: 2;
+                    background-color: #1f1f1f;
+                    border-radius: 0 10px 0 0;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .fvp-content-desktop .header .up-next {
+                    display: inline-block;
+                    width: 100px;
+                    height: 14px;
+                    float: left;
+                    text-align:left;
+                    margin-left:5px;
+                    margin-top: 3px;
+                    font-size:14px;
+                    font-weight:600;
+                }
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .fvp-content-desktop .header .fabrik-logo {
+                    float: right;
+                    margin-top: 5px;
+                    margin-right: 5px;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .advertisement-notice {
+                    display: none;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .fvp-content-desktop .next-videos {
+                    width: 200px;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    padding-top: 30px;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                }
+                
+                .next-videos::-webkit-scrollbar-track {
+                  background-color: transparent;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video {
+                    width: 100%;
+                    padding: 5px 12px;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video:hover {
+                    background-color: #424242;
+                    cursor: pointer;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video.playing {
+                    background-color: #9b4e00;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video.playing:hover {
+                    background-color: #9b4e00;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video .video-image {
+                    width: 160px;
+                    height: 93px;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent .fvp-content-desktop .next-videos .next-videos-video .video-title {
+                    width: 158px;
+                    margin-left:8px;
+                    margin-top; 2px;
+                    font-size:11px;
+                    color: #fff;
+                    font-weight: 500;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    text-wrap: nowrap;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent.ad-playing .fvp-content-desktop .header .up-next,
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent.ad-playing .fvp-content-desktop .next-videos {
+                    display: none;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent.ad-playing .advertisement-notice {
+                    display: block;
+                    color: #fff;
+                    font-size: 18px;
+                    font-weight: 600;
+                    position: absolute;
+                    padding-bottom: 15%;
+                    bottom: 6%;
+                    width:170px;
+                    right: 10px;
+                    text-align: left;
+                    line-height:24px;
+                }
+                
+                #video-container-17457f7c-fcd9-4006-9ca9-d68b4e3630b8.fabrik-player-withcontent.ad-playing .advertisement-notice .ad-choices {
+                    background: url(//s.lngtdv.com/fvp/adchoices.svg) no-repeat 0 0;
+                    background-size: cover;
+                    position: absolute;
+                    bottom: 0;
+                    right: 10px;
+                    height: 15px;
+                    width: 15px;
+                }
+            
+        #undefined {
+            width: 100%;
+            height: 180px;
+        }
+        #undefined.os-player {
+        }
+    
+        #undefined.fvp-sticky {
+            position: fixed;
+            bottom:100px !important;
+            right:5px !important;
+            width: 320px;
+            height: 180px;
+            z-index: 9999;
+        }
+    
+        #undefined.player-showing {
+            display: block;
+        }
+        #undefined.player-hidden {
+            display: none;
+        }",,,42159695,Phoenix United 2015 Elite,Phoenix United Futbol Club
+Unknown,"(function() {
+    var config = {
+        accountId: 'org_jx8BpfMoE8wPQXHA3',
+        useBidderAlias: false,
+        includeBidders: [], // defaults to all supported bidders
+        excludeBidders: [],
+        serverOnlyBidders: [],
+        reportRandomToCustomDimension: 'custom_9',
+    };
+
+    var pbjs = window[ayManagerEnv.settings.prebidSettings.prebidScript.windowName];
+    var supportedBidders = ['33across','aax','aceex','acuityads','adf','adgeneration','adhese','adkernel','adkernelAdn','adman','admixer','adnuntius','adocean','adoppler','adot','adpone','adprime','adquery','adrino','adsinteractive','adsyield','adtarget','adtelligent','adtrgtme','advangelists','AdView','adxcg','adyoulike','aidem','aja','algorix','alkimi','amx','beyondmedia','apacdex','applogy','appnexus','appstock','appush','audienceNetwork','automatad','avct','axonix','beachfront','beintoo','bematterfull','between','bidmachine','bidmyadz','bidscube','bidstack','bizzclick','bliink','blue','bmtm','boldwin','brave','cadent_aperture_mx','ccx','CodeFuel','coinzilla','colossus','compass','connectad','consumable','copper6','copper6ssp','cpmstar','criteo','cwire','datablocks','deepintent','definemedia','dianomi','dmx','duration','e_volution','edge226','emtv','engagebdr','eplanning','epom','conversant','ergadx','evtech','flipp','freewheelssp','frvradn','futureads','gamma','gamoshi','globalsun','gothamads','greedygame','grid','gumgum','huaweiads','iionads','imds','impactify','improvedigital','infytv','inmobi','interactiveOffers','intertech','invibes','iqzone','ix','janet','jixie','kargo','kidoz','kiviads','krushmedia','kubient','lifestreet','liftoff','limelightDigital','lm_kiviads','lockerdome','logan','logicad','lunamedia','mabidder','madvertise','marsmedia','mediafuse','medianet','mgid','mgidX','mobfoxpb','mobilefuse','motorik','nextMillennium','ninthdecimal','nobid','onetag','openweb','openx','operaads','optout','orbidder','outbrain','outbrain','ownadx','pangle','pgamssp','preciso','pubmatic','pubnative','pulsepoint','pwbid','quantumdex','resetdigital','revcontent','rhythmone','richaudience','rise','roundel','rtbhouse','rubicon','sa_lunamedia','screencore','seedingAlliance','sharethrough','silvermob','silverpush','smaato','smartadserver','smarthub','smartx','smartyads','smilewanted','sonobi','sovrn','sspBC','streamkey','stroeerCore','suntContent','synacormedia','taboola','tappx','tpmn','trafficgate','triplelift','triplelift_native','trustedstack','trustx','ucfunnel','undertone','unicorn','unruly','valueimpression','videobyte','videoheroes','vidoomy','viewdeos','visiblemeasures','visx','vrtcal','xe','xtrmqb','yahooAds','yandex','yeahmobi','yieldlab','yieldmo','yieldone','zeroclickfraud','zeta_global_ssp','minutemedia','missena','vidazoo','loopme','ogury','kueezrtb'];
+    var forcedBidderAliases = {};
+    if (pbjs.version < 'v8.45.0') {
+        forcedBidderAliases.minutemedia = 918;
+        forcedBidderAliases.rise = 1043;
+    }
+    var availableBidders = [];
+    var endpoint = 'pbs-eu-central';
+    if (['NA', 'SA',].includes('NA')) {
+        endpoint = 'pbs-us-east';
+    }
+
+    pbjs.que.push(function() {
+        var missingModules = ['prebidServerBidAdapter', 's2sTesting'].filter(function(module) {
+            return !pbjs.installedModules.includes(module)
+        });
+        if (missingModules.length) {
+            console.error('Missing required modules: ' + missingModules.join(', '));
+            return;
+        }
+
+        ayManagerEnv.settings.bidderSettings.bidders.forEach(function(bid) {
+            var bidder = bid.alias || bid.bidder;
+            var normalizedBidder = bidder.replace('_s2s', '');
+            if (
+                !availableBidders.includes(normalizedBidder) &&
+                supportedBidders.includes(bid.bidder.replace('_s2s', '')) &&
+                !config.excludeBidders.includes(normalizedBidder) &&
+                (!config.includeBidders.length || config.includeBidders.includes(bid.bidder))
+            ) {
+                var forcedAlias = forcedBidderAliases[bid.bidder];
+                if (config.useBidderAlias || forcedAlias) {
+                    if (bid.alias && bid.alias.includes('_s2s')) {
+                        availableBidders.push(bidder);
+                        return;
+                    }
+                    var opts = {};
+                    if (forcedAlias) {
+                        opts.gvlid = forcedAlias;
+                    }
+                    pbjs.aliasBidder(bid.bidder, bidder + '_s2s', opts);
+                    availableBidders.push(bidder + '_s2s');
+                } else {
+                    availableBidders.push(bidder.replace('_s2s', ''));
+                }
+            }
+        });
+
+        var random = Math.floor(Math.random()*10);;
+        if (config.reportRandomToCustomDimension) {
+            window.assertiveQueue.push(function () {
+                assertive.setConfig('analytics.custom.' + config.reportRandomToCustomDimension, 's2s-' + random);
+            });
+        }
+        pbjs.setConfig({
+            s2sConfig: {
+                enabled: true,
+                testing: true,
+                accountId: config.accountId,
+                bidders: availableBidders,
+                timeout: Math.round(pbjs.getConfig('bidderTimeout') * 0.75),
+                endpoint: {
+                    p1Consent: 'https://' + endpoint + '.ay.delivery/openrtb2/auction',
+                    noP1Consent: 'https://' + endpoint + '.ay.delivery/openrtb2/auction'
+                },
+                syncEndpoint: {
+                    p1Consent: 'https://' + endpoint + '.ay.delivery/cookie_sync',
+                    noP1Consent: 'https://' + endpoint + '.ay.delivery/cookie_sync'
+                },
+                extPrebid: {
+                    rnd: random,
+                    targeting: {
+                        includewinners: false
+                    }
+                }
+            }
+        });
+    });
+
+    ayManagerEnv.onEvent('prebidBeforeFetchBids', function(bidConfig) {
+        if (!availableBidders.length) {
+            return;
+        }
+        bidConfig.adUnits.forEach(function(adUnit) {
+            var s2sBidders = adUnit.bids.reduce(function(acc, bid) {
+                if (bid.bidder.includes('_s2s')) {
+                    acc.push(bid.bidder.replace('_s2s', ''));
+                }
+                return acc;
+            }, []);
+            adUnit.bids = adUnit.bids.reduce(function(acc, bid) {
+                var bidder = bid.bidder;
+                var normalizedBidder = bidder.replace('_s2s', '');
+
+                // remove declared s2s bid requests if excluded
+                if (bidder.includes('_s2s') && config.excludeBidders.includes(normalizedBidder)) {
+                    return acc;
+                }
+                // remove client bid requests if declared s2s bid request exists
+                if (config.serverOnlyBidders.includes(normalizedBidder) && s2sBidders.includes(bidder)) {
+                    return acc;
+                }
+
+                if (bidder.includes('_s2s') || config.serverOnlyBidders.includes(bidder)) {
+                    bid.bidSource = { server: 100 };
+                    bid.includeSourceKvp = true;
+
+                    if (!config.useBidderAlias && !forcedBidderAliases[normalizedBidder]) {
+                        bid.bidder = normalizedBidder;
+                    }
+                    acc.push(bid);
+                    return acc;
+                }
+                if (config.useBidderAlias || forcedBidderAliases[bidder]) {
+                    bidder = bidder + '_s2s';
+                }
+                if (availableBidders.includes(bidder)) {
+                    bid.bidSource = { client: 100 };
+                    bid.includeSourceKvp = true;
+
+                    if (!s2sBidders.includes(bid.bidder)) {
+                        var s2sBid = JSON.parse(JSON.stringify(bid));
+                        s2sBid.bidSource = { server: 100 };
+                        s2sBid.includeSourceKvp = true;
+                        s2sBid.bidder = bidder;
+                        acc.push(s2sBid);
+                    }
+                }
+                acc.push(bid);
+                return acc;
+            }, []);
+        });
+    });
+})();",,,42159695,Phoenix United 2015 Elite,Phoenix United Futbol Club
+Unknown,"Up NextContent will resume after this advertisement.Liga MX Recap: America and Toluca Dominate, Drama UnfoldsWomen's Liga MX: Mexico's Thriving Women's Football League‘The objective must be to win it’ – Ancelotti sets target ahead of next World CupBoca Manager Miguel Angel Russo Passes Away Aged 69Alessandro Nesta - 'Van Dijk is world's best defender and EPL rules football'Columbus Crew Head Coach Nancy on Thierry Henry - and the growth of the MLSPSG Struggles Despite Recent Victory over BarcelonaLiga MX Roundup: Key Wins for America, Chivas & MoreTigres and Juarez Continue Strong Form in League PlayPlayoff Contenders and Potential Comebacks in Liga MXACFC Struggles in the NWSL: Key Players and Future OutlookOrlando Pride's Struggles and NWSL's Exciting WeekendLAFC Emerges as Title Contender with Thriving PlayersMessi Strikes Twice As Inter Miami Advance To MLS PlayoffsPafos FC: A Decade from Obscurity to Champions LeagueThrilling Champions League Start: Juventus vs. Dartmouth 4-4MLS Week Highlights: Inter Miami Triumphs, LAFC ShinesGotham FC Secures Win, Kansas City's Current Draws in NWSLMessi Finalizing Multi-Year Contract With Inter MiamiHigh stakes but high rewards as soccer icon Zinedine Zidane takes in some Parisian padel action",,,42159695,Phoenix United 2015 Elite,Phoenix United Futbol Club
+Unknown,"Liga MX Recap: America and Toluca Dominate, Drama UnfoldsWomen's Liga MX: Mexico's Thriving Women's Football League‘The objective must be to win it’ – Ancelotti sets target ahead of next World CupBoca Manager Miguel Angel Russo Passes Away Aged 69Alessandro Nesta - 'Van Dijk is world's best defender and EPL rules football'Columbus Crew Head Coach Nancy on Thierry Henry - and the growth of the MLSPSG Struggles Despite Recent Victory over BarcelonaLiga MX Roundup: Key Wins for America, Chivas & MoreTigres and Juarez Continue Strong Form in League PlayPlayoff Contenders and Potential Comebacks in Liga MXACFC Struggles in the NWSL: Key Players and Future OutlookOrlando Pride's Struggles and NWSL's Exciting WeekendLAFC Emerges as Title Contender with Thriving PlayersMessi Strikes Twice As Inter Miami Advance To MLS PlayoffsPafos FC: A Decade from Obscurity to Champions LeagueThrilling Champions League Start: Juventus vs. Dartmouth 4-4MLS Week Highlights: Inter Miami Triumphs, LAFC ShinesGotham FC Secures Win, Kansas City's Current Draws in NWSLMessi Finalizing Multi-Year Contract With Inter MiamiHigh stakes but high rewards as soccer icon Zinedine Zidane takes in some Parisian padel action",,,42159695,Phoenix United 2015 Elite,Phoenix United Futbol Club
