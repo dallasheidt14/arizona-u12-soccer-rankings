@@ -364,6 +364,24 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
         raw["team_a_id"] = raw["Team A"].map(raw_to_id)
         raw["team_b_id"] = raw["Team B"].map(raw_to_id)
         
+        # Convert team IDs to integers to remove .0 suffix, then back to strings
+        # Only convert numeric team IDs, leave external IDs as strings
+        def clean_team_id(team_id):
+            if pd.isna(team_id):
+                return team_id
+            try:
+                # Try to convert to float then int to remove .0 suffix
+                float_val = float(team_id)
+                if float_val == float('inf') or float_val == float('-inf'):
+                    return str(team_id)  # Return as-is for infinity
+                return str(int(float_val))
+            except (ValueError, TypeError, OverflowError):
+                # If conversion fails, it's an external ID, return as-is
+                return str(team_id)
+        
+        raw["team_a_id"] = raw["team_a_id"].apply(clean_team_id)
+        raw["team_b_id"] = raw["team_b_id"].apply(clean_team_id)
+        
         # Check for unmapped teams
         unmapped_a = raw[raw["team_a_id"].isna()]["Team A"].unique()
         unmapped_b = raw[raw["team_b_id"].isna()]["Team B"].unique()
@@ -372,7 +390,7 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
             print(f"Sample unmapped Team A: {unmapped_a[:3]}")
             print(f"Sample unmapped Team B: {unmapped_b[:3]}")
         
-        # Use team IDs for canonical keys
+        # Use team IDs for canonical keys (will be filtered later for AZ teams)
         raw["Team_A_Key"] = raw["team_a_id"]
         raw["Team_B_Key"] = raw["team_b_id"]
     else:
@@ -385,15 +403,33 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
     
     # Load master list with keys
     if age == "U11":
-        # For U11, load master list with team IDs
-        master_path = "data/master/az_boys_u11_2025/master_teams.csv"
+        # For U11, load master list with team IDs from AZ master file
+        master_path = "data/master/U11 BOYS/AZ/AZ_teams.csv"
         if not Path(master_path).exists():
-            raise FileNotFoundError(f"Master list not found: {master_path}")
+            raise FileNotFoundError(f"AZ U11 master list not found: {master_path}")
         
         master_teams = pd.read_csv(master_path)
-        master_teams["TeamKey"] = master_teams["team_id"]
+        master_teams["TeamKey"] = master_teams["gotsport_team_id"].astype(str)
+        master_teams["gotsport_team_id"] = master_teams["gotsport_team_id"].astype(str)
         master_team_keys = set(master_teams["TeamKey"])
-        print(f"Loaded {len(master_team_keys)} U11 teams from master list with IDs")
+        print(f"Loaded {len(master_team_keys)} U11 teams from AZ master list with IDs")
+        
+        # For U11, update TeamKey to use team IDs only for AZ teams
+        master_team_ids_str = set(master_teams["gotsport_team_id"].astype(str))
+        
+        # Convert team IDs to strings for comparison
+        long["team_id_str"] = long["TeamKey"].astype(str)
+        
+        # Use team IDs for AZ teams, team names for external teams
+        long["TeamKey"] = long["team_id_str"].where(
+            long["team_id_str"].isin(master_team_ids_str), 
+            long["Team"]
+        )
+        
+        # Now filter to only AZ teams
+        long = long[long["TeamKey"].isin(master_team_keys)].copy()
+        print(f"U11: Filtered to master teams. Remaining matches: {len(long)}")
+        print(f"Unique teams after filter: {len(long['TeamKey'].unique())}")
     else:
         master_teams = pd.read_csv(MASTER_PATH)
         master_teams["Team Name"] = master_teams["Team Name"].astype(str).str.strip()
@@ -404,9 +440,10 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
     # Filter matches: keep only rows where Team is a master team
     # (Keep all opponents for accurate SOS calculation)
     if age == "U11":
-        # For U11, include all teams from games data (master list is incomplete)
-        print(f"U11: Skipping master list filter, using all {len(long)} matches")
-        print(f"Unique teams in games data: {len(long['TeamKey'].unique())}")
+        # For U11, filter to master teams but keep all opponents for SOS
+        long = long[long["TeamKey"].isin(master_team_keys)].copy()
+        print(f"U11: Filtered to master teams. Remaining matches: {len(long)}")
+        print(f"Unique teams after filter: {len(long['TeamKey'].unique())}")
     else:
         long = long[long["TeamKey"].isin(master_team_keys)].copy()
         print(f"Filtered to master teams. Remaining matches: {len(long)}")
@@ -673,18 +710,36 @@ def build_rankings_from_wide(games_df: pd.DataFrame, out_csv: Path, division: st
     out_visible_with_team = out_visible_with_team.rename(columns={'index': 'TeamKey'})
     
     if age == "U11":
-        # For U11, use ID-based output with team_id and display_name
-        # Merge with master list to get display_name
+        # For U11, use ID-based output with team_id and team_name
+        # Handle different column names in U11 master file
+        master_cols = ["gotsport_team_id"]
+        if "display_name" in master_teams.columns:
+            master_cols.append("display_name")
+        elif "team_name" in master_teams.columns:
+            master_cols.append("team_name")
+        if "club" in master_teams.columns:
+            master_cols.append("club")
+        
         out_visible_with_team = out_visible_with_team.merge(
-            master_teams[["team_id", "display_name", "club"]],
+            master_teams[master_cols],
             left_on="TeamKey",
-            right_on="team_id",
+            right_on="gotsport_team_id",
             how="left"
         )
         
-        # Use display_name for Team column
-        out_visible_with_team["Team"] = out_visible_with_team["display_name"]
-        out_visible_with_team["Club"] = out_visible_with_team["club"].fillna("")
+        # Use appropriate team name column
+        if "display_name" in out_visible_with_team.columns:
+            out_visible_with_team["Team"] = out_visible_with_team["display_name"]
+        elif "team_name" in out_visible_with_team.columns:
+            out_visible_with_team["Team"] = out_visible_with_team["team_name"]
+        else:
+            out_visible_with_team["Team"] = out_visible_with_team["TeamKey"]
+        
+        # Handle club column
+        if "club" in out_visible_with_team.columns:
+            out_visible_with_team["Club"] = out_visible_with_team["club"].fillna("")
+        else:
+            out_visible_with_team["Club"] = ""
         
         # Ensure team_id is included in output
         out_visible_with_team["team_id"] = out_visible_with_team["TeamKey"]

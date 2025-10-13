@@ -1,0 +1,21 @@
+AZ U11 Team Matching Report
+===========================
+Generated: 2025-10-12 14:23:35
+
+MATCHING STATS
+--------------
+Total Games Processed: 5,442
+Total Teams Processed: 576
+
+Match Types:
+  + Exact: 196
+  ? Fuzzy: 280
+  ~ External: 100
+  ! Unmatched: 0
+
+Outputs:
+  + data\mappings\az_boys_u11_2025\name_map.csv
+  + data\logs\az_boys_u11_2025\unmatched.csv
+  + data\logs\az_boys_u11_2025\external_candidates.csv
+  + data\outputs\az_boys_u11_2025\histories.csv
+  + data\gold\Matched_Games_U11_COMPAT.csv

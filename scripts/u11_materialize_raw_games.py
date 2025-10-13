@@ -1,71 +1,70 @@
-#!/usr/bin/env python3
-"""
-Materialize canonical raw games file for U11 pipeline.
-
-Converts data/gold/Matched_Games_AZ_BOYS_U11.csv to canonical format at
-data/raw/az_boys_u11_2025/games_raw.csv with standardized column names.
-"""
-
+# scripts/u11_materialize_raw_games.py
 from pathlib import Path
 import pandas as pd
+from src.utils.paths_u11 import scraped_histories_path, canonical_raw_path
 
-DIV = "az_boys_u11_2025"
-SRC = Path("data/gold/Matched_Games_AZ_BOYS_U11.csv")   # full coverage
-DST = Path(f"data/raw/{DIV}/games_raw.csv")
+REQUIRED = {"Team A","Team B","Score A","Score B","Date"}
 
+def run(state: str = "AZ", season: int = 2025) -> None:
+    src = scraped_histories_path(state)
+    df = pd.read_csv(src)
 
-def run():
-    """Convert source games file to canonical raw format."""
+    # Transform team-centric data to game-centric format
+    # Each row represents a game from one team's perspective
+    # We need to create Team A vs Team B format
     
-    # Load source data
-    df = pd.read_csv(SRC)
-    print(f"Loaded {len(df)} games from {SRC}")
+    games_data = []
     
-    # Standardize column names
-    cols = {c.lower().strip(): c for c in df.columns}
-    rename_map = {}
+    for _, row in df.iterrows():
+        team_name = row['team_name']
+        opponent_name = row['opponent_name']
+        home_score = row['home_score']
+        away_score = row['away_score']
+        match_date = row['match_date']
+        
+        # Skip if no opponent name
+        if pd.isna(opponent_name) or not opponent_name.strip():
+            continue
+            
+        # Determine which team is Team A and which is Team B
+        # Use alphabetical order for consistency
+        teams = sorted([team_name, opponent_name])
+        
+        # Determine scores based on team order
+        if teams[0] == team_name:
+            # Our team is Team A
+            score_a = home_score if not pd.isna(home_score) else 0
+            score_b = away_score if not pd.isna(away_score) else 0
+        else:
+            # Our team is Team B
+            score_a = away_score if not pd.isna(away_score) else 0
+            score_b = home_score if not pd.isna(home_score) else 0
+        
+        games_data.append({
+            'Team A': teams[0],
+            'Team B': teams[1],
+            'Score A': score_a,
+            'Score B': score_b,
+            'Date': match_date,
+            'Competition': row.get('competition_name', ''),
+            'Event': row.get('event_name', ''),
+            'Venue': row.get('venue_name', '')
+        })
     
-    for c in df.columns:
-        lc = c.lower().strip()
-        if lc in ("team a", "team_a", "home", "home team", "home_team"):
-            rename_map[c] = "team_name_a"
-        elif lc in ("team b", "team_b", "away", "away team", "away_team"):
-            rename_map[c] = "team_name_b"
-        elif lc in ("score a", "score_a", "goals a", "goals_a", "home score", "home_score"):
-            rename_map[c] = "score_a"
-        elif lc in ("score b", "score_b", "goals b", "goals_b", "away score", "away_score"):
-            rename_map[c] = "score_b"
-        elif lc in ("date", "game date", "match date"):
-            rename_map[c] = "date"
-        elif lc in ("competition", "league", "event"):
-            rename_map[c] = "competition"
-        elif lc in ("team a url", "team_a_url", "home_url"):
-            rename_map[c] = "team_url_a"
-        elif lc in ("team b url", "team_b_url", "away_url"):
-            rename_map[c] = "team_url_b"
+    # Create DataFrame from games data
+    df_games = pd.DataFrame(games_data)
     
-    # Apply column renaming
-    df = df.rename(columns=rename_map)
+    # Remove duplicates (same game might appear twice from both teams' perspectives)
+    df_games = df_games.drop_duplicates(subset=['Team A', 'Team B', 'Date'])
     
-    # Validate required columns
-    required = {"team_name_a", "team_name_b", "score_a", "score_b", "date"}
-    missing = required - set(df.columns)
+    missing = REQUIRED - set(df_games.columns)
     if missing:
-        raise ValueError(f"Missing required columns in {SRC}: {missing}")
-    
-    # Create output directory
-    DST.parent.mkdir(parents=True, exist_ok=True)
-    
-    # Save canonical raw file
-    df.to_csv(DST, index=False)
-    print(f"Wrote canonical raw: {DST} ({len(df)} rows)")
-    
-    # Show sample data
-    print(f"\nSample columns: {list(df.columns)}")
-    print(f"Sample games:")
-    for _, row in df.head(3).iterrows():
-        print(f"  {row['team_name_a']} vs {row['team_name_b']} ({row['score_a']}-{row['score_b']}) on {row['date']}")
+        raise ValueError(f"Missing columns after transformation: {missing}. Available: {list(df_games.columns)}")
 
+    dst = canonical_raw_path(state, season)
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    df_games.to_csv(dst, index=False)
+    print(f"Canonical raw -> {dst} ({len(df_games)} rows)")
 
 if __name__ == "__main__":
-    run()
+    run("AZ", 2025)

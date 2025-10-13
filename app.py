@@ -785,7 +785,7 @@ def u11_test():
 @u11_router.get("/rankings")
 def u11_rankings():
     """Get U11 rankings with team IDs."""
-    rankings_path = Path("data/outputs/az_boys_u11_2025/rankings.csv")
+    rankings_path = Path("data/outputs/U11 Boys/AZ/rankings.csv")
     if not rankings_path.exists():
         raise HTTPException(status_code=404, detail="U11 rankings not found")
     
@@ -798,20 +798,38 @@ def u11_rankings():
     # Handle NaN values for JSON serialization
     df = df.fillna("")
     
-    # Convert to records format
-    return df.to_dict("records")
+    # Convert to records format and wrap in expected structure
+    teams = df.to_dict("records")
+    
+    # Return in the format expected by frontend: {data: [...], active: [...], provisional: [...]}
+    return {
+        "data": teams,
+        "active": teams,  # All teams are active for U11
+        "provisional": [],  # No provisional teams for U11
+        "meta": {
+            "total_teams": len(teams),
+            "age_group": "U11",
+            "state": "AZ",
+            "gender": "MALE"
+        }
+    }
 
 @u11_router.get("/teams/{team_id}/history")
 def u11_history(team_id: str):
     """Get U11 team history by team ID."""
-    histories_path = Path("data/outputs/az_boys_u11_2025/histories.csv")
+    histories_path = Path("data/game_histories/U11 BOYS/AZ/game_histories.csv")
     if not histories_path.exists():
         raise HTTPException(status_code=404, detail="U11 histories not found")
     
     df = pd.read_csv(histories_path)
     
-    # Filter by team_id
-    team_games = df[df["team_id"] == team_id]
+    # Filter by team_id (convert to float for comparison since histories file has float team_ids)
+    try:
+        team_id_float = float(team_id)
+        team_games = df[df["team_id"] == team_id_float]
+    except ValueError:
+        # If team_id can't be converted to float, try string comparison
+        team_games = df[df["team_id"].astype(str) == team_id]
     
     if team_games.empty:
         return {
@@ -820,18 +838,43 @@ def u11_history(team_id: str):
             "games": []
         }
     
-    # Get display name
-    display_name = team_games["display_name"].iloc[0]
+    # Get team name from first game
+    team_name = team_games.iloc[0]["team_name"] if not team_games.empty else "Unknown"
     
-    # Format games for response
-    games = team_games[[
-        "date", "opponent_team_id", "opponent_display_name", 
-        "goals_for", "goals_against", "result"
-    ]].to_dict("records")
+    # Convert to frontend format
+    games = []
+    for _, game in team_games.iterrows():
+        # Determine if this team was home or away
+        is_home = game["home_team_id"] == team_id_float
+        
+        # Get the correct score based on home/away
+        if is_home:
+            our_score = game["home_score"] if pd.notna(game["home_score"]) else 0
+            opp_score = game["away_score"] if pd.notna(game["away_score"]) else 0
+        else:
+            our_score = game["away_score"] if pd.notna(game["away_score"]) else 0
+            opp_score = game["home_score"] if pd.notna(game["home_score"]) else 0
+        
+        # Determine result
+        if our_score > opp_score:
+            result = "W"
+        elif our_score < opp_score:
+            result = "L"
+        else:
+            result = "D"
+        
+        games.append({
+            "date": game["match_date"],
+            "opponent": game["opponent_name"] if pd.notna(game["opponent_name"]) else "Unknown",
+            "result": result,
+            "score": f"{our_score}-{opp_score}",
+            "venue": game["venue_name"] if pd.notna(game["venue_name"]) else "TBD",
+            "event": game["event_name"] if pd.notna(game["event_name"]) else "Unknown"
+        })
     
     return {
         "team_id": team_id,
-        "display_name": display_name,
+        "display_name": team_name,
         "games": games
     }
 

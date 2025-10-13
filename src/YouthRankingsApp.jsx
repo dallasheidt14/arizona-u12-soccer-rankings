@@ -177,11 +177,20 @@ export default function YouthRankingsApp() {
     setRankings(data);
     // Normalize data for U11/U12 compatibility
     const normalizeTeamData = (teams) => {
-      return teams.map(team => ({
-        ...team,
-        Team: team.Team || team.display_name, // U11 uses display_name, U12 uses Team
-        team_id: team.team_id || null // Ensure team_id exists for U11
-      }));
+      return teams.map((team, index) => {
+        let teamName = team.Team || team.display_name || team.team_name;
+        
+        // Handle NaN, null, undefined, or "nan" string values
+        if (!teamName || teamName === 'nan' || teamName === 'NaN' || teamName === 'null') {
+          teamName = `Team ${team.team_id || index}`;
+        }
+        
+        return {
+          ...team,
+          Team: teamName,
+          team_id: team.team_id || null
+        };
+      });
     };
     
     setActiveTeams(normalizeTeamData(active));
@@ -218,7 +227,7 @@ export default function YouthRankingsApp() {
         // Transform U11 format to match TeamHistoryPage expectations
         const transformedGames = data.games.map(game => ({
           Date: game.date,
-          Opponent: game.opponent_display_name,
+          Opponent: game.opponent,
           GoalsFor: game.goals_for,
           GoalsAgainst: game.goals_against,
           Result: game.result,

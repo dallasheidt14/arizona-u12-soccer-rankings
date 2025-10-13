@@ -40,7 +40,7 @@ def main():
             
             for team in teams:
                 team_name = team.get('team_name', '')
-                gotsport_team_id = team.get('id')
+                gotsport_team_id = team.get('team_id')  # CORRECT: Use team_id for matches API
                 team_association = team.get('team_association', '')
                 
                 if gotsport_team_id and team_name:
@@ -64,9 +64,11 @@ def main():
     # Convert to DataFrame
     df = pd.DataFrame(all_teams)
     
-    # Save ALL teams
+    # Save ALL teams to correct location
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_file = f"all_u11_teams_{timestamp}.csv"
+    output_dir = Path("data/Master/U11 BOYS/ALL STATES")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_file = output_dir / f"all_u11_teams_{timestamp}.csv"
     df.to_csv(output_file, index=False)
     
     print(f"\nSUCCESS!")

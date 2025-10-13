@@ -46,10 +46,10 @@ export default function RankingsPage({
 
   // Filter teams based on search
   const filteredActive = activeTeams.filter((team) =>
-    team.Team.toLowerCase().includes(searchTerm.toLowerCase())
+    team.Team && team.Team.toLowerCase().includes(searchTerm.toLowerCase())
   );
   const filteredProvisional = provisionalTeams.filter((team) =>
-    team.Team.toLowerCase().includes(searchTerm.toLowerCase())
+    team.Team && team.Team.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Sort logic
@@ -112,7 +112,7 @@ export default function RankingsPage({
       <main className="rankings-main fade-in-up">
         {/* Summary Banner */}
         <div className="summary-banner">
-          <p>
+          <div>
             📊 Showing <strong>{filteredActive.length}</strong> active teams and{" "}
             <strong>{filteredProvisional.length}</strong> provisional teams.  
             <Tooltip content="Only teams with ≥1 game in the past 365 days are currently ranked. Teams inactive for 180+ days are filtered out.">
@@ -122,7 +122,7 @@ export default function RankingsPage({
             <span className="text-sm text-gray-600">
               Updated automatically from match data (last 12 months).
             </span>
-          </p>
+          </div>
         </div>
 
         <div className="filter-bar">
@@ -208,9 +208,9 @@ function RankSection({ title, subtitle, teams, sortField, sortOrder, onSort, onT
           </thead>
           <tbody className="fade-in-up">
             {teams.map((team, i) => (
-              <tr key={team.Team} className="table-row">
+              <tr key={`${team.Team || 'unknown'}-${team.team_id || 'no-id'}-${i}`} className="table-row">
                 <td className="rank-cell">
-                  {type === "active" ? team.Rank || i + 1 : ""}
+                  {type === "active" ? i + 1 : ""}
                 </td>
                 <td className="team-cell">
                   <button 

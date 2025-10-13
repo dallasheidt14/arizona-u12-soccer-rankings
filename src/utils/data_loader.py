@@ -5,6 +5,7 @@ from typing import Optional, List
 
 DEFAULT_GOLD_NAMES = [
     "data/gold/Matched_Games_{AGE}_CLEAN.csv",  # Prefer CLEAN files
+    "data/gold/Matched_Games_{AGE}_COMPAT.csv",  # U11 COMPAT format
     "data/silver/Matched_Games_{AGE}.parquet",
     "data/silver/Matched_Games_{AGE}.csv",
     "data/gold/Matched_Games_{AGE}.parquet",
