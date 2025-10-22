@@ -1,12 +1,29 @@
-# Dependencies
-node_modules/
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
 .Python
-env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
 venv/
+env/
 ENV/
 env.bak/
 venv.bak/
@@ -20,62 +37,44 @@ venv.bak/
 
 # OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+
+# Data files (keep structure but ignore large files)
+data/raw/
+*.csv.bak
+*.parquet
+*.pickle
 
 # Logs
 *.log
 logs/
 
-# Runtime data
-pids/
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory used by tools like istanbul
-coverage/
-.coverage
-.nyc_output
-
 # Temporary files
+temp/
+tmp/
 *.tmp
-*.temp
 
-# Build outputs
-dist/
-build/
-*.egg-info/
+# Node modules (if any)
+node_modules/
 
-# Data files (optional - uncomment if you don't want to track data)
-# *.csv
-# *.parquet
-# *.json
+# Jupyter Notebooks
+.ipynb_checkpoints/
 
-# Keep important data files
-!Rankings_v*.csv
-!Team_Game_Histories*.csv
-!Matched_Games.csv
-!AZ MALE U12 MASTER TEAM LIST.csv
-!rankings_index.json
-!calibration_metrics.json
-!weekly_reports/
-!docs/
-!tests/
-!analytics/
-!dashboard/
-!rankings/
-!src/
-!app.py
-!requirements*.txt
-!package*.json
-!*.md
-!*.yml
-!*.yaml
-!*.sh
-!*.bat
-!*.py
-!*.jsx
-!*.css
-!*.html
-!*.config.js
-!*.config.ts
+# pytest
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json

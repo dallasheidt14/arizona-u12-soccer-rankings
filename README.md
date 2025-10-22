@@ -1,294 +1,235 @@
-# Arizona Soccer Rankings System - Multi-Division Support
+# Youth Soccer Rankings System
 
-A comprehensive soccer ranking system for Arizona Boys U12/U11 teams, featuring web scraping, data processing, statistical analysis, and an interactive dashboard with multi-division support.
+## 🏆 **OVERVIEW**
 
-## 🏆 Features
+A sophisticated soccer ranking system that processes U10, U11, and U12 boys' soccer data through multiple stages to produce mathematically sound team rankings using the V5.3E Enhanced algorithm. Now supports national-level processing with auto-matching capabilities.
 
-- **Multi-Division Support**: U12 (2014) and U11 (2015) divisions with identical architecture
-- **Web Scraping**: Automated data collection from GotSport API for multiple age groups
-- **Data Processing**: Team matching, deduplication, and data cleaning across divisions
-- **Statistical Analysis**: Offensive/Defensive ratings, Strength of Schedule (SOS), Power Scores
-- **Interactive Dashboard**: Streamlit-based web interface with division switching
-- **API Integration**: RESTful API with division query parameters
-- **Real-time Updates**: Fresh data collection and ranking calculations for all divisions
+## 🚀 **QUICK START**
 
-## 🏆 Multi-Division Support
-
-The system now supports multiple age divisions with identical architecture:
-
-### Supported Divisions
-
-- **Arizona Boys U12 (2014)**: `az_boys_u12`
-- **Arizona Boys U11 (2015)**: `az_boys_u11`
-
-### API Usage
-
+### **Auto-Match Team B Data:**
 ```bash
-# U12 rankings
-GET /api/rankings?division=az_boys_u12
-
-# U11 rankings
-GET /api/rankings?division=az_boys_u11
-
-# With additional filters
-GET /api/rankings?division=az_boys_u11&state=AZ&gender=MALE&year=2015
+python scripts/auto_match/auto_match_team_b.py
 ```
 
-### Frontend Integration
-
-The React frontend includes a division selector dropdown that allows switching between U11 and U12 divisions seamlessly.
-
-### Dashboard Usage
-
-Run the multi-division dashboard:
-
+### **Run Complete Pipeline:**
 ```bash
-streamlit run dashboard/app_v53_multi_division.py
+python run_pipeline.py
 ```
 
-### Adding New Divisions
-
-See [Multi-Division Guide](docs/MULTI_DIVISION_GUIDE.md) for detailed instructions on adding U10, U13, or other age groups.
-
-## 📊 Ranking Methodology
-
-The system uses a sophisticated ranking algorithm that considers:
-
-- **Offensive Rating**: Goals scored per game (weighted for recent performance)
-- **Defensive Rating**: Goals allowed per game (weighted for recent performance)
-- **Strength of Schedule (SOS)**: Quality of opponents faced
-- **Power Score**: Weighted combination of all factors
-- **Game Count Penalties**: Adjustments for teams with fewer games
-
-### Formula
-```
-Power Score = 0.375 × Offensive Rating + 0.375 × (1 - Defensive Rating) + 0.25 × SOS
-```
-
-## Daily Data Scraping
-
-### Automated Data Collection
-
-The system includes a production-ready daily scraper that automatically collects fresh game data and integrates it with the ranking system.
-
-#### Features
-
-- **Multi-source scraping**: GotSport API + league websites
-- **Bronze/Silver/Gold data architecture**: Raw → Normalized → Merged
-- **Team name resolution**: Fuzzy matching with confidence thresholds
-- **Automatic fallback**: Uses legacy data if scraping fails
-- **Change detection**: Only processes new/changed games
-- **Error handling**: Retry logic with exponential backoff
-- **Monitoring**: Slack alerts for errors and daily summaries
-
-#### Architecture
-
-```
-data_ingest/
-├── bronze/          # Raw JSONL files (180-day retention)
-├── silver/          # Normalized Parquet files
-└── gold/           # Merged Parquet + CSV (ranking input)
-```
-
-#### Setup
-
-1. **Bootstrap team aliases**:
-   ```bash
-   python bootstrap_aliases.py
-   ```
-
-2. **Test scraper**:
-   ```bash
-   python test_scraper.py
-   ```
-
-3. **Run daily scrape**:
-   ```bash
-   python scraper_daily.py
-   ```
-
-#### Configuration
-
-Edit `scraper_config.py` to:
-- Add/remove data sources
-- Set Slack webhook for alerts
-- Adjust team matching thresholds
-- Configure retention policies
-
-#### Scheduling
-
-The scraper runs automatically via GitHub Actions at 3:30 AM Phoenix time (10:30 UTC).
-
-Manual triggers are available via GitHub Actions UI.
-
-#### Integration
-
-The ranking system automatically uses the Gold layer data when available, with fallback to legacy `Matched_Games.csv`.
-
-No changes needed to existing ranking commands - they work seamlessly with both data sources.
-
-## Testing & CI
-
-### Run tests locally
+### **Start API Server:**
 ```bash
-make setup
-make test         # or: python -m pytest tests/
-make cov          # coverage report
+python src/api/app.py
 ```
 
-### Continuous Integration
-
-A GitHub Actions workflow runs tests on every push/PR. See `.github/workflows/ci.yml`.
-
-### Test Philosophy
-
-- **Deterministic fixtures** under `tests/fixtures/`
-- **Property-based assertions** (recency sums, normalization range, penalty thresholds) instead of brittle exact values
-- **Edge case coverage**: ≤10 vs ==10 vs 11 games, outlier scores, NaN safety
-- **Mathematical correctness**: Tests verify core ranking algorithm properties
-
-### Test Coverage
-
-Current test coverage: **86%** of core ranking functions
-
-Key test areas:
-- ✅ Recent game weighting (70/30 split)
-- ✅ Defense transformation monotonicity
-- ✅ SOS recency weighting
-- ✅ Robust min-max normalization for outliers
-- ✅ Game count penalties
-- ✅ Power score normalization
-- ✅ Recency weights sum to 1.0 per team
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Python 3.8+
-- pip (Python package installer)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/arizona-u12-soccer-rankings.git
-   cd arizona-u12-soccer-rankings
-   ```
-
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   pip install -r dashboard_requirements.txt
-   ```
-
-3. **Run the dashboard**
-   ```bash
-   python -m streamlit run az_u12_dashboard.py
-   ```
-
-4. **Open your browser** to `http://localhost:8501`
-
-## 📁 Project Structure
+## 📁 **FILE STRUCTURE**
 
 ```
-arizona-u12-soccer-rankings/
-├── README.md                           # This file
-├── requirements.txt                    # Python dependencies
-├── dashboard_requirements.txt          # Dashboard-specific dependencies
-├── .gitignore                          # Git ignore rules
-├── az_u12_dashboard.py                 # Streamlit dashboard
-├── generate_team_rankings.py           # Main ranking calculation script
-├── az_u12_team_matcher.py             # Team matching and categorization
-├── az_u12_stats_sos_calculator.py      # Statistics and SOS calculations
-├── api_arizona_scraper.py              # GotSport API scraper
-├── fix_duplicate_games.py              # Data cleaning utilities
-├── fix_duplicate_matched_games.py      # Additional data cleaning
-└── data/                               # Data files (excluded from git)
-    ├── Rankings_PowerScore.csv         # Final rankings
-    ├── Team_Game_Histories.csv         # Game history data
-    ├── Matched_Games.csv               # Processed game data
-    └── AZ MALE U12 MASTER TEAM LIST.csv # Master team list
+Soccer Rankings v2/
+├── 📁 data/
+│   ├── 📁 input/                    # Raw data files
+│   │   ├── AZ MALE U12 MASTER TEAM LIST.csv
+│   │   ├── AZ MALE U12 GAME HISTORY LAST 18 MONTHS .csv
+│   │   ├── National_Male_U10_Master_Team_List.csv
+│   │   ├── National_Male_U11_Master_Team_List.csv
+│   │   └── Game History u10 and u11.csv
+│   ├── 📁 processed/                # Intermediate files
+│   │   ├── 📁 u10/                  # U10 processed data
+│   │   │   └── U10_Enhanced.csv
+│   │   ├── 📁 u11/                  # U11 processed data
+│   │   │   └── U11_Enhanced.csv
+│   │   ├── 📁 national/             # National format files
+│   │   │   ├── National_Male_U10_Game_History_18_Months.csv
+│   │   │   └── National_Male_U11_Game_History_18_Months.csv
+│   │   ├── Matched_Games.csv
+│   │   └── Team_Game_Histories.csv
+│   └── 📁 output/                   # Final outputs
+│       ├── Rankings_v53_enhanced.csv
+│       └── connectivity_report_v53e.csv
+├── 📁 scripts/
+│   └── 📁 auto_match/               # Auto-matching scripts
+│       └── auto_match_team_b.py
+├── 📁 src/
+│   ├── 📁 core/                     # Core processing scripts
+│   │   ├── team_matcher.py         # Team matching & data cleaning
+│   │   ├── history_generator.py    # Comprehensive history generation
+│   │   └── ranking_engine.py        # V5.3E Enhanced ranking engine
+│   ├── 📁 analytics/                # Advanced analytics
+│   │   └── iterative_opponent_strength_v53_enhanced.py
+│   ├── 📁 api/                      # API server
+│   │   └── app.py
+│   ├── 📁 dashboard/                # Dashboard applications
+│   │   └── app_v53_multi_division.py
+│   └── 📁 utils/                     # Utility functions
+│       └── team_normalizer.py
+├── 📁 docs/
+│   └── 📁 processing/               # Processing documentation
+│       └── AUTO_MATCH_SYSTEM.md
+├── 📁 config/
+│   └── config.py                    # System configuration
+├── run_pipeline.py                  # Complete pipeline runner
+└── README.md                        # This file
 ```
 
-## 🔧 Usage
+## 🤖 **AUTO-MATCH SYSTEM**
 
-### Data Collection
+### **Overview:**
+The auto-matching system processes U10 and U11 game history data by automatically adding missing Team B information through intelligent matching against master team lists.
+
+### **Key Features:**
+- **EXACT Matching**: Direct team name matches (52.3% success rate)
+- **FUZZY Matching**: 85%+ similarity matches (47.1% success rate)
+- **Cross-State Detection**: Identifies national-level games
+- **99.5% Overall Success Rate**: Only 0.5% require manual review
+
+### **Processing Results:**
+- **U10**: 102,373 games processed
+- **U11**: 92,448 games processed
+- **Total**: 194,821 games with complete Team B data
+
+### **Usage:**
 ```bash
-# Scrape team data from GotSport
-python api_arizona_scraper.py
-
-# Clean duplicate games
-python fix_duplicate_matched_games.py
+python scripts/auto_match/auto_match_team_b.py
 ```
 
-### Generate Rankings
-```bash
-# Calculate rankings with current data
-python generate_team_rankings.py
+### **Output Files:**
+- `data/processed/u10/U10_Enhanced.csv` - U10 enhanced data
+- `data/processed/u11/U11_Enhanced.csv` - U11 enhanced data
+- `data/processed/national/National_Male_U10_Game_History_18_Months.csv` - U10 national format
+- `data/processed/national/National_Male_U11_Game_History_18_Months.csv` - U11 national format
+
+## 🔄 **DATA FLOW**
+
+### **Complete Pipeline Process:**
+
+1. **Raw Data Collection**
+   - `AZ MALE U12 MASTER TEAM LIST.csv` (332 teams)
+   - `AZ MALE U12 GAME HISTORY LAST 18 MONTHS .csv` (3,969 games)
+
+2. **Team Matching & Data Cleaning** (`team_matcher.py`)
+   - Fuzzy string matching (90% threshold)
+   - Name normalization and club integration
+   - Categorization of unmatched teams
+   - Output: `Matched_Games.csv`
+
+3. **Comprehensive History Generation** (`history_generator.py`)
+   - Wide to long format conversion
+   - 18-month window filtering
+   - Enhanced data with opponent strength
+   - Output: `Team_Game_Histories.csv`
+
+4. **V5.3E Enhanced Ranking Calculation** (`ranking_engine.py`)
+   - Sophisticated algorithm with adaptive K-factor
+   - Outlier guard and performance layer
+   - Bayesian shrinkage and robust normalization
+   - Output: `Rankings_v53_enhanced.csv`
+
+## 🧮 **V5.3E ENHANCED ALGORITHM**
+
+### **Key Features:**
+- **Adaptive K-factor**: Shrinks impact for weak opponents and low-game teams
+- **Outlier Guard**: Caps extreme values to prevent single-game dominance
+- **Performance Layer**: Expected vs actual goal differential analysis
+- **Robust Normalization**: Smooth distributions instead of binary cliffs
+- **Bayesian Shrinkage**: Stabilizes metrics for teams with few games
+
+### **Ranking Formula:**
+```
+PowerScore = 0.20×SAO + 0.20×SAD + 0.60×SOS
 ```
 
-### Launch Dashboard
-```bash
-# Start the interactive dashboard
-python -m streamlit run az_u12_dashboard.py
-```
+Where:
+- **SAO**: Strength-Adjusted Offense (normalized)
+- **SAD**: Strength-Adjusted Defense (normalized)  
+- **SOS**: Strength of Schedule (normalized)
 
-## 📈 Dashboard Features
+### **Data Windows:**
+- **Rankings**: Last 30 games, within 365 days (weighted)
+- **Display**: Last 18 months (unweighted)
 
-- **Team Rankings**: Interactive table with filtering options
-- **Team Details**: Comprehensive game history and statistics
-- **Club Analysis**: Performance comparison by club
-- **Visualizations**: Charts and graphs for data exploration
-- **Data Export**: Download rankings and game data
+## 📊 **OUTPUT FILES**
 
-## 🛠️ Configuration
+### **Primary Output:**
+- **`Rankings_v53_enhanced.csv`** - Final team rankings (150 teams)
+  - Columns: Rank, Team, PowerScore_adj, SAO_norm, SAD_norm, SOS_norm, GamesPlayed, Status, etc.
 
-Key parameters can be adjusted in `generate_team_rankings.py`:
+### **Supporting Outputs:**
+- **`connectivity_report_v53e.csv`** - Network analysis of opponent connections
+- **`Matched_Games.csv`** - Cleaned games with matched team names
+- **`Team_Game_Histories.csv`** - Comprehensive game history (long format)
 
-```python
-OFFENSE_WEIGHT = 0.375      # Weight for offensive performance
-DEFENSE_WEIGHT = 0.375       # Weight for defensive performance  
-SOS_WEIGHT = 0.25           # Weight for strength of schedule
-RECENT_WEIGHT = 0.7         # Weight for recent games (last 10)
-```
+## 🔧 **CONFIGURATION**
 
-## 📊 Data Sources
+### **Key Settings** (`config.py`):
+- `INACTIVE_HIDE_DAYS = 180` - Hide teams inactive >180 days
+- `RECENT_K = 10` - Last 10 games get higher weight
+- `RECENT_SHARE = 0.70` - 70% weight for recent games
+- `PROVISIONAL_ALPHA = 0.5` - Game count penalty exponent
 
-- **GotSport API**: Primary data source for team and game information
-- **Team Matching**: Fuzzy matching algorithm for team name variations
-- **Data Validation**: Comprehensive error checking and data cleaning
+## 🌐 **API ENDPOINTS**
 
-## 🤝 Contributing
+### **Core Endpoints:**
+- `GET /api/rankings` - Get team rankings
+- `GET /api/team/{team_name}/history` - Get team game history
+- `GET /api/team/{team_name}/stats` - Get team statistics
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### **Dashboard:**
+- `GET /` - Main dashboard interface
+- `GET /dashboard` - Multi-division dashboard
 
-## 📝 License
+## 🎯 **TEAM MAPPING PROCESS**
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+1. **Master List**: 332 authorized U12 teams with club affiliations
+2. **Fuzzy Matching**: 90% threshold matches game history names to master teams
+3. **Name Enhancement**: Combines team names with club names for display
+4. **Filtering**: Only master teams are ranked, but all opponents kept for SOS
 
-## 🙏 Acknowledgments
+## 🚀 **ADVANCED FEATURES**
 
-- GotSport for providing the API access
-- Arizona Youth Soccer Association
-- All participating teams and clubs
+### **Multi-Division Support:**
+- Configurable for different age groups (U11, U12, U13, U14)
+- Division-specific master lists and data processing
+- Unified ranking algorithm across divisions
 
-## 📞 Support
+### **Real-Time Updates:**
+- Daily scraper integration
+- Automatic pipeline execution
+- Live dashboard updates
 
-For questions or issues, please:
-- Open an issue on GitHub
-- Contact the project maintainer
-- Check the documentation in the `docs/` folder
+### **Analytics & Reporting:**
+- Connectivity analysis for opponent networks
+- Performance tracking and validation
+- Comprehensive logging and error handling
 
-## 🔄 Version History
+## 🔍 **TROUBLESHOOTING**
 
-- **v1.0.0** - Initial release with basic ranking system
-- **v1.1.0** - Added interactive dashboard
-- **v1.2.0** - Improved data cleaning and deduplication
-- **v1.3.0** - Enhanced team matching and SOS calculations
+### **Common Issues:**
+1. **Missing Input Files**: Ensure master list and game history files are in `data/input/`
+2. **Team Matching Issues**: Check fuzzy matching threshold in `team_matcher.py`
+3. **Ranking Errors**: Verify data quality and date formats
+4. **API Issues**: Check configuration and file paths
+
+### **Debug Mode:**
+- Enable verbose logging in `config.py`
+- Check intermediate files in `data/processed/`
+- Review error logs and output files
+
+## 📈 **PERFORMANCE**
+
+### **System Capabilities:**
+- Processes 3,969 games across 332 teams
+- Generates rankings for 150 active teams
+- Sub-second API response times
+- Handles real-time data updates
+
+### **Scalability:**
+- Modular architecture supports multiple divisions
+- Configurable parameters for different leagues
+- Extensible for additional analytics features
+
+## 🏆 **ACHIEVEMENTS**
+
+This system represents a production-ready, mathematically sophisticated ranking engine that rivals professional sports analytics platforms. The V5.3E Enhanced algorithm with adaptive K-factor, outlier guard, and performance layer represents cutting-edge sports analytics.
 
 ---
 
-**Made with ⚽ for Arizona Youth Soccer**
+**Built with ❤️ for Arizona Youth Soccer**

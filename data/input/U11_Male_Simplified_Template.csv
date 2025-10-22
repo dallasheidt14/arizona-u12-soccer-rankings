@@ -1,0 +1,4 @@
+Date,Team A,Team B,Team A State,Team B State,Team A Division,Team B Division,Team A Club,Team B Club,Score A,Score B,Result A,Result B,Event,Competition,Division,Venue,Location,Match ID,Original Team A ID,Original Team B ID,Cross_State,Event_Type,Venue_State
+9/14/2025,Southeast 2014 Boys Black,FC Dallas 2014 Boys,AZ,TX,U11B,U11B,,FC Dallas,3,2,W,L,2025 National Showcase,2025 National Showcase,U11B U11 Boys Elite,2025 National Showcase,,22641542,238248,238249,True,League,TX
+9/14/2025,Southeast 2014 Boys Black,Southeast 2014 Boys Blue,AZ,AZ,U11B,U11B,,Next Level Soccer,2,0,W,L,2025 Cactus Kick Off,2025 Cactus Kick Off,U11B U11 Boys Jordan,2025 Cactus Kick Off,,22641543,238248,238250,False,League,AZ
+9/13/2025,LA Galaxy 2014 Boys,Real Salt Lake 2014 Boys,CA,UT,U11B,U11B,LA Galaxy,Real Salt Lake,1,1,T,T,2025 West Coast Classic,2025 West Coast Classic,U11B U11 Boys Premier,2025 West Coast Classic,,22641544,238250,238251,True,League,CA
