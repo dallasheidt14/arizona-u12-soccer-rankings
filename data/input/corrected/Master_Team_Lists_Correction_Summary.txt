@@ -1,0 +1,56 @@
+CORRECTED MASTER TEAM LISTS SUMMARY
+==================================================
+Generated: 2025-10-22 11:02:16
+
+U10 MASTER TEAM LIST (Birth Year 2016):
+  Total teams: 1750
+  Age_Group: [2016]
+  Age_U: [10]
+  Top 10 states:
+    Unknown: 943 teams
+    FL: 113 teams
+    IL: 86 teams
+    OH: 86 teams
+    CA: 66 teams
+    MA: 52 teams
+    MO: 35 teams
+    PA: 32 teams
+    VA: 30 teams
+    TX: 29 teams
+
+U11 MASTER TEAM LIST (Birth Year 2015):
+  Total teams: 3340
+  Age_Group: [2015]
+  Age_U: [11]
+  Top 10 states:
+    CA: 661 teams
+    TX: 267 teams
+    OH: 240 teams
+    FL: 236 teams
+    IL: 230 teams
+    NY: 143 teams
+    PA: 138 teams
+    NJ: 124 teams
+    MI: 110 teams
+    AZ: 107 teams
+
+U12 MASTER TEAM LIST (Birth Year 2014):
+  Total teams: 8254
+  Age_Group: [2014]
+  Age_U: [12]
+  Top 10 states:
+    CA: 1200 teams
+    TX: 776 teams
+    FL: 510 teams
+    NJ: 469 teams
+    NY: 454 teams
+    IL: 432 teams
+    OH: 425 teams
+    PA: 348 teams
+    MI: 270 teams
+    VA: 220 teams
+
+ARIZONA TEAMS:
+  U10: 14 teams
+  U11: 107 teams
+  U12: 190 teams

@@ -1,0 +1,90 @@
+U11 M SOCCER RANKINGS SUMMARY
+==================================================
+Generated: 2025-10-22 13:58:50
+Combined Game History: C:\Users\Dallas Heidt\Desktop\Soccer Rankings v2\data\Game History u10 and u11.csv
+11 Master Team List: C:\Users\Dallas Heidt\Desktop\Soccer Rankings v2\data\input\National_Male_U11_Master_Team_List.csv
+Cross-Age Master Team List: C:\Users\Dallas Heidt\Desktop\Soccer Rankings v2\data\input\National_Male_U12_Master_Team_List.csv
+Total Teams Ranked: 7370
+Total 11 Games: 131,075
+Ranking Window: 365 days
+
+CROSS-AGE GAME STATISTICS:
+------------------------------
+Teams with cross-age games: 2070
+Average cross-age game percentage: 4.6%
+
+TOP 10 NATIONAL U11 RANKINGS:
+-----------------------------------
+ 1. Club Ohio West Pre MLS NEXT 15B (OH) - 0.901 (3 cross-age)
+ 2. CUP 15B Gold (OH) - 0.889
+ 3. NBFC 2015 Boys Blue (ID) - 0.885
+ 4. APSC 2015B Arsenal (CA) - 0.875
+ 5. Texas Select 2015 (TX) - 0.871 (2 cross-age)
+ 6. Prime United (PA) - 0.870 (4 cross-age)
+ 7. Sharks Select (NJ) - 0.870
+ 8. CVFA 15B Academy (CA) - 0.862 (7 cross-age)
+ 9. Worldwide Soccer Club B2015 (CA) - 0.860 (3 cross-age)
+10. Pre MLS NEXT Black '15 (PA) - 0.860
+
+STATE BREAKDOWN:
+--------------------
+AK: 8 teams - Top: 2015B Alaska Rush Goldstrikers (#1914 nationally) (7 cross-age)
+AL: 31 teams - Top: FWSC 2015B Mannheim (#3519 nationally)
+AR: 18 teams - Top: F.C. Horizon 2015 Boys Green (#2379 nationally)
+AZ: 184 teams - Top: Northwest 2015 Boys Black (#29 nationally) (2 cross-age)
+CA: 1136 teams - Top: APSC 2015B Arsenal (#4 nationally)
+CO: 75 teams - Top: ALBION SC Boulder County B15 Academy (#440 nationally) (3 cross-age)
+CT: 81 teams - Top: Oakwood SC 15 Pre-MLS Next Blue (#267 nationally) (2 cross-age)
+DE: 20 teams - Top: Delmarva Rush 2015B Rush (#143 nationally) (6 cross-age)
+FL: 490 teams - Top: FORCE BOYS 2015 BLACK (#18 nationally) (1 cross-age)
+GA: 33 teams - Top: CF 15B South Black (#24 nationally) (3 cross-age)
+HI: 16 teams - Top: U11 (#1634 nationally)
+IA: 60 teams - Top: RFA 2015's (#114 nationally) (1 cross-age)
+ID: 66 teams - Top: NBFC 2015 Boys Blue (#3 nationally)
+IL: 375 teams - Top: SLSG IL B 2015 Academy Red (#20 nationally) (5 cross-age)
+IN: 120 teams - Top: Carmel FC 2015B Gold (#101 nationally) (4 cross-age)
+KS: 56 teams - Top: SPORTING WICHITA 2015B ACADEMY (#545 nationally) (7 cross-age)
+KY: 80 teams - Top: Javanon 2015 Boys Black (#48 nationally) (2 cross-age)
+LA: 5 teams - Top: SHREVEPORT STRIKERS FFC 15/16B (#2135 nationally)
+MA: 210 teams - Top: Wellesley Premier Club 2015 Boys FC (#11 nationally)
+MD: 210 teams - Top: Bethesda Academy II 2015 (#16 nationally)
+ME: 28 teams - Top: 2015B Pre NAL (#337 nationally) (3 cross-age)
+MI: 260 teams - Top: MFA GR 15B Elite (#33 nationally) (1 cross-age)
+MN: 80 teams - Top: 2015 Boys Academy (#73 nationally)
+MO: 161 teams - Top: SLSG MO B 2015 Academy Navy (#41 nationally) (9 cross-age)
+MS: 16 teams - Top: Desoto FC 15B (#966 nationally)
+MT: 27 teams - Top: SFC B2015 T2 (#210 nationally)
+NC: 19 teams - Top: OBX Storm Cyclones (#434 nationally) (1 cross-age)
+ND: 11 teams - Top: WUFC U10 Boys Orange (#816 nationally)
+NE: 17 teams - Top: Sting Pre-ECNL Ausenbaugh (#4400 nationally)
+NH: 67 teams - Top: 2015 Boys 1 (#536 nationally)
+NJ: 434 teams - Top: Sharks Select (#7 nationally)
+NM: 41 teams - Top: NMSA 2015 Boys (#798 nationally) (7 cross-age)
+NV: 70 teams - Top: Las Vegas Sports Academy U11 Boys Red 2015 (#169 nationally) (2 cross-age)
+NY: 442 teams - Top: NLSA Select B2015 (#26 nationally) (4 cross-age)
+OH: 416 teams - Top: Club Ohio West Pre MLS NEXT 15B (#1 nationally) (3 cross-age)
+OK: 62 teams - Top: Greenwood 2015 Pre-MLS Next (#275 nationally) (1 cross-age)
+OR: 89 teams - Top: WUFC 15B White (#131 nationally)
+PA: 326 teams - Top: Prime United (#6 nationally) (4 cross-age)
+RI: 29 teams - Top: Boys 2015 Elite (#150 nationally) (6 cross-age)
+SC: 4 teams - Top: MP 15 Blue (#4839 nationally) (1 cross-age)
+SD: 36 teams - Top: Ignite 2015 Boys Blue (#745 nationally) (1 cross-age)
+TN: 69 teams - Top: Midsouth Bartlett 2015 Navy (#1225 nationally) (9 cross-age)
+TX: 768 teams - Top: Texas Select 2015 (#5 nationally) (2 cross-age)
+UT: 117 teams - Top: Utah United Academy 2015 (#92 nationally) (1 cross-age)
+VA: 214 teams - Top: SYC 2015B Blue (#34 nationally)
+VT: 43 teams - Top: Nordic 2015 Boys Napoli (#2178 nationally)
+WA: 135 teams - Top: WW SURF B15 SNOHOMISH A (#91 nationally)
+WI: 76 teams - Top: 2015 Boys Blue (#581 nationally)
+WV: 22 teams - Top: WVFC 2015 Boys - Red (#922 nationally)
+WY: 17 teams - Top: WYO 307 2015 Boys (#35 nationally)
+
+ARIZONA U11 RANKINGS:
+-------------------------
+Total Arizona teams: 184
+Top 5 Arizona teams:
+   1. Northwest 2015 Boys Black (#29 nationally) (2 cross-age)
+   2. 15 Boys Navy (#39 nationally)
+   3. AZ Arsenal Pre-ECNL B15 (#69 nationally) (3 cross-age)
+   4. Chelsea 15B (#104 nationally)
+   5. 15B AChacon Pre-MLS Next (#208 nationally) (3 cross-age)
