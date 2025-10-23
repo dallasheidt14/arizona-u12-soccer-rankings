@@ -75,22 +75,52 @@ def get_team_game_history(team_name, game_history_df):
     if game_history_df is None:
         return None
     
+    # Find the correct column names (handle trailing spaces)
+    team_a_col = None
+    team_b_col = None
+    
+    for col in game_history_df.columns:
+        if col.strip() == 'Team A':
+            team_a_col = col
+        elif col.strip() == 'Team B':
+            team_b_col = col
+    
+    if team_a_col is None or team_b_col is None:
+        st.error(f"Could not find Team A or Team B columns in game history")
+        return None
+    
     # Find games where team is either Team A or Team B
-    team_a_games = game_history_df[game_history_df['Team A '].str.contains(team_name, case=False, na=False)]
-    team_b_games = game_history_df[game_history_df['Team B '].str.contains(team_name, case=False, na=False)]
+    team_a_games = game_history_df[game_history_df[team_a_col].str.contains(team_name, case=False, na=False)]
+    team_b_games = game_history_df[game_history_df[team_b_col].str.contains(team_name, case=False, na=False)]
     
     # Combine and process games
     all_games = []
     
+    # Find other column names dynamically
+    date_col = None
+    score_a_col = None
+    score_b_col = None
+    result_col = None
+    
+    for col in game_history_df.columns:
+        if col.strip() == 'Date':
+            date_col = col
+        elif col.strip() == 'Score A':
+            score_a_col = col
+        elif col.strip() == 'Score B':
+            score_b_col = col
+        elif col.strip() == 'Team A Result':
+            result_col = col
+    
     # Process Team A games
     for _, game in team_a_games.iterrows():
         all_games.append({
-            'Date': game.get('Date ', ''),
+            'Date': game.get(date_col, '') if date_col else '',
             'Team': team_name,
-            'Opponent': game.get('Team B ', ''),
-            'Score_For': game.get('Score A ', ''),
-            'Score_Against': game.get('Score B ', ''),
-            'Result': game.get('Team A Result', ''),
+            'Opponent': game.get(team_b_col, ''),
+            'Score_For': game.get(score_a_col, '') if score_a_col else '',
+            'Score_Against': game.get(score_b_col, '') if score_b_col else '',
+            'Result': game.get(result_col, '') if result_col else '',
             'Event': game.get('Event', ''),
             'Was_Team_A': True
         })
@@ -98,12 +128,12 @@ def get_team_game_history(team_name, game_history_df):
     # Process Team B games
     for _, game in team_b_games.iterrows():
         all_games.append({
-            'Date': game.get('Date ', ''),
+            'Date': game.get(date_col, '') if date_col else '',
             'Team': team_name,
-            'Opponent': game.get('Team A ', ''),
-            'Score_For': game.get('Score B ', ''),
-            'Score_Against': game.get('Score A ', ''),
-            'Result': 'Win' if game.get('Team A Result', '') == 'Loss' else 'Loss' if game.get('Team A Result', '') == 'Win' else 'Tie',
+            'Opponent': game.get(team_a_col, ''),
+            'Score_For': game.get(score_b_col, '') if score_b_col else '',
+            'Score_Against': game.get(score_a_col, '') if score_a_col else '',
+            'Result': 'Win' if game.get(result_col, '') == 'Loss' else 'Loss' if game.get(result_col, '') == 'Win' else 'Tie',
             'Event': game.get('Event', ''),
             'Was_Team_A': False
         })
@@ -122,7 +152,7 @@ def load_rankings_data(age_group, gender, state="USA"):
     try:
         if state == "USA" or state == "National":
             # Load national rankings
-            file_pattern = f"data/output/National_U{age_group}_*_Rankings_CROSS_AGE.csv"
+            file_pattern = f"data/output/National_U{age_group}_Rankings_CROSS_AGE*.csv"
             files = glob.glob(file_pattern)
             
             if not files:
@@ -131,7 +161,12 @@ def load_rankings_data(age_group, gender, state="USA"):
                 files = glob.glob(file_pattern)
             
             if files:
-                df = pd.read_csv(files[0])
+                # Prefer v6 file if available
+                v6_files = [f for f in files if '_v6.csv' in f]
+                if v6_files:
+                    df = pd.read_csv(v6_files[0])
+                else:
+                    df = pd.read_csv(files[0])
                 return df, "National"
             else:
                 st.error(f"No national rankings found for U{age_group}")
@@ -210,21 +245,58 @@ def show_team_detail_page(team_name, team_data, game_history_df):
         st.session_state.page = "rankings"
         st.rerun()
     
+    # Extract club name from team name (usually the first part before age/year)
+    club_name = team_name
+    if ' ' in team_name:
+        # Try to extract club name (first 2-3 words typically)
+        parts = team_name.split()
+        if len(parts) >= 2:
+            # Common patterns: "Club Name Age Group" or "Club Name Year"
+            club_parts = []
+            for part in parts:
+                # Stop at age/year patterns like "16B", "2016B", "U10", etc.
+                if (any(char.isdigit() for char in part) and ('B' in part or 'G' in part)) or part.startswith('U'):
+                    break  # Stop at age/year part
+                club_parts.append(part)
+            if club_parts:
+                club_name = ' '.join(club_parts)
+            else:
+                # Fallback: take first word if no club parts found
+                club_name = parts[0]
+    
     # Team header
-    col1, col2, col3 = st.columns([2, 1, 1])
+    col1, col2, col3, col4 = st.columns([2, 1, 1, 1])
     
     with col1:
         st.markdown(f"## {team_name}")
+        st.markdown(f"**Club:** {club_name}")
         st.markdown(f"**State:** {team_data.get('State', 'Unknown')}")
         st.markdown(f"**National Rank:** #{team_data.get('National_Rank', 'N/A')}")
     
     with col2:
         st.metric("Power Score", f"{team_data.get('Power_Score', 0):.3f}")
-        st.metric("Win %", f"{team_data.get('Win_Percentage', 0):.3f}")
+        st.metric("Offense (Raw)", f"{team_data.get('Offense', 0):.2f}")
+        st.metric("Offense (Adj)", f"{team_data.get('Offense_Adj', 0):.2f}")
     
     with col3:
+        st.metric("Defense (Raw)", f"{team_data.get('Defense', 0):.2f}")
+        st.metric("Defense (Adj)", f"{team_data.get('Defense_Adj', 0):.2f}")
+        st.metric("SOS Raw", f"{team_data.get('SOS_Score', 0):.3f}")
+    
+    with col4:
+        st.metric("Total Games", f"{team_data.get('Total_Games_History', 0)}")
+        st.metric("SOS Norm", f"{team_data.get('SOS_Norm', 0):.3f}")
         st.metric("Games Played", f"{team_data.get('Games_Played', 0)}")
-        st.metric("SOS Score", f"{team_data.get('SOS_Score', 0):.3f}")
+    
+    # Explanation of Phase 6.0 enhancements
+    st.info("""
+    **Phase 6.0 Enhancements:**
+    - **Offense/Defense (Raw)**: Goals per game from actual game data
+    - **Offense/Defense (Adj)**: Bayesian shrunk values that stabilize small-sample teams (τ=8)
+    - **SOS Raw**: Iterative strength of schedule with performance adjustments
+    - **SOS Norm**: Normalized SOS for fair comparison across age groups
+    - **Balanced Weighting**: 50/35/15 tiered system (recent/middle/oldest games) for stable rankings
+    """)
     
     # Get team game history
     team_games = get_team_game_history(team_name, game_history_df)
@@ -233,13 +305,13 @@ def show_team_detail_page(team_name, team_data, game_history_df):
         st.markdown("---")
         st.header("📊 Game History")
         
-        # Game statistics
+        # Game statistics - use pre-calculated values from rankings
         col1, col2, col3, col4 = st.columns(4)
         
-        wins = len(team_games[team_games['Result'] == 'Win'])
-        losses = len(team_games[team_games['Result'] == 'Loss'])
-        ties = len(team_games[team_games['Result'] == 'Tie'])
-        total_games = len(team_games)
+        wins = team_data.get('Wins', 0)
+        losses = team_data.get('Losses', 0)
+        ties = team_data.get('Ties', 0)
+        total_games = team_data.get('Games_Played', 0)
         
         with col1:
             st.metric("Wins", wins)
@@ -327,8 +399,29 @@ def show_team_detail_page(team_name, team_data, game_history_df):
             st.success("High Power Score - Strong overall performance")
         if team_data.get('SOS_Score', 0) > 0.5:
             st.success("Strong Schedule - Plays tough opponents")
-        if team_data.get('Win_Percentage', 0) > 0.7:
-            st.success("High Win Rate - Consistent victories")
+        if team_data.get('SOS_Norm', 0) > 0.7:
+            st.success("High Relative SOS - Among strongest schedules")
+        if team_data.get('Offense', 0) > 3.0:
+            st.success("High Offense - Strong goal scoring ability")
+        if team_data.get('Defense', 0) < 1.5:
+            st.success("Strong Defense - Low goals allowed")
+        
+        # Bayesian Shrinkage Analysis
+        if 'Offense_Adj' in team_data and 'Defense_Adj' in team_data:
+            offense_diff = team_data.get('Offense', 0) - team_data.get('Offense_Adj', 0)
+            defense_diff = team_data.get('Defense', 0) - team_data.get('Defense_Adj', 0)
+            
+            if abs(offense_diff) > 0.1:
+                if offense_diff > 0:
+                    st.info(f"Offense Shrinkage: {offense_diff:.2f} (small sample stabilized)")
+                else:
+                    st.info(f"Offense Boost: {abs(offense_diff):.2f} (small sample stabilized)")
+            
+            if abs(defense_diff) > 0.1:
+                if defense_diff > 0:
+                    st.info(f"Defense Shrinkage: {defense_diff:.2f} (small sample stabilized)")
+                else:
+                    st.info(f"Defense Boost: {abs(defense_diff):.2f} (small sample stabilized)")
     
     with col2:
         st.subheader("Areas for Improvement")
@@ -336,8 +429,12 @@ def show_team_detail_page(team_name, team_data, game_history_df):
             st.warning("Low Power Score - Overall performance needs improvement")
         if team_data.get('SOS_Score', 0) < 0.3:
             st.warning("Weak Schedule - Consider playing stronger opponents")
-        if team_data.get('Win_Percentage', 0) < 0.3:
-            st.warning("Low Win Rate - Focus on fundamental improvements")
+        if team_data.get('SOS_Norm', 0) < 0.3:
+            st.warning("Low Relative SOS - Among weakest schedules")
+        if team_data.get('Offense', 0) < 1.5:
+            st.warning("Low Offense - Focus on goal scoring")
+        if team_data.get('Defense', 0) > 3.0:
+            st.warning("Weak Defense - Focus on defensive improvements")
 
 def main():
     # Initialize session state
@@ -362,6 +459,16 @@ def main():
     
     # Main rankings page
     st.markdown('<h1 class="main-header">⚽ Soccer Rankings Dashboard</h1>', unsafe_allow_html=True)
+    
+    # Info about the ranking system
+    st.info("""
+    **V5.3E Enhanced Algorithm Features:**
+    - **Balanced Weighting**: 50% recent games + 35% middle games + 15% oldest games (prevents hot streak inflation)
+    - **Cross-Age Support**: U10 teams can play U11 opponents with proper SOS calculation
+    - **Bayesian Shrinkage**: Stabilizes rankings for teams with fewer games (τ=8)
+    - **Performance Adjustment**: Rewards teams that outperform expectations based on opponent strength
+    - **Iterative SOS**: Self-correcting strength of schedule with convergence
+    """)
     
     # Sidebar for filters
     with st.sidebar:
@@ -458,12 +565,21 @@ def main():
                 help="Total cross-state games played"
             )
         else:
-            avg_sos = df['SOS_Score'].mean()
-            st.metric(
-                label="Avg SOS Score",
-                value=f"{avg_sos:.3f}",
-                help="Average strength of schedule"
-            )
+            avg_sos_raw = df['SOS_Score'].mean()
+            avg_sos_norm = df['SOS_Norm'].mean()
+            col1, col2 = st.columns(2)
+            with col1:
+                st.metric(
+                    label="Avg SOS Raw",
+                    value=f"{avg_sos_raw:.3f}",
+                    help="Average raw strength of schedule"
+                )
+            with col2:
+                st.metric(
+                    label="Avg SOS Norm",
+                    value=f"{avg_sos_norm:.3f}",
+                    help="Average normalized strength of schedule"
+                )
     
     # Search functionality
     st.header("🔍 Search Teams")
@@ -501,63 +617,97 @@ def main():
     # Rankings table
     st.header(f"🏆 {scope_name} U{age_group} {gender} Rankings")
     
-    # Prepare columns for display
-    display_columns = ['Team', 'State', 'Power_Score', 'Win_Percentage', 'Games_Played']
+    # Prepare comprehensive columns for display
+    display_columns = [
+        'Team', 'State', 'Power_Score', 'Power_Score_Adj', 'Offense', 'Offense_Adj', 'Defense', 'Defense_Adj',
+        'Games_Played', 'Total_Games_History', 'Opponents_Count', 'Goal_Differential', 'SOS_Score', 'SOS_Norm', 'Last_Game_Date', 'Status'
+    ]
     
-    # Add additional columns if available
-    if 'SOS_Score' in df.columns:
-        display_columns.append('SOS_Score')
-    if 'Cross_Age_Games' in df.columns:
-        display_columns.append('Cross_Age_Games')
-    if 'Cross_State_Games' in df.columns:
-        display_columns.append('Cross_State_Games')
+    # Filter to only include columns that exist in the dataframe
+    available_columns = [col for col in display_columns if col in df.columns]
     
     # Create ranking column
     show_df_display = show_df.copy()
     show_df_display['Rank'] = range(1, len(show_df_display) + 1)
-    display_columns = ['Rank'] + display_columns
+    display_columns = ['Rank'] + available_columns
     
     # Format the dataframe
     formatted_df = show_df_display[display_columns].copy()
     
     # Format numeric columns
-    if 'Power_Score' in formatted_df.columns:
-        formatted_df['Power_Score'] = formatted_df['Power_Score'].round(3)
-    if 'Win_Percentage' in formatted_df.columns:
-        formatted_df['Win_Percentage'] = formatted_df['Win_Percentage'].round(3)
-    if 'SOS_Score' in formatted_df.columns:
-        formatted_df['SOS_Score'] = formatted_df['SOS_Score'].round(3)
+    numeric_columns = ['Power_Score', 'Power_Score_Adj', 'Offense', 'Offense_Adj', 'Defense', 'Defense_Adj',
+                      'SOS_Score', 'SOS_Norm', 'Cross_Age_Pct', 'Cross_State_Pct']
+    for col in numeric_columns:
+        if col in formatted_df.columns:
+            formatted_df[col] = formatted_df[col].round(3)
     
-    # Create clickable team names
+    # Format date column
+    if 'Last_Game_Date' in formatted_df.columns:
+        formatted_df['Last_Game_Date'] = pd.to_datetime(formatted_df['Last_Game_Date']).dt.strftime('%Y-%m-%d')
+    
+    # Create comprehensive rankings table with column headers
     st.subheader("🏆 Click on any team name to view detailed stats and game history")
+    
+    # Display column headers
+    col_widths = [0.8, 2.5, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 1.0, 0.8]
+    cols = st.columns(col_widths[:len(display_columns)])
+    
+    # Column headers
+    header_names = {
+        'Rank': 'Rank',
+        'Team': 'Team',
+        'State': 'State',
+        'Power_Score': 'Power',
+        'Power_Score_Adj': 'Adj Power',
+        'Offense': 'Offense',
+        'Offense_Adj': 'Off Adj',
+        'Defense': 'Defense',
+        'Defense_Adj': 'Def Adj',
+        'Games_Played': 'Games',
+        'Total_Games_History': 'Total Games',
+        'Opponents_Count': 'Opponents',
+        'Goal_Differential': 'GD',
+        'SOS_Score': 'SOS Raw',
+        'SOS_Norm': 'SOS Norm',
+        'Last_Game_Date': 'Last Game',
+        'Status': 'Status'
+    }
+    
+    for i, col in enumerate(display_columns):
+        with cols[i]:
+            st.write(f"**{header_names.get(col, col)}**")
     
     # Display teams with clickable names
     for i, row in show_df_display.iterrows():
-        col1, col2, col3, col4, col5 = st.columns([1, 3, 1, 1, 1])
+        cols = st.columns(col_widths[:len(display_columns)])
         
-        with col1:
-            st.write(f"**#{row['Rank']}**")
-        
-        with col2:
-            if st.button(f"🔍 {row['Team']}", key=f"team_{i}", help=f"Click to view {row['Team']} details"):
-                st.session_state.selected_team = {
-                    'name': row['Team'],
-                    'data': row.to_dict()
-                }
-                st.session_state.page = "team_detail"
-                st.rerun()
-        
-        with col3:
-            st.write(f"{row['Power_Score']:.3f}")
-        
-        with col4:
-            st.write(f"{row['Win_Percentage']:.3f}")
-        
-        with col5:
-            st.write(f"{row['Games_Played']}")
+        for j, col in enumerate(display_columns):
+            with cols[j]:
+                if col == 'Team':
+                    if st.button(f"🔍 {row[col]}", key=f"team_{i}", help=f"Click to view {row[col]} details"):
+                        st.session_state.selected_team = {
+                            'name': row[col],
+                            'data': row.to_dict()
+                        }
+                        st.session_state.page = "team_detail"
+                        st.rerun()
+                elif col == 'Rank':
+                    st.write(f"**#{row[col]}**")
+                elif col in ['Power_Score', 'Power_Score_Adj', 'Offense', 'Defense', 'SOS_Score', 'SOS_Norm', 'Cross_Age_Pct', 'Cross_State_Pct']:
+                    st.write(f"{row[col]:.3f}")
+                elif col in ['Goals_For', 'Goals_Against', 'Goal_Differential']:
+                    st.write(f"{int(row[col])}")
+                elif col == 'Last_Game_Date':
+                    if pd.notna(row[col]):
+                        st.write(f"{pd.to_datetime(row[col]).strftime('%m/%d')}")
+                    else:
+                        st.write("N/A")
+                else:
+                    st.write(f"{row[col]}")
     
-    # Also show the full table for reference
-    st.subheader("📊 Full Rankings Table")
+    # Also show the full table for reference with horizontal scroll
+    st.subheader("📊 Full Rankings Table (Click column headers to sort)")
+    st.info("💡 **Tip**: Click any column header to sort by that metric (SOS, Power Score, Win %, etc.)")
     st.dataframe(
         formatted_df,
         use_container_width=True,
@@ -592,8 +742,13 @@ def main():
                 format="%d"
             ),
             "SOS_Score": st.column_config.NumberColumn(
-                "SOS Score",
-                help="Strength of schedule",
+                "SOS Raw",
+                help="Raw strength of schedule (0-1+)",
+                format="%.3f"
+            ),
+            "SOS_Norm": st.column_config.NumberColumn(
+                "SOS Norm",
+                help="Normalized strength of schedule (0-1)",
                 format="%.3f"
             ),
             "Cross_Age_Games": st.column_config.NumberColumn(

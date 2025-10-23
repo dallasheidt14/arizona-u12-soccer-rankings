@@ -10,12 +10,12 @@ Our V5.3E Enhanced ranking system is a sophisticated, multi-layered algorithm de
 
 ### **Primary Power Score Calculation**
 ```
-Power_Score = (0.20 × Win_Pct_Norm) + (0.20 × Goal_Diff_Norm) + (0.60 × SOS_Norm)
+Power_Score = (0.20 × Offense_Norm) + (0.20 × Defense_Norm) + (0.60 × SOS_Norm)
 ```
 
 **Weight Distribution:**
-- **20% Win Percentage**: Basic performance metric
-- **20% Goal Differential**: Offensive/defensive balance
+- **20% Offense**: Goals scored per game (schedule independent)
+- **20% Defense**: Goals allowed per game (schedule independent, inverted)
 - **60% Strength of Schedule**: Most important factor - who you played matters most
 
 ### **Adjusted Power Score (Final Ranking)**
@@ -50,40 +50,80 @@ Games_Penalty = √(Games_Played / 20)
 
 ## 🎯 **STRENGTH OF SCHEDULE (SOS) CALCULATION**
 
-### **Core SOS Logic**
-1. **Calculate opponent win percentages** for all teams in master lists
-2. **Cross-age opponent handling**: U10 teams can play U11 opponents
-3. **Unknown opponent default**: 0.35 strength (35% win rate)
-4. **Average opponent strength** = Mean of all opponent win percentages
+### **Iterative SOS Algorithm**
+The V5.3E Enhanced system uses a sophisticated iterative SOS calculation that:
 
-### **SOS Formula**
+1. **Initializes team strengths** using win percentages
+2. **Iteratively refines** based on opponent performance
+3. **Applies margin weighting** with caps for game results
+4. **Includes cross-age multipliers** (+5% for older opponents)
+5. **Normalizes across age groups** for fair comparison
+6. **Converges to stable solution** (max 10 iterations, 0.01 threshold)
+
+### **Margin Weighting with Caps**
 ```
-SOS_Score = Σ(Opponent_Win_Pct) / Number_of_Opponents
+if Result == 'W':
+    weight = min(1.6, 1.0 + 0.1 × capped_diff)
+elif Result == 'L':
+    weight = max(0.4, 1.0 - 0.1 × abs(capped_diff))
+else:  # Tie
+    weight = 1.0
 ```
 
-**Special Cases:**
-- **Unknown Opponents**: Default to 0.35 strength
-- **Cross-Age Opponents**: Looked up in appropriate master list
-- **Missing Data**: Handled gracefully with defaults
+**Key Features:**
+- **Goal Differential Cap**: ±6 goals per game maximum
+- **Weight Caps**: 1.6 maximum, 0.4 minimum
+- **Linear Scaling**: Predictable and stable
+
+### **Cross-Age Multiplier**
+```
+if Opponent_Age_Group != Primary_Age_Group:
+    opponent_strength *= 1.05  # +5% bonus for older opponents
+```
+
+### **SOS Normalization**
+After convergence, SOS values are normalized across both age groups:
+```
+μ, σ = sos_values.mean(), sos_values.std()
+normalized_sos = (sos_value - μ) / σ
+```
+
+**Benefits:**
+- **Fair Comparison**: U10 and U11 opponents on same scale
+- **Prevents Bias**: No age group advantage
+- **Stable Rankings**: Consistent across different datasets
 
 ---
 
 ## ⚖️ **NORMALIZATION PROCESS**
 
-### **Win Percentage Normalization**
+### **Logistic Normalization (V5.3E Enhanced)**
+The system now uses logistic normalization instead of min-max scaling for better distribution handling:
+
+#### **Offense Normalization**
 ```
-Win_Pct_Norm = Team_Win_Pct / Max_Win_Pct_In_Dataset
+μ_off, σ_off = offense.mean(), offense.std()
+offense_norm = 1 / (1 + exp(-(offense - μ_off) / (σ_off × 1.5)))
 ```
 
-### **Goal Differential Normalization**
+#### **Defense Normalization**
 ```
-Goal_Diff_Norm = (Team_Goal_Diff - Min_Goal_Diff) / (Max_Goal_Diff - Min_Goal_Diff)
+μ_def, σ_def = defense.mean(), defense.std()
+defense_norm = 1 / (1 + exp(-(defense - μ_def) / (σ_def × 1.5)))
+defense_norm = 1 - defense_norm  # Invert (lower is better)
 ```
 
-### **SOS Normalization**
+#### **SOS Normalization**
 ```
-SOS_Norm = Team_SOS_Score / Max_SOS_Score_In_Dataset
+μ_sos, σ_sos = sos_score.mean(), sos_score.std()
+sos_norm = 1 / (1 + exp(-(sos_score - μ_sos) / (σ_sos × 1.5)))
 ```
+
+### **Logistic vs Min-Max Advantages**
+- **Preserves Distribution**: Maintains relative differences
+- **Handles Outliers**: Less sensitive to extreme values
+- **Smooth Scaling**: No hard boundaries
+- **Better Spread**: Avoids ceiling compression effects
 
 ---
 
@@ -173,8 +213,8 @@ default_opponent_strength = 0.35  # Default for unknown opponents
 
 ### **Power Score Weights**
 ```python
-win_pct_weight = 0.20            # 20% weight on win percentage
-goal_diff_weight = 0.20          # 20% weight on goal differential
+offense_weight = 0.20            # 20% weight on offense (goals per game)
+defense_weight = 0.20            # 20% weight on defense (goals allowed per game)
 sos_weight = 0.60               # 60% weight on strength of schedule
 ```
 
@@ -219,12 +259,13 @@ inactive_threshold = 180         # Days without games = inactive
 - **Status**: Active/Provisional/Inactive
 
 ### **Performance Metrics**
-- **Games_Played**: Total games
+- **Games_Played**: Total games in ranking window (max 30)
+- **Total_Games_History**: Total games in team history
 - **Wins/Losses/Ties**: Game results
-- **Win_Percentage**: Overall win rate
-- **Goals_For/Against**: Goal statistics
-- **Goal_Differential**: Net goals
-- **Recent_Win_Pct**: Last 10 games win rate
+- **Offense**: Goals scored per game
+- **Defense**: Goals allowed per game
+- **Goal_Differential**: Net goals (capped at ±6 per game)
+- **Recent_Win_Pct**: Weighted recent performance
 
 ### **Advanced Metrics**
 - **SOS_Score**: Strength of schedule
@@ -235,9 +276,9 @@ inactive_threshold = 180         # Days without games = inactive
 - **Last_Game_Date**: Most recent game date
 
 ### **Normalized Metrics**
-- **Win_Pct_Norm**: Normalized win percentage
-- **Goal_Diff_Norm**: Normalized goal differential
-- **SOS_Norm**: Normalized strength of schedule
+- **Offense_Norm**: Logistic normalized offense (goals per game)
+- **Defense_Norm**: Logistic normalized defense (inverted - lower is better)
+- **SOS_Norm**: Logistic normalized strength of schedule
 - **Games_Penalty**: Penalty factor for game count
 
 ---

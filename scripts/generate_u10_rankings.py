@@ -22,6 +22,8 @@ from datetime import datetime, timedelta
 import warnings
 warnings.filterwarnings('ignore')
 
+# Iterative SOS implemented directly in this script
+
 # Add project root to path
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
@@ -43,12 +45,12 @@ class U10RankingsGenerator:
         # Configuration
         self.ranking_window_days = 365
         self.max_games = 30
-        self.recent_games = 15  # Most recent games (60% weight)
-        self.middle_games = 10  # Middle games 16-25 (30% weight)
-        self.oldest_games = 5   # Oldest games 26-30 (10% weight)
-        self.recent_weight = 0.60    # Weight for games 1-15
-        self.middle_weight = 0.30    # Weight for games 16-25
-        self.oldest_weight = 0.10    # Weight for games 26-30
+        self.recent_games = 15  # Most recent games (50% weight)
+        self.middle_games = 10  # Middle games 16-25 (35% weight)
+        self.oldest_games = 5   # Oldest games 26-30 (15% weight)
+        self.recent_weight = 0.50    # Weight for games 1-15 (reduced from 0.60)
+        self.middle_weight = 0.35    # Weight for games 16-25 (increased from 0.30)
+        self.oldest_weight = 0.15    # Weight for games 26-30 (increased from 0.10)
         self.default_opponent_strength = 0.35  # Default strength for unknown opponents
         
     def load_data(self):
@@ -276,23 +278,34 @@ class U10RankingsGenerator:
                 recent_games = recent_games.tail(self.max_games)
             
             # Basic stats
-            total_games = len(recent_games)
+            total_games = len(recent_games)  # Games used for ranking (max 30)
+            total_games_history = len(team_games)  # Total games in team history
             wins = len(recent_games[recent_games['Result'] == 'W'])
             losses = len(recent_games[recent_games['Result'] == 'L'])
             ties = len(recent_games[recent_games['Result'] == 'T'])
             
             # Goal stats
+            # Calculate goal differential with cap at ±6 goals per game
+            goal_diff_cap = 6
+            capped_goal_diffs = []
+            
+            for _, game in recent_games.iterrows():
+                game_diff = game['Score_For'] - game['Score_Against']
+                # Cap individual game differential at ±6
+                capped_diff = max(-goal_diff_cap, min(goal_diff_cap, game_diff))
+                capped_goal_diffs.append(capped_diff)
+            
+            goal_differential = sum(capped_goal_diffs)
             goals_for = recent_games['Score_For'].sum()
             goals_against = recent_games['Score_Against'].sum()
-            goal_differential = goals_for - goals_against
             
             # Win percentage
             win_pct = wins / total_games if total_games > 0 else 0
             
             # Tiered performance weighting (last 30 games)
-            # Games 1-15 (most recent): 60% weight
-            # Games 16-25 (middle): 30% weight  
-            # Games 26-30 (oldest): 10% weight
+            # Games 1-15 (most recent): 50% weight
+            # Games 16-25 (middle): 35% weight  
+            # Games 26-30 (oldest): 15% weight
             
             recent_15 = recent_games.tail(min(15, len(recent_games)))
             middle_10 = recent_games.tail(min(25, len(recent_games))).head(min(10, len(recent_games) - 15)) if len(recent_games) > 15 else pd.DataFrame()
@@ -328,7 +341,8 @@ class U10RankingsGenerator:
             team_stats.append({
                 'Team': team,
                 'State': team_state,
-                'Games_Played': total_games,
+                'Games_Played': total_games,  # Games used for ranking (max 30)
+                'Total_Games_History': total_games_history,  # Total games in team history
                 'Wins': wins,
                 'Losses': losses,
                 'Ties': ties,
@@ -391,38 +405,9 @@ class U10RankingsGenerator:
                 win_pct = wins / total_games if total_games > 0 else 0
                 opponent_stats[team] = win_pct
         
-        # Calculate SOS for each U10 team
-        sos_scores = []
-        
-        for _, team_stat in self.team_stats_df.iterrows():
-            team = team_stat['Team']
-            team_games = self.histories_df[self.histories_df['Team'] == team]
-            
-            # Filter to ranking window
-            cutoff_date = datetime.now() - timedelta(days=self.ranking_window_days)
-            recent_games = team_games[team_games['Date'] >= cutoff_date]
-            
-            if len(recent_games) > self.max_games:
-                recent_games = recent_games.tail(self.max_games)
-            
-            # Calculate average opponent strength (including U11 opponents and unknown opponents)
-            opponent_strengths = []
-            for _, game in recent_games.iterrows():
-                opponent = game['Opponent']
-                if opponent in opponent_stats:
-                    opponent_strengths.append(opponent_stats[opponent])
-                else:
-                    # Unknown opponent gets default strength
-                    opponent_strengths.append(self.default_opponent_strength)
-            
-            avg_opponent_strength = np.mean(opponent_strengths) if opponent_strengths else 0
-            
-            sos_scores.append({
-                'Team': team,
-                'SOS_Score': avg_opponent_strength,
-                'Opponents_Count': len(opponent_strengths),
-                'Cross_Age_Opponents': len([g for _, g in recent_games.iterrows() if g['Opponent_Age_Group'] == 'U11'])
-            })
+        # Calculate SOS using iterative method
+        print("Calculating iterative SOS...")
+        sos_scores = self.calculate_iterative_sos()
         
         self.sos_df = pd.DataFrame(sos_scores)
         
@@ -434,19 +419,241 @@ class U10RankingsGenerator:
         
         return self.team_stats_df
     
+    def apply_performance_adjustment(self):
+        """
+        Apply expected vs actual performance adjustment.
+        Rewards teams that outperform expectations based on Power Score strength.
+        """
+        print("\n=== APPLYING PERFORMANCE ADJUSTMENT ===")
+        
+        # Calculate initial power scores for expected performance
+        self.calculate_power_scores()
+        
+        # Get team power scores for expected margin calculation
+        team_power_scores = {}
+        for _, row in self.team_stats_df.iterrows():
+            team_power_scores[row['Team']] = row['Power_Score']
+        
+        # Calculate performance adjustments
+        performance_adjustments = {team: 0.0 for team in team_power_scores.keys()}
+        
+        for team in team_power_scores.keys():
+            team_games = self.histories_df[self.histories_df['Team'] == team]
+            
+            # Filter to ranking window
+            cutoff_date = datetime.now() - timedelta(days=self.ranking_window_days)
+            recent_games = team_games[team_games['Date'] >= cutoff_date]
+            
+            if len(recent_games) > self.max_games:
+                recent_games = recent_games.tail(self.max_games)
+            
+            total_perf_delta = 0
+            game_count = 0
+            
+            for _, game in recent_games.iterrows():
+                opponent = game['Opponent']
+                
+                # Only calculate for known opponents
+                if opponent in team_power_scores:
+                    # Expected margin based on Power Score difference (more comprehensive)
+                    expected_margin = 6 * (team_power_scores[team] - team_power_scores[opponent])
+                    
+                    # Actual margin (capped at ±6)
+                    actual_margin = np.clip(game['Score_For'] - game['Score_Against'], -6, 6)
+                    
+                    # Performance delta
+                    perf_delta = actual_margin - expected_margin
+                    total_perf_delta += perf_delta
+                    game_count += 1
+            
+            if game_count > 0:
+                avg_perf_delta = total_perf_delta / game_count
+                performance_adjustments[team] = 0.02 * avg_perf_delta  # Small learning rate
+        
+        # Apply adjustments to SOS scores (final adjustment)
+        for team, adjustment in performance_adjustments.items():
+            mask = self.team_stats_df['Team'] == team
+            self.team_stats_df.loc[mask, 'SOS_Score'] = self.team_stats_df.loc[mask, 'SOS_Score'] + adjustment
+        
+        # Log statistics
+        adjustments = list(performance_adjustments.values())
+        print(f"Performance adjustments applied (Power Score-based):")
+        print(f"  Mean adjustment: {np.mean(adjustments):.4f}")
+        print(f"  Std adjustment: {np.std(adjustments):.4f}")
+        print(f"  Max positive: {np.max(adjustments):.4f}")
+        print(f"  Max negative: {np.min(adjustments):.4f}")
+        
+        return self.team_stats_df
+    
+    def calculate_iterative_sos(self):
+        """Calculate SOS using simplified iterative method with goal differential cap."""
+        print("Using simplified iterative SOS calculation...")
+        
+        # Initialize team strengths (start with win percentages)
+        team_strengths = {}
+        for _, team_stat in self.team_stats_df.iterrows():
+            team = team_stat['Team']
+            team_strengths[team] = team_stat['Win_Percentage']
+        
+        # Add U11 team strengths
+        u11_teams = set(self.u11_master_df['Team_Name'].unique())
+        u11_games = self.combined_games_df[
+            (self.combined_games_df['Team A Age Group '] == 'U11') &
+            (self.combined_games_df['Team A '].isin(u11_teams))
+        ]
+        
+        for team in u11_teams:
+            team_games = u11_games[u11_games['Team A '] == team]
+            if len(team_games) > 0:
+                wins = len(team_games[team_games['Team A Result'] == 'W'])
+                total_games = len(team_games)
+                win_pct = wins / total_games if total_games > 0 else 0.5
+                team_strengths[team] = win_pct
+        
+        # Calculate average U10 team strength for conditional cross-age multiplier
+        u10_teams = [team for team in team_strengths.keys() if team in self.team_stats_df['Team'].values]
+        avg_u10_strength = np.mean([team_strengths[team] for team in u10_teams]) if u10_teams else 0.5
+        print(f"Average U10 team strength: {avg_u10_strength:.3f}")
+        
+        # Iterative SOS calculation (simplified version)
+        max_iterations = 10
+        convergence_threshold = 0.01
+        
+        for iteration in range(max_iterations):
+            old_strengths = team_strengths.copy()
+            
+            # Calculate new strengths based on opponent performance
+            for team in team_strengths.keys():
+                team_games = self.histories_df[self.histories_df['Team'] == team]
+                
+                # Filter to ranking window
+                cutoff_date = datetime.now() - timedelta(days=self.ranking_window_days)
+                recent_games = team_games[team_games['Date'] >= cutoff_date]
+                
+                if len(recent_games) > self.max_games:
+                    recent_games = recent_games.tail(self.max_games)
+                
+                if len(recent_games) == 0:
+                    continue
+                
+                # Calculate weighted opponent strength
+                weighted_opponent_strength = 0
+                total_weight = 0
+                
+                for _, game in recent_games.iterrows():
+                    opponent = game['Opponent']
+                    opponent_strength = team_strengths.get(opponent, self.default_opponent_strength)
+                    
+                    # IMPROVED: Conditional cross-age multiplier (only boost U11 opponents stronger than average U10)
+                    if game['Opponent_Age_Group'] == 'U11':
+                        # Only apply 5% boost if U11 opponent is stronger than average U10 team
+                        if opponent_strength > avg_u10_strength:
+                            opponent_strength *= 1.05
+                            # Optional: Log when boost is applied for debugging
+                            # print(f"Boosted U11 opponent {opponent} from {opponent_strength/1.05:.3f} to {opponent_strength:.3f}")
+                        # If U11 opponent is weaker than average U10, no boost (or could apply penalty)
+                        # This prevents weak U11 teams from inflating SOS
+                    
+                    # Apply goal differential cap for weighting
+                    score_for = game['Score_For']
+                    score_against = game['Score_Against']
+                    goal_diff = score_for - score_against
+                    capped_diff = max(-6, min(6, goal_diff))
+                    
+                    # Weight based on game result and margin (with caps)
+                    if game['Result'] == 'W':
+                        weight = min(1.6, 1.0 + 0.1 * capped_diff)
+                    elif game['Result'] == 'L':
+                        weight = max(0.4, 1.0 - 0.1 * abs(capped_diff))
+                    else:  # Tie
+                        weight = 1.0
+                    
+                    weighted_opponent_strength += opponent_strength * weight
+                    total_weight += weight
+                
+                if total_weight > 0:
+                    # Update team strength (blend with previous strength)
+                    new_strength = weighted_opponent_strength / total_weight
+                    team_strengths[team] = 0.7 * team_strengths[team] + 0.3 * new_strength
+            
+            # Check convergence
+            max_change = max(abs(team_strengths[team] - old_strengths[team]) for team in team_strengths.keys())
+            if max_change < convergence_threshold:
+                print(f"Converged after {iteration + 1} iterations (max change: {max_change:.4f})")
+                break
+        
+        # NEW: Normalize SOS across both age groups
+        sos_values = np.array(list(team_strengths.values()))
+        mean_sos, std_sos = sos_values.mean(), sos_values.std()
+        team_strengths = {t: (s - mean_sos) / std_sos for t, s in team_strengths.items()}
+        print(f"SOS normalized: mean={mean_sos:.3f}, std={std_sos:.3f}")
+        
+        # Convert to list format
+        sos_scores = []
+        for team in self.team_stats_df['Team']:
+            team_games = self.histories_df[self.histories_df['Team'] == team]
+            
+            # Filter to ranking window
+            cutoff_date = datetime.now() - timedelta(days=self.ranking_window_days)
+            recent_games = team_games[team_games['Date'] >= cutoff_date]
+            
+            if len(recent_games) > self.max_games:
+                recent_games = recent_games.tail(self.max_games)
+            
+            # Get iterative SOS score
+            iterative_sos = team_strengths.get(team, self.default_opponent_strength)
+            
+            sos_scores.append({
+                'Team': team,
+                'SOS_Score': iterative_sos,
+                'Opponents_Count': len(recent_games),
+                'Cross_Age_Opponents': len([g for _, g in recent_games.iterrows() if g['Opponent_Age_Group'] == 'U11'])
+            })
+        
+        return sos_scores
+    
     def calculate_power_scores(self):
         """Calculate V5.3E Enhanced power scores."""
         print("\n=== CALCULATING POWER SCORES ===")
         
-        # Normalize metrics
-        self.team_stats_df['Win_Pct_Norm'] = self.team_stats_df['Win_Percentage'] / self.team_stats_df['Win_Percentage'].max()
-        self.team_stats_df['Goal_Diff_Norm'] = (self.team_stats_df['Goal_Differential'] - self.team_stats_df['Goal_Differential'].min()) / (self.team_stats_df['Goal_Differential'].max() - self.team_stats_df['Goal_Differential'].min())
-        self.team_stats_df['SOS_Norm'] = self.team_stats_df['SOS_Score'] / self.team_stats_df['SOS_Score'].max()
+        # Calculate offense and defense metrics (goals per game)
+        self.team_stats_df['Offense'] = self.team_stats_df['Goals_For'] / self.team_stats_df['Games_Played']
+        self.team_stats_df['Defense'] = self.team_stats_df['Goals_Against'] / self.team_stats_df['Games_Played']
         
-        # Calculate power score (V5.3E Enhanced formula)
+        # NEW: Bayesian Shrinkage 2.0 - Stabilize low-sample teams
+        tau = 8  # Regularization constant
+        mu_off = self.team_stats_df['Offense'].mean()
+        mu_def = self.team_stats_df['Defense'].mean()
+        
+        self.team_stats_df['Offense_Adj'] = (
+            (self.team_stats_df['Games_Played'] * self.team_stats_df['Offense'] + tau * mu_off)
+            / (self.team_stats_df['Games_Played'] + tau)
+        )
+        self.team_stats_df['Defense_Adj'] = (
+            (self.team_stats_df['Games_Played'] * self.team_stats_df['Defense'] + tau * mu_def)
+            / (self.team_stats_df['Games_Played'] + tau)
+        )
+        
+        print(f"Bayesian shrinkage applied: τ={tau}, mean_off={mu_off:.2f}, mean_def={mu_def:.2f}")
+        print(f"Columns after shrinkage: {list(self.team_stats_df.columns)}")
+        
+        # Normalize metrics using logistic normalization (use adjusted values)
+        μ_off, σ_off = self.team_stats_df['Offense_Adj'].mean(), self.team_stats_df['Offense_Adj'].std()
+        self.team_stats_df['Offense_Norm'] = 1 / (1 + np.exp(-(self.team_stats_df['Offense_Adj'] - μ_off) / (σ_off * 1.5)))
+        
+        μ_def, σ_def = self.team_stats_df['Defense_Adj'].mean(), self.team_stats_df['Defense_Adj'].std()
+        self.team_stats_df['Defense_Norm'] = 1 / (1 + np.exp(-(self.team_stats_df['Defense_Adj'] - μ_def) / (σ_def * 1.5)))
+        
+        μ_sos, σ_sos = self.team_stats_df['SOS_Score'].mean(), self.team_stats_df['SOS_Score'].std()
+        self.team_stats_df['SOS_Norm'] = 1 / (1 + np.exp(-(self.team_stats_df['SOS_Score'] - μ_sos) / (σ_sos * 1.5)))
+        
+        # Note: Defense should be inverted AFTER normalization since lower is better
+        self.team_stats_df['Defense_Norm'] = 1 - self.team_stats_df['Defense_Norm']
+        
+        # Calculate power score (V5.3E Enhanced formula with offense/defense)
         self.team_stats_df['Power_Score'] = (
-            0.20 * self.team_stats_df['Win_Pct_Norm'] +
-            0.20 * self.team_stats_df['Goal_Diff_Norm'] +
+            0.20 * self.team_stats_df['Offense_Norm'] +
+            0.20 * self.team_stats_df['Defense_Norm'] +
             0.60 * self.team_stats_df['SOS_Norm']
         )
         
@@ -505,7 +712,7 @@ class U10RankingsGenerator:
         print("\n=== SAVING RESULTS ===")
         
         # National rankings
-        national_file = os.path.join(self.output_dir, "National_U10_Rankings_CROSS_AGE.csv")
+        national_file = os.path.join(self.output_dir, "National_U10_Rankings_CROSS_AGE_v6.csv")
         self.rankings_df.to_csv(national_file, index=False)
         print(f"Saved cross-age U10 national rankings: {national_file}")
         
@@ -613,8 +820,8 @@ class U10RankingsGenerator:
             # Calculate strength of schedule with cross-age support
             self.calculate_strength_of_schedule_with_cross_age()
             
-            # Calculate power scores
-            self.calculate_power_scores()
+            # NEW: Apply performance adjustment (includes power score calculation)
+            self.apply_performance_adjustment()
             
             # Generate rankings
             self.generate_rankings()
