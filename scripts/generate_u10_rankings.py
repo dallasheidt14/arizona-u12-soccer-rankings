@@ -658,8 +658,11 @@ class U10RankingsGenerator:
             0.60 * self.team_stats_df['SOS_Norm']
         )
         
-        # Apply game count penalty (provisional teams)
-        self.team_stats_df['Games_Penalty'] = np.power(self.team_stats_df['Games_Played'] / 20, 0.5)
+        # Apply game count penalty (provisional teams) - cap at 1.0 for 30+ games
+        self.team_stats_df['Games_Penalty'] = np.minimum(
+            np.power(self.team_stats_df['Games_Played'] / 20, 0.5), 
+            1.0
+        )
         self.team_stats_df['Power_Score_Adj'] = self.team_stats_df['Power_Score'] * self.team_stats_df['Games_Penalty']
         
         print("Power scores calculated using V5.3E Enhanced algorithm")
@@ -713,7 +716,7 @@ class U10RankingsGenerator:
         print("\n=== SAVING RESULTS ===")
         
         # National rankings
-        national_file = os.path.join(self.output_dir, "National_U10_Rankings_CROSS_AGE_v7.csv")
+        national_file = os.path.join(self.output_dir, "National_U10_Rankings_CROSS_AGE_v8.csv")
         self.rankings_df.to_csv(national_file, index=False)
         print(f"Saved cross-age U10 national rankings: {national_file}")
         
