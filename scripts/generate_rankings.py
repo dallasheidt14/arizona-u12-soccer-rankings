@@ -418,10 +418,10 @@ class YouthSoccerRankingsGenerator:
     
     def apply_performance_adjustment(self):
         """
-        Apply expected vs actual performance adjustment.
-        Rewards teams that outperform expectations based on Power Score strength.
+        Enhanced performance adjustment with dynamic learning rate, 
+        consecutive tracking, and logistic dampening (Phase 8.0).
         """
-        print(f"\n=== APPLYING PERFORMANCE ADJUSTMENT FOR {self.age_group} ===")
+        print(f"\n=== APPLYING ENHANCED PERFORMANCE ADJUSTMENT FOR {self.age_group} ===")
         
         # Calculate initial power scores for expected performance
         self.calculate_power_scores()
@@ -431,8 +431,10 @@ class YouthSoccerRankingsGenerator:
         for _, row in self.team_stats_df.iterrows():
             team_power_scores[row['Team']] = row['Power_Score']
         
-        # Calculate performance adjustments
+        # Initialize tracking for consecutive underperformances
+        consecutive_underperf = {team: 0 for team in team_power_scores.keys()}
         performance_adjustments = {team: 0.0 for team in team_power_scores.keys()}
+        all_adjustments = []
         
         for team in team_power_scores.keys():
             team_games = self.histories_df[self.histories_df['Team'] == team]
@@ -444,7 +446,10 @@ class YouthSoccerRankingsGenerator:
             if len(recent_games) > self.max_games:
                 recent_games = recent_games.tail(self.max_games)
             
-            total_perf_delta = 0
+            # Sort games by date to track consecutive underperformances
+            recent_games = recent_games.sort_values('Date')
+            
+            total_adjustment = 0
             game_count = 0
             
             for _, game in recent_games.iterrows():
@@ -452,7 +457,7 @@ class YouthSoccerRankingsGenerator:
                 
                 # Only calculate for known opponents
                 if opponent in team_power_scores:
-                    # Expected margin based on Power Score difference (more comprehensive)
+                    # Expected margin based on Power Score difference
                     expected_margin = 6 * (team_power_scores[team] - team_power_scores[opponent])
                     
                     # Actual margin (capped at ±6)
@@ -460,25 +465,52 @@ class YouthSoccerRankingsGenerator:
                     
                     # Performance delta
                     perf_delta = actual_margin - expected_margin
-                    total_perf_delta += perf_delta
+                    
+                    # Track consecutive underperformances
+                    if perf_delta < 0:
+                        consecutive_underperf[team] += 1
+                    else:
+                        consecutive_underperf[team] = 0
+                    
+                    # Apply graduated multipliers for consecutive underperformance
+                    multiplier = 1.0
+                    if consecutive_underperf[team] == 2:
+                        multiplier = 1.2
+                    elif consecutive_underperf[team] == 3:
+                        multiplier = 1.5
+                    elif consecutive_underperf[team] >= 5:
+                        multiplier = 2.0
+                    
+                    perf_delta *= multiplier
+                    
+                    # Dynamic learning rate based on games played
+                    team_games_played = self.team_stats_df[self.team_stats_df['Team'] == team]['Games_Played'].values[0]
+                    learning_rate = 0.02 + 0.01 * min(1, team_games_played / 30)
+                    
+                    # Apply logistic dampening with tanh
+                    adjustment = learning_rate * np.tanh(perf_delta / 2)
+                    
+                    total_adjustment += adjustment
+                    all_adjustments.append(adjustment)
                     game_count += 1
             
             if game_count > 0:
-                avg_perf_delta = total_perf_delta / game_count
-                performance_adjustments[team] = 0.02 * avg_perf_delta  # Small learning rate
+                performance_adjustments[team] = total_adjustment
         
         # Apply adjustments to SOS scores (final adjustment)
         for team, adjustment in performance_adjustments.items():
             mask = self.team_stats_df['Team'] == team
             self.team_stats_df.loc[mask, 'SOS_Score'] = self.team_stats_df.loc[mask, 'SOS_Score'] + adjustment
         
-        # Log statistics
-        adjustments = list(performance_adjustments.values())
-        print(f"Performance adjustments applied (Power Score-based):")
-        print(f"  Mean adjustment: {np.mean(adjustments):.4f}")
-        print(f"  Std adjustment: {np.std(adjustments):.4f}")
-        print(f"  Max positive: {np.max(adjustments):.4f}")
-        print(f"  Max negative: {np.min(adjustments):.4f}")
+        # Log enhanced statistics
+        print(f"Performance adjustments applied (Enhanced Phase 8.0):")
+        print(f"  Mean adjustment: {np.mean(all_adjustments):.4f}")
+        print(f"  Std adjustment: {np.std(all_adjustments):.4f}")
+        print(f"  Max positive: {np.max(all_adjustments):.4f}")
+        print(f"  Max negative: {np.min(all_adjustments):.4f}")
+        print(f"  Teams with 2+ consecutive underperformances: {sum(1 for v in consecutive_underperf.values() if v >= 2)}")
+        print(f"  Teams with 3+ consecutive underperformances: {sum(1 for v in consecutive_underperf.values() if v >= 3)}")
+        print(f"  Teams with 5+ consecutive underperformances: {sum(1 for v in consecutive_underperf.values() if v >= 5)}")
         
         return self.team_stats_df
     
@@ -712,7 +744,7 @@ class YouthSoccerRankingsGenerator:
         print(f"\n=== SAVING {self.age_group} RESULTS ===")
         
         # National rankings
-        national_file = os.path.join(self.output_dir, f"National_U{self.age_group}_{self.gender}_Rankings.csv")
+        national_file = os.path.join(self.output_dir, f"National_U{self.age_group}_{self.gender}_Rankings_v8.csv")
         self.rankings_df.to_csv(national_file, index=False)
         print(f"Saved {self.age_group} {self.gender} national rankings: {national_file}")
         

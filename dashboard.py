@@ -152,22 +152,30 @@ def load_rankings_data(age_group, gender, state="USA"):
     try:
         if state == "USA" or state == "National":
             # Load national rankings
-            file_pattern = f"data/output/National_U{age_group}_Rankings_CROSS_AGE*.csv"
-            files = glob.glob(file_pattern)
+            # Try multiple patterns for different age groups
+            patterns = [
+                f"data/output/National_U{age_group}_Rankings_CROSS_AGE*.csv",  # U10 pattern
+                f"data/output/National_U{age_group}_{gender}_Rankings.csv",    # U11 pattern
+                f"data/output/National_U{age_group}_Rankings_CROSS_AGE.csv"    # Fallback
+            ]
             
-            if not files:
-                # Try alternative pattern
-                file_pattern = f"data/output/National_U{age_group}_Rankings_CROSS_AGE.csv"
-                files = glob.glob(file_pattern)
+            files = []
+            for pattern in patterns:
+                files.extend(glob.glob(pattern))
             
             if files:
-                # Prefer v6 file if available
-                v6_files = [f for f in files if '_v6.csv' in f]
-                if v6_files:
-                    df = pd.read_csv(v6_files[0])
+                # Prefer newer versions (v10, v9, v8, v7, v6) for U10, or latest for U11
+                if age_group == "10":
+                    # For U10, prefer v10, then v9, then v8, then v7, then v6
+                    for version in ['_v10.csv', '_v9.csv', '_v8.csv', '_v7.csv', '_v6.csv']:
+                        version_files = [f for f in files if version in f]
+                        if version_files:
+                            df = pd.read_csv(version_files[0])
+                            return df, "National"
                 else:
+                    # For U11 and others, use the latest file
                     df = pd.read_csv(files[0])
-                return df, "National"
+                    return df, "National"
             else:
                 st.error(f"No national rankings found for U{age_group}")
                 return None, None
