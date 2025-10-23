@@ -544,14 +544,15 @@ class U10RankingsGenerator:
                     opponent = game['Opponent']
                     opponent_strength = team_strengths.get(opponent, self.default_opponent_strength)
                     
-                    # IMPROVED: Conditional cross-age multiplier (only boost U11 opponents stronger than average U10)
+                    # IMPROVED: Proportional cross-age multiplier (scales with strength difference, capped at +10%)
                     if game['Opponent_Age_Group'] == 'U11':
-                        # Only apply 5% boost if U11 opponent is stronger than average U10 team
                         if opponent_strength > avg_u10_strength:
-                            opponent_strength *= 1.05
+                            # Calculate proportional boost based on strength difference
+                            strength_ratio = (opponent_strength - avg_u10_strength) / avg_u10_strength
+                            boost_factor = 1 + 0.05 * strength_ratio  # scales 0-10%
+                            opponent_strength *= min(boost_factor, 1.10)  # cap at +10%
                             # Optional: Log when boost is applied for debugging
-                            # print(f"Boosted U11 opponent {opponent} from {opponent_strength/1.05:.3f} to {opponent_strength:.3f}")
-                        # If U11 opponent is weaker than average U10, no boost (or could apply penalty)
+                            # print(f"Proportional boost for U11 opponent {opponent}: {strength_ratio:.3f} ratio -> {boost_factor:.3f} factor")
                         # This prevents weak U11 teams from inflating SOS
                     
                     # Apply goal differential cap for weighting
@@ -712,7 +713,7 @@ class U10RankingsGenerator:
         print("\n=== SAVING RESULTS ===")
         
         # National rankings
-        national_file = os.path.join(self.output_dir, "National_U10_Rankings_CROSS_AGE_v6.csv")
+        national_file = os.path.join(self.output_dir, "National_U10_Rankings_CROSS_AGE_v7.csv")
         self.rankings_df.to_csv(national_file, index=False)
         print(f"Saved cross-age U10 national rankings: {national_file}")
         

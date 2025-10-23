@@ -541,14 +541,15 @@ class YouthSoccerRankingsGenerator:
                     opponent = game['Opponent']
                     opponent_strength = team_strengths.get(opponent, self.default_opponent_strength)
                     
-                    # IMPROVED: Conditional cross-age multiplier (only boost cross-age opponents stronger than average)
+                    # IMPROVED: Proportional cross-age multiplier (scales with strength difference, capped at +10%)
                     if game['Opponent_Age_Group'] != f'U{self.age_group}':
-                        # Only apply 5% boost if cross-age opponent is stronger than average team
                         if opponent_strength > avg_team_strength:
-                            opponent_strength *= 1.05
+                            # Calculate proportional boost based on strength difference
+                            strength_ratio = (opponent_strength - avg_team_strength) / avg_team_strength
+                            boost_factor = 1 + 0.05 * strength_ratio  # scales 0-10%
+                            opponent_strength *= min(boost_factor, 1.10)  # cap at +10%
                             # Optional: Log when boost is applied for debugging
-                            # print(f"Boosted {game['Opponent_Age_Group']} opponent {opponent} from {opponent_strength/1.05:.3f} to {opponent_strength:.3f}")
-                        # If cross-age opponent is weaker than average, no boost
+                            # print(f"Proportional boost for {game['Opponent_Age_Group']} opponent {opponent}: {strength_ratio:.3f} ratio -> {boost_factor:.3f} factor")
                         # This prevents weak cross-age teams from inflating SOS
                     
                     # Apply goal differential cap for weighting
