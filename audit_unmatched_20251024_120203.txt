@@ -1,0 +1,303 @@
+=== UNMATCHED TEAMS (first 100) ===
+Total unmatched: 21283
+
+  1. ''14 Boys'
+     Parsed: Club=''', Year='2014', Gender='boys', Designation='', Coach=''
+
+  2. ''14B Academy'
+     Parsed: Club=''14b', Year='2014', Gender='boys', Designation='academy', Coach=''
+
+  3. ''15B Blue'
+     Parsed: Club=''15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+  4. ''16B'
+     Parsed: Club=''16b', Year='2016', Gender='boys', Designation='', Coach=''
+
+  5. '(OUSC) Oxford United Soccer Club 2016 Boys [Blue]'
+     Parsed: Club='(ousc) oxford united soccer club [blue]', Year='2016', Gender='boys', Designation='', Coach=''
+
+  6. '* CRUSADERS SC'
+     Parsed: Club='* crusaders sc', Year='', Gender='', Designation='', Coach=''
+
+  7. '* FC HEAT'
+     Parsed: Club='* fc', Year='', Gender='', Designation='', Coach='heat'
+
+  8. '* Labelle Heat 15/16'
+     Parsed: Club='* labelle heat /16', Year='2015', Gender='', Designation='', Coach=''
+
+  9. '* SD MADRID'
+     Parsed: Club='* sd', Year='', Gender='', Designation='', Coach='madrid'
+
+ 10. '* TRAVIEZOS FC'
+     Parsed: Club='* traviezos fc', Year='', Gender='', Designation='', Coach=''
+
+ 11. '*FC Tulsa Academy 15 Boys Pre ECNL RL'
+     Parsed: Club='*fc tulsa pre ecnl rl', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+ 12. '*FC Wisconsin 10UB Arsenal JA 2016'
+     Parsed: Club='*fc wisconsin 10ub arsenal ja', Year='2016', Gender='', Designation='', Coach=''
+
+ 13. '*FC Wisconsin 10UB Chelsea JA 2016'
+     Parsed: Club='*fc wisconsin 10ub chelsea ja', Year='2016', Gender='', Designation='', Coach=''
+
+ 14. '*FC Wisconsin 11UB Pre-ECNL Arsenal'
+     Parsed: Club='*fc wisconsin 11ub pre-ecnl', Year='', Gender='', Designation='', Coach='arsenal'
+
+ 15. '*FC Wisconsin West 11UB Arsenal'
+     Parsed: Club='*fc wisconsin west 11ub', Year='', Gender='', Designation='', Coach='arsenal'
+
+ 16. '*Lazio'
+     Parsed: Club='*', Year='', Gender='', Designation='', Coach='lazio'
+
+ 17. '*PDA/Vistula B2014- Boniek'
+     Parsed: Club='*pda/vistula b2014-', Year='', Gender='', Designation='', Coach='boniek'
+
+ 18. '*PDA/Vistula B2015-Kiwior'
+     Parsed: Club='*pda/vistula b2015-', Year='', Gender='', Designation='', Coach='kiwior'
+
+ 19. '*PDA/Vistula B2016- Mlynarczyk'
+     Parsed: Club='*pda/vistula b2016-', Year='', Gender='', Designation='', Coach='mlynarczyk'
+
+ 20. '026 FC 2015B - Renegades'
+     Parsed: Club='026 fc 2015b -', Year='', Gender='boys', Designation='', Coach='renegades'
+
+ 21. '026 FC 2015B - Sidekicks'
+     Parsed: Club='026 fc 2015b -', Year='', Gender='boys', Designation='', Coach='sidekicks'
+
+ 22. '026 FC 2016 - Sidekicks'
+     Parsed: Club='026 fc -', Year='2016', Gender='', Designation='', Coach='sidekicks'
+
+ 23. '026 FC 2016 Lamar'
+     Parsed: Club='026 fc', Year='2016', Gender='', Designation='', Coach='lamar'
+
+ 24. '026 FC 2016 Schindler'
+     Parsed: Club='026 fc', Year='2016', Gender='', Designation='', Coach='schindler'
+
+ 25. '026 FC 2016B - Sidekicks'
+     Parsed: Club='026 fc 2016b -', Year='', Gender='boys', Designation='', Coach='sidekicks'
+
+ 26. '09UAWFF686-Page'
+     Parsed: Club='09uawff686-', Year='', Gender='', Designation='', Coach='page'
+
+ 27. '09UBAEPYSA252-Resendes M'
+     Parsed: Club='09ubaepysa252-resendes', Year='', Gender='boys', Designation='', Coach=''
+
+ 28. '09UBRWFF687-Wiggins'
+     Parsed: Club='09ubrwff687-', Year='', Gender='', Designation='', Coach='wiggins'
+
+ 29. '10U - SVSC Ramirez'
+     Parsed: Club='10u - svsc', Year='', Gender='', Designation='', Coach='ramirez'
+
+ 30. '10U BSYSC Aguilas'
+     Parsed: Club='10u bsysc', Year='', Gender='', Designation='', Coach='aguilas'
+
+ 31. '10U BSYSC Manchester City'
+     Parsed: Club='10u bsysc manchester', Year='', Gender='', Designation='', Coach='city'
+
+ 32. '10U BSYSC Mighty Mermaids'
+     Parsed: Club='10u bsysc mighty', Year='', Gender='', Designation='', Coach='mermaids'
+
+ 33. '10U Boys GLU'
+     Parsed: Club='10u glu', Year='', Gender='boys', Designation='', Coach=''
+
+ 34. '10U NORRIDGE UNITED 2015 PREMIER'
+     Parsed: Club='10u norridge united', Year='2015', Gender='', Designation='premier', Coach=''
+
+ 35. '10U/3NW OLYMPIACOS 2016 PREMIER'
+     Parsed: Club='10u/3nw olympiacos', Year='2016', Gender='', Designation='premier', Coach=''
+
+ 36. '10UB - Fratangeli'
+     Parsed: Club='10ub -', Year='', Gender='', Designation='', Coach='fratangeli'
+
+ 37. '10UB - Thomas'
+     Parsed: Club='10ub -', Year='', Gender='', Designation='', Coach='thomas'
+
+ 38. '10UB CB Barr/BYSA 9 Piper Holland'
+     Parsed: Club='10ub cb barr/bysa 9 piper', Year='', Gender='', Designation='', Coach='holland'
+
+ 39. '10UB CG Barr/BYSA 9 Piper Holland'
+     Parsed: Club='10ub cg barr/bysa 9 piper', Year='', Gender='', Designation='', Coach='holland'
+
+ 40. '10UB R Barr/BYSA 10 Ribero Belgium'
+     Parsed: Club='10ub r barr/bysa ribero', Year='2010', Gender='', Designation='', Coach='belgium'
+
+ 41. '10UB R Barr/BYSA 10 Santos Belgium'
+     Parsed: Club='10ub r barr/bysa santos', Year='2010', Gender='', Designation='', Coach='belgium'
+
+ 42. '10UB-DAV-01A'
+     Parsed: Club='10ub-dav-01a', Year='', Gender='', Designation='', Coach=''
+
+ 43. '10UB-DAV-03A'
+     Parsed: Club='10ub-dav-03a', Year='', Gender='', Designation='', Coach=''
+
+ 44. '10UB-DAV-3A'
+     Parsed: Club='10ub-dav-3a', Year='', Gender='', Designation='', Coach=''
+
+ 45. '10UBA,Blair,581,South County Sharks'
+     Parsed: Club='10uba,blair,581,south county', Year='', Gender='', Designation='', Coach='sharks'
+
+ 46. '10UBA,Brierty,625,South County Smash'
+     Parsed: Club='10uba,brierty,625,south county', Year='', Gender='', Designation='', Coach='smash'
+
+ 47. '10UBA,OSNK,457,Wilcox'
+     Parsed: Club='10uba,osnk,457,', Year='', Gender='', Designation='', Coach='wilcox'
+
+ 48. '10UBAEPYSA255-Resendes M'
+     Parsed: Club='10ubaepysa255-resendes', Year='', Gender='boys', Designation='', Coach=''
+
+ 49. '10UBCB,OSNK,421,Raposo'
+     Parsed: Club='10ubcb,osnk,421,', Year='', Gender='', Designation='', Coach='raposo'
+
+ 50. '10UBCB,OSNK,458,Raposo'
+     Parsed: Club='10ubcb,osnk,458,', Year='', Gender='', Designation='', Coach='raposo'
+
+ 51. '10UBCB-BRISTOL-37-Archambault - Bristol FC U10 Boys Green'
+     Parsed: Club='10ubcb-bristol-37-archambault - bristol fc', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+ 52. '10UBCB-BRISTOL-38-Archambault - Bristol FC U10 Boys Green'
+     Parsed: Club='10ubcb-bristol-38-archambault - bristol fc', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+ 53. '10UBCPYSA-463-Hoye'
+     Parsed: Club='10ubcpysa-463-', Year='', Gender='', Designation='', Coach='hoye'
+
+ 54. '10UBR-BRISTOL-36-Costello - Bristol FC U10 Boys Gray'
+     Parsed: Club='10ubr-bristol-36-costello - bristol fc', Year='2016', Gender='boys', Designation='gray', Coach='gray'
+
+ 55. '10UBRPYSA-464-Schwartz'
+     Parsed: Club='10ubrpysa-464-', Year='', Gender='', Designation='', Coach='schwartz'
+
+ 56. '10UBRWFF634-DiPalma'
+     Parsed: Club='10ubrwff634-', Year='', Gender='', Designation='', Coach='dipalma'
+
+ 57. '10UBRWFF636-Maldonado'
+     Parsed: Club='10ubrwff636-', Year='', Gender='', Designation='', Coach='maldonado'
+
+ 58. '10UCWFF633-Moore'
+     Parsed: Club='10ucwff633-', Year='', Gender='', Designation='', Coach='moore'
+
+ 59. '10URWFF688-Moore'
+     Parsed: Club='10urwff688-', Year='', Gender='', Designation='', Coach='moore'
+
+ 60. '10u Hotshots'
+     Parsed: Club='10u', Year='', Gender='', Designation='', Coach='hotshots'
+
+ 61. '10uB Croatian Eagles Red- 2015'
+     Parsed: Club='10ub croatian eagles red-', Year='2015', Gender='', Designation='', Coach=''
+
+ 62. '11BC CLCF - Vlaun #122'
+     Parsed: Club='11bc clcf - vlaun #122', Year='', Gender='', Designation='', Coach=''
+
+ 63. '11U BSYSC Little Dynamo'
+     Parsed: Club='11u bsysc little', Year='', Gender='', Designation='', Coach='dynamo'
+
+ 64. '11UB Apex Red'
+     Parsed: Club='11ub apex', Year='', Gender='', Designation='red', Coach=''
+
+ 65. '11UB Foxes'
+     Parsed: Club='11ub', Year='', Gender='', Designation='', Coach='foxes'
+
+ 66. '11UBC Smithfield Strikers #601 Mccormick'
+     Parsed: Club='11ubc smithfield strikers #601', Year='', Gender='', Designation='', Coach='mccormick'
+
+ 67. '11UBCPYSA-509-Bronson'
+     Parsed: Club='11ubcpysa-509-', Year='', Gender='', Designation='', Coach='bronson'
+
+ 68. '11UBMYSC-357-BOWLEY'
+     Parsed: Club='11ubmysc-357-', Year='', Gender='', Designation='', Coach='bowley'
+
+ 69. '11UBR CLCF - Haxton #123'
+     Parsed: Club='11ubr clcf - haxton #123', Year='', Gender='', Designation='', Coach=''
+
+ 70. '11UBRWFF639-Massaroco'
+     Parsed: Club='11ubrwff639-', Year='', Gender='', Designation='', Coach='massaroco'
+
+ 71. '11uB Croatian Eagles Classic 1- 2014'
+     Parsed: Club='11ub croatian eagles classic 1-', Year='2014', Gender='', Designation='', Coach=''
+
+ 72. '11uB Croatian Eagles Classic 2- 2014'
+     Parsed: Club='11ub croatian eagles classic 2-', Year='2014', Gender='', Designation='', Coach=''
+
+ 73. '1267 Clewiston 10u'
+     Parsed: Club='1267 clewiston 10u', Year='', Gender='', Designation='', Coach=''
+
+ 74. '12UG Winters Alliance'
+     Parsed: Club='12ug winters', Year='', Gender='', Designation='', Coach='alliance'
+
+ 75. '12UG-DAV-01A'
+     Parsed: Club='12ug-dav-01a', Year='', Gender='', Designation='', Coach=''
+
+ 76. '13 Academy 2'
+     Parsed: Club='2', Year='2013', Gender='', Designation='academy', Coach=''
+
+ 77. '13 Boys Inferno Liga'
+     Parsed: Club='inferno', Year='2013', Gender='boys', Designation='', Coach='liga'
+
+ 78. '13 Boys Inferno United'
+     Parsed: Club='inferno united', Year='2013', Gender='boys', Designation='', Coach=''
+
+ 79. '13 CSA Huntersville Roma'
+     Parsed: Club='csa huntersville', Year='2013', Gender='', Designation='', Coach='roma'
+
+ 80. '13B'
+     Parsed: Club='13b', Year='2013', Gender='boys', Designation='', Coach=''
+
+ 81. '14'
+     Parsed: Club='', Year='2014', Gender='', Designation='', Coach=''
+
+ 82. '14 (11U) NCFCY White South'
+     Parsed: Club='(11u) ncfcy', Year='2014', Gender='', Designation='white', Coach='south'
+
+ 83. '14 Bayern Munich'
+     Parsed: Club='bayern', Year='2014', Gender='', Designation='', Coach='munich'
+
+ 84. '14 Boys Academy 1'
+     Parsed: Club='1', Year='2014', Gender='boys', Designation='academy', Coach=''
+
+ 85. '14 Boys Academy 2'
+     Parsed: Club='2', Year='2014', Gender='boys', Designation='academy', Coach=''
+
+ 86. '14 Boys Black'
+     Parsed: Club='', Year='2014', Gender='boys', Designation='black', Coach='black'
+
+ 87. '14 Boys Blue'
+     Parsed: Club='', Year='2014', Gender='boys', Designation='blue', Coach='blue'
+
+ 88. '14 Boys Cities (U11)'
+     Parsed: Club='14 cities ()', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 89. '14 Boys EDT 2'
+     Parsed: Club='edt 2', Year='2014', Gender='boys', Designation='', Coach=''
+
+ 90. '14 Boys EDT 3'
+     Parsed: Club='edt 3', Year='2014', Gender='boys', Designation='', Coach=''
+
+ 91. '14 Boys EDT 4'
+     Parsed: Club='edt 4', Year='2014', Gender='boys', Designation='', Coach=''
+
+ 92. '14 Boys Gold'
+     Parsed: Club='', Year='2014', Gender='boys', Designation='gold', Coach='gold'
+
+ 93. '14 Boys Grey'
+     Parsed: Club='', Year='2014', Gender='boys', Designation='grey', Coach='grey'
+
+ 94. '14 Boys Inferno Liga'
+     Parsed: Club='inferno', Year='2014', Gender='boys', Designation='', Coach='liga'
+
+ 95. '14 Boys Inferno United'
+     Parsed: Club='inferno united', Year='2014', Gender='boys', Designation='', Coach=''
+
+ 96. '14 Boys Navy'
+     Parsed: Club='', Year='2014', Gender='boys', Designation='navy', Coach='navy'
+
+ 97. '14 Boys Red'
+     Parsed: Club='', Year='2014', Gender='boys', Designation='red', Coach=''
+
+ 98. '14 Boys Regional (U11)'
+     Parsed: Club='14 regional ()', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 99. '14 Boys Salib'
+     Parsed: Club='', Year='2014', Gender='boys', Designation='', Coach='salib'
+
+100. '14 Boys Select'
+     Parsed: Club='', Year='2014', Gender='boys', Designation='select', Coach=''
+

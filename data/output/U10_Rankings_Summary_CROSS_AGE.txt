@@ -1,89 +1,89 @@
 CROSS-AGE U10 MALE SOCCER RANKINGS SUMMARY
 ==================================================
-Generated: 2025-10-23 15:49:37
+Generated: 2025-10-24 10:55:59
 Combined Game History: C:\Users\Dallas Heidt\Desktop\Soccer Rankings v2\data\Game History u10 and u11.csv
 U10 Master Team List: C:\Users\Dallas Heidt\Desktop\Soccer Rankings v2\data\input\National_Male_U10_Master_Team_List.csv
 U11 Master Team List: C:\Users\Dallas Heidt\Desktop\Soccer Rankings v2\data\input\National_Male_U11_Master_Team_List.csv
-Total Teams Ranked: 3225
+Total Teams Ranked: 3234
 Total U10 Games: 68,368
 Ranking Window: 365 days
 
 CROSS-AGE GAME STATISTICS:
 ------------------------------
-Teams with cross-age games: 1145
-Average cross-age game percentage: 9.5%
+Teams with cross-age games: 1392
+Average cross-age game percentage: 5.5%
 
 TOP 10 NATIONAL U10 RANKINGS:
 -----------------------------------
- 1. SWAG Academy 2016 (PA) - 0.848 (28 cross-age)
- 2. B2016 Elite Red (NY) - 0.839 (11 cross-age)
- 3. Nationals Macomb 16 Boys Black - Premier (MI) - 0.822 (12 cross-age)
- 4. SLSG MO B 2016 Academy Green (MO) - 0.811 (14 cross-age)
- 5. LFA Blue Star 2016B (MO) - 0.799 (21 cross-age)
- 6. 16 Kraze Black (FL) - 0.791 (16 cross-age)
- 7. SLSG MO B 2016 Academy Navy (MO) - 0.787 (13 cross-age)
- 8. Santa Clara Sporting 16B Green (CA) - 0.786 (6 cross-age)
- 9. U9 EPP Blue (MA) - 0.779 (10 cross-age)
-10. FC Philly (PA) - 0.776 (18 cross-age)
+ 1. NEFC Metro West Boys 2016 MLS Futures Red (MA) - 0.851
+ 2. LFA Blue Star Major 2016B (MO) - 0.810
+ 3. Irvine 2016 Anaya (CA) - 0.805
+ 4. CVFA 16B Academy (CA) - 0.804
+ 5. Stockton TLJ FC 16 (CA) - 0.798
+ 6. SD Surf Academy Boys 2016 (Miller) (CA) - 0.797
+ 7. TFA-SELA B2016 White (CA) - 0.791
+ 8. Ajax United 16B Green Pre-MLS Next (CA) - 0.787
+ 9. LFA Blue Star Premier 2016B (MO) - 0.784
+10. ALBION SC San Diego B16 Academy' (CA) - 0.784
 
 STATE BREAKDOWN:
 --------------------
-AK: 1 teams - Top: 2016B Alaska Rush Blue (#3003 nationally) (5 cross-age)
-AL: 5 teams - Top: Alabama FC Central 16B Academy South Red (#379 nationally) (8 cross-age)
-AR: 5 teams - Top: ARFC 2016B Jurgenson (#26 nationally) (7 cross-age)
-AZ: 104 teams - Top: AZ Arsenal 16 Boys Teal OC (#22 nationally) (24 cross-age)
-CA: 631 teams - Top: Santa Clara Sporting 16B Green (#8 nationally) (6 cross-age)
-CO: 7 teams - Top: ALBION SC Denver B16 Academy (#455 nationally) (9 cross-age)
-CT: 41 teams - Top: Ginga FC Boys 2016 Pre-MLS NEXT Academy Division (#196 nationally) (11 cross-age)
-DE: 7 teams - Top: 2016 Boys South Black (#530 nationally) (3 cross-age)
-FL: 225 teams - Top: 16 Kraze Black (#6 nationally) (16 cross-age)
-GA: 13 teams - Top: 229 Select 2016 boys (#633 nationally)
-HI: 7 teams - Top: HSC Bulls 16B-I (#230 nationally) (12 cross-age)
-IA: 19 teams - Top: QCS B2016 Lightning (#336 nationally) (2 cross-age)
-ID: 42 teams - Top: IFFC 2016B Claret - Richens (#89 nationally) (20 cross-age)
-IL: 228 teams - Top: Chicago Raiders 2016 (#36 nationally) (12 cross-age)
-IN: 57 teams - Top: WSU Boys 2016/2017 Green (#214 nationally) (7 cross-age)
-KS: 40 teams - Top: GC SPORTING FC 16B ELITE (#341 nationally)
-KY: 57 teams - Top: MVP B16 Gold (#102 nationally) (11 cross-age)
-LA: 2 teams - Top: SSC 2016/2017 BLUE (#2007 nationally) (2 cross-age)
-MA: 85 teams - Top: U9 EPP Blue (#9 nationally) (10 cross-age)
-MD: 83 teams - Top: Bethesda Pulisic 2016 (#13 nationally) (11 cross-age)
-ME: 3 teams - Top: Boys 2016 Black (#2005 nationally) (4 cross-age)
-MI: 109 teams - Top: Nationals Macomb 16 Boys Black - Premier (#3 nationally) (12 cross-age)
-MN: 5 teams - Top: 2016 Boys Swoosh (#1166 nationally)
-MO: 67 teams - Top: SLSG MO B 2016 Academy Green (#4 nationally) (14 cross-age)
-MS: 12 teams - Top: MISSISSIPPI RUSH 2016 BOYS MADISON PREMIER (#489 nationally) (5 cross-age)
-MT: 15 teams - Top: REAL B2016 Gold (#113 nationally) (6 cross-age)
-NC: 1 teams - Top: Carolina United Soccer Association (#395 nationally) (13 cross-age)
-ND: 5 teams - Top: Dickinson SC U9/10B Orange (#1625 nationally)
-NE: 12 teams - Top: INTER 16B (#1336 nationally)
-NH: 11 teams - Top: U10B - Palencia (#520 nationally) (3 cross-age)
-NJ: 125 teams - Top: Timbers (#83 nationally) (22 cross-age)
-NM: 13 teams - Top: Thunder F.C. 2016 (#630 nationally) (10 cross-age)
-NV: 43 teams - Top: Nevada FC 16B Pre-EA (#12 nationally) (10 cross-age)
-NY: 137 teams - Top: B2016 Elite Red (#2 nationally) (11 cross-age)
-OH: 240 teams - Top: 2016 Boys Academy Dublin Black (#15 nationally) (7 cross-age)
-OK: 21 teams - Top: Steelers (#27 nationally) (8 cross-age)
-OR: 50 teams - Top: Capital FC 16B Red JA (#92 nationally) (8 cross-age)
-PA: 134 teams - Top: SWAG Academy 2016 (#1 nationally) (28 cross-age)
-RI: 7 teams - Top: 2016B Black (#235 nationally)
-SD: 19 teams - Top: BH Rapids 2016 Boys Burgundy (#57 nationally) (18 cross-age)
-TN: 18 teams - Top: Midsouth Bartlett 2016 Navy (#64 nationally) (8 cross-age)
-TX: 265 teams - Top: Solar Pre-ECNL B16 Paez (#32 nationally) (8 cross-age)
-UT: 57 teams - Top: Avalanche 16B Black DW (#112 nationally) (2 cross-age)
-VA: 85 teams - Top: SYC 2016B Pre-MLS Next (#20 nationally) (2 cross-age)
-VT: 18 teams - Top: Nordic 2016 Boys Bayern (#257 nationally) (3 cross-age)
-WA: 49 teams - Top: Milan (#104 nationally) (24 cross-age)
-WI: 17 teams - Top: 2016 Boys Black (#634 nationally) (5 cross-age)
-WV: 12 teams - Top: Great Teays Black 2016 (#676 nationally) (2 cross-age)
-WY: 16 teams - Top: Blades 2016/17B Red (#87 nationally) (4 cross-age)
+AK: 1 teams - Top: 2016B Alaska Rush Blue (#2462 nationally) (11 cross-age)
+AL: 5 teams - Top: Mercury Premier B16 White (#1745 nationally)
+AR: 5 teams - Top: ARFC 2016B Jurgenson (#492 nationally) (1 cross-age)
+AZ: 104 teams - Top: Tuzos Academy GTA 2016 (#141 nationally)
+CA: 631 teams - Top: Irvine 2016 Anaya (#3 nationally)
+CO: 7 teams - Top: 2016B Real National (#1996 nationally) (2 cross-age)
+CT: 41 teams - Top: CFC Bethany B2016 EDP (#134 nationally)
+DE: 7 teams - Top: 2016 Boys South Black (#388 nationally) (3 cross-age)
+FL: 225 teams - Top: 16 Kraze Black (#50 nationally)
+GA: 13 teams - Top: 229 Select 2016 boys (#530 nationally)
+HI: 7 teams - Top: HSC Bulls 16B-I (#1595 nationally)
+IA: 19 teams - Top: QCS B2016 Lightning (#352 nationally) (1 cross-age)
+ID: 42 teams - Top: NBFC 2016 Boys Black (#103 nationally)
+IL: 228 teams - Top: Chicago Raiders 2016 (#25 nationally)
+IN: 55 teams - Top: Hoosier FC 2016B Wolves Black 2 (#297 nationally) (1 cross-age)
+KS: 40 teams - Top: FC WICHITA 16B (#57 nationally) (7 cross-age)
+KY: 55 teams - Top: MUSA Flyers 2016 Boys Blue (#422 nationally)
+LA: 4 teams - Top: LA Krewe Rush 16B Blue (#742 nationally) (4 cross-age)
+MA: 85 teams - Top: NEFC Metro West Boys 2016 MLS Futures Red (#1 nationally)
+MD: 85 teams - Top: Bethesda McKennie 2016 (#34 nationally) (1 cross-age)
+ME: 3 teams - Top: Boys 2016 Black (#2429 nationally) (3 cross-age)
+MI: 110 teams - Top: MFA GR 16B Elite (#59 nationally) (4 cross-age)
+MN: 5 teams - Top: 2016 Boys Swoosh (#550 nationally)
+MO: 67 teams - Top: LFA Blue Star Major 2016B (#2 nationally)
+MS: 12 teams - Top: DC Panthers 2016 Premier (#171 nationally)
+MT: 15 teams - Top: Glacier Surf 2016 Boys BLUE (#58 nationally)
+NC: 2 teams - Top: Carolina United Soccer Association (#1058 nationally) (5 cross-age)
+ND: 5 teams - Top: Dickinson SC U9/10B Orange (#1401 nationally)
+NE: 13 teams - Top: Sting NE B16 Waldoch Brave (#1375 nationally)
+NH: 11 teams - Top: 2016 NH Carolina (#384 nationally) (4 cross-age)
+NJ: 125 teams - Top: STA MOSC 2016 BOYS (#139 nationally) (1 cross-age)
+NM: 13 teams - Top: Thunder F.C. 2016 (#1386 nationally) (8 cross-age)
+NV: 43 teams - Top: Nevada FC 16B Pre-EA (#184 nationally)
+NY: 137 teams - Top: Manhattan Kickers FC - 2016's (#16 nationally) (1 cross-age)
+OH: 240 teams - Top: Cleveland Force 16B White West (#21 nationally)
+OK: 21 teams - Top: OKC 405 FC 2016 B - Fuego (#335 nationally) (2 cross-age)
+OR: 50 teams - Top: Capital FC 16B Red JA (#62 nationally)
+PA: 134 teams - Top: SWAG Academy 2016 (#43 nationally) (5 cross-age)
+RI: 7 teams - Top: 2016B Black (#189 nationally)
+SD: 19 teams - Top: BH Rapids 2016 Boys Burgundy (#339 nationally)
+TN: 19 teams - Top: JSC 2016 Boys - Team 1 (#588 nationally) (3 cross-age)
+TX: 265 teams - Top: Molano Futbol Academy Elite 2016B (#40 nationally) (1 cross-age)
+UT: 59 teams - Top: Avalanche 16B Black DW (#721 nationally) (1 cross-age)
+VA: 85 teams - Top: SYC 2016B Pre-MLS Next (#15 nationally)
+VT: 18 teams - Top: Nordic 2016 Boys Bayern (#17 nationally) (1 cross-age)
+WA: 49 teams - Top: Basin Sounders B2016 Lombardini (#242 nationally) (2 cross-age)
+WI: 20 teams - Top: 2016 Boys Black (#1147 nationally)
+WV: 12 teams - Top: Putnam United FC - 2016 Boys (#244 nationally) (2 cross-age)
+WY: 16 teams - Top: SC Storm 16/17 Boys Blue (#177 nationally) (4 cross-age)
 
 ARIZONA U10 RANKINGS:
 -------------------------
 Total Arizona teams: 104
 Top 5 Arizona teams:
-   1. AZ Arsenal 16 Boys Teal OC (#22 nationally) (24 cross-age)
-   2. PRFC Scottsdale 16B Predator (#29 nationally) (24 cross-age)
-   3. State 48 FC Avondale 16 Copper (#184 nationally) (1 cross-age)
-   4. PRFC Scottsdale 16B Copa (#202 nationally) (4 cross-age)
-   5. Tuzos Academy GTA 2016 (#205 nationally)
+   1. Tuzos Academy GTA 2016 (#141 nationally)
+   2. 16B KChacon (#191 nationally) (4 cross-age)
+   3. State 48 FC Avondale 16 Copper (#267 nationally) (1 cross-age)
+   4. PRFC Scottsdale 16B Copa (#340 nationally)
+   5. 16B GSA (#394 nationally) (4 cross-age)

@@ -155,7 +155,8 @@ def load_rankings_data(age_group, gender, state="USA"):
             # Try multiple patterns for different age groups
             patterns = [
                 f"data/output/National_U{age_group}_Rankings_CROSS_AGE*.csv",  # U10 pattern
-                f"data/output/National_U{age_group}_{gender}_Rankings.csv",    # U11 pattern
+                f"data/output/National_U{age_group}_{gender}_Rankings*.csv",    # U11 pattern with versions
+                f"data/output/National_U{age_group}_{gender}_Rankings.csv",    # U11 pattern without version
                 f"data/output/National_U{age_group}_Rankings_CROSS_AGE.csv"    # Fallback
             ]
             
@@ -164,17 +165,28 @@ def load_rankings_data(age_group, gender, state="USA"):
                 files.extend(glob.glob(pattern))
             
             if files:
-                # Prefer newer versions (v10, v9, v8, v7, v6) for U10, or latest for U11
+                # Prefer newer versions for both U10 and U11
+                # Sort files by modification time to get the latest
+                files_sorted = sorted(files, key=os.path.getmtime, reverse=True)
+                
                 if age_group == "10":
                     # For U10, prefer v10, then v9, then v8, then v7, then v6
-                    for version in ['_v10.csv', '_v9.csv', '_v8.csv', '_v7.csv', '_v6.csv']:
+                    for version in ['_v10.csv', '_v9.csv', '_v8.csv', '_v7.csv', '_v6.csv', '']:
                         version_files = [f for f in files if version in f]
                         if version_files:
                             df = pd.read_csv(version_files[0])
                             return df, "National"
                 else:
-                    # For U11 and others, use the latest file
-                    df = pd.read_csv(files[0])
+                    # For U11 and others, prefer newest version files first
+                    # Try v9, v8, then no version
+                    for version in ['_v9.csv', '_v8.csv', '_v10.csv', '_v7.csv', '_v6.csv', '']:
+                        version_files = [f for f in files if version in f]
+                        if version_files:
+                            df = pd.read_csv(version_files[0])
+                            return df, "National"
+                    
+                    # Fallback: use the latest file
+                    df = pd.read_csv(files_sorted[0])
                     return df, "National"
             else:
                 st.error(f"No national rankings found for U{age_group}")
@@ -520,9 +532,12 @@ def main():
         else:
             state = selected_scope
     
+    # Convert gender from "Male"/"Female" to "M"/"F" for filename matching
+    gender_code = "M" if gender == "Male" else "F"
+    
     # Load data
     with st.spinner("Loading rankings data..."):
-        df, scope_name = load_rankings_data(age_group, gender, state)
+        df, scope_name = load_rankings_data(age_group, gender_code, state)
     
     if df is None:
         st.warning("No data available for the selected criteria. Please try different options.")

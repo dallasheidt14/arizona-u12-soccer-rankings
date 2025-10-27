@@ -1,0 +1,29 @@
+=== AUDIT SUMMARY ===
+Generated: 2025-10-24 12:02:03
+
+MATCHING STATISTICS:
+- Total game teams: 29298
+- Total master teams: 8254
+- Exact matches: 7394
+- Fuzzy matches: 621
+- Unmatched: 21283
+- Match rate: 27.4%
+
+CONFIDENCE BREAKDOWN:
+- High confidence (>0.9): 216
+- Medium confidence (0.8-0.9): 148
+- Low confidence (<0.8): 257
+
+FILES GENERATED:
+- audit_fuzzy_matches_20251024_120203.txt (all fuzzy matches with details)
+- audit_high_confidence_20251024_120203.txt (similarity > 0.9)
+- audit_medium_confidence_20251024_120203.txt (similarity 0.8-0.9)
+- audit_unmatched_20251024_120203.txt (unmatched teams)
+- audit_summary_20251024_120203.txt (this summary)
+
+REVIEW INSTRUCTIONS:
+1. Start with audit_summary_{timestamp}.txt for overview
+2. Review audit_high_confidence_{timestamp}.txt first (most likely correct)
+3. Check audit_medium_confidence_{timestamp}.txt for questionable matches
+4. Look at audit_fuzzy_matches_{timestamp}.txt for detailed analysis
+5. Check audit_unmatched_{timestamp}.txt for teams that should have matches

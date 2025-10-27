@@ -256,9 +256,17 @@ def main():
             team_data["Top Opponents"] = ""
     
     # Create unmatched teams DataFrame
-    unmatched_df = pd.DataFrame(unmatched_teams)
-    unmatched_df = unmatched_df.drop_duplicates(subset=["Unmatched Team"])
-    unmatched_df = unmatched_df.sort_values(["Category", "Appearances"], ascending=[True, False])
+    if unmatched_teams:
+        unmatched_df = pd.DataFrame(unmatched_teams)
+        unmatched_df = unmatched_df.drop_duplicates(subset=["Unmatched Team"])
+        if "Category" in unmatched_df.columns:
+            unmatched_df = unmatched_df.sort_values(["Category", "Appearances"], ascending=[True, False])
+        else:
+            # Fallback if Category column doesn't exist
+            if "Appearances" in unmatched_df.columns:
+                unmatched_df = unmatched_df.sort_values(["Appearances"], ascending=[False])
+    else:
+        unmatched_df = pd.DataFrame(columns=["Unmatched Team", "Column", "Category", "Appearances", "Top Opponents"])
     
     # Save unmatched teams log
     unmatched_df.to_csv(UNMATCHED_TEAMS_FILE, index=False)

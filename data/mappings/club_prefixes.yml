@@ -1,0 +1,188 @@
+# Club Prefix Normalization Table
+# Maps canonical club names to known variations for improved team matching
+
+az_arsenal:
+  - arsenal sc
+  - az arsenal sc
+  - arsenal soccer club
+  - arsenal fc
+  - az arsenal fc
+
+phoenix_rising:
+  - prfc
+  - rising fc
+  - phoenix rising fc
+  - rising az
+  - phoenix rising
+  - prfc scottsdale
+
+rsl:
+  - real salt lake
+  - rsl az
+  - rsl north
+  - rsl south
+  - real salt lake az
+
+rebels:
+  - rebels sc
+  - rebels soccer club
+  - rebels fc
+  - az rebels
+  - arizona rebels
+
+sc_del_sol:
+  - sc del sol
+  - del sol sc
+  - del sol soccer club
+  - del sol fc
+
+real_salt_lake:
+  - rsl
+  - real salt lake
+  - rsl academy
+  - rsl youth
+
+barcelona:
+  - barca
+  - barcelona az
+  - az barca
+  - barcelona academy
+  - barca academy
+
+legends:
+  - legends fc
+  - legends soccer club
+  - legends az
+  - az legends
+
+valley_united:
+  - valley united sc
+  - valley united fc
+  - valley united
+  - vu sc
+
+desert_falcons:
+  - desert falcons sc
+  - desert falcons fc
+  - falcons sc
+  - az falcons
+
+cactus_club:
+  - cactus club
+  - cactus sc
+  - cactus fc
+  - az cactus
+
+sun_city:
+  - sun city sc
+  - sun city fc
+  - sun city soccer
+  - az sun city
+
+mesa_soccer:
+  - mesa soccer club
+  - mesa sc
+  - mesa fc
+  - az mesa
+
+chandler_soccer:
+  - chandler soccer club
+  - chandler sc
+  - chandler fc
+  - az chandler
+
+gilbert_soccer:
+  - gilbert soccer club
+  - gilbert sc
+  - gilbert fc
+  - az gilbert
+
+tempe_soccer:
+  - tempe soccer club
+  - tempe sc
+  - tempe fc
+  - az tempe
+
+scottsdale_soccer:
+  - scottsdale soccer club
+  - scottsdale sc
+  - scottsdale fc
+  - az scottsdale
+
+peoria_soccer:
+  - peoria soccer club
+  - peoria sc
+  - peoria fc
+  - az peoria
+
+glendale_soccer:
+  - glendale soccer club
+  - glendale sc
+  - glendale fc
+  - az glendale
+
+surprise_soccer:
+  - surprise soccer club
+  - surprise sc
+  - surprise fc
+  - az surprise
+
+avondale_soccer:
+  - avondale soccer club
+  - avondale sc
+  - avondale fc
+  - az avondale
+
+goodyear_soccer:
+  - goodyear soccer club
+  - goodyear sc
+  - goodyear fc
+  - az goodyear
+
+buckeye_soccer:
+  - buckeye soccer club
+  - buckeye sc
+  - buckeye fc
+  - az buckeye
+
+queen_creek_soccer:
+  - queen creek soccer club
+  - queen creek sc
+  - queen creek fc
+  - az queen creek
+
+maricopa_soccer:
+  - maricopa soccer club
+  - maricopa sc
+  - maricopa fc
+  - az maricopa
+
+casa_grande_soccer:
+  - casa grande soccer club
+  - casa grande sc
+  - casa grande fc
+  - az casa grande
+
+tucson_soccer:
+  - tucson soccer club
+  - tucson sc
+  - tucson fc
+  - az tucson
+
+yuma_soccer:
+  - yuma soccer club
+  - yuma sc
+  - yuma fc
+  - az yuma
+
+flagstaff_soccer:
+  - flagstaff soccer club
+  - flagstaff sc
+  - flagstaff fc
+  - az flagstaff
+
+prescott_soccer:
+  - prescott soccer club
+  - prescott sc
+  - prescott fc
+  - az prescott

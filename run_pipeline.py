@@ -77,14 +77,14 @@ def main():
     
     # Step 2: Comprehensive History Generation
     if not run_command(
-        "python src/core/history_generator.py",
+        "python src/core/history_generator.py --in data/processed/Matched_Games.csv --out data/processed/Team_Game_Histories_COMPREHENSIVE.csv",
         "Comprehensive History Generation"
     ):
         sys.exit(1)
     
     # Step 3: V5.3E Enhanced Ranking Calculation
     if not run_command(
-        "python src/core/ranking_engine.py",
+        "python src/core/ranking_engine.py --in data/processed/Matched_Games.csv --out data/output/Rankings_v53_enhanced.csv",
         "V5.3E Enhanced Ranking Calculation"
     ):
         sys.exit(1)

@@ -1,0 +1,42 @@
+
+AZ U12 Team Matching & Categorization Report
+============================================
+Generated: 2025-10-26 16:06:49
+
+MATCHING STATISTICS
+---------------------
+Total Games Processed: 3,967
+
+Team A Matching:
+  + Exact Matches: 3,967 (100.0%)
+  ? Fuzzy Matches: 0 (0.0%)
+  ! No Matches: 0 (0.0%)
+
+Team B Matching:
+  + Exact Matches: 3,967 (100.0%)
+  ? Fuzzy Matches: 0 (0.0%)
+  ! No Matches: 0 (0.0%)
+
+OVERALL MATCHING RATE
+------------------------
+Average Exact Match Rate: 100.0%
+Average Fuzzy Match Rate: 0.0%
+Average No Match Rate: 0.0%
+
+UNMATCHED TEAMS BREAKDOWN
+-----------------------------
+Total Unique Unmatched Teams: 0
+
+
+OUTPUT FILES
+--------------
++ data/processed/Matched_Games.csv - All games with match results
++ Unmatched_Teams_Log.csv - Unmatched teams with categories
+
+CONFIGURATION USED
+---------------------
+Fuzzy Match Threshold: 90%
+Age Mismatch Pattern: \b(2013|2015|13|15|u13|u15|14g|girls)\b
+Out-of-State Pattern: \b(ca|nv|tx|nm|co|wa|ut|or|dc|pr|hi|ak|can|mexico|bc|ab)\b
+
+PROCESSING COMPLETE!

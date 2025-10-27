@@ -1,0 +1,2493 @@
+=== SOPHISTICATED TEAM MATCHING AUDIT REPORT ===
+Generated: 2025-10-24 12:02:03
+Total fuzzy matches: 621
+Threshold used: 0.8
+
+=== FUZZY MATCHES (sorted by similarity) ===
+Format: Game Team → Master Team (similarity)
+Parsed components: Club, Year, Gender, Designation, Coach
+
+  1. 'Hawaii Rush 15B' → 'Hawaii RUSH 15B Azul' (1.000)
+     Game:   Club='hawaii rush 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='hawaii rush 15b', Year='2015', Gender='boys', Designation='', Coach='azul'
+
+  2. 'Texas Warriors FC 15B - Salas' → 'Texas Warriors FC 15B Salas' (1.000)
+     Game:   Club='texas warriors fc 15b -', Year='2015', Gender='boys', Designation='', Coach='salas'
+     Master: Club='texas warriors fc 15b', Year='2015', Gender='boys', Designation='', Coach='salas'
+
+  3. 'Nationals Oakland 15 Boys Pre-Academy Blue' → 'Nationals Oakland Pre-Academy 15 Boys Blue' (1.000)
+     Game:   Club='nationals oakland pre-academy', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='nationals oakland pre-academy', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+  4. 'Delhi F.C 15B Salazar' → 'Delhi FC 15B Salazar' (1.000)
+     Game:   Club='delhi f.c 15b', Year='2015', Gender='boys', Designation='', Coach='salazar'
+     Master: Club='delhi fc 15b', Year='2015', Gender='boys', Designation='', Coach='salazar'
+
+  5. 'SCU 15 Boys Black' → 'SCU 2015 Boys Black' (1.000)
+     Game:   Club='scu', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='scu', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+  6. 'Bloomingdale Lightning Pre-ECNL/Prem 15B' → 'Bloomingdale Lightning Pre-ECNL/Prem 15b' (1.000)
+     Game:   Club='bloomingdale lightning pre-ecnl/prem 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='bloomingdale lightning pre-ecnl/prem 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+  7. 'St. Louis Stars SC 15 Boys Elite White' → 'St . Louis Stars SC 15 Boys Academy White' (1.000)
+     Game:   Club='st. louis stars sc elite', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='st . louis stars sc academy', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+  8. 'ac marin boys white 2015' → 'AC Marin Boys 2015 White' (1.000)
+     Game:   Club='ac marin', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='ac marin', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+  9. 'EMSA FC White Tigers 15B' → 'EMSA FC White Tigers 15B ARCHIVE' (1.000)
+     Game:   Club='emsa fc tigers 15b', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='emsa fc tigers 15b', Year='2015', Gender='boys', Designation='white', Coach='archive'
+
+ 10. 'WBSA United 15B Avengers' → 'WBSA UNITED 15B AVENGERS' (1.000)
+     Game:   Club='wbsa united 15b', Year='2015', Gender='boys', Designation='', Coach='avengers'
+     Master: Club='wbsa united 15b', Year='2015', Gender='boys', Designation='', Coach='avengers'
+
+ 11. 'BSC 2016 Boys - Blue' → 'BSC Boys U10 Blue' (1.000)
+     Game:   Club='bsc -', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='bsc', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+ 12. 'Erie Commodores U11 Boys' → 'Erie Commodores U11 boys' (1.000)
+     Game:   Club='erie commodores', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='erie commodores', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 13. 'Auburndale Scream 2015 U9 Boys' → 'Auburndale Scream 2015 U11 Boys' (1.000)
+     Game:   Club='auburndale scream', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='auburndale scream', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 14. 'Nationals Macomb 15 Boys Pre-Academy' → 'Nationals Macomb Pre-Academy 15 Boys' (1.000)
+     Game:   Club='nationals macomb pre-academy', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='nationals macomb pre-academy', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 15. 'DKSC 15B Guerrero' → 'DKSC 15B GUERRERO' (1.000)
+     Game:   Club='dksc 15b', Year='2015', Gender='boys', Designation='', Coach='guerrero'
+     Master: Club='dksc 15b', Year='2015', Gender='boys', Designation='', Coach='guerrero'
+
+ 16. 'SPIRE FC GENEVA 2015 BOYS' → 'SPIRE FC GENEVA U11 BOYS' (1.000)
+     Game:   Club='spire fc geneva', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='spire fc geneva', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 17. 'TUSC Academy Boys 2015 White' → 'TUSC 2015 BOYS WHITE' (1.000)
+     Game:   Club='tusc academy', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='tusc', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+ 18. '2015 Boys Loudoun Gold' → 'Loudoun 2015 Boys Gold' (1.000)
+     Game:   Club='loudoun', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='loudoun', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+ 19. 'SCU 15 Boys Black 2' → 'SCU 2015 Boys Black 2' (1.000)
+     Game:   Club='scu 2', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='scu 2', Year='2015', Gender='boys', Designation='black', Coach=''
+
+ 20. 'Sequoia FC '15 Boys (Green)' → 'Sequoia FC '15 Boys -Green (U11)' (1.000)
+     Game:   Club='sequoia fc ' (green)', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='sequoia fc ' -green ()', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 21. 'Castro Valley SC CVSC United White 2015 B' → 'Castro Valley SC CVSC United 2015 Boys White' (1.000)
+     Game:   Club='castro valley sc cvsc united', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='castro valley sc cvsc united', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+ 22. 'Solar Col 15B Romero' → 'Solar COL 15B Romero' (1.000)
+     Game:   Club='solar col 15b', Year='2015', Gender='boys', Designation='', Coach='romero'
+     Master: Club='solar col 15b', Year='2015', Gender='boys', Designation='', Coach='romero'
+
+ 23. 'Houston Futsal SC 15B' → 'Houston Futsal SC 15B Pivo' (1.000)
+     Game:   Club='houston futsal sc 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='houston futsal sc 15b', Year='2015', Gender='boys', Designation='', Coach='pivo'
+
+ 24. 'Castro Valley SC CVSC United Green 2015 B' → 'Castro Valley SC CVSC United 2015 Boys Green' (1.000)
+     Game:   Club='castro valley sc cvsc united', Year='2015', Gender='boys', Designation='green', Coach=''
+     Master: Club='castro valley sc cvsc united', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+ 25. 'Autobahn SC Boys 2015 blue' → 'Autobahn SC Boys 2015 Blue' (1.000)
+     Game:   Club='autobahn sc', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='autobahn sc', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+ 26. 'NEFC Blackstone Valley Boys 2015 Red' → 'NEFC Blackstone Valley Boys U11 Red' (1.000)
+     Game:   Club='nefc blackstone valley', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='nefc blackstone valley', Year='2015', Gender='boys', Designation='red', Coach=''
+
+ 27. 'Forza Milan / FELKER 15B' → 'FORZA MILAN / FELKER 15B' (1.000)
+     Game:   Club='forza milan / felker 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='forza milan / felker 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 28. 'Suns FC 2015 Male Purple' → 'Suns FC 2015 Purple Male' (1.000)
+     Game:   Club='suns fc', Year='2015', Gender='boys', Designation='purple', Coach='purple'
+     Master: Club='suns fc', Year='2015', Gender='boys', Designation='purple', Coach=''
+
+ 29. 'Union FC 15B Barcitas' → 'U11 Union FC 15B Barcitas' (1.000)
+     Game:   Club='union fc 15b', Year='2015', Gender='boys', Designation='', Coach='barcitas'
+     Master: Club='union fc 15b', Year='2015', Gender='boys', Designation='', Coach='barcitas'
+
+ 30. 'Rapids FC 15B Green' → 'RAPIDS FC 15B GREEN' (1.000)
+     Game:   Club='rapids fc 15b', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='rapids fc 15b', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+ 31. 'ID Houston Allstars 15B' → 'ID Houston Allstars 15B EDPL' (1.000)
+     Game:   Club='id houston allstars 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='id houston allstars 15b', Year='2015', Gender='boys', Designation='', Coach='edpl'
+
+ 32. 'Union FC 15B JDP' → 'U11 Union FC 15B JDP' (1.000)
+     Game:   Club='union fc 15b jdp', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='union fc 15b jdp', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 33. 'Mason SC 2015 Boys Red' → 'Mason 2015 Boys Red' (1.000)
+     Game:   Club='mason sc', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='mason', Year='2015', Gender='boys', Designation='red', Coach=''
+
+ 34. 'Futsal Escola 2015 Boys' → 'Futsal EScola Boys 2015 Argentina' (1.000)
+     Game:   Club='futsal escola', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='futsal escola', Year='2015', Gender='boys', Designation='', Coach='argentina'
+
+ 35. 'Dallas Cosmos 15B BLACK' → 'Dallas Cosmos 15B Black' (1.000)
+     Game:   Club='dallas cosmos 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='dallas cosmos 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+ 36. 'HFC United 2015 Boys Premier' → 'HFC Boys 2015 PREMIER' (1.000)
+     Game:   Club='hfc united', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='hfc', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+ 37. 'Manalapan SC Braves 15b Red' → 'Manalapan SC Braves 15B Red' (1.000)
+     Game:   Club='manalapan sc braves 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='manalapan sc braves 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+
+ 38. '2015 Alliance Academy Boys Messi' → '2015 Alliance Academy Boys - Messi' (1.000)
+     Game:   Club='alliance', Year='2015', Gender='boys', Designation='academy', Coach='messi'
+     Master: Club='alliance -', Year='2015', Gender='boys', Designation='academy', Coach='messi'
+
+ 39. 'PSG ACADEMY CHICAGO U11 BOYS WHITE' → 'PSG ACADEMY CHICAGO 2015 BOYS WHITE' (1.000)
+     Game:   Club='psg academy chicago', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='psg academy chicago', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+ 40. 'FC Legends Utd 15B Red' → 'FC LEGENDS UTD 15B Red' (1.000)
+     Game:   Club='fc legends utd 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='fc legends utd 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+
+ 41. 'SCU 15 Boys White' → 'SCU 2015 Boys White' (1.000)
+     Game:   Club='scu', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='scu', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+ 42. '2015 PFCU Dortmund Boys' → 'PFCU 2015 Dortmund Boys' (1.000)
+     Game:   Club='pfcu dortmund', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='pfcu dortmund', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 43. 'North 2015 Boys Elite Blue' → '2015 Boys North Blue' (1.000)
+     Game:   Club='north elite', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='north', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+ 44. '2015 SVU Boys Green' → 'SVU Boys 15 Green' (1.000)
+     Game:   Club='svu', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='svu', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+ 45. 'Romeo FC 2015 Boys Earthquakes' → 'Romeo FC 15 Boys Earthquakes' (1.000)
+     Game:   Club='romeo fc', Year='2015', Gender='boys', Designation='', Coach='earthquakes'
+     Master: Club='romeo fc', Year='2015', Gender='boys', Designation='', Coach='earthquakes'
+
+ 46. 'IRSA 2015 BOYS WHITE' → 'IRSA 2015 BOYS WHITE (U11)' (1.000)
+     Game:   Club='irsa', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='irsa ()', Year='2015', Gender='boys', Designation='white', Coach=''
+
+ 47. 'Michigan Jaguars Northville 2015 Boys Green' → 'Michigan Jaguars Northville 2015 U11 Boys Green' (1.000)
+     Game:   Club='michigan jaguars northville', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars northville', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+ 48. 'Dallas Legends Cosmos 15B Rochetti' → 'Dallas Legends Cosmos 15B' (1.000)
+     Game:   Club='dallas legends cosmos 15b', Year='2015', Gender='boys', Designation='', Coach='rochetti'
+     Master: Club='dallas legends cosmos 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 49. 'GLASA Blue Lightning 15B' → 'GLASA Blue Lightning 15B/DISBAND' (1.000)
+     Game:   Club='glasa lightning 15b', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='glasa lightning 15b/', Year='2015', Gender='boys', Designation='blue', Coach='disband'
+
+ 50. 'Castro Valley SC CVSC United Yellow 2015 B' → 'Castro Valley SC CVSC United 2015 Boys Yellow' (1.000)
+     Game:   Club='castro valley sc cvsc united', Year='2015', Gender='boys', Designation='yellow', Coach=''
+     Master: Club='castro valley sc cvsc united', Year='2015', Gender='boys', Designation='yellow', Coach='yellow'
+
+ 51. 'FCFC 2015 Boys White' → 'FCFC 2015 BOYS WHITE' (1.000)
+     Game:   Club='fcfc', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='fcfc', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+ 52. 'Become Elite Soccer Boys U10' → 'Become Elite Soccer U10 Boys' (1.000)
+     Game:   Club='become soccer', Year='2016', Gender='boys', Designation='elite', Coach=''
+     Master: Club='become soccer', Year='2016', Gender='boys', Designation='elite', Coach=''
+
+ 53. 'Athens Futbol Club- 15B Stewart' → 'Athens Futbol Club - 15B Stewart' (1.000)
+     Game:   Club='athens futbol club- 15b', Year='2015', Gender='boys', Designation='', Coach='stewart'
+     Master: Club='athens futbol club - 15b', Year='2015', Gender='boys', Designation='', Coach='stewart'
+
+ 54. 'Athens Futbol Club- 15B' → 'Athens Futbol Club - 15B Stewart' (1.000)
+     Game:   Club='athens futbol club- 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='athens futbol club - 15b', Year='2015', Gender='boys', Designation='', Coach='stewart'
+
+ 55. 'Mason SC 2015 Boys Blue' → 'Mason 2015 Boys Blue' (1.000)
+     Game:   Club='mason sc', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='mason', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+ 56. 'Sun Warriors 15/16 Boys Sixtos' → 'Sun Warriors 15/16 Boys' (1.000)
+     Game:   Club='sun warriors /16', Year='2015', Gender='boys', Designation='', Coach='sixtos'
+     Master: Club='sun warriors /16', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 57. 'DKSC 15B Camargo' → 'DKSC 15B CAMARGO' (1.000)
+     Game:   Club='dksc 15b', Year='2015', Gender='boys', Designation='', Coach='camargo'
+     Master: Club='dksc 15b', Year='2015', Gender='boys', Designation='', Coach='camargo'
+
+ 58. 'Madison FC 2015 Boys Blue' → 'Madison FC 15 Blue Boys' (1.000)
+     Game:   Club='madison fc', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='madison fc', Year='2015', Gender='boys', Designation='blue', Coach=''
+
+ 59. 'Madison FC 2015 Boys Gold' → 'Madison FC 15 Gold Boys' (1.000)
+     Game:   Club='madison fc', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='madison fc', Year='2015', Gender='boys', Designation='gold', Coach=''
+
+ 60. 'AYSO UNITED 2015 Boys Blue' → 'AYSO United 2015 Boys Blue' (1.000)
+     Game:   Club='ayso united', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='ayso united', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+ 61. 'WTX Lightning SC 15B' → 'WTX Lightning SC '15B' (1.000)
+     Game:   Club='wtx lightning sc 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='wtx lightning sc '15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 62. 'PSC 15B NextUp Elite' → 'PSC 15B NextUp Elite STXCL' (1.000)
+     Game:   Club='psc 15b nextup', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='psc 15b nextup', Year='2015', Gender='boys', Designation='elite', Coach='stxcl'
+
+ 63. 'PBG 15 BOYS PREMIER' → 'PBG 15 BOYS PREMIER SWOOSH' (1.000)
+     Game:   Club='pbg', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='pbg', Year='2015', Gender='boys', Designation='premier', Coach='swoosh'
+
+ 64. 'Trevian Boys 2016 Blue' → 'Trevian SC Boys 2016 Blue' (1.000)
+     Game:   Club='trevian', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='trevian sc', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+ 65. 'Coppermine SC Boys 2015 Blue' → 'Coppermine SC 2015 Boys Blue' (1.000)
+     Game:   Club='coppermine sc', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='coppermine sc', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+ 66. 'GB Boys 2015 Blue (Pre-EDS)' → 'GB 2015 Boys Blue (Pre-EDS)' (1.000)
+     Game:   Club='gb (pre-eds)', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='gb (pre-eds)', Year='2015', Gender='boys', Designation='blue', Coach=''
+
+ 67. 'JGSA 2015 Boys White' → 'JGSA 15 Boys White' (1.000)
+     Game:   Club='jgsa', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='jgsa', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+ 68. 'Nona Soccer 2015 B Black' → 'Nona Soccer 2015 Boys Black' (1.000)
+     Game:   Club='nona soccer', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='nona soccer', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+ 69. 'Inter Dallas SC 15B Loredo' → 'Inter Dallas SC 15B' (1.000)
+     Game:   Club='inter dallas sc 15b', Year='2015', Gender='boys', Designation='', Coach='loredo'
+     Master: Club='inter dallas sc 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 70. 'Rush 15B Academy Blue' → 'Rush 15B Blue' (1.000)
+     Game:   Club='rush 15b academy', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='rush 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+ 71. 'Manalapan SC Braves 15b White' → 'Manalapan SC Braves 15B White' (1.000)
+     Game:   Club='manalapan sc braves 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='manalapan sc braves 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+ 72. 'BSC - U10 Boys - Blue' → 'BSC Boys U10 Blue' (1.000)
+     Game:   Club='bsc - -', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='bsc', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+ 73. 'DKSC 15B Arellano ETX' → 'DKSC 15B ARELLANO ETX' (1.000)
+     Game:   Club='dksc 15b arellano etx', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='dksc 15b arellano etx', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 74. 'Invictus SC 15B Red Rodriguez' → 'INVICTUS SC 15B RED RODRIGUEZ' (1.000)
+     Game:   Club='invictus sc 15b', Year='2015', Gender='boys', Designation='red', Coach='rodriguez'
+     Master: Club='invictus sc 15b', Year='2015', Gender='boys', Designation='red', Coach='rodriguez'
+
+ 75. '2015 Boys Cook Inlet SC Red' → '2015 Cook Inlet SC Boys RED' (1.000)
+     Game:   Club='cook inlet sc', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='cook inlet sc', Year='2015', Gender='boys', Designation='red', Coach=''
+
+ 76. 'IRSA 2015 Boys White' → 'IRSA 2015 BOYS WHITE (U11)' (1.000)
+     Game:   Club='irsa', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='irsa ()', Year='2015', Gender='boys', Designation='white', Coach=''
+
+ 77. 'Shreveport Strikers FFC 15/16B' → 'SHREVEPORT STRIKERS FFC 15/16B' (1.000)
+     Game:   Club='shreveport strikers ffc /16b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='shreveport strikers ffc /16b', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 78. 'ESC Elite Academy 2015 Boys Gold' → 'ESC ELITE ACADEMY 2015 BOYS GOLD' (1.000)
+     Game:   Club='esc elite academy', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='esc elite academy', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+ 79. 'Mako 2015 BOYS GREEN' → 'MAKO 2015 BOYS GREEN' (1.000)
+     Game:   Club='mako', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='mako', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+ 80. '2015 PFCU Bayern Boys' → 'PFCU 2015 Bayern Boys' (1.000)
+     Game:   Club='pfcu bayern', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='pfcu bayern', Year='2015', Gender='boys', Designation='', Coach=''
+
+ 81. 'PSC 15B NextUp Premier' → 'PSC 15B NextUp Premier STXCL' (1.000)
+     Game:   Club='psc 15b nextup', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='psc 15b nextup', Year='2015', Gender='boys', Designation='premier', Coach='stxcl'
+
+ 82. 'Chaffee County United 15/16 Boys' → 'Chaffee County United 15/16 Boys Royal' (1.000)
+     Game:   Club='chaffee county united /16', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='chaffee county united /16', Year='2015', Gender='boys', Designation='', Coach='royal'
+
+ 83. 'NEFC South Boys 2016 Pre MLS Academy (U10)' → 'NEFC South Boys 2016 Pre MLS Academy' (1.000)
+     Game:   Club='nefc south pre mls ()', Year='2016', Gender='boys', Designation='academy', Coach=''
+     Master: Club='nefc south pre mls', Year='2016', Gender='boys', Designation='academy', Coach=''
+
+ 84. 'FCE United 2015 Boys Elite' → 'FCE 2015 Boys Elite' (1.000)
+     Game:   Club='fce united', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='fce', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+ 85. 'WNY Flash 15B Premier Burke' → 'WNY Flash 15B Premier' (1.000)
+     Game:   Club='wny flash 15b', Year='2015', Gender='boys', Designation='premier', Coach='burke'
+     Master: Club='wny flash 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+ 86. 'DKSC 15B Central Gold' → 'DKSC 15B CENTRAL GOLD' (1.000)
+     Game:   Club='dksc 15b central', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='dksc 15b central', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+ 87. 'Stanford Strikers 15B Red North' → 'Stanford Strikers 15B Red' (1.000)
+     Game:   Club='stanford strikers 15b', Year='2015', Gender='boys', Designation='red', Coach='north'
+     Master: Club='stanford strikers 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+
+ 88. 'Diablo Valley FC 15B' → 'Diablo Valley FC 15B Delta' (1.000)
+     Game:   Club='diablo valley fc 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='diablo valley fc 15b', Year='2015', Gender='boys', Designation='', Coach='delta'
+
+ 89. 'JGSA 2015 Boys Black' → 'JGSA 15 Boys Black' (1.000)
+     Game:   Club='jgsa', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='jgsa', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+ 90. 'East Windsor PAL Boys 2015 Panthers' → 'East Windsor PAL - 2015 Boys Panthers' (1.000)
+     Game:   Club='east windsor pal', Year='2015', Gender='boys', Designation='', Coach='panthers'
+     Master: Club='east windsor pal -', Year='2015', Gender='boys', Designation='', Coach='panthers'
+
+ 91. 'Hawaii RUSH 15B' → 'Hawaii RUSH 15B Azul' (1.000)
+     Game:   Club='hawaii rush 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='hawaii rush 15b', Year='2015', Gender='boys', Designation='', Coach='azul'
+
+ 92. 'Cheshire Soccer Academy 2015 Boys Black' → 'Cheshire 2015 Boys Black' (1.000)
+     Game:   Club='cheshire soccer academy', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='cheshire', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+ 93. 'St. Louis Stars SC 15 Boys Premier Red' → 'St. Louis Stars SC 15 Boys Academy Red' (1.000)
+     Game:   Club='st. louis stars sc premier', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='st. louis stars sc academy', Year='2015', Gender='boys', Designation='red', Coach=''
+
+ 94. 'IRSA 2015 BOYS BLUE' → 'IRSA 2015 BOYS BLUE (U11)' (1.000)
+     Game:   Club='irsa', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='irsa ()', Year='2015', Gender='boys', Designation='blue', Coach=''
+
+ 95. 'Suns FC 2015 Male Orange' → 'Suns FC 2015 Orange Male' (1.000)
+     Game:   Club='suns fc', Year='2015', Gender='boys', Designation='orange', Coach='orange'
+     Master: Club='suns fc', Year='2015', Gender='boys', Designation='orange', Coach=''
+
+ 96. 'Atletico Dallas Youth 15B  Ikpa' → 'Atletico Dallas Youth 15B Ikpa' (1.000)
+     Game:   Club='atletico dallas youth 15b', Year='2015', Gender='boys', Designation='', Coach='ikpa'
+     Master: Club='atletico dallas youth 15b', Year='2015', Gender='boys', Designation='', Coach='ikpa'
+
+ 97. '2015/16B Valenzuela Nogales' → '15/16B Valenzuela Nogales' (1.000)
+     Game:   Club='/16b valenzuela', Year='2015', Gender='boys', Designation='', Coach='nogales'
+     Master: Club='/16b valenzuela', Year='2015', Gender='boys', Designation='', Coach='nogales'
+
+ 98. 'IRSA 2015 Boys Blue' → 'IRSA 2015 BOYS BLUE (U11)' (1.000)
+     Game:   Club='irsa', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='irsa ()', Year='2015', Gender='boys', Designation='blue', Coach=''
+
+ 99. 'Quad Cities Rush 2015 Boys' → 'Quad Cities Rush 2015 Boys Azul' (1.000)
+     Game:   Club='quad cities rush', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='quad cities rush', Year='2015', Gender='boys', Designation='', Coach='azul'
+
+100. 'Shore FC Black 2015 B' → 'Shore FC 2015 Boys Black' (1.000)
+     Game:   Club='shore fc', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='shore fc', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+101. 'Ignite U11/U12 Boys Blue' → 'Ignite 2015 Boys Blue' (1.000)
+     Game:   Club='ignite /', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='ignite', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+102. 'Hells Canyon FC Rapids Boys 2015' → 'Hells Canyon FC Rapids Boys - 2015' (1.000)
+     Game:   Club='hells canyon fc rapids', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='hells canyon fc rapids -', Year='2015', Gender='boys', Designation='', Coach=''
+
+103. 'Hawaii RUSH Mililani 15B' → 'Hawaii Rush Mililani 15B' (1.000)
+     Game:   Club='hawaii rush mililani 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='hawaii rush mililani 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+104. 'Elite FC 2015 Boys OCL Stripes' → 'Elite FC 2015 Boys OCL' (1.000)
+     Game:   Club='fc ocl', Year='2015', Gender='boys', Designation='elite', Coach='stripes'
+     Master: Club='fc ocl', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+105. 'Dallas Cosmos 15B WHITE' → 'Dallas Cosmos 15B White' (1.000)
+     Game:   Club='dallas cosmos 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='dallas cosmos 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+106. 'Santa Rosa united 15B Blue' → 'Santa Rosa United 15B Blue' (1.000)
+     Game:   Club='santa rosa united 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='santa rosa united 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+107. 'Wellesley Premier Club 2015 Boys Lions' → 'Wellesley Premier Club 2015 Boys FC' (1.000)
+     Game:   Club='wellesley club', Year='2015', Gender='boys', Designation='premier', Coach='lions'
+     Master: Club='wellesley club fc', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+108. '2015 PFCU Schalke Boys' → 'PFCU 2015 Schalke Boys' (1.000)
+     Game:   Club='pfcu schalke', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='pfcu schalke', Year='2015', Gender='boys', Designation='', Coach=''
+
+109. 'Dallas Surf 15B' → 'Dallas Surf 15B ARCH' (1.000)
+     Game:   Club='dallas surf 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='dallas surf 15b', Year='2015', Gender='boys', Designation='', Coach='arch'
+
+110. 'Dynamo SC 2015 B White' → 'Dynamo 2015 Boys White' (1.000)
+     Game:   Club='dynamo sc', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='dynamo', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+111. 'Monroe Township SC 2015 Boys Madness' → 'Monroe Township Soccer Club 2015 Boys Madness' (1.000)
+     Game:   Club='monroe township sc', Year='2015', Gender='boys', Designation='', Coach='madness'
+     Master: Club='monroe township soccer club', Year='2015', Gender='boys', Designation='', Coach='madness'
+
+112. 'Verde Valley United FC- U10 Boys' → 'Verde Valley United FC - U10 Boys' (1.000)
+     Game:   Club='verde valley united fc-', Year='2016', Gender='boys', Designation='', Coach=''
+     Master: Club='verde valley united fc -', Year='2016', Gender='boys', Designation='', Coach=''
+
+113. 'Academia De Futbol Dallas 15B Reyes' → 'Academia De Futbol Dallas 15b' (1.000)
+     Game:   Club='academia de futbol dallas 15b', Year='2015', Gender='boys', Designation='', Coach='reyes'
+     Master: Club='academia de futbol dallas 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+114. '2015 Boys NEAL WHITE' → '2015 Boys NEAL White' (1.000)
+     Game:   Club='neal', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='neal', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+115. 'BVB 15B Pre ECNL Black East (Contreras)' → 'BVB 15B PreECNL Black East (Contreras)' (0.984)
+     Game:   Club='bvb 15b pre ecnl east (contreras)', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='bvb 15b preecnl east (contreras)', Year='2015', Gender='boys', Designation='black', Coach=''
+
+116. 'BVB 15B Pre ECNL White (DeSousa)' → 'BVB 15B PreECNL White (DeSousa)' (0.979)
+     Game:   Club='bvb 15b pre ecnl (desousa)', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='bvb 15b preecnl (desousa)', Year='2015', Gender='boys', Designation='white', Coach=''
+
+117. 'BVB 15B Pre ECNL Elite (Klassen)' → 'BVB 15B PreECNL Elite (Klassen)' (0.979)
+     Game:   Club='bvb 15b pre ecnl (klassen)', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='bvb 15b preecnl (klassen)', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+118. 'Fremont YSC 15B FN II' → 'Fremont YSC 15B FN III' (0.977)
+     Game:   Club='fremont ysc 15b fn ii', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='fremont ysc 15b fn iii', Year='2015', Gender='boys', Designation='', Coach=''
+
+119. 'SF Glens Academy 15B Pre-MLS I' → 'SF Glens Academy 15B Pre-MLS II Celtic' (0.977)
+     Game:   Club='sf glens 15b pre-mls i', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='sf glens 15b pre-mls ii', Year='2015', Gender='boys', Designation='academy', Coach='celtic'
+
+120. 'Club Ohio East 15B Academy II' → 'Club Ohio East 15B Academy III' (0.977)
+     Game:   Club='club ohio east 15b ii', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='club ohio east 15b iii', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+121. 'Monterey Surf 15B Academy II' → 'Monterey Surf 15B Academy I' (0.974)
+     Game:   Club='monterey surf 15b ii', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='monterey surf 15b i', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+122. 'VSA 15B Pre-ECNL I' → 'VSA 15B Pre-ECNL II' (0.971)
+     Game:   Club='vsa 15b pre-ecnl i', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='vsa 15b pre-ecnl ii', Year='2015', Gender='boys', Designation='', Coach=''
+
+123. 'Fusion SC 2015 Boys Evo II' → 'Fusion SC 2015 Boys Evo I' (0.968)
+     Game:   Club='fusion sc evo ii', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='fusion sc evo i', Year='2015', Gender='boys', Designation='', Coach=''
+
+124. 'FPFC 16B PRE ECNL II' → 'FPFC 16B PRE ECNL I' (0.968)
+     Game:   Club='fpfc 16b ecnl ii', Year='2016', Gender='boys', Designation='pre', Coach=''
+     Master: Club='fpfc 16b ecnl i', Year='2016', Gender='boys', Designation='pre', Coach=''
+
+125. 'ID PSG Academy Houston East 15B Blue EDPL' → 'ID PSG Academy Houston West 15B Blue EDPL' (0.968)
+     Game:   Club='id psg academy houston east 15b', Year='2015', Gender='boys', Designation='blue', Coach='edpl'
+     Master: Club='id psg academy houston west 15b', Year='2015', Gender='boys', Designation='blue', Coach='edpl'
+
+126. 'NWC Alliance 2016 Boys Premier 1' → 'NWC Alliance 15/16 (U10) Boys Premier' (0.966)
+     Game:   Club='nwc alliance 1', Year='2016', Gender='boys', Designation='premier', Coach=''
+     Master: Club='nwc alliance 15/ ()', Year='2016', Gender='boys', Designation='premier', Coach=''
+
+127. 'Atletico Dallas Youth FTW 16/15B Blue' → 'Atletico Dallas Youth FTW 16B Blue' (0.966)
+     Game:   Club='atletico dallas youth ftw /15b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='atletico dallas youth ftw 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+128. 'Potomac Premier I 15B' → 'Potomac Premier II 15B' (0.963)
+     Game:   Club='potomac i 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='potomac ii 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+129. '2015 Boys South Pre ECNL Black' → '2015 Boys South Pre-ECNL Black' (0.963)
+     Game:   Club='south pre ecnl', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='south pre-ecnl', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+130. 'Strikers United 2015 East Boys (BU11)' → 'Strikers United 2015 West Boys (BU11)' (0.960)
+     Game:   Club='strikers united east (bu11)', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='strikers united west (bu11)', Year='2015', Gender='boys', Designation='', Coach=''
+
+131. 'Michigan Jaguars Lansing 2015 Boys Green 2' → 'Michigan Jaguars Lansing 2015 Boys Green' (0.960)
+     Game:   Club='michigan jaguars lansing 2', Year='2015', Gender='boys', Designation='green', Coach=''
+     Master: Club='michigan jaguars lansing', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+132. 'Strikers United 2015 West Boys (BU10)' → 'Strikers United 2015 West Boys (BU11)' (0.960)
+     Game:   Club='strikers united west (bu10)', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='strikers united west (bu11)', Year='2015', Gender='boys', Designation='', Coach=''
+
+133. 'Barca Academy Austin 15B Green' → 'Barça Academy Austin 15B Green' (0.958)
+     Game:   Club='barca academy austin 15b', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='barça academy austin 15b', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+134. 'Barca Academy Austin 15B Blue' → 'Barca Academy Austin 15/16B Blue' (0.958)
+     Game:   Club='barca academy austin 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='barca academy austin /16b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+135. 'Santa Clara Sporting 15/16B Green' → 'Santa Clara Sporting 15B Green' (0.958)
+     Game:   Club='santa clara sporting /16b', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='santa clara sporting 15b', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+136. 'Inter Connecticut FC 2015 Boys SL' → 'Inter Connecticut FC 2015 Boys RL' (0.957)
+     Game:   Club='inter connecticut fc sl', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='inter connecticut fc rl', Year='2015', Gender='boys', Designation='', Coach=''
+
+137. 'Capital City SC 15/16B Sky South' → 'Capital City SC 15B Sky South' (0.957)
+     Game:   Club='capital city sc /16b sky', Year='2015', Gender='boys', Designation='', Coach='south'
+     Master: Club='capital city sc 15b sky', Year='2015', Gender='boys', Designation='', Coach='south'
+
+138. 'Fusion SC 2015 Boys Gold I' → 'Fusion SC 2015 Boys Gold II' (0.957)
+     Game:   Club='fusion sc i', Year='2015', Gender='boys', Designation='gold', Coach=''
+     Master: Club='fusion sc ii', Year='2015', Gender='boys', Designation='gold', Coach=''
+
+139. 'South 15B Select I' → 'South 15B Select II' (0.957)
+     Game:   Club='south 15b i', Year='2015', Gender='boys', Designation='select', Coach=''
+     Master: Club='south 15b ii', Year='2015', Gender='boys', Designation='select', Coach=''
+
+140. 'Columbia Premier SC 16B East 2' → 'Columbia Premier SC 16B East 3' (0.955)
+     Game:   Club='columbia sc 16b east 2', Year='2016', Gender='boys', Designation='premier', Coach=''
+     Master: Club='columbia sc 16b east 3', Year='2016', Gender='boys', Designation='premier', Coach=''
+
+141. 'Columbia Premier SC 16B East 1' → 'Columbia Premier SC 16B East 3' (0.955)
+     Game:   Club='columbia sc 16b east 1', Year='2016', Gender='boys', Designation='premier', Coach=''
+     Master: Club='columbia sc 16b east 3', Year='2016', Gender='boys', Designation='premier', Coach=''
+
+142. 'Columbia Premier SC 16B East 4' → 'Columbia Premier SC 16B East 3' (0.955)
+     Game:   Club='columbia sc 16b east 4', Year='2016', Gender='boys', Designation='premier', Coach=''
+     Master: Club='columbia sc 16b east 3', Year='2016', Gender='boys', Designation='premier', Coach=''
+
+143. 'DCFC City 15B Rouge 2' → 'DCFC City 15B Rouge DA2' (0.955)
+     Game:   Club='dcfc city 15b rouge 2', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='dcfc city 15b rouge da2', Year='2015', Gender='boys', Designation='', Coach=''
+
+144. 'West 16B Gold II' → 'West 16B Gold I' (0.952)
+     Game:   Club='west 16b ii', Year='2016', Gender='boys', Designation='gold', Coach=''
+     Master: Club='west 16b i', Year='2016', Gender='boys', Designation='gold', Coach=''
+
+145. 'AHFC 15B Blue W' → 'AHFC 15B Blue SW' (0.952)
+     Game:   Club='ahfc 15b w', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='ahfc 15b sw', Year='2015', Gender='boys', Designation='blue', Coach=''
+
+146. 'Midwest United FC 15-16B NMFC' → 'Midwest United FC 15B NMFC' (0.952)
+     Game:   Club='midwest united fc -16b', Year='2015', Gender='boys', Designation='', Coach='nmfc'
+     Master: Club='midwest united fc 15b', Year='2015', Gender='boys', Designation='', Coach='nmfc'
+
+147. 'Fremont YSC 15B FN I' → 'Fremont YSC 15B FN III' (0.952)
+     Game:   Club='fremont ysc 15b fn i', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='fremont ysc 15b fn iii', Year='2015', Gender='boys', Designation='', Coach=''
+
+148. 'Stanford Strikers 15B Pre ECNL RL II' → 'Stanford Strikers 15B Pre ECNL RL' (0.951)
+     Game:   Club='stanford strikers 15b ecnl rl ii', Year='2015', Gender='boys', Designation='pre', Coach=''
+     Master: Club='stanford strikers 15b ecnl rl', Year='2015', Gender='boys', Designation='pre', Coach=''
+
+149. 'Delaware County FC 2015 Boys 2' → 'Delaware County FC 2015 Boys 1' (0.950)
+     Game:   Club='delaware county fc 2', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='delaware county fc 1', Year='2015', Gender='boys', Designation='', Coach=''
+
+150. 'Evolution 2015 Boys Mercurial 2' → 'Evolution 2015 Boys Mercurial East' (0.950)
+     Game:   Club='evolution mercurial 2', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='evolution mercurial', Year='2015', Gender='boys', Designation='', Coach='east'
+
+151. 'Inter Connecticut 2015 Boys RL' → 'Inter Connecticut 2015 SL Boys' (0.950)
+     Game:   Club='inter connecticut rl', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='inter connecticut sl', Year='2015', Gender='boys', Designation='', Coach=''
+
+152. 'Pflugerville FC 15B Green' → 'Pflugerville FC 15/16B Green' (0.947)
+     Game:   Club='pflugerville fc 15b', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='pflugerville fc /16b', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+153. 'Ajax FC Naperville 2014 Boys White' → 'Ajax FC Naperville 2014 Boys White 2' (0.947)
+     Game:   Club='ajax fc naperville', Year='2014', Gender='boys', Designation='white', Coach='white'
+     Master: Club='ajax fc naperville 2', Year='2014', Gender='boys', Designation='white', Coach=''
+
+154. 'AZ Arsenal 15 Boys Teal 2 BD' → 'AZ Arsenal 15 Boys Teal BD' (0.947)
+     Game:   Club='az arsenal teal 2 bd', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='az arsenal teal bd', Year='2015', Gender='boys', Designation='', Coach=''
+
+155. 'Club Ohio West Pre MLS NEXT 15B II' → 'Club Ohio West Pre MLS NEXT 15B' (0.947)
+     Game:   Club='club ohio west mls next 15b ii', Year='2015', Gender='boys', Designation='pre', Coach=''
+     Master: Club='club ohio west mls next 15b', Year='2015', Gender='boys', Designation='pre', Coach=''
+
+156. 'AAYSA SJ Golden Tiger 15B Team' → 'AAYSA Golden Tiger 15B Team' (0.947)
+     Game:   Club='aaysa sj golden tiger 15b team', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='aaysa golden tiger 15b team', Year='2015', Gender='boys', Designation='', Coach=''
+
+157. 'Pittsburgh Riverhounds Academy 2015 Prep Boys' → 'Pittsburgh Riverhounds Academy Pre-RL 2015 Boys' (0.945)
+     Game:   Club='pittsburgh riverhounds prep', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='pittsburgh riverhounds pre-rl', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+158. 'UNITED FC GRAND ISLAND 15B (PH)' → 'UNITED FC GRAND ISLAND 15B' (0.945)
+     Game:   Club='united fc grand island 15b (ph)', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='united fc grand island 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+159. 'Club Ohio East 15B Academy' → 'Club Ohio West 15B Academy' (0.944)
+     Game:   Club='club ohio east 15b', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='club ohio west 15b', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+160. 'Houston Futsal SC 15B Pre-TX2' → 'Houston Futsal SC 15B TX2' (0.943)
+     Game:   Club='houston futsal sc 15b pre-tx2', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='houston futsal sc 15b tx2', Year='2015', Gender='boys', Designation='', Coach=''
+
+161. 'San Jose Rush 16/15B Academy' → 'San Jose Rush 16B Academy' (0.941)
+     Game:   Club='san jose rush /15b', Year='2016', Gender='boys', Designation='academy', Coach=''
+     Master: Club='san jose rush 16b', Year='2016', Gender='boys', Designation='academy', Coach=''
+
+162. 'FC Cleveland Flames U11 Boys' → 'FC Cleveland Flames U11 Boys 1' (0.941)
+     Game:   Club='fc cleveland flames', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='fc cleveland flames 1', Year='2015', Gender='boys', Designation='', Coach=''
+
+163. 'ID Rayados Aldine Jr 15B' → 'ID Rayados Aldine Jr 15B D2' (0.941)
+     Game:   Club='id rayados aldine jr 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='id rayados aldine jr 15b d2', Year='2015', Gender='boys', Designation='', Coach=''
+
+164. 'Ocala Premier 15/16 Boys Grey' → 'Ocala Premier 2015/2016 Boys Grey' (0.941)
+     Game:   Club='ocala premier /16', Year='2015', Gender='boys', Designation='grey', Coach='grey'
+     Master: Club='ocala premier /2016', Year='2015', Gender='boys', Designation='grey', Coach='grey'
+
+165. 'Lonestar 15B Navy Nth' → 'Lonestar 15B Navy Nth A' (0.941)
+     Game:   Club='lonestar 15b nth', Year='2015', Gender='boys', Designation='navy', Coach=''
+     Master: Club='lonestar 15b nth a', Year='2015', Gender='boys', Designation='navy', Coach=''
+
+166. 'EMFC 15B Monaco Comp 1' → 'EMFC 15B Monaco Comp 2' (0.941)
+     Game:   Club='emfc 15b monaco 1', Year='2015', Gender='boys', Designation='comp', Coach=''
+     Master: Club='emfc 15b monaco 2', Year='2015', Gender='boys', Designation='comp', Coach=''
+
+167. 'City SC Utah Premier 15B-HC' → 'City SC UT Premier 15B-HC' (0.941)
+     Game:   Club='city sc utah 15b-hc', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='city sc ut 15b-hc', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+168. 'San Jose Rush 16/15B Elite' → 'San Jose Rush 16B Elite' (0.941)
+     Game:   Club='san jose rush /15b', Year='2016', Gender='boys', Designation='elite', Coach=''
+     Master: Club='san jose rush 16b', Year='2016', Gender='boys', Designation='elite', Coach=''
+
+169. 'Players 15 Boys Juniors Academy 1' → 'Players 15 Boys Juniors Academy 2' (0.941)
+     Game:   Club='players juniors 1', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='players juniors 2', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+170. 'Grandview FC Boys 2015 - 4th Grade' → 'Grandview FC Boys 2015 - 5th Grade' (0.938)
+     Game:   Club='grandview fc - 4th', Year='2015', Gender='boys', Designation='', Coach='grade'
+     Master: Club='grandview fc - 5th', Year='2015', Gender='boys', Designation='', Coach='grade'
+
+171. 'Inter Connecticut FC - 2015 Boys Union' → 'Inter Connecticut FC 2015 Boys RL' (0.930)
+     Game:   Club='inter connecticut fc -', Year='2015', Gender='boys', Designation='', Coach='union'
+     Master: Club='inter connecticut fc rl', Year='2015', Gender='boys', Designation='', Coach=''
+
+172. 'Barcelona United Elite II 15B' → 'Barcelona United Elite 15B' (0.930)
+     Game:   Club='barcelona united ii 15b', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='barcelona united 15b', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+173. 'Inter Atlanta FC 15B SL Black' → 'Inter Atlanta FC 15B Black' (0.930)
+     Game:   Club='inter atlanta fc 15b sl', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='inter atlanta fc 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+174. 'One Knox 15B- YELLOW 2' → 'ONE KNOX 15B- YELLOW 1' (0.929)
+     Game:   Club='one knox 15b- 2', Year='2015', Gender='boys', Designation='yellow', Coach=''
+     Master: Club='one knox 15b- 1', Year='2015', Gender='boys', Designation='yellow', Coach=''
+
+175. 'CAU Force 2015/2016B White' → 'CAU Force 2015/16B White' (0.929)
+     Game:   Club='cau force /2016b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='cau force /16b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+176. 'Evolution SC 15 Boys Mercurial South' → 'Evolution 2015 Boys Mercurial South' (0.927)
+     Game:   Club='evolution sc mercurial', Year='2015', Gender='boys', Designation='', Coach='south'
+     Master: Club='evolution mercurial', Year='2015', Gender='boys', Designation='', Coach='south'
+
+177. 'Westside Metros 15B TS Samba' → 'Westside Metros 15B Samba' (0.927)
+     Game:   Club='westside metros 15b ts', Year='2015', Gender='boys', Designation='', Coach='samba'
+     Master: Club='westside metros 15b', Year='2015', Gender='boys', Designation='', Coach='samba'
+
+178. 'ID Texas Elite United 15B' → 'ID Texas Elite United 15B D2' (0.927)
+     Game:   Club='id texas united 15b', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='id texas united 15b d2', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+179. 'AHFC 15B Blue 2 CF' → 'AHFC 15B Blue A CF' (0.923)
+     Game:   Club='ahfc 15b 2 cf', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='ahfc 15b a cf', Year='2015', Gender='boys', Designation='blue', Coach=''
+
+180. 'AHFC 15B Blue 1 CF' → 'AHFC 15B Blue A CF' (0.923)
+     Game:   Club='ahfc 15b 1 cf', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='ahfc 15b a cf', Year='2015', Gender='boys', Designation='blue', Coach=''
+
+181. 'WSA Boys 2015/2016 White - BU10' → 'WSA Boys 2015/2016 White - BU11' (0.923)
+     Game:   Club='wsa /2016 - bu10', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='wsa /2016 - bu11', Year='2015', Gender='boys', Designation='white', Coach=''
+
+182. 'PSC 15B Pre-NextUp Green OR' → 'PSC 15B Pre-NextUp Green EDPL' (0.919)
+     Game:   Club='psc 15b pre-nextup or', Year='2015', Gender='boys', Designation='green', Coach=''
+     Master: Club='psc 15b pre-nextup', Year='2015', Gender='boys', Designation='green', Coach='edpl'
+
+183. 'PSC 15B Pre-NextUp Blue OR' → 'PSC 15B Pre-NextUp Blue' (0.919)
+     Game:   Club='psc 15b pre-nextup or', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='psc 15b pre-nextup', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+184. 'AHFC 15B Black 2 CF' → 'AHFC 15B Black B CF' (0.917)
+     Game:   Club='ahfc 15b 2 cf', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='ahfc 15b cf', Year='2015', Gender='boys', Designation='black', Coach=''
+
+185. 'Eclipse 2016 Lunar Naperville Boys' → 'Eclipse 2016 Solar Naperville Boys' (0.917)
+     Game:   Club='eclipse lunar naperville', Year='2016', Gender='boys', Designation='', Coach=''
+     Master: Club='eclipse solar naperville', Year='2016', Gender='boys', Designation='', Coach=''
+
+186. 'AHFC 15B Black 1 SW' → 'AHFC 15B Black SW' (0.917)
+     Game:   Club='ahfc 15b 1 sw', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='ahfc 15b sw', Year='2015', Gender='boys', Designation='black', Coach=''
+
+187. 'AHFC 15B Blue 1 SW' → 'AHFC 15B Blue SW' (0.917)
+     Game:   Club='ahfc 15b 1 sw', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='ahfc 15b sw', Year='2015', Gender='boys', Designation='blue', Coach=''
+
+188. 'ECFC 15/16B Pre-ECNL' → 'ECFC 15B Pre-ECNL' (0.917)
+     Game:   Club='ecfc /16b pre-', Year='2015', Gender='boys', Designation='', Coach='ecnl'
+     Master: Club='ecfc 15b pre-', Year='2015', Gender='boys', Designation='', Coach='ecnl'
+
+189. 'FCDA 15B Pre - Academy' → 'FCDA 2015/16B Pre - Academy' (0.917)
+     Game:   Club='fcda 15b pre -', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='fcda /16b pre -', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+190. '15b FPFC TRY ELITE' → '15B FPFC TRP ELITE' (0.917)
+     Game:   Club='15b fpfc try', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='15b fpfc trp', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+191. 'AHFC 15B Black 2 SW' → 'AHFC 15B Black SW' (0.917)
+     Game:   Club='ahfc 15b 2 sw', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='ahfc 15b sw', Year='2015', Gender='boys', Designation='black', Coach=''
+
+192. 'Westlake Boys 2015 White (D6W)' → 'Westlake Boys 2015 White (D5W)' (0.917)
+     Game:   Club='westlake (d6w)', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='westlake (d5w)', Year='2015', Gender='boys', Designation='white', Coach=''
+
+193. 'Michigan Jaguars Northville 2014 U11 Boys Green' → 'Michigan Jaguars Northville 2015 U11 Boys Green' (0.915)
+     Game:   Club='michigan jaguars northville 2014', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars northville', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+194. 'H-Town Soccer Academy 15B OR' → 'H-Town Soccer Academy 15B' (0.914)
+     Game:   Club='h-town soccer 15b or', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='h-town soccer 15b', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+195. 'NEFC North Shore Boys 2015 Navy w/s' → 'NEFC North Shore Boys 2015 Navy' (0.914)
+     Game:   Club='nefc north shore w/s', Year='2015', Gender='boys', Designation='navy', Coach=''
+     Master: Club='nefc north shore', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+
+196. 'PSC Monart Ravens 15B' → 'PSC Monart Ravens 15B D2L' (0.913)
+     Game:   Club='psc monart ravens 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='psc monart ravens 15b d2l', Year='2015', Gender='boys', Designation='', Coach=''
+
+197. 'Rancocas Valley SC Boys 2015 United' → 'Rancocas Valley SC 2015 Boys Stealth' (0.909)
+     Game:   Club='rancocas valley sc united', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='rancocas valley sc', Year='2015', Gender='boys', Designation='', Coach='stealth'
+
+198. 'PPA 2015 Yellow I Boys' → 'PPA 2015 Yellow II Boys' (0.909)
+     Game:   Club='ppa i', Year='2015', Gender='boys', Designation='yellow', Coach=''
+     Master: Club='ppa ii', Year='2015', Gender='boys', Designation='yellow', Coach=''
+
+199. 'AHFC 15B Blue 2 C' → 'AHFC 15B Blue C' (0.909)
+     Game:   Club='ahfc 15b 2 c', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='ahfc 15b c', Year='2015', Gender='boys', Designation='blue', Coach=''
+
+200. 'Columbia Premier SC 16B West 1' → 'Columbia Premier SC 16B East 3' (0.909)
+     Game:   Club='columbia sc 16b west 1', Year='2016', Gender='boys', Designation='premier', Coach=''
+     Master: Club='columbia sc 16b east 3', Year='2016', Gender='boys', Designation='premier', Coach=''
+
+201. '15B FPFC WC ELITE' → '15B FPFC CP ELITE' (0.909)
+     Game:   Club='15b fpfc wc', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='15b fpfc cp', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+202. 'AHFC 15B White 2 C' → 'AHFC 15B White C' (0.909)
+     Game:   Club='ahfc 15b 2 c', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='ahfc 15b c', Year='2015', Gender='boys', Designation='white', Coach=''
+
+203. '15B FPFC WC RED' → '15B FPFC CP RED' (0.909)
+     Game:   Club='15b fpfc wc', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='15b fpfc cp', Year='2015', Gender='boys', Designation='red', Coach=''
+
+204. 'Phoenix Premier FC 15B SW' → 'Phoenix Premier FC 15B X-Factor' (0.909)
+     Game:   Club='phoenix fc 15b sw', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='phoenix fc 15b x-', Year='2015', Gender='boys', Designation='premier', Coach='factor'
+
+205. 'Rancocas Valley SC Boys United 2015' → 'Rancocas Valley SC 2015 Boys Stealth' (0.909)
+     Game:   Club='rancocas valley sc united', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='rancocas valley sc', Year='2015', Gender='boys', Designation='', Coach='stealth'
+
+206. 'Phoenix Premier FC 15B CG' → 'Phoenix Premier FC 15B X-Factor' (0.909)
+     Game:   Club='phoenix fc 15b cg', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='phoenix fc 15b x-', Year='2015', Gender='boys', Designation='premier', Coach='factor'
+
+207. 'Chicago City SC 15B III' → 'Chicago City SC 2015 Boys III' (0.905)
+     Game:   Club='chicago city sc 15b iii', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='chicago city sc iii', Year='2015', Gender='boys', Designation='', Coach=''
+
+208. 'Savannah United 14B West' → 'Savannah United 14B Dev' (0.905)
+     Game:   Club='savannah united 14b', Year='2014', Gender='boys', Designation='', Coach='west'
+     Master: Club='savannah united 14b dev', Year='2014', Gender='boys', Designation='', Coach=''
+
+209. 'Players 15 Boys Junior Academy' → 'Players 15 Boys Juniors Academy 2' (0.903)
+     Game:   Club='players junior', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='players juniors 2', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+210. 'Cary Defenders 2015 Boys Gray' → 'Cary SA Defenders 2015 Boys Gray' (0.903)
+     Game:   Club='cary defenders', Year='2015', Gender='boys', Designation='gray', Coach='gray'
+     Master: Club='cary sa defenders', Year='2015', Gender='boys', Designation='gray', Coach='gray'
+
+211. 'Hammonton Heat Boys 2015' → 'Hammonton Heat F.C. Boys 2015' (0.903)
+     Game:   Club='hammonton heat', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='hammonton heat f.c.', Year='2015', Gender='boys', Designation='', Coach=''
+
+212. 'Revolution 15B Grey II' → 'Revolution 15B Grey' (0.903)
+     Game:   Club='revolution 15b ii', Year='2015', Gender='boys', Designation='grey', Coach=''
+     Master: Club='revolution 15b', Year='2015', Gender='boys', Designation='grey', Coach='grey'
+
+213. 'CF SL 15B Central Black' → 'CF 15B Central Black' (0.903)
+     Game:   Club='cf sl 15b central', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='cf 15b central', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+214. 'PSC 15B NextUp Blue' → 'PSC 15B Pre-NextUp Blue' (0.903)
+     Game:   Club='psc 15b nextup', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='psc 15b pre-nextup', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+215. 'San Angelo Elite 15B 75' → 'San Angelo Elite 15B' (0.903)
+     Game:   Club='san angelo 15b 75', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='san angelo 15b', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+216. 'Las Vegas Sports Academy U10 Boys Copper 2016' → 'Las Vegas Sports Academy U10 Boys Copper 2015' (0.902)
+     Game:   Club='las vegas sports copper', Year='2016', Gender='boys', Designation='academy', Coach=''
+     Master: Club='las vegas sports copper 2015', Year='2016', Gender='boys', Designation='academy', Coach=''
+
+217. 'Hudson United 2015 Boys Blue GREY 1' → 'Hudson United 2015 Boys Blue RENN 1' (0.900)
+     Game:   Club='hudson united grey 1', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='hudson united renn 1', Year='2015', Gender='boys', Designation='blue', Coach=''
+
+218. 'HTX West 16B Gold I' → 'West 16B Gold I' (0.900)
+     Game:   Club='htx west 16b i', Year='2016', Gender='boys', Designation='gold', Coach=''
+     Master: Club='west 16b i', Year='2016', Gender='boys', Designation='gold', Coach=''
+
+219. '15B Pre ECNL RL' → '15B Pre Ecnl Vivid' (0.900)
+     Game:   Club='15b ecnl rl', Year='2015', Gender='boys', Designation='pre', Coach=''
+     Master: Club='15b ecnl', Year='2015', Gender='boys', Designation='pre', Coach='vivid'
+
+220. 'South 15B Gold I' → 'South 15B Gold' (0.900)
+     Game:   Club='south 15b i', Year='2015', Gender='boys', Designation='gold', Coach=''
+     Master: Club='south 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+221. 'Manitou FC 15B Academy Orange' → 'Manitou FC 2015 Boys Academy Orange' (0.900)
+     Game:   Club='manitou fc 15b academy', Year='2015', Gender='boys', Designation='orange', Coach='orange'
+     Master: Club='manitou fc academy', Year='2015', Gender='boys', Designation='orange', Coach='orange'
+
+222. 'Manitou FC 2015 Boys Orange' → 'Manitou FC 2015 Boys Academy Orange' (0.900)
+     Game:   Club='manitou fc', Year='2015', Gender='boys', Designation='orange', Coach='orange'
+     Master: Club='manitou fc academy', Year='2015', Gender='boys', Designation='orange', Coach='orange'
+
+223. 'FC Dallas Youth 15B North Blue' → 'FC Dallas Youth 15B Blue' (0.900)
+     Game:   Club='fc dallas youth 15b north', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='fc dallas youth 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+224. '2015-2016 GSC Boys White 2' → '2015-2016 GSC Boys White' (0.900)
+     Game:   Club='-2016 gsc 2', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='-2016 gsc', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+225. 'Croatia Juniors 2015/2016 Boys White' → 'Croatia Juniors 2015 Boys White' (0.900)
+     Game:   Club='croatia juniors /2016', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='croatia juniors', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+226. 'Legacy 2015 Boys White 2' → 'Legacy 2015 Boys White' (0.900)
+     Game:   Club='legacy 2', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='legacy', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+227. 'South 15B Gold II' → 'South 15B Gold' (0.900)
+     Game:   Club='south 15b ii', Year='2015', Gender='boys', Designation='gold', Coach=''
+     Master: Club='south 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+228. 'Dutch Lions 15B Sparta' → 'Dutch Lions 15B PSV' (0.900)
+     Game:   Club='dutch lions 15b', Year='2015', Gender='boys', Designation='', Coach='sparta'
+     Master: Club='dutch lions 15b psv', Year='2015', Gender='boys', Designation='', Coach=''
+
+229. 'HTX Sienna 15B Black' → 'Sienna 15B Black' (0.900)
+     Game:   Club='htx sienna 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='sienna 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+230. 'NWC Alliance 2016 Boys Elite' → 'NWC Alliance 15/16 (U10) Boys Elite' (0.900)
+     Game:   Club='nwc alliance', Year='2016', Gender='boys', Designation='elite', Coach=''
+     Master: Club='nwc alliance 15/ ()', Year='2016', Gender='boys', Designation='elite', Coach=''
+
+231. 'Coppell FC 15B Hernandez White' → 'INACTIVE Coppell FC 15B Hernandez White' (0.900)
+     Game:   Club='coppell fc 15b hernandez', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='inactive coppell fc 15b hernandez', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+232. 'SSA Swarm Cartersville 15B-Morgans' → 'SSA Swarm Cartersville 15B-Morgans...' (0.900)
+     Game:   Club='ssa swarm cartersville 15b-', Year='2015', Gender='boys', Designation='', Coach='morgans'
+     Master: Club='ssa swarm cartersville 15b-morgans...', Year='2015', Gender='boys', Designation='', Coach=''
+
+233. 'Dickinson SC U9/10B Orange' → 'Dickinson SC U9/10 Boys Orange' (0.900)
+     Game:   Club='dickinson sc /10b', Year='2010', Gender='boys', Designation='orange', Coach='orange'
+     Master: Club='dickinson sc /', Year='2010', Gender='boys', Designation='orange', Coach='orange'
+
+234. 'FC Dallas Youth 15B Navy' → 'FC Dallas Youth 15B North Navy' (0.900)
+     Game:   Club='fc dallas youth 15b', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+     Master: Club='fc dallas youth 15b north', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+
+235. 'Dallas Surf 15B Ace' → 'Dallas Surf 15B ARCH' (0.900)
+     Game:   Club='dallas surf 15b ace', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='dallas surf 15b', Year='2015', Gender='boys', Designation='', Coach='arch'
+
+236. 'MISSISSIPPI RUSH 2015 BOYS MADISON ELITE WHITE' → '2024_2025 MISSISSIPPI RUSH 2015 BOYS MADISON ELITE WHITE' (0.900)
+     Game:   Club='mississippi rush madison elite', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='2024_2025 mississippi rush madison elite', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+237. 'NWC Alliance 2016 Boys Premier' → 'NWC Alliance 15/16 (U10) Boys Premier' (0.900)
+     Game:   Club='nwc alliance', Year='2016', Gender='boys', Designation='premier', Coach=''
+     Master: Club='nwc alliance 15/ ()', Year='2016', Gender='boys', Designation='premier', Coach=''
+
+238. 'Auburndale Scream 2014 U11 Boys' → 'Auburndale Scream 2015 U11 Boys' (0.900)
+     Game:   Club='auburndale scream 2014', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='auburndale scream', Year='2015', Gender='boys', Designation='', Coach=''
+
+239. 'MEXICO Americas FC '15B - DeLa Cerda' → 'Americas FC '15B - DeLa Cerda' (0.900)
+     Game:   Club='mexico americas fc '15b - dela', Year='2015', Gender='boys', Designation='', Coach='cerda'
+     Master: Club='americas fc '15b - dela', Year='2015', Gender='boys', Designation='', Coach='cerda'
+
+240. 'Belmont United 15B Sounders Grey' → 'DO NOT USE - Belmont United 15B Sounders Grey' (0.900)
+     Game:   Club='belmont united 15b sounders', Year='2015', Gender='boys', Designation='grey', Coach='grey'
+     Master: Club='do not use - belmont united 15b sounders', Year='2015', Gender='boys', Designation='grey', Coach='grey'
+
+241. '15B South Red' → 'CF 15B South Red' (0.900)
+     Game:   Club='15b south', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='cf 15b south', Year='2015', Gender='boys', Designation='red', Coach=''
+
+242. 'Sporting Columbus Boys 2015 Bexley' → 'Sporting Columbus Boys 2015 COPL I' (0.900)
+     Game:   Club='sporting columbus', Year='2015', Gender='boys', Designation='', Coach='bexley'
+     Master: Club='sporting columbus copl i', Year='2015', Gender='boys', Designation='', Coach=''
+
+243. 'Dickinson SC U9/10B White' → 'Dickinson SC U9/10 Boys White' (0.900)
+     Game:   Club='dickinson sc /10b', Year='2010', Gender='boys', Designation='white', Coach='white'
+     Master: Club='dickinson sc /', Year='2010', Gender='boys', Designation='white', Coach='white'
+
+244. 'Woodlands 15B White' → 'HTX Woodlands 15B White' (0.900)
+     Game:   Club='woodlands 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='htx woodlands 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+245. 'Manchester AC Houston 2015 Boys' → 'ID Manchester AC Houston 15B' (0.900)
+     Game:   Club='manchester ac houston', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='id manchester ac houston 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+246. 'TBAYS North Storm '15B White' → 'North Storm '15B White' (0.900)
+     Game:   Club='tbays north storm '15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='north storm '15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+247. 'Michigan Jaguars Novi 2015 Boys Black' → 'Michigan Jaguars GN 2015 Boys Black' (0.900)
+     Game:   Club='michigan jaguars novi', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='michigan jaguars gn', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+248. 'RNYFC 2015 Boys Pre-MLS Next II' → '2015 Boys Pre-MLS Next II' (0.900)
+     Game:   Club='rnyfc pre-mls next ii', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='pre-mls next ii', Year='2015', Gender='boys', Designation='', Coach=''
+
+249. 'Boys 2015 - Purple - DeWine - West 4' → 'Zzz - Boys 2015 - Purple - DeWine - West 4' (0.900)
+     Game:   Club='- - dewine - west 4', Year='2015', Gender='boys', Designation='purple', Coach=''
+     Master: Club='zzz - - - dewine - west 4', Year='2015', Gender='boys', Designation='purple', Coach=''
+
+250. 'Neutral - Capital City SC 15B Navy North' → 'Capital City SC 15B Navy North' (0.900)
+     Game:   Club='neutral - capital city sc 15b', Year='2015', Gender='boys', Designation='navy', Coach='north'
+     Master: Club='capital city sc 15b', Year='2015', Gender='boys', Designation='navy', Coach='north'
+
+251. 'Legacy 2015 Boys White 1' → 'Legacy 2015 Boys White' (0.900)
+     Game:   Club='legacy 1', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='legacy', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+252. 'Lonestar 15B Navy Nth A (Parra)' → 'Lonestar 15B Navy Nth A' (0.900)
+     Game:   Club='lonestar 15b nth a (parra)', Year='2015', Gender='boys', Designation='navy', Coach=''
+     Master: Club='lonestar 15b nth a', Year='2015', Gender='boys', Designation='navy', Coach=''
+
+253. 'Palo Alto SC 15B Blue Pre Academy' → 'Palo Alto SC 15B Blue' (0.900)
+     Game:   Club='palo alto sc 15b pre academy', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='palo alto sc 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+254. 'Michigan Jaguars HV 2015 Boys Green' → 'Michigan Jaguars Novi 2015 Boys Green' (0.900)
+     Game:   Club='michigan jaguars hv', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars novi', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+255. 'Javanon 2015/16 Boys Black' → 'Javanon 2015 Boys Black' (0.900)
+     Game:   Club='javanon /16', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='javanon', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+256. 'AFC Lightning 15B SCCL Gold' → 'AFC Lightning 15B Gold' (0.900)
+     Game:   Club='afc lightning 15b sccl', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='afc lightning 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+257. 'PSG ACADEMY CHICAGO U11 BOYS LEMONT' → 'PSG ACADEMY CHICAGO 2015 BOYS PRE-ACADEMY' (0.900)
+     Game:   Club='psg chicago', Year='2015', Gender='boys', Designation='academy', Coach='lemont'
+     Master: Club='psg chicago pre-', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+258. 'HTX Sienna 15B Gold' → 'Sienna 15B Gold' (0.900)
+     Game:   Club='htx sienna 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='sienna 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+259. 'Lonestar 15B Leadership Nth (Gottardi)' → 'Lonestar 15B Leadership Nth' (0.900)
+     Game:   Club='lonestar 15b leadership nth (gottardi)', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='lonestar 15b leadership nth', Year='2015', Gender='boys', Designation='', Coach=''
+
+260. 'Queen City FC U11 (2014) Boys Premier' → 'Queen City FC U11 (2015) Boys Premier' (0.900)
+     Game:   Club='queen city fc (2014)', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='queen city fc ()', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+261. 'Sporting Columbus Boys 2015 I' → 'Sporting Columbus Boys 2015 NPL' (0.900)
+     Game:   Club='sporting columbus i', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='sporting columbus npl', Year='2015', Gender='boys', Designation='', Coach=''
+
+262. 'Manitou FC 15B Academy Black' → 'Manitou FC 2015 Boys Academy Black' (0.900)
+     Game:   Club='manitou fc 15b academy', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='manitou fc academy', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+263. 'Michigan Jaguars Novi 2015 Boys Bronze' → 'Michigan Jaguars Novi 2015 Boys Green-DA' (0.900)
+     Game:   Club='michigan jaguars novi', Year='2015', Gender='boys', Designation='', Coach='bronze'
+     Master: Club='michigan jaguars novi green-da', Year='2015', Gender='boys', Designation='', Coach=''
+
+264. 'Cleveland Select U11/12 Boys' → 'Cleveland Select U11 Boys' (0.900)
+     Game:   Club='cleveland /12', Year='2015', Gender='boys', Designation='select', Coach=''
+     Master: Club='cleveland', Year='2015', Gender='boys', Designation='select', Coach=''
+
+265. 'Neutral - Capital City SC 15B White North' → 'Capital City SC 15B White North' (0.900)
+     Game:   Club='neutral - capital city sc 15b', Year='2015', Gender='boys', Designation='white', Coach='north'
+     Master: Club='capital city sc 15b', Year='2015', Gender='boys', Designation='white', Coach='north'
+
+266. 'Pima Surf Academy Boys 15/16' → 'Pima Surf Academy Boys 15' (0.900)
+     Game:   Club='pima surf /16', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='pima surf', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+267. 'FC Dallas Youth 15B North White' → 'FC Dallas Youth 15B White' (0.900)
+     Game:   Club='fc dallas youth 15b north', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='fc dallas youth 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+268. 'Liverpool FC IA Utah Premier 15B BK' → 'Liverpool FC IA - Premier 15B (BK)' (0.898)
+     Game:   Club='liverpool fc ia utah 15b bk', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='liverpool fc ia - 15b (bk)', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+269. 'NWC Alliance 2016 Boys Premier 2' → 'NWC Alliance 15/16 (U10) Boys Premier' (0.897)
+     Game:   Club='nwc alliance 2', Year='2016', Gender='boys', Designation='premier', Coach=''
+     Master: Club='nwc alliance 15/ ()', Year='2016', Gender='boys', Designation='premier', Coach=''
+
+270. 'Michigan Jaguars WB 2015 Boys Green' → 'Michigan Jaguars GN 2015 Boys Green' (0.895)
+     Game:   Club='michigan jaguars wb', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars gn', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+271. 'AZ Arsenal 15 Boys Teal 2 CC' → 'AZ Arsenal 15 Boys Teal CE' (0.895)
+     Game:   Club='az arsenal teal 2 cc', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='az arsenal teal ce', Year='2015', Gender='boys', Designation='', Coach=''
+
+272. 'BVB 15B White 9v9 (DeSousa)' → 'BVB 15B White 7v7 (DeSousa)' (0.895)
+     Game:   Club='bvb 15b 9v9 (desousa)', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='bvb 15b 7v7 (desousa)', Year='2015', Gender='boys', Designation='white', Coach=''
+
+273. 'AZ Arsenal 15 Boys Teal 1 OC' → 'AZ Arsenal 15 Boys Teal CE' (0.895)
+     Game:   Club='az arsenal teal 1 oc', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='az arsenal teal ce', Year='2015', Gender='boys', Designation='', Coach=''
+
+274. 'Tournament Time - Apex 2015 Boys' → 'Tournament Time - GA 2015 Boys' (0.895)
+     Game:   Club='tournament time - apex', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='tournament time - ga', Year='2015', Gender='boys', Designation='', Coach=''
+
+275. 'Eclipse 2016 Nova Naperville Boys' → 'Eclipse 2016 Solar Naperville Boys' (0.894)
+     Game:   Club='eclipse nova naperville', Year='2016', Gender='boys', Designation='', Coach=''
+     Master: Club='eclipse solar naperville', Year='2016', Gender='boys', Designation='', Coach=''
+
+276. 'NY Rush Select 15B Pre-NAL' → 'NY Rush Select 15B Pre-MLS Next' (0.889)
+     Game:   Club='ny rush 15b pre-nal', Year='2015', Gender='boys', Designation='select', Coach=''
+     Master: Club='ny rush 15b pre-mls', Year='2015', Gender='boys', Designation='select', Coach='next'
+
+277. 'CCV STARS 15 Boys Orange EAV' → 'CCV Stars 15 Boys East Orange' (0.889)
+     Game:   Club='ccv stars eav', Year='2015', Gender='boys', Designation='orange', Coach=''
+     Master: Club='ccv stars east', Year='2015', Gender='boys', Designation='orange', Coach='orange'
+
+278. 'Next Level Soccer Northwest 2015 Boys Black' → 'Next Level Soccer Southeast 2015 Boys Black' (0.889)
+     Game:   Club='next level soccer northwest', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='next level soccer southeast', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+279. '2015 Chicago Rush South Premier Boys' → '2015 Chicago Rush North Boys Premier' (0.889)
+     Game:   Club='chicago rush south', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='chicago rush north', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+280. 'Sporting Columbus Boys 2015 II' → 'Sporting Columbus Boys 2015 COPL II' (0.889)
+     Game:   Club='sporting columbus ii', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='sporting columbus copl ii', Year='2015', Gender='boys', Designation='', Coach=''
+
+281. 'NEFC SS Blazers Boys 2015' → 'NEFC Blazers Boys 2015' (0.889)
+     Game:   Club='nefc ss blazers', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='nefc blazers', Year='2015', Gender='boys', Designation='', Coach=''
+
+282. 'BVB 15B White (Desousa)' → 'BVB 15B White 7v7 (DeSousa)' (0.882)
+     Game:   Club='bvb 15b (desousa)', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='bvb 15b 7v7 (desousa)', Year='2015', Gender='boys', Designation='white', Coach=''
+
+283. 'BVB 15B White (DeSousa)' → 'BVB 15B White 7v7 (DeSousa)' (0.882)
+     Game:   Club='bvb 15b (desousa)', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='bvb 15b 7v7 (desousa)', Year='2015', Gender='boys', Designation='white', Coach=''
+
+284. 'Players 15 Boys Junior Academy (NV)' → 'Players 15 Boys Juniors Academy 2' (0.882)
+     Game:   Club='players junior (nv)', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='players juniors 2', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+285. 'SMC Seals 15B White' → 'SF Seals 15B White' (0.880)
+     Game:   Club='smc seals 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='sf seals 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+286. 'Sporting Columbus Boys 2015 IV' → 'Sporting Columbus Boys 2015 NPL' (0.878)
+     Game:   Club='sporting columbus iv', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='sporting columbus npl', Year='2015', Gender='boys', Designation='', Coach=''
+
+287. 'Inter Connecticut 2015 EDP Boys' → 'Inter Connecticut 2015 SL Boys' (0.878)
+     Game:   Club='inter connecticut edp', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='inter connecticut sl', Year='2015', Gender='boys', Designation='', Coach=''
+
+288. 'Inter CT FC - Union 2015 Boys EDP' → 'Inter CT FC - Union 2015 Boys SL' (0.878)
+     Game:   Club='inter ct fc - union edp', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='inter ct fc - union sl', Year='2015', Gender='boys', Designation='', Coach=''
+
+289. 'Inter Connecticut 2015 Boys EDP' → 'Inter Connecticut 2015 SL Boys' (0.878)
+     Game:   Club='inter connecticut edp', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='inter connecticut sl', Year='2015', Gender='boys', Designation='', Coach=''
+
+290. 'WSA Boys 2015 Gold - BU10' → 'WSA Boys 2015 Gold - BU11' (0.875)
+     Game:   Club='wsa - bu10', Year='2015', Gender='boys', Designation='gold', Coach=''
+     Master: Club='wsa - bu11', Year='2015', Gender='boys', Designation='gold', Coach=''
+
+291. 'Avalanche 15B Black DW' → 'Avalanche 15B Black SL' (0.875)
+     Game:   Club='avalanche 15b dw', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='avalanche 15b sl', Year='2015', Gender='boys', Designation='black', Coach=''
+
+292. 'Michigan Jaguars Northville 2015 U11 Boys White' → 'Michigan Jaguars Novi 2015 Boys White' (0.875)
+     Game:   Club='michigan jaguars northville', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='michigan jaguars novi', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+293. 'Polaris SC 2015 Boys Sky' → 'Polaris SC 15B Sky' (0.875)
+     Game:   Club='polaris sc sky', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='polaris sc 15b sky', Year='2015', Gender='boys', Designation='', Coach=''
+
+294. 'Michigan Jaguars CW3 2015 Boys Green' → 'Michigan Jaguars GN 2015 Boys Green' (0.872)
+     Game:   Club='michigan jaguars cw3', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars gn', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+295. 'AHFC 15B Black 2 W' → 'AHFC 15B Black SW' (0.870)
+     Game:   Club='ahfc 15b 2 w', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='ahfc 15b sw', Year='2015', Gender='boys', Designation='black', Coach=''
+
+296. 'AHFC 15B Black 1 W' → 'AHFC 15B Black SW' (0.870)
+     Game:   Club='ahfc 15b 1 w', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='ahfc 15b sw', Year='2015', Gender='boys', Designation='black', Coach=''
+
+297. 'Sporting Columbus Boys 2015 III' → 'Sporting Columbus Boys 2015 COPL II' (0.870)
+     Game:   Club='sporting columbus iii', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='sporting columbus copl ii', Year='2015', Gender='boys', Designation='', Coach=''
+
+298. 'DCFC City 15B Rouge 7v7' → 'DCFC City 15B Rouge DA2' (0.870)
+     Game:   Club='dcfc city 15b rouge 7v7', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='dcfc city 15b rouge da2', Year='2015', Gender='boys', Designation='', Coach=''
+
+299. 'AHFC 15B White 2 CF' → 'AHFC 15B White C' (0.870)
+     Game:   Club='ahfc 15b 2 cf', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='ahfc 15b c', Year='2015', Gender='boys', Designation='white', Coach=''
+
+300. 'AHFC 15B White 1 CF' → 'AHFC 15B White C' (0.870)
+     Game:   Club='ahfc 15b 1 cf', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='ahfc 15b c', Year='2015', Gender='boys', Designation='white', Coach=''
+
+301. 'AHFC 15B Black 2 C' → 'AHFC 15B Black B CF' (0.870)
+     Game:   Club='ahfc 15b 2 c', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='ahfc 15b cf', Year='2015', Gender='boys', Designation='black', Coach=''
+
+302. 'DCFC City 15B Rouge 9v9' → 'DCFC City 15B Rouge DA2' (0.870)
+     Game:   Club='dcfc city 15b rouge 9v9', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='dcfc city 15b rouge da2', Year='2015', Gender='boys', Designation='', Coach=''
+
+303. 'AHFC 15B Black 1 C' → 'AHFC 15B Black B CF' (0.870)
+     Game:   Club='ahfc 15b 1 c', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='ahfc 15b cf', Year='2015', Gender='boys', Designation='black', Coach=''
+
+304. 'Central Rising 15B Burgundy II' → 'Central 15B Burgundy II' (0.868)
+     Game:   Club='central rising 15b burgundy ii', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='central 15b burgundy ii', Year='2015', Gender='boys', Designation='', Coach=''
+
+305. 'SWAT '16B - AO (SFC)' → 'SWAT '16B - JB (SFC)' (0.867)
+     Game:   Club='swat '16b - ao (sfc)', Year='2016', Gender='boys', Designation='', Coach=''
+     Master: Club='swat '16b - jb (sfc)', Year='2016', Gender='boys', Designation='', Coach=''
+
+306. 'DKSC 15B CENTRAL BLACK' → 'CF 15B Central Black' (0.867)
+     Game:   Club='dksc 15b central', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='cf 15b central', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+307. 'Avalanche Boys 15 White DW2' → 'Avalanche 15B White DW2' (0.867)
+     Game:   Club='avalanche dw2', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='avalanche 15b dw2', Year='2015', Gender='boys', Designation='white', Coach=''
+
+308. 'AYSO United NM 15B White' → 'AYSO United GEO 15B White' (0.865)
+     Game:   Club='ayso united nm 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='ayso united geo 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+309. 'Libertyville FC 1974 Premier-15 Boys' → 'Libertyville FC 1974 Elite-15 Boys 1' (0.857)
+     Game:   Club='libertyville fc 1974 premier-', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='libertyville fc 1974 elite- 1', Year='2015', Gender='boys', Designation='', Coach=''
+
+310. 'Rayos 15B Hernandez' → 'Rayos FC 15B Hernandez' (0.857)
+     Game:   Club='rayos 15b', Year='2015', Gender='boys', Designation='', Coach='hernandez'
+     Master: Club='rayos fc 15b', Year='2015', Gender='boys', Designation='', Coach='hernandez'
+
+311. 'Avalanche Boys 15 Black SL' → 'Avalanche 15B Black SL' (0.857)
+     Game:   Club='avalanche sl', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='avalanche 15b sl', Year='2015', Gender='boys', Designation='black', Coach=''
+
+312. 'West Valley 2015 Boys Valencia Pre-Elite 64' → 'West Valley 2015 Boys Valencia Pre-Premier' (0.857)
+     Game:   Club='west valley valencia pre-elite 64', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='west valley valencia pre-premier', Year='2015', Gender='boys', Designation='', Coach=''
+
+313. 'SGA 15b Premier' → 'SGA 15/16B Premier' (0.857)
+     Game:   Club='sga 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='sga /16b', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+314. 'Elite White 14B' → 'Elite FC 14B White' (0.857)
+     Game:   Club='elite 14b', Year='2014', Gender='boys', Designation='white', Coach=''
+     Master: Club='elite fc 14b', Year='2014', Gender='boys', Designation='white', Coach='white'
+
+315. 'Avalanche Boys 15 Blue DW' → 'Avalanche 15B Blue DW' (0.857)
+     Game:   Club='avalanche dw', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='avalanche 15b dw', Year='2015', Gender='boys', Designation='blue', Coach=''
+
+316. 'CCV STARS 15 Boys Orange SUR' → 'CCV Stars 15 Boys South Orange' (0.857)
+     Game:   Club='ccv stars sur', Year='2015', Gender='boys', Designation='orange', Coach=''
+     Master: Club='ccv stars south', Year='2015', Gender='boys', Designation='orange', Coach='orange'
+
+317. 'Las Vegas Sports Academy U10 Boys Onix 2015' → 'Las Vegas Sports Academy U10 Boys Copper 2015' (0.852)
+     Game:   Club='las vegas sports onix 2015', Year='2016', Gender='boys', Designation='academy', Coach=''
+     Master: Club='las vegas sports copper 2015', Year='2016', Gender='boys', Designation='academy', Coach=''
+
+318. 'Las Vegas Sports Academy U11 Boys Onyx 2014' → 'Las Vegas Sports Academy U11 Boys Onix 2015' (0.851)
+     Game:   Club='las vegas sports onyx 2014', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='las vegas sports onix', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+319. 'Central Rising 15B Burgundy I' → 'Central 15B Burgundy II' (0.846)
+     Game:   Club='central rising 15b burgundy i', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='central 15b burgundy ii', Year='2015', Gender='boys', Designation='', Coach=''
+
+320. 'FC Arizona 15B Black GFC Cuevas U11' → 'FC Arizona 15B Black GFC Zazueta U11' (0.844)
+     Game:   Club='fc arizona 15b gfc cuevas', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='fc arizona 15b gfc zazueta', Year='2015', Gender='boys', Designation='black', Coach=''
+
+321. 'North FC Hudson 2015 Boys NPL' → 'North FC Hudson/Chagrin 2015 Boys NPL' (0.844)
+     Game:   Club='north fc hudson npl', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='north fc hudson/chagrin npl', Year='2015', Gender='boys', Designation='', Coach=''
+
+322. 'Dallas Texans SC 15B Mendoza' → 'Dallas Texans Pre-ECNL 15B Mendoza' (0.844)
+     Game:   Club='dallas texans sc 15b', Year='2015', Gender='boys', Designation='', Coach='mendoza'
+     Master: Club='dallas texans pre-ecnl 15b', Year='2015', Gender='boys', Designation='', Coach='mendoza'
+
+323. 'Michigan Jaguars Lansing 2015 Boys White' → 'Michigan Jaguars Novi 2015 Boys White' (0.844)
+     Game:   Club='michigan jaguars lansing', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='michigan jaguars novi', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+324. 'BRYC Elite Academy '15B Black' → 'BRYC Academy '15B Black' (0.842)
+     Game:   Club='bryc elite academy '15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='bryc academy '15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+325. 'BRYC Elite Academy '15B White' → 'BRYC Academy '15B White' (0.842)
+     Game:   Club='bryc elite academy '15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='bryc academy '15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+326. 'AZ Arsenal 15 Boys Teal 1 JZ' → 'AZ Arsenal 15 Boys Teal BD' (0.842)
+     Game:   Club='az arsenal teal 1 jz', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='az arsenal teal bd', Year='2015', Gender='boys', Designation='', Coach=''
+
+327. 'BRYC Elite Academy '15B Silver' → 'BRYC Academy '15B Silver' (0.842)
+     Game:   Club='bryc elite academy '15b', Year='2015', Gender='boys', Designation='silver', Coach='silver'
+     Master: Club='bryc academy '15b', Year='2015', Gender='boys', Designation='silver', Coach='silver'
+
+328. 'Alder FC 2016 Boys U9 24/25' → 'Alder FC 2015 Boys U10 24/25' (0.839)
+     Game:   Club='alder fc 24/25', Year='2016', Gender='boys', Designation='', Coach=''
+     Master: Club='alder fc 2015 24/25', Year='2016', Gender='boys', Designation='', Coach=''
+
+329. 'NWC Alliance 2016 Boys Premier 2nd' → 'NWC Alliance 15/16 (U10) Boys Premier' (0.839)
+     Game:   Club='nwc alliance 2nd', Year='2016', Gender='boys', Designation='premier', Coach=''
+     Master: Club='nwc alliance 15/ ()', Year='2016', Gender='boys', Designation='premier', Coach=''
+
+330. 'Lonestar 15B Red Sth B (C. Talbot)' → 'Lonestar 15B Red Sth A' (0.837)
+     Game:   Club='lonestar 15b sth (c. talbot)', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='lonestar 15b sth a', Year='2015', Gender='boys', Designation='red', Coach=''
+
+331. 'RGSA Leones Baytown 15B Hysa' → 'RGSA Academia Leones Baytown 15B Hysa' (0.836)
+     Game:   Club='rgsa leones baytown 15b', Year='2015', Gender='boys', Designation='', Coach='hysa'
+     Master: Club='rgsa academia leones baytown 15b', Year='2015', Gender='boys', Designation='', Coach='hysa'
+
+332. '15B FPFC ZEPH ELITE' → '15B FPFC CP ELITE' (0.833)
+     Game:   Club='15b fpfc zeph', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='15b fpfc cp', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+333. 'Boys 2015 Red - East 4' → 'Boys 2015 Red - East 3' (0.833)
+     Game:   Club='- east 4', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='- east 3', Year='2015', Gender='boys', Designation='red', Coach=''
+
+334. '15B FPFC Zeph ELITE' → '15B FPFC CP ELITE' (0.833)
+     Game:   Club='15b fpfc zeph', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='15b fpfc cp', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+335. 'WUFC 15B OUTLAWS PRE-ACADEMY' → 'WUFC 15B UNITED PRE-ACADEMY' (0.830)
+     Game:   Club='wufc 15b outlaws pre-academy', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='wufc 15b united pre-academy', Year='2015', Gender='boys', Designation='', Coach=''
+
+336. 'CR Rising 15B White' → 'North Rising 15B White' (0.828)
+     Game:   Club='cr rising 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='north rising 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+337. 'CR Rising 15B Blue' → 'North Rising 15B Blue' (0.828)
+     Game:   Club='cr rising 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='north rising 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+338. 'CR Rising 15B Gold' → 'North Rising 15B Gold' (0.828)
+     Game:   Club='cr rising 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='north rising 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+339. 'Oklahoma Cosmos Academy 15B Select' → 'Oklahoma Cosmos 15B Select' (0.826)
+     Game:   Club='oklahoma cosmos academy 15b', Year='2015', Gender='boys', Designation='select', Coach=''
+     Master: Club='oklahoma cosmos 15b', Year='2015', Gender='boys', Designation='select', Coach=''
+
+340. 'Oklahoma Cosmos Academy 16B Elite' → 'Oklahoma Cosmos 16B Elite' (0.826)
+     Game:   Club='oklahoma cosmos academy 16b', Year='2016', Gender='boys', Designation='elite', Coach=''
+     Master: Club='oklahoma cosmos 16b', Year='2016', Gender='boys', Designation='elite', Coach=''
+
+341. 'Oklahoma Cosmos Academy 15B Premier' → 'Oklahoma Cosmos 15B Premier' (0.826)
+     Game:   Club='oklahoma cosmos academy 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='oklahoma cosmos 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+342. 'Michigan Jaguars Northville 2015 U10 Boys White' → 'Michigan Jaguars Downriver 2015 U10 Boys White' (0.825)
+     Game:   Club='michigan jaguars northville 2015', Year='2016', Gender='boys', Designation='white', Coach='white'
+     Master: Club='michigan jaguars downriver 2015', Year='2016', Gender='boys', Designation='white', Coach='white'
+
+343. 'PSC 15B NextUp Green OR' → 'PSC 15B Pre-NextUp Green EDPL' (0.824)
+     Game:   Club='psc 15b nextup or', Year='2015', Gender='boys', Designation='green', Coach=''
+     Master: Club='psc 15b pre-nextup', Year='2015', Gender='boys', Designation='green', Coach='edpl'
+
+344. 'North FC West 2015 Boys CIC' → 'North FC West 2015 Boys NPL' (0.824)
+     Game:   Club='north fc west cic', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='north fc west npl', Year='2015', Gender='boys', Designation='', Coach=''
+
+345. 'South Rising 15B Blue I' → 'North Rising 15B Blue' (0.824)
+     Game:   Club='south rising 15b i', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='north rising 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+346. 'PSC 15B NextUp Blue OR' → 'PSC 15B Pre-NextUp Blue' (0.824)
+     Game:   Club='psc 15b nextup or', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='psc 15b pre-nextup', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+347. 'South Rising 15B White I' → 'North Rising 15B White' (0.824)
+     Game:   Club='south rising 15b i', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='north rising 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+348. 'Texas Warriors FC 15B Red' → 'Texas Warriors FC Pre ECNL 15B Red' (0.824)
+     Game:   Club='texas warriors fc 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='texas warriors fc pre ecnl 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+
+349. 'Michigan Jaguars Dearborn 2015 Boys Green' → 'Michigan Jaguars GN 2015 Boys Green' (0.818)
+     Game:   Club='michigan jaguars dearborn', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars gn', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+350. 'Michigan Jaguars WB 2016 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.818)
+     Game:   Club='michigan jaguars wb', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+351. 'Michigan Jaguars GN 2016 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.818)
+     Game:   Club='michigan jaguars gn', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+352. 'Michigan Jaguars Jackson 2016 U9 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.816)
+     Game:   Club='michigan jaguars jackson', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+353. 'Michigan Jaguars Jackson 2016 U10 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.816)
+     Game:   Club='michigan jaguars jackson', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+354. 'CCV STARS 15 Boys Orange PEO' → 'CCV Stars 15 Boys East Orange' (0.815)
+     Game:   Club='ccv stars peo', Year='2015', Gender='boys', Designation='orange', Coach=''
+     Master: Club='ccv stars east', Year='2015', Gender='boys', Designation='orange', Coach='orange'
+
+355. 'Beadling 2015 Boys East Red' → 'Beadling 2015 Boys South Red' (0.815)
+     Game:   Club='beadling east', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='beadling south', Year='2015', Gender='boys', Designation='red', Coach=''
+
+356. 'Neutral - Capital City SC 15/16B Sky North' → 'Capital City SC 15B Sky North' (0.815)
+     Game:   Club='neutral - capital city sc /16b sky', Year='2015', Gender='boys', Designation='', Coach='north'
+     Master: Club='capital city sc 15b sky', Year='2015', Gender='boys', Designation='', Coach='north'
+
+357. 'FLS 15B Academy III' → 'SF Glens Academy 15B III' (0.815)
+     Game:   Club='fls 15b iii', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='sf glens 15b iii', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+358. 'DEFC 2015 Boys South Pre ECNL Black' → '2015 Boys South Pre-ECNL Black' (0.812)
+     Game:   Club='defc south pre ecnl', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='south pre-ecnl', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+359. 'Dallas Surf South 15B White' → 'FC Dallas Youth 15B White' (0.811)
+     Game:   Club='dallas surf south 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='fc dallas youth 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+360. 'Club Ohio North 15B Green' → 'Club Ohio East 15B Green' (0.811)
+     Game:   Club='club ohio north 15b', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='club ohio east 15b', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+361. 'Nido Aguila 15B Brownsville' → 'Nido Aguila Dallas 15B' (0.811)
+     Game:   Club='nido aguila 15b', Year='2015', Gender='boys', Designation='', Coach='brownsville'
+     Master: Club='nido aguila dallas 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+362. 'Dallas Texans 15B Mendoza' → 'Dallas Texans Pre-ECNL 15B Mendoza' (0.810)
+     Game:   Club='dallas texans 15b', Year='2015', Gender='boys', Designation='', Coach='mendoza'
+     Master: Club='dallas texans pre-ecnl 15b', Year='2015', Gender='boys', Designation='', Coach='mendoza'
+
+363. 'Michigan Tigers 2015 Boys White (Gibson)' → 'Michigan Tigers 2015 Boys White (Timm)' (0.810)
+     Game:   Club='michigan tigers (gibson)', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='michigan tigers (timm)', Year='2015', Gender='boys', Designation='white', Coach=''
+
+364. 'Atletico Dallas Youth 16B Central Blue' → 'Atletico Dallas Youth FTW 16B Blue' (0.806)
+     Game:   Club='atletico dallas youth 16b central', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='atletico dallas youth ftw 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+365. 'Minnesota Rush 16B Blue' → 'Colorado Rush East Zorros 16B Blue' (0.800)
+     Game:   Club='minnesota rush 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='colorado rush east zorros 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+366. 'Oregon Surf 15B White' → 'Solano Surf 15B White' (0.800)
+     Game:   Club='oregon surf 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='solano surf 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+367. 'Juventus Academy Las Vegas U10 Zidane Boys' → 'Las Vegas Sports Academy U10 Boys Copper 2015' (0.800)
+     Game:   Club='juventus las vegas zidane', Year='2016', Gender='boys', Designation='academy', Coach=''
+     Master: Club='las vegas sports copper 2015', Year='2016', Gender='boys', Designation='academy', Coach=''
+
+368. 'Central Rising 15B White I' → 'North Rising 15B White' (0.800)
+     Game:   Club='central rising 15b i', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='north rising 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+369. 'Dallas Hornets 15/16B Schell' → 'Dallas Hornets 15B Pre-MLS (Prev. Forms Academy)' (0.800)
+     Game:   Club='dallas hornets /16b', Year='2015', Gender='boys', Designation='', Coach='schell'
+     Master: Club='dallas hornets 15b pre-mls (prev. forms academy)', Year='2015', Gender='boys', Designation='', Coach=''
+
+370. 'Solar East 16B Hedges BLUE' → 'Colorado Rush East Zorros 16B Blue' (0.800)
+     Game:   Club='solar east 16b hedges', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='colorado rush east zorros 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+371. 'Texas Premier 15B HDL Elite' → 'Texas Premier SC 15B' (0.800)
+     Game:   Club='texas 15b hdl elite', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='texas sc 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+372. 'Neutral - Legends FC BAA 15B Red' → 'FC LEGENDS UTD 15B Red' (0.800)
+     Game:   Club='neutral - legends fc baa 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='fc legends utd 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+
+373. 'Nationals NEXT Macomb 15 Boys' → 'Nationals Macomb Pre-Academy 15 Boys' (0.800)
+     Game:   Club='nationals next macomb', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='nationals macomb pre-academy', Year='2015', Gender='boys', Designation='', Coach=''
+
+374. 'Nido Aguila SA Revolution '15B' → 'Nido Aguila Dallas 15B' (0.800)
+     Game:   Club='nido aguila sa revolution '15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='nido aguila dallas 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+375. 'Michigan Jaguars Lansing 2016 Boys White 2' → 'Michigan Jaguars Downriver 2015 U10 Boys White' (0.800)
+     Game:   Club='michigan jaguars lansing 2', Year='2016', Gender='boys', Designation='white', Coach=''
+     Master: Club='michigan jaguars downriver 2015', Year='2016', Gender='boys', Designation='white', Coach='white'
+
+376. 'San Antonio 15B White' → 'San Carlos United SC 15B White' (0.800)
+     Game:   Club='san antonio 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='san carlos united sc 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+377. 'TAG AYSES 15B Gold' → 'TAG 15B Gold' (0.800)
+     Game:   Club='tag ayses 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='tag 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+378. 'Dallas Hornets 15B Navy' → 'FC Dallas Youth 15B North Navy' (0.800)
+     Game:   Club='dallas hornets 15b', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+     Master: Club='fc dallas youth 15b north', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+
+379. 'New England Force 2015 Boys Metro South' → 'New England Surf Metro Boston Sky 2015 Boys' (0.800)
+     Game:   Club='new england force metro', Year='2015', Gender='boys', Designation='', Coach='south'
+     Master: Club='new england surf metro boston sky', Year='2015', Gender='boys', Designation='', Coach=''
+
+380. '15B Pre ECNL (Red)' → 'Stanford Strikers 15B Pre ECNL RL' (0.800)
+     Game:   Club='15b ecnl (red)', Year='2015', Gender='boys', Designation='pre', Coach=''
+     Master: Club='stanford strikers 15b ecnl rl', Year='2015', Gender='boys', Designation='pre', Coach=''
+
+381. 'United FC Rush 16B Academy' → 'San Jose Rush 16B Academy' (0.800)
+     Game:   Club='united fc rush 16b', Year='2016', Gender='boys', Designation='academy', Coach=''
+     Master: Club='san jose rush 16b', Year='2016', Gender='boys', Designation='academy', Coach=''
+
+382. 'Club Ohio West 15B Black' → 'Club Ohio Dayton 15B Black' (0.800)
+     Game:   Club='club ohio west 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='club ohio dayton 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+383. 'Dallas Hornets North 15B White' → 'North Coast FC 15B White' (0.800)
+     Game:   Club='dallas hornets north 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='north coast fc 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+384. 'Texas Premier SC 16B' → 'Texas Premier 16B RSA Toros' (0.800)
+     Game:   Club='texas sc 16b', Year='2016', Gender='boys', Designation='premier', Coach=''
+     Master: Club='texas 16b rsa', Year='2016', Gender='boys', Designation='premier', Coach='toros'
+
+385. 'NCFC Youth 15B Gold North 1' → 'North Rising 15B Gold' (0.800)
+     Game:   Club='ncfc youth 15b north 1', Year='2015', Gender='boys', Designation='gold', Coach=''
+     Master: Club='north rising 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+386. 'Alabama FC Central 15B Academy Black' → 'CF 15B Central Black' (0.800)
+     Game:   Club='alabama fc central 15b academy', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='cf 15b central', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+387. 'Impact City FC Daybreak 15B Blue' → 'Impact City FC Millcreek 15B Blue' (0.800)
+     Game:   Club='impact city fc daybreak 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='impact city fc millcreek 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+388. '15B PRE-MLS NEXT' → '15B AChacon Pre-MLS Next' (0.800)
+     Game:   Club='15b pre-mls', Year='2015', Gender='boys', Designation='', Coach='next'
+     Master: Club='15b achacon pre-mls', Year='2015', Gender='boys', Designation='', Coach='next'
+
+389. 'SMC 15B Academy Black' → 'SMC Seals 15B Black' (0.800)
+     Game:   Club='smc 15b academy', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='smc seals 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+390. '15B Idaho Villarreal Academy NPL' → ''15B Idaho Surf Hailey Academy' (0.800)
+     Game:   Club='15b idaho villarreal npl', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club=''15b idaho surf hailey', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+391. 'Detroit City FC West 16B Gold' → 'West 16B Gold I' (0.800)
+     Game:   Club='detroit city fc west 16b', Year='2016', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='west 16b i', Year='2016', Gender='boys', Designation='gold', Coach=''
+
+392. 'Michigan Jaguars Dearborn 2016 Boys White' → 'Michigan Jaguars Downriver 2015 U10 Boys White' (0.800)
+     Game:   Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='white', Coach='white'
+     Master: Club='michigan jaguars downriver 2015', Year='2016', Gender='boys', Designation='white', Coach='white'
+
+393. 'Atletico 15B Brandt' → 'Atletico Dallas Youth 15B Brandt' (0.800)
+     Game:   Club='atletico 15b', Year='2015', Gender='boys', Designation='', Coach='brandt'
+     Master: Club='atletico dallas youth 15b', Year='2015', Gender='boys', Designation='', Coach='brandt'
+
+394. 'Club America Nido Aguila Houston 15B' → 'Nido Aguila Dallas 15B' (0.800)
+     Game:   Club='club america nido aguila houston 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='nido aguila dallas 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+395. 'Dallas Surf 16B Blue' → 'Atletico Dallas Youth FTW 16B Blue' (0.800)
+     Game:   Club='dallas surf 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='atletico dallas youth ftw 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+396. 'Alabama FC Central 15B Academy Navy' → 'AFC Central 15B North Academy Navy' (0.800)
+     Game:   Club='alabama fc central 15b academy', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+     Master: Club='afc central 15b north academy', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+
+397. 'UFA South Georgia 14B Red' → 'UFA Metro Atlanta 14B Red' (0.800)
+     Game:   Club='ufa south georgia 14b', Year='2014', Gender='boys', Designation='red', Coach=''
+     Master: Club='ufa metro atlanta 14b', Year='2014', Gender='boys', Designation='red', Coach=''
+
+398. 'Idaho Legends 2015 Boys - Filippini 25/26' → 'Idaho Legends 2015/2016 Boys - Filippini' (0.800)
+     Game:   Club='idaho legends - filippini 25/26', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='idaho legends /2016 -', Year='2015', Gender='boys', Designation='', Coach='filippini'
+
+399. 'Michigan Jaguars Novi 2016 Boys White' → 'Michigan Jaguars Downriver 2015 U10 Boys White' (0.800)
+     Game:   Club='michigan jaguars novi', Year='2016', Gender='boys', Designation='white', Coach='white'
+     Master: Club='michigan jaguars downriver 2015', Year='2016', Gender='boys', Designation='white', Coach='white'
+
+400. 'Nido Aguila Hobbs 15B' → 'Nido Aguila Dallas 15B' (0.800)
+     Game:   Club='nido aguila hobbs 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='nido aguila dallas 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+401. 'Valley Surf 14B Permier I' → 'Utah Surf 14B TMeyer' (0.800)
+     Game:   Club='valley surf 14b permier i', Year='2014', Gender='boys', Designation='', Coach=''
+     Master: Club='utah surf 14b', Year='2014', Gender='boys', Designation='', Coach='tmeyer'
+
+402. 'Hawaii Rush East 16B Blue' → 'Colorado Rush East Zorros 16B Blue' (0.800)
+     Game:   Club='hawaii rush east 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='colorado rush east zorros 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+403. 'Michigan Jaguars Huron Valley 2016 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.800)
+     Game:   Club='michigan jaguars huron valley', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+404. 'BVB 15B Yellow South Rivas' → 'BVB 15B Yellow East (Vincent)' (0.800)
+     Game:   Club='bvb 15b south', Year='2015', Gender='boys', Designation='yellow', Coach='rivas'
+     Master: Club='bvb 15b east (vincent)', Year='2015', Gender='boys', Designation='yellow', Coach=''
+
+405. 'Solar 15B Molano Red' → 'Solar 15B Red Salcedo Pre ECNL' (0.800)
+     Game:   Club='solar 15b molano', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='solar 15b salcedo pre', Year='2015', Gender='boys', Designation='red', Coach='ecnl'
+
+406. 'Las Vegas Sports Academy U10 Boys Onyx 2016' → 'Las Vegas Sports Academy U10 Boys Copper 2015' (0.800)
+     Game:   Club='las vegas sports onyx', Year='2016', Gender='boys', Designation='academy', Coach=''
+     Master: Club='las vegas sports copper 2015', Year='2016', Gender='boys', Designation='academy', Coach=''
+
+407. 'Rush Wisconsin West 15B' → 'RUSH WI West U11 BOYS' (0.800)
+     Game:   Club='rush wisconsin west 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='rush wi west', Year='2015', Gender='boys', Designation='', Coach=''
+
+408. 'Hayward Premier Supreme 15B' → 'HYSL Premier Supreme 15B' (0.800)
+     Game:   Club='hayward supreme 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='hysl supreme 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+409. 'Central Rising 15B Blue' → 'North Rising 15B Blue' (0.800)
+     Game:   Club='central rising 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='north rising 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+410. 'Steel United MA Boston Metro 2015/2016B Elite' → 'Steel United VA 2015/2016B Elite' (0.800)
+     Game:   Club='steel united ma boston metro /2016b', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='steel united va /2016b', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+411. 'San Jose Rush 15B White' → 'San Carlos United SC 15B White' (0.800)
+     Game:   Club='san jose rush 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='san carlos united sc 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+412. 'GSA 15B ECNL Dev 2' → '2015 BOYS ECNL DEV 1' (0.800)
+     Game:   Club='gsa 15b ecnl dev 2', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='ecnl dev 1', Year='2015', Gender='boys', Designation='', Coach=''
+
+413. 'GERMANY Metro West Wolves 15B Dearman' → 'New England Surf Metro West 2015 Boys SKY' (0.800)
+     Game:   Club='germany metro west wolves 15b', Year='2015', Gender='boys', Designation='', Coach='dearman'
+     Master: Club='new england surf metro west sky', Year='2015', Gender='boys', Designation='', Coach=''
+
+414. 'Dallas Surf 15B Black' → 'Walnut Creek Surf 15B Black' (0.800)
+     Game:   Club='dallas surf 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='walnut creek surf 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+415. 'Atletico Dallas Youth FTW 15B Blue' → 'Dallas Surf 15B Blue' (0.800)
+     Game:   Club='atletico dallas youth ftw 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='dallas surf 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+416. '14B FPFC CP DEV II' → 'Savannah United 14B Dev' (0.800)
+     Game:   Club='14b fpfc cp dev ii', Year='2014', Gender='boys', Designation='', Coach=''
+     Master: Club='savannah united 14b dev', Year='2014', Gender='boys', Designation='', Coach=''
+
+417. 'Twin Cities Rush 15B EDT 4' → 'Quad Cities Rush 2015 Boys Azul' (0.800)
+     Game:   Club='twin cities rush 15b edt 4', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='quad cities rush', Year='2015', Gender='boys', Designation='', Coach='azul'
+
+418. 'DUSC Irish 2015 Boys' → 'DUSC Fighting Irish 2015 Boys' (0.800)
+     Game:   Club='dusc irish', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='dusc fighting irish', Year='2015', Gender='boys', Designation='', Coach=''
+
+419. 'West Texas Toros FC - The Spot 15B' → 'AJAX of West Texas 15B' (0.800)
+     Game:   Club='west texas toros fc - the spot 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='ajax of west texas 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+420. 'DUSC Shannon Sharks 2015 Boys' → 'DUSC Sharks 2015 Boys' (0.800)
+     Game:   Club='dusc shannon sharks', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='dusc sharks', Year='2015', Gender='boys', Designation='', Coach=''
+
+421. 'Bayside FC NECSL 15B 7v7 White' → 'BVB 15B White 7v7 (DeSousa)' (0.800)
+     Game:   Club='bayside fc necsl 15b 7v7', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='bvb 15b 7v7 (desousa)', Year='2015', Gender='boys', Designation='white', Coach=''
+
+422. 'Michigan Jaguars Novi 2016 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.800)
+     Game:   Club='michigan jaguars novi', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+423. 'Lonestar San Antonio 15B Blue' → 'San Carlos United SC 15B Blue' (0.800)
+     Game:   Club='lonestar san antonio 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='san carlos united sc 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+424. 'Lonestar San Antonio 15B Silver' → 'Lonestar 15B Silver Nth' (0.800)
+     Game:   Club='lonestar san antonio 15b', Year='2015', Gender='boys', Designation='silver', Coach='silver'
+     Master: Club='lonestar 15b nth', Year='2015', Gender='boys', Designation='silver', Coach=''
+
+425. 'San Antonio 15B Black' → 'San Carlos United SC 15B Black' (0.800)
+     Game:   Club='san antonio 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='san carlos united sc 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+426. 'BVB 16B Pre ECNL Brown' → 'FPFC 16B PRE ECNL I' (0.800)
+     Game:   Club='bvb 16b ecnl', Year='2016', Gender='boys', Designation='pre', Coach='brown'
+     Master: Club='fpfc 16b ecnl i', Year='2016', Gender='boys', Designation='pre', Coach=''
+
+427. 'Michigan Jaguars Northville 2016 U9 Boys White' → 'Michigan Jaguars Downriver 2015 U10 Boys White' (0.800)
+     Game:   Club='michigan jaguars northville', Year='2016', Gender='boys', Designation='white', Coach='white'
+     Master: Club='michigan jaguars downriver 2015', Year='2016', Gender='boys', Designation='white', Coach='white'
+
+428. 'Lee's Summit Legends 15B Academy Red' → 'FC LEGENDS UTD 15B Red' (0.800)
+     Game:   Club='lee's summit legends 15b academy', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='fc legends utd 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+
+429. 'Michigan Jaguars WB 2016 Boys White' → 'Michigan Jaguars Downriver 2015 U10 Boys White' (0.800)
+     Game:   Club='michigan jaguars wb', Year='2016', Gender='boys', Designation='white', Coach='white'
+     Master: Club='michigan jaguars downriver 2015', Year='2016', Gender='boys', Designation='white', Coach='white'
+
+430. 'Hawaii Rush 16B Blue' → 'Colorado Rush East Zorros 16B Blue' (0.800)
+     Game:   Club='hawaii rush 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='colorado rush east zorros 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+431. '15B Colonial Pre ECNL RL' → 'Stanford Strikers 15B Pre ECNL RL' (0.800)
+     Game:   Club='15b colonial ecnl rl', Year='2015', Gender='boys', Designation='pre', Coach=''
+     Master: Club='stanford strikers 15b ecnl rl', Year='2015', Gender='boys', Designation='pre', Coach=''
+
+432. 'Sacramento Alliance SC 15B White' → 'OVF Alliance 15B White' (0.800)
+     Game:   Club='sacramento alliance sc 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='ovf alliance 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+433. 'NCFC Youth 15B Gold North 2' → 'North Rising 15B Gold' (0.800)
+     Game:   Club='ncfc youth 15b north 2', Year='2015', Gender='boys', Designation='gold', Coach=''
+     Master: Club='north rising 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+434. 'Lex Sporting Club 15B Performance Green' → 'Santa Clara Sporting 15B Green' (0.800)
+     Game:   Club='lex sporting club 15b performance', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='santa clara sporting 15b', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+435. 'Dallas Hornets 16B Rockwall- BLUE' → 'Atletico Dallas Youth FTW 16B Blue' (0.800)
+     Game:   Club='dallas hornets 16b rockwall-', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='atletico dallas youth ftw 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+436. 'FPFC 15B CP ECNLRL' → '15B FPFC ZEPH ECNLRL' (0.800)
+     Game:   Club='fpfc 15b cp', Year='2015', Gender='boys', Designation='', Coach='ecnlrl'
+     Master: Club='15b fpfc zeph', Year='2015', Gender='boys', Designation='', Coach='ecnlrl'
+
+437. 'Hawaii Rush 15B East Blue' → 'San Jose Rush 15B Blue' (0.800)
+     Game:   Club='hawaii rush 15b east', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='san jose rush 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+438. 'Lex Sporting Club 15B Performance White' → 'Sporting Columbia 15B White' (0.800)
+     Game:   Club='lex sporting club 15b performance', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='sporting columbia 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+439. 'Twin Cities Rush 15B EDT 5' → 'Quad Cities Rush 2015 Boys Azul' (0.800)
+     Game:   Club='twin cities rush 15b edt 5', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='quad cities rush', Year='2015', Gender='boys', Designation='', Coach='azul'
+
+440. '15B Blue West #1' → 'ID PSG Academy Houston West 15B Blue EDPL' (0.800)
+     Game:   Club='15b west #1', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='id psg academy houston west 15b', Year='2015', Gender='boys', Designation='blue', Coach='edpl'
+
+441. 'GSA 15B ECNL Dev 1' → '2015 BOYS ECNL DEV 2' (0.800)
+     Game:   Club='gsa 15b ecnl dev 1', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='ecnl dev 2', Year='2015', Gender='boys', Designation='', Coach=''
+
+442. 'CO Rapids North Rising 15B White' → 'North Coast FC 15B White' (0.800)
+     Game:   Club='co rapids north rising 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='north coast fc 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+443. 'Strikers 14B Premier North White' → 'GSA North 14B White' (0.800)
+     Game:   Club='strikers 14b premier north', Year='2014', Gender='boys', Designation='white', Coach='white'
+     Master: Club='gsa north 14b', Year='2014', Gender='boys', Designation='white', Coach='white'
+
+444. 'BVB 15B Yellow East (Brown)' → 'BVB 15B Yellow East (Vincent)' (0.800)
+     Game:   Club='bvb 15b east (brown)', Year='2015', Gender='boys', Designation='yellow', Coach=''
+     Master: Club='bvb 15b east (vincent)', Year='2015', Gender='boys', Designation='yellow', Coach=''
+
+445. 'Pittsburgh Riverhounds - Pittsburgh Riverhounds Academy North Huntingdon 2015 Boys II' → 'Pittsburgh Riverhounds Academy Pre-RL 2015 Boys' (0.800)
+     Game:   Club='pittsburgh riverhounds - pittsburgh riverhounds north huntingdon ii', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='pittsburgh riverhounds pre-rl', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+446. 'DCFC City 15B Rouge' → 'DCFC South Oakland 15B Rouge' (0.800)
+     Game:   Club='dcfc city 15b', Year='2015', Gender='boys', Designation='', Coach='rouge'
+     Master: Club='dcfc south oakland 15b', Year='2015', Gender='boys', Designation='', Coach='rouge'
+
+447. 'DCFC South Oakland 15B Gold' → 'Concorde Fire South 15B Gold' (0.800)
+     Game:   Club='dcfc south oakland 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='concorde fire south 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+448. 'Juventus Academy Las Vegas Boys U10 Ronaldo' → 'Las Vegas Sports Academy U10 Boys Copper 2015' (0.800)
+     Game:   Club='juventus las vegas', Year='2016', Gender='boys', Designation='academy', Coach='ronaldo'
+     Master: Club='las vegas sports copper 2015', Year='2016', Gender='boys', Designation='academy', Coach=''
+
+449. 'SA United 14B Gold' → 'Athens United 14B Gold' (0.800)
+     Game:   Club='sa united 14b', Year='2014', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='athens united 14b', Year='2014', Gender='boys', Designation='gold', Coach='gold'
+
+450. 'Solar West 15B Garcia.S Pre ECNL' → 'Detroit City FC West 15B Pre ECNL-RL' (0.800)
+     Game:   Club='solar west 15b garcia.s', Year='2015', Gender='boys', Designation='pre', Coach='ecnl'
+     Master: Club='detroit city fc west 15b ecnl-rl', Year='2015', Gender='boys', Designation='pre', Coach=''
+
+451. 'Oakleaf Florida Elite 2014 Boys ECNL Dev' → 'Florida Elite Palm Coast 2014 Boys ECNL Dev' (0.800)
+     Game:   Club='oakleaf florida ecnl dev', Year='2014', Gender='boys', Designation='elite', Coach=''
+     Master: Club='florida palm coast ecnl dev', Year='2014', Gender='boys', Designation='elite', Coach=''
+
+452. 'CCV STARS 15 Boys Navy SUR' → 'CCV Stars 15 Boys North Navy' (0.800)
+     Game:   Club='ccv stars sur', Year='2015', Gender='boys', Designation='navy', Coach=''
+     Master: Club='ccv stars north', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+
+453. 'AHFC 14B Blue A SW' → 'Albion Hurricanes FC - AHFC 14B Blue E' (0.800)
+     Game:   Club='ahfc 14b a sw', Year='2014', Gender='boys', Designation='blue', Coach=''
+     Master: Club='albion hurricanes fc - ahfc 14b e', Year='2014', Gender='boys', Designation='blue', Coach=''
+
+454. 'Coppell FC 16B Faal White' → 'Coppell FC 16B Reeck White' (0.800)
+     Game:   Club='coppell fc 16b faal', Year='2016', Gender='boys', Designation='white', Coach='white'
+     Master: Club='coppell fc 16b reeck', Year='2016', Gender='boys', Designation='white', Coach='white'
+
+455. 'Nido Aguila Brownsville 15B' → 'Nido Aguila Dallas 15B' (0.800)
+     Game:   Club='nido aguila brownsville 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='nido aguila dallas 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+456. 'Texas Premier 15B HDL Select' → 'Texas Premier SC 15B' (0.800)
+     Game:   Club='texas 15b hdl select', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='texas sc 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+457. 'Virginia Legacy 15B Peninsula Black' → 'Davis Legacy 15B Black' (0.800)
+     Game:   Club='virginia legacy 15b peninsula', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='davis legacy 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+458. '15B FPFC TT SPIRIT RED' → '15B FPFC CP RED' (0.800)
+     Game:   Club='15b fpfc tt spirit', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='15b fpfc cp', Year='2015', Gender='boys', Designation='red', Coach=''
+
+459. 'Club Ohio North 14B Green' → 'GSA North 14B Green' (0.800)
+     Game:   Club='club ohio north 14b', Year='2014', Gender='boys', Designation='green', Coach='green'
+     Master: Club='gsa north 14b', Year='2014', Gender='boys', Designation='green', Coach='green'
+
+460. '‘15B Boise Academy' → 'ID Surf Boise 15B Academy' (0.800)
+     Game:   Club='‘15b boise', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='id surf boise 15b', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+461. 'Solar 15B Molano PreECNL Red' → 'Solar 15B Red Salcedo Pre ECNL' (0.800)
+     Game:   Club='solar 15b molano preecnl', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='solar 15b salcedo pre', Year='2015', Gender='boys', Designation='red', Coach='ecnl'
+
+462. 'SF Seals 15B Pre MLS' → '15B Garza Pre MLS Next' (0.800)
+     Game:   Club='sf seals 15b mls', Year='2015', Gender='boys', Designation='pre', Coach=''
+     Master: Club='15b garza mls', Year='2015', Gender='boys', Designation='pre', Coach='next'
+
+463. 'Michigan Jaguars Lansing 2016 Boys White 1' → 'Michigan Jaguars Downriver 2015 U10 Boys White' (0.800)
+     Game:   Club='michigan jaguars lansing 1', Year='2016', Gender='boys', Designation='white', Coach=''
+     Master: Club='michigan jaguars downriver 2015', Year='2016', Gender='boys', Designation='white', Coach='white'
+
+464. '15B Central Red' → 'AFC Central 15B Academy North Red' (0.800)
+     Game:   Club='15b central', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='afc central 15b academy north', Year='2015', Gender='boys', Designation='red', Coach=''
+
+465. 'Hawaii RUSH East 15B Blue' → 'San Jose Rush 15B Blue' (0.800)
+     Game:   Club='hawaii rush east 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='san jose rush 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+466. 'Atletico 15B  Ikpa' → 'Atletico Dallas Youth 15B Ikpa' (0.800)
+     Game:   Club='atletico 15b', Year='2015', Gender='boys', Designation='', Coach='ikpa'
+     Master: Club='atletico dallas youth 15b', Year='2015', Gender='boys', Designation='', Coach='ikpa'
+
+467. 'Chicago Soccer Academy 15B PSG' → 'PSG ACADEMY CHICAGO 2015 BOYS PRE-ACADEMY' (0.800)
+     Game:   Club='chicago soccer 15b psg', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='psg chicago pre-', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+468. '15B Blue West #2' → 'ID PSG Academy Houston West 15B Blue EDPL' (0.800)
+     Game:   Club='15b west #2', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='id psg academy houston west 15b', Year='2015', Gender='boys', Designation='blue', Coach='edpl'
+
+469. '15B FPFC WC BLACK' → 'FPFC 15B CP BLACK' (0.800)
+     Game:   Club='15b fpfc wc', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='fpfc 15b cp', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+470. 'PRFC West Valley 15B Copa' → 'PRFC Desert Foothills 15B Copa' (0.800)
+     Game:   Club='prfc west valley 15b', Year='2015', Gender='boys', Designation='', Coach='copa'
+     Master: Club='prfc desert foothills 15b', Year='2015', Gender='boys', Designation='', Coach='copa'
+
+471. 'Michigan Jaguars CW3 2016 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.800)
+     Game:   Club='michigan jaguars cw3', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+472. 'Texas Warriors FC 15B Black' → 'East Texas Matadors 15B Black' (0.800)
+     Game:   Club='texas warriors fc 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='east texas matadors 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+473. 'CCV STARS 15 Boys LAV' → 'CCV Stars 15 Boys East Pre-ECNL' (0.800)
+     Game:   Club='ccv stars lav', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='ccv stars east pre-', Year='2015', Gender='boys', Designation='', Coach='ecnl'
+
+474. 'Juventus Academy Las Vegas U11 Chiellini Boys' → 'LAS VEGAS DIVERSITY FC '15 BOYS ACADEMY' (0.800)
+     Game:   Club='juventus las vegas chiellini', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='las vegas diversity fc '', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+475. 'Detroit City FC West 15B Green' → 'Club Ohio West 15B Green' (0.800)
+     Game:   Club='detroit city fc west 15b', Year='2015', Gender='boys', Designation='green', Coach='green'
+     Master: Club='club ohio west 15b', Year='2015', Gender='boys', Designation='green', Coach='green'
+
+476. 'Las Vegas Sports Academy U9 Boys Onyx 2016' → 'Las Vegas Sports Academy U10 Boys Copper 2015' (0.800)
+     Game:   Club='las vegas sports onyx', Year='2016', Gender='boys', Designation='academy', Coach=''
+     Master: Club='las vegas sports copper 2015', Year='2016', Gender='boys', Designation='academy', Coach=''
+
+477. '2015-2016 Quincy Rush Boys - Gerding' → 'Quincy Rush 2015-2016B' (0.800)
+     Game:   Club='-2016 quincy rush -', Year='2015', Gender='boys', Designation='', Coach='gerding'
+     Master: Club='quincy rush -2016b', Year='2015', Gender='boys', Designation='', Coach=''
+
+478. 'South 15B Blue I' → 'South San Jose 15B Blue' (0.800)
+     Game:   Club='south 15b i', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='south san jose 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+479. 'South Valley Chivas 15B Navy' → 'Alabama FC South 15B Navy' (0.800)
+     Game:   Club='south valley chivas 15b', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+     Master: Club='alabama fc south 15b', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+
+480. 'Palm Coast 2015 Boys ECNL Dev' → '2015 BOYS ECNL DEV 1' (0.800)
+     Game:   Club='palm coast ecnl dev', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='ecnl dev 1', Year='2015', Gender='boys', Designation='', Coach=''
+
+481. 'Legends FC AZ 14B FC' → 'Inter Legends FC 14B Capetillo' (0.800)
+     Game:   Club='legends fc az 14b fc', Year='2014', Gender='boys', Designation='', Coach=''
+     Master: Club='inter legends fc 14b', Year='2014', Gender='boys', Designation='', Coach='capetillo'
+
+482. 'CCV STARS 15 Boys Navy PEO' → 'CCV Stars 15 Boys North Navy' (0.800)
+     Game:   Club='ccv stars peo', Year='2015', Gender='boys', Designation='navy', Coach=''
+     Master: Club='ccv stars north', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+
+483. 'Kansas Rush Wichita 15B' → 'Kansas Rush Pre-Academy 15B' (0.800)
+     Game:   Club='kansas rush wichita 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='kansas rush pre-academy 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+484. 'Twin Cities Rush 15B EDT 6' → 'Quad Cities Rush 2015 Boys Azul' (0.800)
+     Game:   Club='twin cities rush 15b edt 6', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='quad cities rush', Year='2015', Gender='boys', Designation='', Coach='azul'
+
+485. 'FC ATLETICO 16B BLUE' → 'Atletico Dallas Youth FTW 16B Blue' (0.800)
+     Game:   Club='fc atletico 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='atletico dallas youth ftw 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+486. 'FPFC 15B TRP ECNLRL' → '15B FPFC ZEPH ECNLRL' (0.800)
+     Game:   Club='fpfc 15b trp', Year='2015', Gender='boys', Designation='', Coach='ecnlrl'
+     Master: Club='15b fpfc zeph', Year='2015', Gender='boys', Designation='', Coach='ecnlrl'
+
+487. 'San Jose Rush 16B Blue' → 'Colorado Rush East Zorros 16B Blue' (0.800)
+     Game:   Club='san jose rush 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='colorado rush east zorros 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+488. 'SSA Swarm 15B Pre MLS I' → '15B Garza Pre MLS Next' (0.800)
+     Game:   Club='ssa swarm 15b mls i', Year='2015', Gender='boys', Designation='pre', Coach=''
+     Master: Club='15b garza mls', Year='2015', Gender='boys', Designation='pre', Coach='next'
+
+489. 'Alabama FC Central 15B Academy North Navy' → 'AFC Central 15B North Academy Navy' (0.800)
+     Game:   Club='alabama fc central 15b academy north', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+     Master: Club='afc central 15b north academy', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+
+490. 'AHFC 14B Blue C' → 'Albion Hurricanes FC - AHFC 14B Blue E' (0.800)
+     Game:   Club='ahfc 14b c', Year='2014', Gender='boys', Designation='blue', Coach=''
+     Master: Club='albion hurricanes fc - ahfc 14b e', Year='2014', Gender='boys', Designation='blue', Coach=''
+
+491. 'Barça Academy Austin 15B Green- 240' → 'Barca Academy Austin 15B Garnet' (0.800)
+     Game:   Club='barça austin 15b green- 240', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='barca austin 15b', Year='2015', Gender='boys', Designation='academy', Coach='garnet'
+
+492. 'Sugar Land Monarcas 15B' → 'Sugar Land Fusion 15B' (0.800)
+     Game:   Club='sugar land monarcas 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='sugar land fusion 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+493. 'Renegades 15B Pre ECNL RL NTX-WTX' → 'Stanford Strikers 15B Pre ECNL RL' (0.800)
+     Game:   Club='renegades 15b ecnl rl ntx-wtx', Year='2015', Gender='boys', Designation='pre', Coach=''
+     Master: Club='stanford strikers 15b ecnl rl', Year='2015', Gender='boys', Designation='pre', Coach=''
+
+494. '15B FPFC TT SPIRIT ECNLRL' → '15B FPFC ZEPH ECNLRL' (0.800)
+     Game:   Club='15b fpfc tt spirit', Year='2015', Gender='boys', Designation='', Coach='ecnlrl'
+     Master: Club='15b fpfc zeph', Year='2015', Gender='boys', Designation='', Coach='ecnlrl'
+
+495. 'Neutral - Lonestar 15B Red Nth B' → 'Lonestar 15B Red Sth A' (0.800)
+     Game:   Club='neutral - lonestar 15b nth', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='lonestar 15b sth a', Year='2015', Gender='boys', Designation='red', Coach=''
+
+496. 'PRFC Southeast Valley 15B Copa' → 'PRFC Desert Foothills 15B Copa' (0.800)
+     Game:   Club='prfc southeast valley 15b', Year='2015', Gender='boys', Designation='', Coach='copa'
+     Master: Club='prfc desert foothills 15b', Year='2015', Gender='boys', Designation='', Coach='copa'
+
+497. 'Rush 16B Blue' → 'Colorado Rush East Zorros 16B Blue' (0.800)
+     Game:   Club='rush 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='colorado rush east zorros 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+498. 'PRFC North Valley 15B Copa' → 'PRFC Desert Foothills 15B Copa' (0.800)
+     Game:   Club='prfc north valley 15b', Year='2015', Gender='boys', Designation='', Coach='copa'
+     Master: Club='prfc desert foothills 15b', Year='2015', Gender='boys', Designation='', Coach='copa'
+
+499. 'Michigan Jaguars Jackson 2015 U10 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.800)
+     Game:   Club='michigan jaguars jackson 2015', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+500. '15B Blue East #1' → 'Colorado Rush East 15B Blue' (0.800)
+     Game:   Club='15b east #1', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='colorado rush east 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+501. 'Santa Cruz Mid County SURF 14B' → 'Utah Surf 14B TMeyer' (0.800)
+     Game:   Club='santa cruz mid county surf 14b', Year='2014', Gender='boys', Designation='', Coach=''
+     Master: Club='utah surf 14b', Year='2014', Gender='boys', Designation='', Coach='tmeyer'
+
+502. 'Michigan Jaguars Northville 2015 U10 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.800)
+     Game:   Club='michigan jaguars northville 2015', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+503. 'AHFC 14B Blue B SW' → 'Albion Hurricanes FC - AHFC 14B Blue E' (0.800)
+     Game:   Club='ahfc 14b sw', Year='2014', Gender='boys', Designation='blue', Coach=''
+     Master: Club='albion hurricanes fc - ahfc 14b e', Year='2014', Gender='boys', Designation='blue', Coach=''
+
+504. 'Renegades 15B - PRE ECNL RL NTX - North' → 'Stanford Strikers 15B Pre ECNL RL' (0.800)
+     Game:   Club='renegades 15b - ecnl rl ntx -', Year='2015', Gender='boys', Designation='pre', Coach='north'
+     Master: Club='stanford strikers 15b ecnl rl', Year='2015', Gender='boys', Designation='pre', Coach=''
+
+505. 'FPFC 15B CP ECNLRL GOLD' → '15B FPFC TRY GOLD' (0.800)
+     Game:   Club='fpfc 15b cp ecnlrl', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='15b fpfc try', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+506. 'Westbury Inter 14B' → 'Inter Legends FC 14B Capetillo' (0.800)
+     Game:   Club='westbury inter 14b', Year='2014', Gender='boys', Designation='', Coach=''
+     Master: Club='inter legends fc 14b', Year='2014', Gender='boys', Designation='', Coach='capetillo'
+
+507. 'Westbury Red Wolves 15B' → 'Chattanooga Red Wolves SC - 15B Red.' (0.800)
+     Game:   Club='westbury wolves 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='chattanooga wolves sc - 15b .', Year='2015', Gender='boys', Designation='red', Coach=''
+
+508. 'Central 15B White I' → 'CF 15B Central White' (0.800)
+     Game:   Club='central 15b i', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='cf 15b central', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+509. 'Kitsap Alliance FC 15B White' → 'OVF Alliance 15B White' (0.800)
+     Game:   Club='kitsap alliance fc 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='ovf alliance 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+510. 'Lonestar 15B Red Nth B (Rodriguez)' → 'Lonestar 15B Red Sth A' (0.800)
+     Game:   Club='lonestar 15b nth (rodriguez)', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='lonestar 15b sth a', Year='2015', Gender='boys', Designation='red', Coach=''
+
+511. 'KANSAS RUSH WICHITA 15B (PH)' → 'Kansas Rush Pre-Academy 15B' (0.800)
+     Game:   Club='kansas rush wichita 15b (ph)', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='kansas rush pre-academy 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+512. '15B FPFC HERNANDO ELITE' → '15B FPFC CP ELITE' (0.800)
+     Game:   Club='15b fpfc hernando', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='15b fpfc cp', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+513. 'UFA Norcross 15B Premier' → 'UFA 15B Premier' (0.800)
+     Game:   Club='ufa norcross 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='ufa 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+514. 'MFA Revolution NS 15B Black' → 'MFA GR 15B Black' (0.800)
+     Game:   Club='mfa revolution ns 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='mfa gr 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+515. 'BVB 15B Yellow (Cedillo)' → 'BVB 15B Yellow East (Vincent)' (0.800)
+     Game:   Club='bvb 15b (cedillo)', Year='2015', Gender='boys', Designation='yellow', Coach=''
+     Master: Club='bvb 15b east (vincent)', Year='2015', Gender='boys', Designation='yellow', Coach=''
+
+516. 'Twin Cities Rush 15B EDT 1' → 'Quad Cities Rush 2015 Boys Azul' (0.800)
+     Game:   Club='twin cities rush 15b edt 1', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='quad cities rush', Year='2015', Gender='boys', Designation='', Coach='azul'
+
+517. '15B FPFC CP BLACK' → 'FPFC 15B CP BLACK' (0.800)
+     Game:   Club='15b fpfc cp', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='fpfc 15b cp', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+518. 'Twin Cities Rush 15B EDT 3' → 'Quad Cities Rush 2015 Boys Azul' (0.800)
+     Game:   Club='twin cities rush 15b edt 3', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='quad cities rush', Year='2015', Gender='boys', Designation='', Coach='azul'
+
+519. 'Hillsboro Rush 16B Blue' → 'Colorado Rush East Zorros 16B Blue' (0.800)
+     Game:   Club='hillsboro rush 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='colorado rush east zorros 16b', Year='2016', Gender='boys', Designation='blue', Coach='blue'
+
+520. 'Solar 15B Castro Red' → 'Solar 15B Red Salcedo Pre ECNL' (0.800)
+     Game:   Club='solar 15b castro', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='solar 15b salcedo pre', Year='2015', Gender='boys', Designation='red', Coach='ecnl'
+
+521. 'Coppell FC 15B Williams White' → 'INACTIVE Coppell FC 15B Hernandez White' (0.800)
+     Game:   Club='coppell fc 15b williams', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='inactive coppell fc 15b hernandez', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+522. '15B FPFC TRP DEV II' → 'FPFC 15B TRP REGIONAL' (0.800)
+     Game:   Club='15b fpfc trp dev ii', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='fpfc 15b trp', Year='2015', Gender='boys', Designation='', Coach='regional'
+
+523. 'Nationals Capital Area 15 Boys Pre-Academy' → 'Nationals Macomb Pre-Academy 15 Boys' (0.800)
+     Game:   Club='nationals capital area pre-academy', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='nationals macomb pre-academy', Year='2015', Gender='boys', Designation='', Coach=''
+
+524. 'East Select Soccer 15B Black' → '15B Black - Summer Select' (0.800)
+     Game:   Club='east select soccer 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='15b - summer select', Year='2015', Gender='boys', Designation='black', Coach=''
+
+525. 'JCSA U10 Boys White Fall 2025' → 'JCSA U10 Boys White Spring 2025' (0.800)
+     Game:   Club='jcsa fall 2025', Year='2016', Gender='boys', Designation='white', Coach=''
+     Master: Club='jcsa spring 2025', Year='2016', Gender='boys', Designation='white', Coach=''
+
+526. 'San Angelo Elite 16B' → 'San Jose Rush 16B Elite' (0.800)
+     Game:   Club='san angelo 16b', Year='2016', Gender='boys', Designation='elite', Coach=''
+     Master: Club='san jose rush 16b', Year='2016', Gender='boys', Designation='elite', Coach=''
+
+527. 'NCFC Youth 15B Gold South 2' → 'Concorde Fire South 15B Gold' (0.800)
+     Game:   Club='ncfc youth 15b south 2', Year='2015', Gender='boys', Designation='gold', Coach=''
+     Master: Club='concorde fire south 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+528. 'SSA Swarm 2015 Boys I' → 'SSA Swarm Cartersville 15B-Morgans...' (0.800)
+     Game:   Club='ssa swarm i', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='ssa swarm cartersville 15b-morgans...', Year='2015', Gender='boys', Designation='', Coach=''
+
+529. 'North East United 15B White' → 'North Coast FC 15B White' (0.800)
+     Game:   Club='north east united 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='north coast fc 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+530. '15B FPFC WC GOLD' → '15B FPFC TRY GOLD' (0.800)
+     Game:   Club='15b fpfc wc', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='15b fpfc try', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+531. 'BLACK LIGHTNING BANDIDOS 15B' → 'AFC Lightning 15B Black' (0.800)
+     Game:   Club='lightning bandidos 15b', Year='2015', Gender='boys', Designation='black', Coach=''
+     Master: Club='afc lightning 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+532. 'Abbey Villa S.C. Metro West 2015 Boys' → 'New England Surf Metro West 2015 Boys SKY' (0.800)
+     Game:   Club='abbey villa s.c. metro west', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='new england surf metro west sky', Year='2015', Gender='boys', Designation='', Coach=''
+
+533. 'Alabama FC Central 15B Academy South Navy' → 'AFC Central 15B North Academy Navy' (0.800)
+     Game:   Club='alabama fc central 15b academy south', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+     Master: Club='afc central 15b north academy', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+
+534. 'HYSL Premier Elite 15B' → 'HYSL Premier Supreme 15B' (0.800)
+     Game:   Club='hysl elite 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='hysl supreme 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+535. 'San Antonio 15B Red' → 'San Ramon FC 15B Red' (0.800)
+     Game:   Club='san antonio 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='san ramon fc 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+
+536. 'Metro West Wolves 15B Dearman' → 'New England Surf Metro West 2015 Boys SKY' (0.800)
+     Game:   Club='metro west wolves 15b', Year='2015', Gender='boys', Designation='', Coach='dearman'
+     Master: Club='new england surf metro west sky', Year='2015', Gender='boys', Designation='', Coach=''
+
+537. 'Michigan Jaguars CW3 2016 Boys White' → 'Michigan Jaguars Downriver 2015 U10 Boys White' (0.800)
+     Game:   Club='michigan jaguars cw3', Year='2016', Gender='boys', Designation='white', Coach='white'
+     Master: Club='michigan jaguars downriver 2015', Year='2016', Gender='boys', Designation='white', Coach='white'
+
+538. 'Dallas Hornets 15B Alpha Pre-MLS' → 'Dallas Hornets 15B Pre-MLS (Prev. Forms Academy)' (0.800)
+     Game:   Club='dallas hornets 15b alpha pre-mls', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='dallas hornets 15b pre-mls (prev. forms academy)', Year='2015', Gender='boys', Designation='', Coach=''
+
+539. 'Ela 2015 (U10) Boys Elite Select' → 'Elite S.C. U10 Boys Select (2015)' (0.800)
+     Game:   Club='ela 2015 () select', Year='2016', Gender='boys', Designation='elite', Coach=''
+     Master: Club='s.c. select (2015)', Year='2016', Gender='boys', Designation='elite', Coach=''
+
+540. 'Michigan Jaguars Northville 2016 U10 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.800)
+     Game:   Club='michigan jaguars northville', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+541. 'MI Stars 15B Lightning Gold' → 'AFC Lightning 15B Gold' (0.800)
+     Game:   Club='mi stars 15b lightning', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+     Master: Club='afc lightning 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+542. 'Michigan Jaguars Northville 2016 U9 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.800)
+     Game:   Club='michigan jaguars northville', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+543. 'FPFC 15B HERNANDO ECNLRL' → '15B FPFC ZEPH ECNLRL' (0.800)
+     Game:   Club='fpfc 15b hernando', Year='2015', Gender='boys', Designation='', Coach='ecnlrl'
+     Master: Club='15b fpfc zeph', Year='2015', Gender='boys', Designation='', Coach='ecnlrl'
+
+544. 'Oregon Surf 15B Blue' → 'Solano Surf 15B Blue' (0.800)
+     Game:   Club='oregon surf 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='solano surf 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+545. 'Salvo SC 14B East Red' → 'GSA East 14B Red' (0.800)
+     Game:   Club='salvo sc 14b east', Year='2014', Gender='boys', Designation='red', Coach=''
+     Master: Club='gsa east 14b', Year='2014', Gender='boys', Designation='red', Coach=''
+
+546. 'SLSG MO B 2015 West Ham' → 'West Ham 15B' (0.800)
+     Game:   Club='slsg mo west ham', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='west ham 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+547. 'Texas Premier La Escondida 15B Elite' → 'Texas Premier SC 15B' (0.800)
+     Game:   Club='texas la escondida 15b elite', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='texas sc 15b', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+548. 'Lonestar 15B Red Sth A (C. Talbot)' → 'Lonestar 15B Red Nth B' (0.800)
+     Game:   Club='lonestar 15b sth a (c. talbot)', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='lonestar 15b nth', Year='2015', Gender='boys', Designation='red', Coach=''
+
+549. 'U-10 (2015) Boys San Luis Blue' → 'U-11 (2015) San Luis Boys Pre Academy Blue' (0.800)
+     Game:   Club='u-10 () san luis', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='u-11 () san luis pre academy', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+550. 'Michigan Jaguars Lansing 2016 U8 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.800)
+     Game:   Club='michigan jaguars lansing', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+551. 'Dallas Hornets 15B Alpha  Escobedo' → 'Dallas Hornets 15B Pre-MLS (Prev. Forms Academy)' (0.800)
+     Game:   Club='dallas hornets 15b alpha', Year='2015', Gender='boys', Designation='', Coach='escobedo'
+     Master: Club='dallas hornets 15b pre-mls (prev. forms academy)', Year='2015', Gender='boys', Designation='', Coach=''
+
+552. 'Concorde Fire 15B Central Black' → 'Alabama FC Central 15B Academy South Black' (0.800)
+     Game:   Club='concorde fire 15b central', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='alabama fc central 15b academy south', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+553. 'Dallas Cosmos 15B Red' → 'FC Dallas High Plains 15B Red' (0.800)
+     Game:   Club='dallas cosmos 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='fc dallas high plains 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+
+554. 'CCV STARS 15 Boys Navy EAV' → 'CCV Stars 15 Boys North Navy' (0.800)
+     Game:   Club='ccv stars eav', Year='2015', Gender='boys', Designation='navy', Coach=''
+     Master: Club='ccv stars north', Year='2015', Gender='boys', Designation='navy', Coach='navy'
+
+555. 'MFA Revolution GR 15B Volt' → 'MFA GR 15B Volt' (0.800)
+     Game:   Club='mfa revolution gr 15b', Year='2015', Gender='boys', Designation='', Coach='volt'
+     Master: Club='mfa gr 15b', Year='2015', Gender='boys', Designation='', Coach='volt'
+
+556. 'NCFC Youth 15B Gold South 1' → 'Concorde Fire South 15B Gold' (0.800)
+     Game:   Club='ncfc youth 15b south 1', Year='2015', Gender='boys', Designation='gold', Coach=''
+     Master: Club='concorde fire south 15b', Year='2015', Gender='boys', Designation='gold', Coach='gold'
+
+557. 'FPFC 15B TRY ECNLRL' → '15B FPFC ZEPH ECNLRL' (0.800)
+     Game:   Club='fpfc 15b try', Year='2015', Gender='boys', Designation='', Coach='ecnlrl'
+     Master: Club='15b fpfc zeph', Year='2015', Gender='boys', Designation='', Coach='ecnlrl'
+
+558. 'Sugar Land Manchester City 15B' → 'Sugar Land Fusion 15B' (0.800)
+     Game:   Club='sugar land manchester city 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='sugar land fusion 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+559. 'Arkansas Rising 15B NEIBAUM - MP' → 'Arkansas Rising 2015 Boys - Pre-RL' (0.800)
+     Game:   Club='arkansas rising 15b neibaum - mp', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='arkansas rising - pre-rl', Year='2015', Gender='boys', Designation='', Coach=''
+
+560. 'East Select Soccer 15B Red' → 'Select 15B Red' (0.800)
+     Game:   Club='east select soccer 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='select 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+
+561. 'JCSA U10 Boys Black Fall 2025' → 'JCSA U10 Boys Black Spring 2025' (0.800)
+     Game:   Club='jcsa fall 2025', Year='2016', Gender='boys', Designation='black', Coach=''
+     Master: Club='jcsa spring 2025', Year='2016', Gender='boys', Designation='black', Coach=''
+
+562. 'South 15B Blue II' → 'South San Jose 15B Blue' (0.800)
+     Game:   Club='south 15b ii', Year='2015', Gender='boys', Designation='blue', Coach=''
+     Master: Club='south san jose 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+563. 'BVB 15B Yellow East Vincent' → 'BVB 15B Yellow South (Rivas)' (0.800)
+     Game:   Club='bvb 15b east', Year='2015', Gender='boys', Designation='yellow', Coach='vincent'
+     Master: Club='bvb 15b south (rivas)', Year='2015', Gender='boys', Designation='yellow', Coach=''
+
+564. 'HC Nido Aguila Houston 15B' → 'Nido Aguila Dallas 15B' (0.800)
+     Game:   Club='hc nido aguila houston 15b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='nido aguila dallas 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+565. 'Michigan Jaguars Downriver 2015 Boys U10 Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.800)
+     Game:   Club='michigan jaguars downriver 2015', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+566. 'Twin Cities Rush 15B EDT 2' → 'Quad Cities Rush 2015 Boys Azul' (0.800)
+     Game:   Club='twin cities rush 15b edt 2', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='quad cities rush', Year='2015', Gender='boys', Designation='', Coach='azul'
+
+567. 'OR Surf 15B Blue' → 'Solano Surf 15B Blue' (0.800)
+     Game:   Club='or surf 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='solano surf 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+568. 'BVB 16B Pre ECNL Puma' → 'FPFC 16B PRE ECNL I' (0.800)
+     Game:   Club='bvb 16b ecnl', Year='2016', Gender='boys', Designation='pre', Coach='puma'
+     Master: Club='fpfc 16b ecnl i', Year='2016', Gender='boys', Designation='pre', Coach=''
+
+569. 'Minnesota Rush 15B Black' → 'San Jose Rush 15B Black' (0.800)
+     Game:   Club='minnesota rush 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='san jose rush 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+570. 'Alder FC Prime 2016 Boys U9 24/25' → 'Alder FC 2015 Boys U10 24/25' (0.800)
+     Game:   Club='alder fc prime 24/25', Year='2016', Gender='boys', Designation='', Coach=''
+     Master: Club='alder fc 2015 24/25', Year='2016', Gender='boys', Designation='', Coach=''
+
+571. 'MISSISSIPPI RUSH 2015 BOYS JACKSON PREMIER' → 'MS RUSH 2015 B JACKSON PREMIER' (0.800)
+     Game:   Club='mississippi rush jackson', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='ms rush jackson', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+572. 'MC Legends 15B Red' → 'FC LEGENDS UTD 15B Red' (0.800)
+     Game:   Club='mc legends 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='fc legends utd 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+
+573. 'Michigan Jaguars Lansing 2016 Boys Green 2' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.800)
+     Game:   Club='michigan jaguars lansing 2', Year='2016', Gender='boys', Designation='green', Coach=''
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+574. 'MFA Revolution GR 15B Black' → 'MFA GR 15B Black' (0.800)
+     Game:   Club='mfa revolution gr 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='mfa gr 15b', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+575. 'CF 15B Central Red' → 'AFC Central 15B Academy North Red' (0.800)
+     Game:   Club='cf 15b central', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='afc central 15b academy north', Year='2015', Gender='boys', Designation='red', Coach=''
+
+576. 'Westside Metros 15B TS Copa Red' → '15B Copa Red' (0.800)
+     Game:   Club='westside metros 15b ts copa', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='15b copa', Year='2015', Gender='boys', Designation='red', Coach=''
+
+577. 'Alabama FC Central 15B Academy North White' → 'North Coast FC 15B White' (0.800)
+     Game:   Club='alabama fc central 15b academy north', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='north coast fc 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+578. 'Atletico 15B Patterson' → 'Atletico Dallas Youth 15B Patterson' (0.800)
+     Game:   Club='atletico 15b', Year='2015', Gender='boys', Designation='', Coach='patterson'
+     Master: Club='atletico dallas youth 15b', Year='2015', Gender='boys', Designation='', Coach='patterson'
+
+579. 'Kansas Rush Wichita Academy 16B' → 'San Jose Rush 16B Academy' (0.800)
+     Game:   Club='kansas rush wichita 16b', Year='2016', Gender='boys', Designation='academy', Coach=''
+     Master: Club='san jose rush 16b', Year='2016', Gender='boys', Designation='academy', Coach=''
+
+580. 'Michigan Jaguars Downriver 2016 U9 Boys Green' → 'Michigan Jaguars Dearborn 2016 Boys Green' (0.800)
+     Game:   Club='michigan jaguars downriver', Year='2016', Gender='boys', Designation='green', Coach='green'
+     Master: Club='michigan jaguars dearborn', Year='2016', Gender='boys', Designation='green', Coach='green'
+
+581. '14B FPFC TRY DEV II' → 'Savannah United 14B Dev' (0.800)
+     Game:   Club='14b fpfc try dev ii', Year='2014', Gender='boys', Designation='', Coach=''
+     Master: Club='savannah united 14b dev', Year='2014', Gender='boys', Designation='', Coach=''
+
+582. 'United FC Rush 15B Academy 2' → 'San Jose Rush 15B Academy' (0.800)
+     Game:   Club='united fc rush 15b 2', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='san jose rush 15b', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+583. 'Rogue Valley Timbers 15B White' → 'South Valley Chivas 15B White' (0.800)
+     Game:   Club='rogue valley timbers 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='south valley chivas 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+584. 'Solar 15B Rodriguez Red' → 'Solar 15B Red Salcedo Pre ECNL' (0.800)
+     Game:   Club='solar 15b rodriguez', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='solar 15b salcedo pre', Year='2015', Gender='boys', Designation='red', Coach='ecnl'
+
+585. 'MISSISSIPPI RUSH 2015 BOYS MADISON PREMIER' → 'MS RUSH 2015 BOYS MADISON PREMIER' (0.800)
+     Game:   Club='mississippi rush madison', Year='2015', Gender='boys', Designation='premier', Coach=''
+     Master: Club='ms rush madison', Year='2015', Gender='boys', Designation='premier', Coach=''
+
+586. 'Colorado Rush East Zorros 15/16B' → 'Hawaii Rush East 15B' (0.800)
+     Game:   Club='colorado rush east zorros /16b', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='hawaii rush east 15b', Year='2015', Gender='boys', Designation='', Coach=''
+
+587. 'MI Stars Macomb 15B White' → 'MI Stars Oakland 15B White' (0.800)
+     Game:   Club='mi stars macomb 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='mi stars oakland 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+588. '1974 NFC 15B Pre-ECNL' → 'ECFC 15B Pre-ECNL' (0.800)
+     Game:   Club='1974 nfc 15b pre-', Year='2015', Gender='boys', Designation='', Coach='ecnl'
+     Master: Club='ecfc 15b pre-', Year='2015', Gender='boys', Designation='', Coach='ecnl'
+
+589. 'MFA Revolution NS 15B Volt' → 'MFA GR 15B Volt' (0.800)
+     Game:   Club='mfa revolution ns 15b', Year='2015', Gender='boys', Designation='', Coach='volt'
+     Master: Club='mfa gr 15b', Year='2015', Gender='boys', Designation='', Coach='volt'
+
+590. '15B FPFC HERNANDO DEV II' → 'FPFC 15B HERNANDO REGIONAL' (0.800)
+     Game:   Club='15b fpfc hernando dev ii', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='fpfc 15b hernando', Year='2015', Gender='boys', Designation='', Coach='regional'
+
+591. 'Solar West 15B Padilla Red' → 'FC Dallas Youth 15B West Red' (0.800)
+     Game:   Club='solar west 15b padilla', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='fc dallas youth 15b west', Year='2015', Gender='boys', Designation='red', Coach=''
+
+592. 'South Rising 15B White II' → 'South San Jose 15B White' (0.800)
+     Game:   Club='south rising 15b ii', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='south san jose 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+593. 'Palm Coast 2015 Boys ECNL DEV' → '2015 BOYS ECNL DEV 1' (0.800)
+     Game:   Club='palm coast ecnl dev', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='ecnl dev 1', Year='2015', Gender='boys', Designation='', Coach=''
+
+594. 'UFA South Georgia 14B Black' → 'UFA Metro Atlanta 14B Black' (0.800)
+     Game:   Club='ufa south georgia 14b', Year='2014', Gender='boys', Designation='black', Coach='black'
+     Master: Club='ufa metro atlanta 14b', Year='2014', Gender='boys', Designation='black', Coach='black'
+
+595. 'ITALY Dallas Surf 15B Sth WhT' → 'Dallas Surf 15/16B East' (0.800)
+     Game:   Club='italy dallas surf 15b sth wht', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='dallas surf /16b', Year='2015', Gender='boys', Designation='', Coach='east'
+
+596. 'CO Rapids North Rising 15B Blue' → 'North Coast FC 15B Blue' (0.800)
+     Game:   Club='co rapids north rising 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+     Master: Club='north coast fc 15b', Year='2015', Gender='boys', Designation='blue', Coach='blue'
+
+597. 'FC Dallas Youth 15B Silver' → 'Dallas Surf 15B Silver' (0.800)
+     Game:   Club='fc dallas youth 15b', Year='2015', Gender='boys', Designation='silver', Coach='silver'
+     Master: Club='dallas surf 15b', Year='2015', Gender='boys', Designation='silver', Coach='silver'
+
+598. 'RC Rangers 15B White' → 'MI Rangers FC 15B White' (0.800)
+     Game:   Club='rc rangers 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='mi rangers fc 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+599. 'Neutral - Lonestar 15B Red Sth B' → 'Lonestar 15B Red Nth B' (0.800)
+     Game:   Club='neutral - lonestar 15b sth', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='lonestar 15b nth', Year='2015', Gender='boys', Designation='red', Coach=''
+
+600. 'Colorado Rapids YSC 15B Pre-Elite III' → 'Fremont YSC 15B FN III' (0.800)
+     Game:   Club='colorado rapids ysc 15b pre-elite iii', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='fremont ysc 15b fn iii', Year='2015', Gender='boys', Designation='', Coach=''
+
+601. 'Renegades 15B - Pre ECNL RL NTX - North' → 'Stanford Strikers 15B Pre ECNL RL' (0.800)
+     Game:   Club='renegades 15b - ecnl rl ntx -', Year='2015', Gender='boys', Designation='pre', Coach='north'
+     Master: Club='stanford strikers 15b ecnl rl', Year='2015', Gender='boys', Designation='pre', Coach=''
+
+602. 'Dallas Texans FW 15B Red Mitchell' → 'FC Dallas High Plains 15B Red' (0.800)
+     Game:   Club='dallas texans fw 15b', Year='2015', Gender='boys', Designation='red', Coach='mitchell'
+     Master: Club='fc dallas high plains 15b', Year='2015', Gender='boys', Designation='red', Coach=''
+
+603. 'The ACDMY 15B - Houston Rangers North' → 'ACDMY Houston Rangers North 15B TX2' (0.800)
+     Game:   Club='the acdmy 15b - houston rangers', Year='2015', Gender='boys', Designation='', Coach='north'
+     Master: Club='acdmy houston rangers north 15b tx2', Year='2015', Gender='boys', Designation='', Coach=''
+
+604. 'Michigan Jaguars Northville 2016 U10 Boys White' → 'Michigan Jaguars Downriver 2015 U10 Boys White' (0.800)
+     Game:   Club='michigan jaguars northville', Year='2016', Gender='boys', Designation='white', Coach='white'
+     Master: Club='michigan jaguars downriver 2015', Year='2016', Gender='boys', Designation='white', Coach='white'
+
+605. 'FC Westlake 15B South White' → 'South San Jose 15B White' (0.800)
+     Game:   Club='fc westlake 15b south', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='south san jose 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+606. 'North Coast FC 14B White' → 'GSA North 14B White' (0.800)
+     Game:   Club='north coast fc 14b', Year='2014', Gender='boys', Designation='white', Coach='white'
+     Master: Club='gsa north 14b', Year='2014', Gender='boys', Designation='white', Coach='white'
+
+607. 'Steel United MA 2015/2016B Boston Metro Elite' → 'Steel United VA 2015/2016B Elite' (0.800)
+     Game:   Club='steel united ma /2016b boston metro', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='steel united va /2016b', Year='2015', Gender='boys', Designation='elite', Coach=''
+
+608. '15B FPFC TRY BLACK' → 'FPFC 15B CP BLACK' (0.800)
+     Game:   Club='15b fpfc try', Year='2015', Gender='boys', Designation='black', Coach='black'
+     Master: Club='fpfc 15b cp', Year='2015', Gender='boys', Designation='black', Coach='black'
+
+609. 'San Ramon FC 15B Grey' → 'San Jose Rush 15B Grey' (0.800)
+     Game:   Club='san ramon fc 15b', Year='2015', Gender='boys', Designation='grey', Coach='grey'
+     Master: Club='san jose rush 15b', Year='2015', Gender='boys', Designation='grey', Coach='grey'
+
+610. 'AHFC 14B Blue B CF' → 'Albion Hurricanes FC - AHFC 14B Blue E' (0.800)
+     Game:   Club='ahfc 14b cf', Year='2014', Gender='boys', Designation='blue', Coach=''
+     Master: Club='albion hurricanes fc - ahfc 14b e', Year='2014', Gender='boys', Designation='blue', Coach=''
+
+611. 'Dallas Hornets 15B Beta Pre MLS' → '15B Garza Pre MLS Next' (0.800)
+     Game:   Club='dallas hornets 15b beta mls', Year='2015', Gender='boys', Designation='pre', Coach=''
+     Master: Club='15b garza mls', Year='2015', Gender='boys', Designation='pre', Coach='next'
+
+612. 'South 14B White' → 'Concorde Fire 14B South White' (0.800)
+     Game:   Club='south 14b', Year='2014', Gender='boys', Designation='white', Coach='white'
+     Master: Club='concorde fire 14b south', Year='2014', Gender='boys', Designation='white', Coach='white'
+
+613. 'Las Vegas Sports Academy U10 Boys Burgundy 2016' → 'Las Vegas Sports Academy U10 Boys Copper 2015' (0.800)
+     Game:   Club='las vegas sports burgundy', Year='2016', Gender='boys', Designation='academy', Coach=''
+     Master: Club='las vegas sports copper 2015', Year='2016', Gender='boys', Designation='academy', Coach=''
+
+614. 'United FC Rush 15B Academy 1' → 'San Jose Rush 15B Academy' (0.800)
+     Game:   Club='united fc rush 15b 1', Year='2015', Gender='boys', Designation='academy', Coach=''
+     Master: Club='san jose rush 15b', Year='2015', Gender='boys', Designation='academy', Coach=''
+
+615. 'CO Rapids Central Rising 15B Burgundy I' → 'Central 15B Burgundy II' (0.800)
+     Game:   Club='co rapids central rising 15b burgundy i', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='central 15b burgundy ii', Year='2015', Gender='boys', Designation='', Coach=''
+
+616. 'North 15B White I' → 'North Coast FC 15B White' (0.800)
+     Game:   Club='north 15b i', Year='2015', Gender='boys', Designation='white', Coach=''
+     Master: Club='north coast fc 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+617. 'Columbus Force SC CE 15B Grasshoppers (Black)' → 'Columbus Force 15B Pre-ECNL' (0.800)
+     Game:   Club='columbus force sc ce 15b grasshoppers (black)', Year='2015', Gender='boys', Designation='', Coach=''
+     Master: Club='columbus force 15b pre-', Year='2015', Gender='boys', Designation='', Coach='ecnl'
+
+618. 'The ACDMY 15B Pre Elite' → '15B Elite - Pre MLS Next' (0.800)
+     Game:   Club='the acdmy 15b pre', Year='2015', Gender='boys', Designation='elite', Coach=''
+     Master: Club='15b - pre mls', Year='2015', Gender='boys', Designation='elite', Coach='next'
+
+619. 'MI Stars 15B Revolution White' → 'MI Stars Oakland 15B White' (0.800)
+     Game:   Club='mi stars 15b revolution', Year='2015', Gender='boys', Designation='white', Coach='white'
+     Master: Club='mi stars oakland 15b', Year='2015', Gender='boys', Designation='white', Coach='white'
+
+620. 'Alabama FC Alabaster 15B Academy Red' → 'Alabama FC Central 15B Academy South Red' (0.800)
+     Game:   Club='alabama fc alabaster 15b academy', Year='2015', Gender='boys', Designation='red', Coach=''
+     Master: Club='alabama fc central 15b academy south', Year='2015', Gender='boys', Designation='red', Coach=''
+
+621. 'FC Dallas Youth 15B North Silver' → 'Dallas Surf 15B Silver' (0.800)
+     Game:   Club='fc dallas youth 15b north', Year='2015', Gender='boys', Designation='silver', Coach='silver'
+     Master: Club='dallas surf 15b', Year='2015', Gender='boys', Designation='silver', Coach='silver'
+
